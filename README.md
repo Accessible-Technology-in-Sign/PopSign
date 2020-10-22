@@ -10,7 +10,6 @@ This game can be built and run using the latest release of [Unity 2017](https://
 
 Note: this isn't every file and directory in the project, just the ones that I felt were relevant
 
-
 ├── Assets: the main directory where content is stored in Unity games  
 | ├── FramesToVideo: all videos for the game, plus images for each frame in the video  
 | ├── PopSignMain: what it sounds like  
@@ -28,8 +27,8 @@ Note: this isn't every file and directory in the project, just the ones that I f
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| ├── VideoConnection: one file per level, defines words for each level and the video location for each word  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| ├── WordBanks: word banks for the various Macarthur-Bates categories we use  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| └── WordIcons: one png per word, drawn on top of each ball in the game  
-&nbsp;&nbsp;&nbsp;| ├── Scenes: contains the actual scene files that you can modify and run using the Unity Editor 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| ├── game: the actual gameplay scene
+&nbsp;&nbsp;&nbsp;| ├── Scenes: contains the actual scene files that you can modify and run using the Unity Editor  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| ├── game: the actual gameplay scene  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| ├── map: the "home screen" scene that allows you to select a level or navigate to wordlist/settings  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| ├── opening: the "Welcome To PopSign!" scene that shows when you open the game  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| ├── practice: the scene where users practice signs before playing the game  
@@ -37,8 +36,8 @@ Note: this isn't every file and directory in the project, just the ones that I f
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| ├── tutorial: shows the user how to play the game (shown before the first attempt at level 1)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| └── wordlist: allows the user to review all the words they have learned so far in the game  
 &nbsp;&nbsp;&nbsp;├── Scripts: what it sounds like- all the C# scripts that control the game (plus some Python scripts I wrote)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| ├── Bubbles: gameplay specific code lives in this directory 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| ├── Core: code that is core to the flow of the game lives in this directory
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| ├── Bubbles: gameplay specific code lives in this directory  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| ├── Core: code that is core to the flow of the game lives in this directory  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| ├── Editor: the code that allows us to directly edit levels in Unity lives in this directory  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| ├── GUI: code that is specific to a particular UI element (e.g. answer button) goes here  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| └── Python: various scripts used to edit level data and video files (not used in the actual game)  
