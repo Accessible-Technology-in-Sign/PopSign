@@ -1,0 +1,22 @@
+{
+	"bluefileName":"red",
+	"blueframeNumber":45,
+	"bluefolderName":"MacarthurBates/DescriptiveWords/red",
+	"blueImageName":"WordIcons/red",
+	"greenfileName":"yellow",
+	"greenframeNumber":53,
+	"greenfolderName":"MacarthurBates/DescriptiveWords/yellow",
+	"greenImageName":"WordIcons/yellow",
+	"redfileName":"green",
+	"redframeNumber":44,
+	"redfolderName":"MacarthurBates/DescriptiveWords/green",
+	"redImageName":"WordIcons/green",
+	"violetfileName":"blue",
+	"violetframeNumber":59,
+	"violetfolderName":"MacarthurBates/DescriptiveWords/blue",
+	"violetImageName":"WordIcons/blue",
+	"yellowfileName":"black",
+	"yellowframeNumber":68,
+	"yellowfolderName":"MacarthurBates/DescriptiveWords/black",
+	"yellowImageName":"WordIcons/black"
+}

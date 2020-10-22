@@ -1,0 +1,22 @@
+{
+	"bluefileName":"water",
+	"blueframeNumber":43,
+	"bluefolderName":"MacarthurBates/OutsideThings/water",
+	"blueImageName":"WordIcons/water",
+	"greenfileName":"juice",
+	"greenframeNumber":55,
+	"greenfolderName":"MacarthurBates/FoodAndDrink/juice",
+	"greenImageName":"WordIcons/juice",
+	"redfileName":"milk",
+	"redframeNumber":63,
+	"redfolderName":"MacarthurBates/FoodAndDrink/milk",
+	"redImageName":"WordIcons/milk",
+	"violetfileName":"want",
+	"violetframeNumber":65,
+	"violetfolderName":"MacarthurBates/HelpingVerbs/want",
+	"violetImageName":"WordIcons/want",
+	"yellowfileName":"yucky",
+	"yellowframeNumber":51,
+	"yellowfolderName":"MacarthurBates/DescriptiveWords/yucky",
+	"yellowImageName":"WordIcons/yucky"
+}

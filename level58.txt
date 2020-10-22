@@ -1,0 +1,22 @@
+{
+	"bluefileName":"apple",
+	"blueframeNumber":100,
+	"bluefolderName":"MacarthurBates/FoodAndDrink/apple",
+	"blueImageName":"WordIcons/apple",
+	"greenfileName":"banana",
+	"greenframeNumber":83,
+	"greenfolderName":"MacarthurBates/FoodAndDrink/banana",
+	"greenImageName":"WordIcons/banana",
+	"redfileName":"orange",
+	"redframeNumber":76,
+	"redfolderName":"MacarthurBates/FoodAndDrink/orange",
+	"redImageName":"WordIcons/orange",
+	"violetfileName":"grape",
+	"violetframeNumber":73,
+	"violetfolderName":"MacarthurBates/FoodAndDrink/grape",
+	"violetImageName":"WordIcons/grape",
+	"yellowfileName":"strawberry",
+	"yellowframeNumber":69,
+	"yellowfolderName":"MacarthurBates/FoodAndDrink/strawberry",
+	"yellowImageName":"WordIcons/strawberry"
+}

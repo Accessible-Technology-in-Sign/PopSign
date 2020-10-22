@@ -1,0 +1,22 @@
+{
+	"bluefileName":"car",
+	"blueframeNumber":52,
+	"bluefolderName":"MacarthurBates/Vehicles/car",
+	"blueImageName":"WordIcons/car",
+	"greenfileName":"bicycle",
+	"greenframeNumber":73,
+	"greenfolderName":"MacarthurBates/Vehicles/bicycle",
+	"greenImageName":"WordIcons/bicycle",
+	"redfileName":"airplane",
+	"redframeNumber":56,
+	"redfolderName":"MacarthurBates/Vehicles/airplane",
+	"redImageName":"WordIcons/airplane",
+	"violetfileName":"train",
+	"violetframeNumber":70,
+	"violetfolderName":"MacarthurBates/Vehicles/train",
+	"violetImageName":"WordIcons/train",
+	"yellowfileName":"motorcycle",
+	"yellowframeNumber":59,
+	"yellowfolderName":"MacarthurBates/Vehicles/motorcycle",
+	"yellowImageName":"WordIcons/motorcycle"
+}

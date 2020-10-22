@@ -1,0 +1,22 @@
+{
+	"bluefileName":"listen",
+	"blueframeNumber":52,
+	"bluefolderName":"MacarthurBates/ActionWords/listen",
+	"blueImageName":"WordIcons/listen",
+	"greenfileName":"look",
+	"greenframeNumber":58,
+	"greenfolderName":"MacarthurBates/ActionWords/look",
+	"greenImageName":"WordIcons/look",
+	"redfileName":"sit",
+	"redframeNumber":71,
+	"redfolderName":"MacarthurBates/ActionWords/sit",
+	"redImageName":"WordIcons/sit",
+	"violetfileName":"go",
+	"violetframeNumber":66,
+	"violetfolderName":"MacarthurBates/ActionWords/go",
+	"violetImageName":"WordIcons/go",
+	"yellowfileName":"stop",
+	"yellowframeNumber":68,
+	"yellowfolderName":"MacarthurBates/ActionWords/stop",
+	"yellowImageName":"WordIcons/stop"
+}

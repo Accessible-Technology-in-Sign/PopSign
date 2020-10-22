@@ -1,0 +1,22 @@
+{
+	"bluefileName":"sun",
+	"blueframeNumber":68,
+	"bluefolderName":"MacarthurBates/OutsideThings/sun",
+	"blueImageName":"WordIcons/sun",
+	"greenfileName":"rain",
+	"greenframeNumber":75,
+	"greenfolderName":"MacarthurBates/OutsideThings/rain",
+	"greenImageName":"WordIcons/rain",
+	"redfileName":"snow",
+	"redframeNumber":83,
+	"redfolderName":"MacarthurBates/OutsideThings/snow",
+	"redImageName":"WordIcons/snow",
+	"violetfileName":"hot",
+	"violetframeNumber":51,
+	"violetfolderName":"MacarthurBates/DescriptiveWords/hot",
+	"violetImageName":"WordIcons/hot",
+	"yellowfileName":"cold",
+	"yellowframeNumber":58,
+	"yellowfolderName":"MacarthurBates/DescriptiveWords/cold",
+	"yellowImageName":"WordIcons/cold"
+}

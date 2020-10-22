@@ -1,0 +1,22 @@
+{
+	"bluefileName":"boy",
+	"blueframeNumber":65,
+	"bluefolderName":"MacarthurBates/People/boy",
+	"blueImageName":"WordIcons/boy",
+	"greenfileName":"girl",
+	"greenframeNumber":53,
+	"greenfolderName":"MacarthurBates/People/girl",
+	"greenImageName":"WordIcons/girl",
+	"redfileName":"friend",
+	"redframeNumber":63,
+	"redfolderName":"MacarthurBates/People/friend",
+	"redImageName":"WordIcons/friend",
+	"violetfileName":"play",
+	"violetframeNumber":45,
+	"violetfolderName":"MacarthurBates/ActionWords/play",
+	"violetImageName":"WordIcons/play",
+	"yellowfileName":"home",
+	"yellowframeNumber":47,
+	"yellowfolderName":"MacarthurBates/PlacesToGo/home",
+	"yellowImageName":"WordIcons/home"
+}

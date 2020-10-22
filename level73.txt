@@ -1,0 +1,22 @@
+{
+	"bluefileName":"grandmother",
+	"blueframeNumber":56,
+	"bluefolderName":"MacarthurBates/People/grandmother",
+	"blueImageName":"WordIcons/grandmother",
+	"greenfileName":"grandfather",
+	"greenframeNumber":62,
+	"greenfolderName":"MacarthurBates/People/grandfather",
+	"greenImageName":"WordIcons/grandfather",
+	"redfileName":"house",
+	"redframeNumber":55,
+	"redfolderName":"MacarthurBates/PlacesToGo/house",
+	"redImageName":"WordIcons/house",
+	"violetfileName":"aunt",
+	"violetframeNumber":60,
+	"violetfolderName":"MacarthurBates/People/aunt",
+	"violetImageName":"WordIcons/aunt",
+	"yellowfileName":"uncle",
+	"yellowframeNumber":64,
+	"yellowfolderName":"MacarthurBates/People/uncle",
+	"yellowImageName":"WordIcons/uncle"
+}

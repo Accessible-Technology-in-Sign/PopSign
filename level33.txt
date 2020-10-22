@@ -1,0 +1,22 @@
+{
+	"bluefileName":"scared",
+	"blueframeNumber":55,
+	"bluefolderName":"MacarthurBates/DescriptiveWords/scared",
+	"blueImageName":"WordIcons/scared",
+	"greenfileName":"mad",
+	"greenframeNumber":47,
+	"greenfolderName":"MacarthurBates/DescriptiveWords/mad",
+	"greenImageName":"WordIcons/mad",
+	"redfileName":"hurt",
+	"redframeNumber":73,
+	"redfolderName":"MacarthurBates/DescriptiveWords/hurt",
+	"redImageName":"WordIcons/hurt",
+	"violetfileName":"dirty",
+	"violetframeNumber":74,
+	"violetfolderName":"MacarthurBates/DescriptiveWords/dirty",
+	"violetImageName":"WordIcons/dirty",
+	"yellowfileName":"sick",
+	"yellowframeNumber":61,
+	"yellowfolderName":"MacarthurBates/DescriptiveWords/sick",
+	"yellowImageName":"WordIcons/sick"
+}

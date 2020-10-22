@@ -1,0 +1,22 @@
+{
+	"bluefileName":"breakfast",
+	"blueframeNumber":63,
+	"bluefolderName":"MacarthurBates/Games/breakfast",
+	"blueImageName":"WordIcons/breakfast",
+	"greenfileName":"lunch",
+	"greenframeNumber":54,
+	"greenfolderName":"MacarthurBates/Games/lunch",
+	"greenImageName":"WordIcons/lunch",
+	"redfileName":"dinner",
+	"redframeNumber":53,
+	"redfolderName":"MacarthurBates/Games/dinner",
+	"redImageName":"WordIcons/dinner",
+	"violetfileName":"food",
+	"violetframeNumber":27,
+	"violetfolderName":"MacarthurBates/FoodAndDrink/food",
+	"violetImageName":"WordIcons/food",
+	"yellowfileName":"snack",
+	"yellowframeNumber":79,
+	"yellowfolderName":"MacarthurBates/Games/snack",
+	"yellowImageName":"WordIcons/snack"
+}

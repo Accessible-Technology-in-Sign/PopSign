@@ -1,0 +1,22 @@
+{
+	"bluefileName":"now",
+	"blueframeNumber":57,
+	"bluefolderName":"MacarthurBates/Time/now",
+	"blueImageName":"WordIcons/now",
+	"greenfileName":"tomorrow",
+	"greenframeNumber":39,
+	"greenfolderName":"MacarthurBates/Time/tomorrow",
+	"greenImageName":"WordIcons/tomorrow",
+	"redfileName":"yesterday",
+	"redframeNumber":65,
+	"redfolderName":"MacarthurBates/Time/yesterday",
+	"redImageName":"WordIcons/yesterday",
+	"violetfileName":"today",
+	"violetframeNumber":72,
+	"violetfolderName":"MacarthurBates/Time/today",
+	"violetImageName":"WordIcons/today",
+	"yellowfileName":"tonight",
+	"yellowframeNumber":86,
+	"yellowfolderName":"MacarthurBates/Time/tonight",
+	"yellowImageName":"WordIcons/tonight"
+}
