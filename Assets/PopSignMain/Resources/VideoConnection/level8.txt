@@ -1,0 +1,22 @@
+{
+	"bluefileName":"brother",
+	"blueframeNumber":71,
+	"bluefolderName":"MacarthurBates/People/brother",
+	"blueImageName":"WordIcons/brother",
+	"greenfileName":"sister",
+	"greenframeNumber":76,
+	"greenfolderName":"MacarthurBates/People/sister",
+	"greenImageName":"WordIcons/sister",
+	"redfileName":"love",
+	"redframeNumber":53,
+	"redfolderName":"MacarthurBates/ActionWords/love",
+	"redImageName":"WordIcons/love",
+	"violetfileName":"hello",
+	"violetframeNumber":32,
+	"violetfolderName":"MacarthurBates/Other/hello",
+	"violetImageName":"WordIcons/hello",
+	"yellowfileName":"bye",
+	"yellowframeNumber":68,
+	"yellowfolderName":"MacarthurBates/Other/bye",
+	"yellowImageName":"WordIcons/bye"
+}

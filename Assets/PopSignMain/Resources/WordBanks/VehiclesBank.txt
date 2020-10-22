@@ -1,0 +1,10 @@
+bicycle
+airplane
+motorcycle
+car
+firetruck
+carriage,cart
+helicopter
+train
+boat
+sled

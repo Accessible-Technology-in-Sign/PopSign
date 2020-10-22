@@ -1,0 +1,27 @@
+fileFormatVersion: 2
+guid: 51b8f30bfcd5f498c9addd784abd3151
+timeCreated: 1549645816
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Magallanes Cond
+  fontNames:
+  - Magallanes Cond
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 30bec9a13dca74f8487a31acc40d5d14, type: 3}
+  - {fileID: 12800000, guid: 1aa063fa1395141d0a5826ab6d46d89f, type: 3}
+  - {fileID: 12800000, guid: 221fd9cd19da44df0852d72bdf57ef3a, type: 3}
+  - {fileID: 12800000, guid: 199252df79bf145d2b6f4b2580906081, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

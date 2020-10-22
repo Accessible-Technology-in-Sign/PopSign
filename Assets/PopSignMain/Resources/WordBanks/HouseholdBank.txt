@@ -1,0 +1,28 @@
+toilet
+stairs
+kitchen
+garage
+table
+oven
+hairdryer
+chair
+window
+washing machine
+playpen
+stove
+refrigerator
+door
+shower
+sofa
+room
+drawer
+bathroom
+bed
+closet
+rocking chair
+plant
+living room
+basement
+bathtub
+tv
+bedroom

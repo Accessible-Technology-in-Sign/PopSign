@@ -1,0 +1,22 @@
+{
+	"bluefileName":"who",
+	"blueframeNumber":61,
+	"bluefolderName":"MacarthurBates/QuestionWords/who",
+	"blueImageName":"WordIcons/who",
+	"greenfileName":"what",
+	"greenframeNumber":44,
+	"greenfolderName":"MacarthurBates/QuestionWords/what",
+	"greenImageName":"WordIcons/what",
+	"redfileName":"when",
+	"redframeNumber":71,
+	"redfolderName":"MacarthurBates/QuestionWords/when",
+	"redImageName":"WordIcons/when",
+	"violetfileName":"where",
+	"violetframeNumber":75,
+	"violetfolderName":"MacarthurBates/QuestionWords/where",
+	"violetImageName":"WordIcons/where",
+	"yellowfileName":"why",
+	"yellowframeNumber":72,
+	"yellowfolderName":"MacarthurBates/QuestionWords/why",
+	"yellowImageName":"WordIcons/why"
+}

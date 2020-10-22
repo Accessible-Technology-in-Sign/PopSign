@@ -1,0 +1,13 @@
+lunch
+thanks
+breakfast
+nap,sleep
+bye
+snack
+turn around
+shopping
+yes
+dinner
+bath
+no
+please

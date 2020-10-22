@@ -1,0 +1,22 @@
+{
+	"bluefileName":"please",
+	"blueframeNumber":60,
+	"bluefolderName":"MacarthurBates/Games/please",
+	"blueImageName":"WordIcons/please",
+	"greenfileName":"thank you",
+	"greenframeNumber":47,
+	"greenfolderName":"MacarthurBates/Games/thank you",
+	"greenImageName":"WordIcons/thank you",
+	"redfileName":"dad",
+	"redframeNumber":49,
+	"redfolderName":"MacarthurBates/People/dad",
+	"redImageName":"WordIcons/dad",
+	"violetfileName":"mom",
+	"violetframeNumber":43,
+	"violetfolderName":"MacarthurBates/People/mom",
+	"violetImageName":"WordIcons/mom",
+	"yellowfileName":"help",
+	"yellowframeNumber":67,
+	"yellowfolderName":"MacarthurBates/ActionWords/help",
+	"yellowImageName":"WordIcons/help"
+}

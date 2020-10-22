@@ -1,0 +1,22 @@
+{
+	"bluefileName":"hungry",
+	"blueframeNumber":54,
+	"bluefolderName":"MacarthurBates/DescriptiveWords/hungry",
+	"blueImageName":"WordIcons/hungry",
+	"greenfileName":"thirsty",
+	"greenframeNumber":62,
+	"greenfolderName":"MacarthurBates/DescriptiveWords/thirsty",
+	"greenImageName":"WordIcons/thirsty",
+	"redfileName":"sleepy",
+	"redframeNumber":62,
+	"redfolderName":"MacarthurBates/DescriptiveWords/sleepy",
+	"redImageName":"WordIcons/sleepy",
+	"violetfileName":"happy",
+	"violetframeNumber":52,
+	"violetfolderName":"MacarthurBates/DescriptiveWords/happy",
+	"violetImageName":"WordIcons/happy",
+	"yellowfileName":"sad",
+	"yellowframeNumber":62,
+	"yellowfolderName":"MacarthurBates/DescriptiveWords/sad",
+	"yellowImageName":"WordIcons/sad"
+}

@@ -1,0 +1,33 @@
+fileFormatVersion: 2
+guid: b09b78d15cf944faca806296e3d904e2
+timeCreated: 1549645816
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Magallanes Cond
+  fontNames:
+  - Magallanes Cond
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 30bec9a13dca74f8487a31acc40d5d14, type: 3}
+  - {fileID: 12800000, guid: 521984c2d3cb542f48714f75e19dacc3, type: 3}
+  - {fileID: 12800000, guid: ad6aee56adde945b5a43594781cd8430, type: 3}
+  - {fileID: 12800000, guid: 77f48c393ff474cc8ba260508813d4b7, type: 3}
+  - {fileID: 12800000, guid: 1aa063fa1395141d0a5826ab6d46d89f, type: 3}
+  - {fileID: 12800000, guid: 51b8f30bfcd5f498c9addd784abd3151, type: 3}
+  - {fileID: 12800000, guid: 95f2082dc1ff04efaafb8d78fe99af14, type: 3}
+  - {fileID: 12800000, guid: 221fd9cd19da44df0852d72bdf57ef3a, type: 3}
+  - {fileID: 12800000, guid: 62b87bfdc119f420a8cc8e3a0a8f070b, type: 3}
+  - {fileID: 12800000, guid: 199252df79bf145d2b6f4b2580906081, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

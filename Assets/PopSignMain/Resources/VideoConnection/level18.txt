@@ -1,0 +1,22 @@
+{
+	"bluefileName":"my",
+	"blueframeNumber":60,
+	"bluefolderName":"MacarthurBates/Other/my",
+	"blueImageName":"WordIcons/my",
+	"greenfileName":"you",
+	"greenframeNumber":44,
+	"greenfolderName":"MacarthurBates/Other/you",
+	"greenImageName":"WordIcons/you",
+	"redfileName":"yes",
+	"redframeNumber":56,
+	"redfolderName":"MacarthurBates/Games/yes",
+	"redImageName":"WordIcons/yes",
+	"violetfileName":"no",
+	"violetframeNumber":52,
+	"violetfolderName":"MacarthurBates/Games/no",
+	"violetImageName":"WordIcons/no",
+	"yellowfileName":"careful",
+	"yellowframeNumber":55,
+	"yellowfolderName":"MacarthurBates/DescriptiveWords/careful",
+	"yellowImageName":"WordIcons/careful"
+}
