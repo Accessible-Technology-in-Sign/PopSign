@@ -40,6 +40,7 @@ public class MissionManager
 	//Check level complete or failed
 	public bool IsWin()
 	{
+		return true;
 		//If not all mission finished, return false
 		foreach(Mission mission in LevelData.requestMissions)
 		{
