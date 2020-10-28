@@ -21,11 +21,6 @@ public class bouncer : MonoBehaviour
         targetPrepare = transform.position;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     IEnumerator bonceCoroutine()
     {
 
@@ -128,22 +123,20 @@ public class bouncer : MonoBehaviour
     {
         if (transform.position.y >= 530f / 640f * Camera.main.orthographicSize)
         {
-            Camera.main.GetComponent<mainscript>().controlArray = addFrom(b, Camera.main.GetComponent<mainscript>().controlArray);
+            Camera.main.GetComponent<mainscript>().controlArray = union(b, Camera.main.GetComponent<mainscript>().controlArray);
             b.Clear();
             return true;    /// don't destroy
         }
-        if (findInArray(Camera.main.GetComponent<mainscript>().controlArray, gameObject)) { b.Clear(); return true; } /// don't destroy
+        if (Camera.main.GetComponent<mainscript>().controlArray.Contains(gameObject)) { b.Clear(); return true; } /// don't destroy
         b.Add(gameObject);
         foreach (GameObject obj in nearBalls)
         {
             if (obj.gameObject.layer == 9 && obj != gameObject)
             {
-                //	if(findInArray(Camera.main.GetComponent<mainscript>().controlArray, obj.gameObject)){b.Clear(); return true;} /// don't destroy
-                //	else{
                 float distTemp = Vector3.Distance(transform.position, obj.transform.position);
                 if (distTemp <= 0.8f && distTemp > 0)
                 {
-                    if (!findInArray(b, obj.gameObject))
+                    if (!b.Contains(obj.gameObject))
                     {
                         Camera.main.GetComponent<mainscript>().arraycounter++;
                         if (obj.GetComponent<bouncer>().checkNearestBall(b))
@@ -157,21 +150,11 @@ public class bouncer : MonoBehaviour
 
     }
 
-    public bool findInArray(ArrayList b, GameObject destObj)
+    public ArrayList union(ArrayList b, ArrayList b2)
     {
         foreach (GameObject obj in b)
         {
-
-            if (obj == destObj) return true;
-        }
-        return false;
-    }
-
-    public ArrayList addFrom(ArrayList b, ArrayList b2)
-    {
-        foreach (GameObject obj in b)
-        {
-            if (!findInArray(b2, obj))
+            if (!b2.Contains(obj))
             {
                 b2.Add(obj);
             }
@@ -205,7 +188,7 @@ public class bouncer : MonoBehaviour
                 float distTemp = Vector3.Distance(transform.position, obj.transform.position);
                 if (distTemp <= 1f)
                 {
-                    if (!findInArray(b, obj))
+                    if (!b.Contains(obj))
                     {
                         b.Add(obj);
                         obj.GetComponent<ball>().checkNextNearestColor(b);
