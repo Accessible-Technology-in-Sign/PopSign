@@ -71,7 +71,6 @@ public class Grid : MonoBehaviour
         GameObject ball = box.GetComponent<Grid>().busy;
         if( ball != null && busy != null )
         {
-            //		ball.GetComponent<bouncer>().bounceToCatapult(transform.position);
             busy.GetComponent<bouncer>().bounceTo( box.transform.position );
             box.GetComponent<Grid>().busy = busy;
             busy = ball;
@@ -97,12 +96,6 @@ public class Grid : MonoBehaviour
         }
     }
 
-    /*void createBall(GameObject ball){
-        setColorTag( ball);
-        GameObject gm = GameObject.Find ("Creator");
-        gm.GetComponent<creatorBall>().createBall();
-    }*/
-
     void OnCollisionStay2D( Collision2D other )
     {
         if( other.gameObject.name.IndexOf( "ball" ) > -1 && busy == null )
@@ -110,12 +103,6 @@ public class Grid : MonoBehaviour
             busy = other.gameObject;
         }
     }
-
-    //	void OnTriggerStay2D(Collider2D other){
-    //		if(other.gameObject.name.IndexOf("ball")>-1 && busy == null) {
-    //			busy = other.gameObject;
-    //		}
-    //	}
 
     void OnTriggerExit( Collider other )
     {

@@ -29,6 +29,7 @@ public class DrawLine : MonoBehaviour
         waypoints[1] = transform.position+Vector3.up*5;
     }
 
+    //Method meant for hiding game objects currently on screen 
     void HidePoints()
     {
         foreach (GameObject item in pointers)
@@ -43,6 +44,7 @@ public class DrawLine : MonoBehaviour
 
     }
 
+    //Randomly creates the starting possitions for game objects like the bubbles and butterflies I believe
     private void GeneratePositionsPoints()
     {
         if (mainscript.Instance.boxCatapult.GetComponent<Grid>().Busy != null)
@@ -93,6 +95,7 @@ public class DrawLine : MonoBehaviour
         }
     }
 
+    //Assigns those generated points to GameObjects
     void GeneratePoints()
     {
         for (int i = 0; i < pointers.Length; i++)
@@ -146,14 +149,11 @@ public class DrawLine : MonoBehaviour
                 line.SetPosition(0, transform.position);
 
                 waypoints[0] = transform.position;
-                //int layerMask = ~(1 << LayerMask.NameToLayer("Mesh"));
-
 
                 RaycastHit2D[] hit = Physics2D.LinecastAll( waypoints[0], waypoints[0] + ( (Vector2)dir - waypoints[0] ).normalized * 10 );
                 foreach (RaycastHit2D item in hit)
                 {
                     Vector2 point = item.point;
-                //    if (point.y - waypoints[0].y < 1.5f) point += Vector2.up * 5;
                     line.SetPosition(1, point);
                     addAngle = 180;
 
