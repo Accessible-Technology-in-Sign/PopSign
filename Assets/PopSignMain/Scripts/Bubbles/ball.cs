@@ -169,6 +169,7 @@ public class ball : MonoBehaviour
                 GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, 1.7f);
         }
 
+
         if (setTarget)
             triggerEnter();
 
@@ -181,6 +182,15 @@ public class ball : MonoBehaviour
             launched = false;
             DestroySingle(gameObject, 0.00001f);
             mainscript.Instance.flyingBall = gameObject;
+        }
+        if ((transform.position.y <= -10 || transform.position.y >= 5) && !Destroyed)
+        {
+            Debug.Log("transform.position.y: " + transform.position.y);
+            // mainscript.Instance.CheckFreeChicken();
+            setTarget = false;
+            launched = false;
+            DestroySingle(gameObject, 0.00001f);
+            LevelData.LimitAmount--;
         }
     }
 
@@ -521,6 +531,10 @@ public class ball : MonoBehaviour
 
             // if we still haven't found a place, increase our search radius
             if (findMesh) searchRadius += 0.2f;
+            if (searchRadius > 0.6f) {
+                DestroySingle(gameObject, 0.00001f);
+                findMesh = false;
+            }
 
             yield return new WaitForFixedUpdate();
         }
