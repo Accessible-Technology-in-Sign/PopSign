@@ -9,10 +9,10 @@ public class ProgressBarScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Instance = this;
-    slider = GetComponent<Slider>();
+    	slider = GetComponent<Slider>();
 		maxWidth = slider.value;
 		ResetBar();
-    PrepareStars();
+    	PrepareStars();
 	}
 
 	public void UpdateDisplay (float x) {
@@ -23,7 +23,7 @@ public class ProgressBarScript : MonoBehaviour {
 	}
 
 	public void AddValue (float x) {
-		UpdateDisplay ( slider.value*100/maxWidth/100 + x);
+		UpdateDisplay ( slider.value*100/maxWidth/100 + x*2);
 	}
 
 	// Update is called once per frame
@@ -49,7 +49,7 @@ public class ProgressBarScript : MonoBehaviour {
         float width = GetComponent<RectTransform>().rect.width;
         transform.Find( "Star1" ).localPosition = new Vector3( LevelData.star1 * 100 / LevelData.star3 * width / 100 - ( width / 2f ), transform.Find( "Star1" ).localPosition.y, 0 );
         transform.Find( "Star2" ).localPosition = new Vector3( LevelData.star2 * 100 / LevelData.star3 * width / 100 - ( width / 2f ), transform.Find( "Star2" ).localPosition.y, 0 );
-        transform.Find( "Star3" ).localPosition = new Vector3( LevelData.star3 * 100 / LevelData.star3 * width / 100 - ( width / 2f ), transform.Find( "Star3" ).localPosition.y, 0 );
+        transform.Find( "Star3" ).localPosition = new Vector3( LevelData.star3 * 100 / LevelData.star3 * width / 100 - ( width / 2f ) - 15, transform.Find( "Star3" ).localPosition.y, 0 );
     }
 
 }
