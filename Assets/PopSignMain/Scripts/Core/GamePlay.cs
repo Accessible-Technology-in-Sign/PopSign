@@ -70,6 +70,7 @@ public class GamePlay : MonoBehaviour {
 	void Start ()
   {
       Instance = this;
+      PlayerPrefs.SetInt("MaxLevel", 1);
 	}
 
   // Update is called once per frame
@@ -127,11 +128,11 @@ public class GamePlay : MonoBehaviour {
       GameObject.Find( "Canvas" ).transform.Find( "LevelCleared" ).gameObject.SetActive( false );
       GameObject.Find( "Canvas" ).transform.Find( "MenuComplete" ).gameObject.SetActive( true );
       if(mainscript.Instance.stars < 3)
-        GameObject.Find( "MenuComplete" ).transform.Find( "Image/LevelCompleteStars/CompleteStar3" ).gameObject.SetActive( false );
+        GameObject.Find( "MenuComplete" ).transform.Find( "Image/LevelCompleteStars/CompleteStar3" ).gameObject.SetActive( true );
       if(mainscript.Instance.stars < 2)
-        GameObject.Find( "MenuComplete" ).transform.Find( "Image/LevelCompleteStars/CompleteStar2" ).gameObject.SetActive( false );
+        GameObject.Find( "MenuComplete" ).transform.Find( "Image/LevelCompleteStars/CompleteStar2" ).gameObject.SetActive( true );
       if(mainscript.Instance.stars < 1)
-        GameObject.Find( "MenuComplete" ).transform.Find( "Image/LevelCompleteStars/CompleteStar1" ).gameObject.SetActive( false );
+        GameObject.Find( "MenuComplete" ).transform.Find( "Image/LevelCompleteStars/CompleteStar1" ).gameObject.SetActive( true );
     }
 
     void ShowTypeExplanation()

@@ -287,7 +287,7 @@ public class ball : MonoBehaviour
         if (ballsToClear.Count >= 3)
         {
             mainscript.Instance.ComboCount++;
-            score += ballsToClear.Count * 10;
+            score += ballsToClear.Count * 50;
             destroy(ballsToClear, 0.00001f);
             mainscript.Score = score;
             mainscript.Instance.CheckFreeChicken();
