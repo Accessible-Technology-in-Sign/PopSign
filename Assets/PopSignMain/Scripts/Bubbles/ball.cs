@@ -287,7 +287,7 @@ public class ball : MonoBehaviour
         if (ballsToClear.Count >= 3)
         {
             mainscript.Instance.ComboCount++;
-            score += ballsToClear.Count * 10;
+            score += ballsToClear.Count * 50;
             destroy(ballsToClear, 0.00001f);
             mainscript.Score = score;
             mainscript.Instance.CheckFreeChicken();
@@ -367,9 +367,9 @@ public class ball : MonoBehaviour
     // the arraylist is updated to contain all the near balls, which is then passed to destroy()
     public bool checkNearestBall(ArrayList b)
     {
-        if (PlayerPrefs.GetInt("OpenLevel") == 1)
+        if (PlayerPrefs.GetInt("OpenLevel") == 1 || PlayerPrefs.GetInt("OpenLevel") == 2)
         {
-            if ((mainscript.Instance.TopBorder.transform.position.y - transform.position.y <= 1.3f && LevelData.mode != ModeGame.Rounded) || (LevelData.mode == ModeGame.Rounded && tag == "chicken"))
+            if ((mainscript.Instance.TopBorder.transform.position.y - transform.position.y <= 1.8f && LevelData.mode != ModeGame.Rounded) || (LevelData.mode == ModeGame.Rounded && tag == "chicken"))
             {
                 Camera.main.GetComponent<mainscript>().controlArray = union(b, Camera.main.GetComponent<mainscript>().controlArray);
                 b.Clear();
@@ -404,7 +404,7 @@ public class ball : MonoBehaviour
         }
         else
         {
-            if ((mainscript.Instance.TopBorder.transform.position.y - transform.position.y <= 1.8f && LevelData.mode != ModeGame.Rounded) || (LevelData.mode == ModeGame.Rounded && tag == "chicken"))
+            if ((mainscript.Instance.TopBorder.transform.position.y - transform.position.y <= 0f && LevelData.mode != ModeGame.Rounded) || (LevelData.mode == ModeGame.Rounded && tag == "chicken"))
             {
                 Camera.main.GetComponent<mainscript>().controlArray = union(b, Camera.main.GetComponent<mainscript>().controlArray);
                 b.Clear();

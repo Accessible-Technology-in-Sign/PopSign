@@ -548,7 +548,7 @@ public void destroy( ArrayList b)
     int rate = 0;
 
     foreach(GameObject obj in b) {
-        if(obj.name.IndexOf("ball")==0) obj.layer = 0;
+        // if(obj.name.IndexOf("ball")==0) obj.layer = 0;
         if(!obj.GetComponent<ball>().Destroyed) {
             if(scoreCounter > 3) {
                 rate +=3;
