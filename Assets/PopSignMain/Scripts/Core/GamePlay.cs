@@ -70,7 +70,7 @@ public class GamePlay : MonoBehaviour {
 	void Start ()
   {
       Instance = this;
-      PlayerPrefs.SetInt("MaxLevel", 1);
+    //   PlayerPrefs.SetInt("MaxLevel", 1); currently causes level 2 to get locked and level 3 to not be unlocked
 	}
 
   // Update is called once per frame

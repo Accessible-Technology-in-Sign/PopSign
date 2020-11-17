@@ -41,9 +41,11 @@ public class AnimationManager : MonoBehaviour
         for( int i = 1; i <= mainscript.Instance.stars; i++ )
         {
             //  SoundBase.Instance.audio.PlayOneShot( SoundBase.Instance.scoringStar );
+            if ( transform.Find( "Image" ).Find( "Star" + i ).gameObject != null){
             transform.Find( "Image" ).Find( "Star" + i ).gameObject.SetActive( true );
             yield return new WaitForSeconds( 0.5f );
             SoundBase.Instance.GetComponent<AudioSource>().PlayOneShot( SoundBase.Instance.hit );
+            }
         }
     }
 
