@@ -208,7 +208,7 @@ IEnumerator MoveUpDownCor( bool inGameCheck = false )
         }
         else if( !item.GetComponent<ball>().Destroyed )
         {
-            if( item.position.y > lineY && mainscript.Instance.TopBorder.transform.position.y > 5.5f )
+            if( inGameCheck)//item.position.y > lineY && mainscript.Instance.TopBorder.transform.position.y > 5.5f )
             {
                 table.Add( item.position.y );
             }
@@ -224,27 +224,53 @@ IEnumerator MoveUpDownCor( bool inGameCheck = false )
 
     if( table.Count > 0 )
     {
-        if( up ) AddMesh();
+        if (!inGameCheck) {
+            if( up ) AddMesh();
 
-        float targetY = 0;
-        table.Sort();
-        if( !inGameCheck ) targetY = lineY - table[0] + 2.5f;
-        else targetY = lineY - table[0] + 1.5f;
-        GameObject Meshes = GameObject.Find( "-Meshes" );
-        Vector3 targetPos = Meshes.transform.position + Vector3.up * targetY;
-        float startTime = Time.time;
-        Vector3 startPos = Meshes.transform.position;
-        float speed = 0.5f;
-        float distCovered = 0;
-        while( distCovered < 1 )
-        {
-            speed += Time.deltaTime / 1.5f;
-            distCovered = ( Time.time - startTime ) / speed;
-            Meshes.transform.position = Vector3.Lerp( startPos, targetPos, distCovered );
-            yield return new WaitForEndOfFrame();
-            if( startPos.y > targetPos.y )
+            float targetY = 0;
+            table.Sort();
+            if( !inGameCheck ) targetY = lineY - table[0] + 2.5f;
+            else targetY = lineY - table[0] + 1.5f;
+            GameObject Meshes = GameObject.Find( "-Meshes" );
+            Vector3 targetPos = Meshes.transform.position + Vector3.up * targetY;
+            float startTime = Time.time;
+            Vector3 startPos = Meshes.transform.position;
+            float speed = 0.5f;
+            float distCovered = 0;
+            while( distCovered < 1 )
             {
-                if( mainscript.Instance.TopBorder.transform.position.y <= 5 && inGameCheck ) break;
+                speed += Time.deltaTime / 1.5f;
+                distCovered = ( Time.time - startTime ) / speed;
+                Meshes.transform.position = Vector3.Lerp( startPos, targetPos, distCovered );
+                yield return new WaitForEndOfFrame();
+                if( startPos.y > targetPos.y )
+                {
+                    if( mainscript.Instance.TopBorder.transform.position.y <= 5 && inGameCheck ) break;
+                }
+            }
+        } else {
+            if( up ) AddMesh();
+
+            float targetY = 0;
+            table.Sort();
+            if( !inGameCheck ) targetY = lineY - table[0] + 2.5f;
+            else targetY = lineY - table[0] + 1.5f;
+            GameObject Meshes = GameObject.Find( "-Meshes" );
+            Vector3 targetPos = Meshes.transform.position + Vector3.up * targetY;
+            float startTime = Time.time;
+            Vector3 startPos = Meshes.transform.position;
+            float speed = 0.5f;
+            float distCovered = 0;
+            while( distCovered < 1 )
+            {
+                speed += Time.deltaTime / 1.5f;
+                distCovered = ( Time.time - startTime ) / speed;
+                Meshes.transform.position = Vector3.Lerp( startPos, targetPos, distCovered );
+                yield return new WaitForEndOfFrame();
+                if( startPos.y > targetPos.y && (PlayerPrefs.GetInt("OpenLevel") == 1 || PlayerPrefs.GetInt("OpenLevel") == 2 ))
+                {
+                    if( mainscript.Instance.TopBorder.transform.position.y <= 5) break;
+                }
             }
         }
     }
@@ -387,6 +413,9 @@ public GameObject createBall( Vector3 vec, BallColor color = BallColor.random, b
     else
     {
         b.GetComponent<ball>().enabled = false;
+        if (PlayerPrefs.GetInt("OpenLevel") == 3 && row == 11){
+            b.GetComponent<ball>().isTarget = true;
+        }
         if( LevelData.mode == ModeGame.Vertical && row == 0 )
             b.GetComponent<ball>().isTarget = true;
         b.GetComponent<BoxCollider2D>().offset = Vector2.zero;

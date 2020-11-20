@@ -36,6 +36,9 @@ public class ball : MonoBehaviour
     private bool animStarted;
     private VideoManager sharedVideoManager;
 
+    //this is true when the launched ball does not hit at least 2 balls of the same color as it
+    public bool whiff;
+
     //Checks whether a ball at a particular location has been destroyed
     public bool Destroyed
     {
@@ -285,12 +288,15 @@ public class ball : MonoBehaviour
 
         // if we have a grouping of three or more bubbles, pop them!
         if (ballsToClear.Count >= 3)
-        {
+        {   
+            whiff = false;
             mainscript.Instance.ComboCount++;
             score += ballsToClear.Count * 50;
             destroy(ballsToClear, 0.00001f);
             mainscript.Score = score;
             mainscript.Instance.CheckFreeChicken();
+        } else {
+            whiff = true;
         }
 
         if (ballsToClear.Count < 3)
@@ -341,7 +347,7 @@ public class ball : MonoBehaviour
         GetComponent<ball>().falling = true;
     }
 
-    // I think this is only used in the legacy Animal mode
+
     IEnumerator FlyToTarget()
     {
         Vector3 targetPos = new Vector3(2.3f, 6, 0);
@@ -404,7 +410,7 @@ public class ball : MonoBehaviour
         }
         else
         {
-            if ((mainscript.Instance.TopBorder.transform.position.y - transform.position.y <= 0f && LevelData.mode != ModeGame.Rounded) || (LevelData.mode == ModeGame.Rounded && tag == "chicken"))
+            if ((mainscript.Instance.TopBorder.transform.position.y - transform.position.y <= 0 && LevelData.mode != ModeGame.Rounded) || (LevelData.mode == ModeGame.Rounded && tag == "chicken"))
             {
                 Camera.main.GetComponent<mainscript>().controlArray = union(b, Camera.main.GetComponent<mainscript>().controlArray);
                 b.Clear();

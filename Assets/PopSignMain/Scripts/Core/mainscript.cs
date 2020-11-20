@@ -103,7 +103,11 @@ private int MustPopCount = 11;
 private int BallLayer = 9;
 
 private int _ComboCount;
+
+//this variable is set in response to the whiff variable in ball; it's true when the flying ball didn't hit at least 2 balls of its color
+public bool BallWhiffed;
 public int ComboCount
+
 {
     get { return _ComboCount; }
     set
@@ -222,12 +226,21 @@ void Update ()
         Destroy(flyingBall.GetComponent<Rigidbody>());
         // decrease the moves counter
         LevelData.LimitAmount--;
-        flyingBall = null;
+        
         int missCount = 1;
         if(stage >= 3) missCount = 2;
         if(stage >= 9) missCount = 1;
+        
+        //BallWhiffed will be used in clearDisconnectedBalls as a way to hopefully break out of the function early if there are no balls to pop
+        if (!flyingBall.GetComponent<ball>().whiff) {
+            BallWhiffed = false;
+        } else {
+            BallWhiffed = true;
+        }
         StartCoroutine( clearDisconnectedBalls() );
 
+        
+        flyingBall = null;
         if(!arcadeMode)
         {
             if (bounceCounter >= missCount)
@@ -410,9 +423,12 @@ public IEnumerator clearDisconnectedBalls()
                     yield return new WaitForEndOfFrame();
                     ArrayList b = new ArrayList();
                     obj.GetComponent<ball>().checkNearestBall(b);
-                    if(b.Count >0 )
+                    if(b.Count >0 && BallWhiffed == false)
                     {
                         willDestroy++;
+                        if (PlayerPrefs.GetInt("OpenLevel") == 3) {
+                            this.TargetCounter++;
+                        }
                         destroy (b);
                     }
                 }
