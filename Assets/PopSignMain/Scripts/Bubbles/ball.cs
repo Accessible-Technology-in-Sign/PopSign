@@ -375,11 +375,11 @@ public class ball : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("OpenLevel") == 1 || PlayerPrefs.GetInt("OpenLevel") == 2)
         {
-            if ((mainscript.Instance.TopBorder.transform.position.y - transform.position.y <= 1.8f && LevelData.mode != ModeGame.Rounded) || (LevelData.mode == ModeGame.Rounded && tag == "chicken"))
+            if ((mainscript.Instance.TopBorder.transform.position.y - transform.position.y <= 1.3 && LevelData.mode != ModeGame.Rounded) || (LevelData.mode == ModeGame.Rounded && tag == "chicken"))
             {
                 Camera.main.GetComponent<mainscript>().controlArray = union(b, Camera.main.GetComponent<mainscript>().controlArray);
                 b.Clear();
-                return true; // don't destroy
+                return false; // don't destroy
             }
             if (Camera.main.GetComponent<mainscript>().controlArray.Contains(gameObject))
             {

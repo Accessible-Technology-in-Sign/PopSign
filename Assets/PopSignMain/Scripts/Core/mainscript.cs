@@ -283,6 +283,23 @@ void Update ()
     }
 
     // update game state
+    if (PlayerPrefs.GetInt("OpenLevel") == 7 || PlayerPrefs.GetInt("OpenLevel") == 11 ||  PlayerPrefs.GetInt("OpenLevel") == 21)
+    {
+        MustPopCount = 4;
+    } else if (PlayerPrefs.GetInt("OpenLevel") == 10 ||  PlayerPrefs.GetInt("OpenLevel") == 23)
+    {
+        MustPopCount = 7;
+    } else if (PlayerPrefs.GetInt("OpenLevel") == 12 || PlayerPrefs.GetInt("OpenLevel") == 14 ||  PlayerPrefs.GetInt("OpenLevel") == 17)
+    {
+        MustPopCount = 9;
+    } else if (PlayerPrefs.GetInt("OpenLevel") == 13)
+    {
+        MustPopCount = 1;
+    }
+    else
+    {
+        MustPopCount = 11;
+    }
     if( LevelData.mode == ModeGame.Vertical && TargetCounter == MustPopCount && GamePlay.Instance.GameStatus == GameState.Playing )
         GamePlay.Instance.GameStatus = GameState.Win;
     else if( LevelData.mode == ModeGame.Rounded && TargetCounter >= 1 && GamePlay.Instance.GameStatus == GameState.WaitForChicken )
@@ -426,8 +443,12 @@ public IEnumerator clearDisconnectedBalls()
                     if(b.Count >0 && BallWhiffed == false)
                     {
                         willDestroy++;
-                        if (PlayerPrefs.GetInt("OpenLevel") == 3) {
-                            this.TargetCounter++;
+                        if (PlayerPrefs.GetInt("OpenLevel") == 3 || PlayerPrefs.GetInt("OpenLevel") == 6 ||
+                            PlayerPrefs.GetInt("OpenLevel") == 7 || PlayerPrefs.GetInt("OpenLevel") == 8 ||
+                            PlayerPrefs.GetInt("OpenLevel") == 10 || PlayerPrefs.GetInt("OpenLevel") == 11 ||
+                            PlayerPrefs.GetInt("OpenLevel") == 12 || PlayerPrefs.GetInt("OpenLevel") == 14 || PlayerPrefs.GetInt("OpenLevel") == 16 || PlayerPrefs.GetInt("OpenLevel") == 17 ||  PlayerPrefs.GetInt("OpenLevel") == 18 ||  PlayerPrefs.GetInt("OpenLevel") == 19 ||  PlayerPrefs.GetInt("OpenLevel") == 21 ||  PlayerPrefs.GetInt("OpenLevel") == 23)
+                        {
+                            TargetCounter++;
                         }
                         destroy (b);
                     }
