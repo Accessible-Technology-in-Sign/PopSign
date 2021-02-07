@@ -113,7 +113,6 @@ public class AnimationManager : MonoBehaviour
 
     public void Play()
     {
-        Debug.Log(gameObject.name);
         SoundBase.Instance.GetComponent<AudioSource>().PlayOneShot( SoundBase.Instance.click );
         if( gameObject.name == "MenuGameOver" )
         {
