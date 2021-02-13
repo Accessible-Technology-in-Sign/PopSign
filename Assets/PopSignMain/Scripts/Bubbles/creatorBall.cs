@@ -413,9 +413,9 @@ public GameObject createBall( Vector3 vec, BallColor color = BallColor.random, b
     else
     {
         b.GetComponent<ball>().enabled = false;
-        if (PlayerPrefs.GetInt("OpenLevel") == 3 && row == 11){
-            b.GetComponent<ball>().isTarget = true;
-        }
+        //if (PlayerPrefs.GetInt("OpenLevel") == 3 && row == 11){
+        //    b.GetComponent<ball>().isTarget = true;
+        //}
         if( LevelData.mode == ModeGame.Vertical && row == 0 )
             b.GetComponent<ball>().isTarget = true;
         b.GetComponent<BoxCollider2D>().offset = Vector2.zero;
