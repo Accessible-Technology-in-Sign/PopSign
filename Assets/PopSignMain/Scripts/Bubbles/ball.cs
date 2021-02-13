@@ -279,8 +279,19 @@ public class ball : MonoBehaviour
             float distanceToBall = Vector3.Distance(transform.position, obj.transform.position);
             if (distanceToBall <= 0.9f && distanceToBall > 0)
             {
-                ballsToClear.Add(obj);
-                obj.GetComponent<bouncer>().checkNextNearestColor(ballsToClear);
+                bool notIn = true;
+                foreach (GameObject ball in ballsToClear)
+                {
+                    if (ball == obj)
+                    {
+                        notIn = false;
+                    }
+                }
+                if (notIn)
+                {
+                    ballsToClear.Add(obj);
+                    obj.GetComponent<bouncer>().checkNextNearestColor(ballsToClear);
+                }
             }
         }
 

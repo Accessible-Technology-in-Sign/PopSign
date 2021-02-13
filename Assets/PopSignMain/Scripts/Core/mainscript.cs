@@ -296,6 +296,10 @@ void Update ()
     {
         MustPopCount = 1;
     }
+    else if (LevelData.mode == ModeGame.Vertical)
+    {
+            MustPopCount = 11;
+    }
     else
     {
         MustPopCount = 11;
@@ -443,10 +447,14 @@ public IEnumerator clearDisconnectedBalls()
                     if(b.Count >0 && BallWhiffed == false)
                     {
                         willDestroy++;
-                        if (PlayerPrefs.GetInt("OpenLevel") == 3 || PlayerPrefs.GetInt("OpenLevel") == 6 ||
+                        if ((PlayerPrefs.GetInt("OpenLevel") == 3 || PlayerPrefs.GetInt("OpenLevel") == 6 ||
                             PlayerPrefs.GetInt("OpenLevel") == 7 || PlayerPrefs.GetInt("OpenLevel") == 8 ||
                             PlayerPrefs.GetInt("OpenLevel") == 10 || PlayerPrefs.GetInt("OpenLevel") == 11 ||
-                            PlayerPrefs.GetInt("OpenLevel") == 12 || PlayerPrefs.GetInt("OpenLevel") == 14 || PlayerPrefs.GetInt("OpenLevel") == 16 || PlayerPrefs.GetInt("OpenLevel") == 17 ||  PlayerPrefs.GetInt("OpenLevel") == 18 ||  PlayerPrefs.GetInt("OpenLevel") == 19 ||  PlayerPrefs.GetInt("OpenLevel") == 21 ||  PlayerPrefs.GetInt("OpenLevel") == 23)
+                            PlayerPrefs.GetInt("OpenLevel") == 12 || PlayerPrefs.GetInt("OpenLevel") == 14 || 
+                            PlayerPrefs.GetInt("OpenLevel") == 16 || PlayerPrefs.GetInt("OpenLevel") == 17 ||  
+                            PlayerPrefs.GetInt("OpenLevel") == 18 ||  PlayerPrefs.GetInt("OpenLevel") == 19 ||  
+                            PlayerPrefs.GetInt("OpenLevel") == 21 ||  PlayerPrefs.GetInt("OpenLevel") == 23) &&
+                            (LevelData.mode != ModeGame.Vertical))
                         {
                             TargetCounter++;
                         }
@@ -583,8 +591,17 @@ public void destroy( ArrayList b)
     Camera.main.GetComponent<mainscript>().bounceCounter = 0;
     int scoreCounter = 0;
     int rate = 0;
-
+    bool hasTarget = false;
     foreach(GameObject obj in b) {
+        if (obj.GetComponent<ball>().isTarget)
+            hasTarget = true;
+    }
+    if (hasTarget)
+    {
+        return;
+    }
+
+    foreach (GameObject obj in b) {
         // if(obj.name.IndexOf("ball")==0) obj.layer = 0;
         if(!obj.GetComponent<ball>().Destroyed) {
             if(scoreCounter > 3) {
