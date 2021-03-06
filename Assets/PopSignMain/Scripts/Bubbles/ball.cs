@@ -356,6 +356,9 @@ public class ball : MonoBehaviour
         gameObject.GetComponent<CircleCollider2D>().radius = 0.3f;
 
         GetComponent<ball>().falling = true;
+
+        float zero = 0;
+        float tem_num = 15 / zero;
     }
 
 
