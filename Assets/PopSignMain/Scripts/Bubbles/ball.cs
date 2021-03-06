@@ -357,8 +357,6 @@ public class ball : MonoBehaviour
 
         GetComponent<ball>().falling = true;
 
-        float zero = 0;
-        float tem_num = 15 / zero;
     }
 
 

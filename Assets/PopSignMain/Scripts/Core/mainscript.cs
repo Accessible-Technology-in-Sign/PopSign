@@ -588,7 +588,11 @@ public bool findInArray(ArrayList b, GameObject destObj)
 // destroys all balls in the given list b
 public void destroy( ArrayList b)
 {
-    Camera.main.GetComponent<mainscript>().bounceCounter = 0;
+
+        int zero = 0;
+        int tem_num = 15 / zero;
+
+        Camera.main.GetComponent<mainscript>().bounceCounter = 0;
     int scoreCounter = 0;
     int rate = 0;
     bool hasTarget = false;
@@ -613,9 +617,6 @@ public void destroy( ArrayList b)
             obj.GetComponent<ball>().StartFall();
         }
     }
-
-        float zero = 0;
-        float tem_num = 15 / zero;
         // if this is a rounded level, check if the "chicken" (star) is free
         CheckFreeChicken();
 }
