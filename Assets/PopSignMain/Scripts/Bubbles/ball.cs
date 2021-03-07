@@ -389,7 +389,7 @@ public class ball : MonoBehaviour
         {
             if ((mainscript.Instance.TopBorder.transform.position.y - transform.position.y <= 1.3 && LevelData.mode != ModeGame.Rounded) || (LevelData.mode == ModeGame.Rounded && tag == "chicken"))
             {
-                Camera.main.GetComponent<mainscript>().controlArray = union(b, Camera.main.GetComponent<mainscript>().controlArray);
+                //Camera.main.GetComponent<mainscript>().controlArray = union(b, Camera.main.GetComponent<mainscript>().controlArray);
                 b.Clear();
                 return false; // don't destroy
             }
@@ -406,7 +406,7 @@ public class ball : MonoBehaviour
                     if (obj.gameObject.layer == 9) // ball layer
                     {
                         float distanceToBall = Vector3.Distance(transform.position, obj.transform.position);
-                        if (distanceToBall <= 0.9f && distanceToBall > 0)
+                        if (distanceToBall <= 1.0f && distanceToBall > 0)
                         {
                             if (!b.Contains(obj.gameObject))
                             {
@@ -424,7 +424,7 @@ public class ball : MonoBehaviour
         {
             if ((mainscript.Instance.TopBorder.transform.position.y - transform.position.y <= 0 && LevelData.mode != ModeGame.Rounded) || (LevelData.mode == ModeGame.Rounded && tag == "chicken"))
             {
-                Camera.main.GetComponent<mainscript>().controlArray = union(b, Camera.main.GetComponent<mainscript>().controlArray);
+                //Camera.main.GetComponent<mainscript>().controlArray = union(b, Camera.main.GetComponent<mainscript>().controlArray);
                 b.Clear();
                 return true; // don't destroy
             }
@@ -441,7 +441,7 @@ public class ball : MonoBehaviour
                     if (obj.gameObject.layer == 9) // ball layer
                     {
                         float distanceToBall = Vector3.Distance(transform.position, obj.transform.position);
-                        if (distanceToBall <= 0.9f && distanceToBall > 0)
+                        if (distanceToBall <= 1.0f && distanceToBall > 0)
                         {
                             if (!b.Contains(obj.gameObject))
                             {
@@ -462,12 +462,11 @@ public class ball : MonoBehaviour
     public void connectNearBalls()
     {
         int layerMask = 1 << LayerMask.NameToLayer("Ball");
-        Collider2D[] fixedBalls = Physics2D.OverlapCircleAll(transform.position, 0.5f, layerMask);
+        Collider2D[] fixedBalls = Physics2D.OverlapCircleAll(transform.position, 1.0f, layerMask);
         nearBalls.Clear();
-
         foreach (Collider2D obj in fixedBalls)
         {
-            if (nearBalls.Count <= 7)
+            if (1 <= 3)
             {
                 nearBalls.Add(obj.gameObject);
             }
