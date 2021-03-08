@@ -385,76 +385,37 @@ public class ball : MonoBehaviour
     // the arraylist is updated to contain all the near balls, which is then passed to destroy()
     public bool checkNearestBall(ArrayList b)
     {
-        if (PlayerPrefs.GetInt("OpenLevel") == 1 || PlayerPrefs.GetInt("OpenLevel") == 2)
+        if ((mainscript.Instance.TopBorder.transform.position.y - transform.position.y <= 0 && LevelData.mode != ModeGame.Rounded) || (LevelData.mode == ModeGame.Rounded && tag == "chicken"))
         {
-            if ((mainscript.Instance.TopBorder.transform.position.y - transform.position.y <= 0 && LevelData.mode != ModeGame.Rounded) || (LevelData.mode == ModeGame.Rounded && tag == "chicken"))
+            b.Clear();
+            return true; // don't destroy
+        }
+        if (Camera.main.GetComponent<mainscript>().controlArray.Contains(gameObject))
+        {
+            b.Clear();
+            return true; // don't destroy
+        }
+        b.Add(gameObject);
+        foreach (GameObject obj in nearBalls)
+        {
+            if (obj != gameObject && obj != null)
             {
-                b.Clear();
-                return false; // don't destroy
-            }
-            if (Camera.main.GetComponent<mainscript>().controlArray.Contains(gameObject))
-            {
-                b.Clear();
-                return true; // don't destroy
-            }
-            b.Add(gameObject);
-            foreach (GameObject obj in nearBalls)
-            {
-                if (obj != gameObject && obj != null)
+                if (obj.gameObject.layer == 9) // ball layer
                 {
-                    if (obj.gameObject.layer == 9) // ball layer
+                    float distanceToBall = Vector3.Distance(transform.position, obj.transform.position);
+                    if (distanceToBall <= 1.0f && distanceToBall > 0)
                     {
-                        float distanceToBall = Vector3.Distance(transform.position, obj.transform.position);
-                        if (distanceToBall <= 1.0f && distanceToBall > 0)
+                        if (!b.Contains(obj.gameObject))
                         {
-                            if (!b.Contains(obj.gameObject))
-                            {
-                                Camera.main.GetComponent<mainscript>().arraycounter++;
-                                if (obj.GetComponent<ball>().checkNearestBall(b))
-                                    return true;
-                            }
+                            Camera.main.GetComponent<mainscript>().arraycounter++;
+                            if (obj.GetComponent<ball>().checkNearestBall(b))
+                                return true;
                         }
                     }
                 }
             }
-            return false;
         }
-        else
-        {
-            if ((mainscript.Instance.TopBorder.transform.position.y - transform.position.y <= 0 && LevelData.mode != ModeGame.Rounded) || (LevelData.mode == ModeGame.Rounded && tag == "chicken"))
-            {
-                b.Clear();
-                return true; // don't destroy
-            }
-            if (Camera.main.GetComponent<mainscript>().controlArray.Contains(gameObject))
-            {
-                b.Clear();
-                return true; // don't destroy
-            }
-            b.Add(gameObject);
-            foreach (GameObject obj in nearBalls)
-            {
-                if (obj != gameObject && obj != null)
-                {
-                    if (obj.gameObject.layer == 9) // ball layer
-                    {
-                        float distanceToBall = Vector3.Distance(transform.position, obj.transform.position);
-                        if (distanceToBall <= 1.0f && distanceToBall > 0)
-                        {
-                            if (!b.Contains(obj.gameObject))
-                            {
-                                Camera.main.GetComponent<mainscript>().arraycounter++;
-                                if (obj.GetComponent<ball>().checkNearestBall(b))
-                                    return true;
-                            }
-                        }
-                    }
-                }
-            }
-            return false;
-        }
-
-
+        return false;
     }
 
     public void connectNearBalls()
