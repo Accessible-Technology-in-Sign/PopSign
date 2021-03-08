@@ -613,8 +613,8 @@ public void destroy( ArrayList b)
             obj.GetComponent<ball>().StartFall();
         }
     }
-        // if this is a rounded level, check if the "chicken" (star) is free
-        CheckFreeChicken();
+    // if this is a rounded level, check if the "chicken" (star) is free
+    CheckFreeChicken();
 }
 
 // this gets called when the "new sign" button is pressed
