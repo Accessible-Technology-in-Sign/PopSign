@@ -588,7 +588,7 @@ public bool findInArray(ArrayList b, GameObject destObj)
 // destroys all balls in the given list b
 public void destroy( ArrayList b)
 {
-        Camera.main.GetComponent<mainscript>().bounceCounter = 0;
+    Camera.main.GetComponent<mainscript>().bounceCounter = 0;
     int scoreCounter = 0;
     int rate = 0;
     bool hasTarget = false;
