@@ -423,7 +423,6 @@ public class ball : MonoBehaviour
         {
             if ((mainscript.Instance.TopBorder.transform.position.y - transform.position.y <= 0 && LevelData.mode != ModeGame.Rounded) || (LevelData.mode == ModeGame.Rounded && tag == "chicken"))
             {
-                //Camera.main.GetComponent<mainscript>().controlArray = union(b, Camera.main.GetComponent<mainscript>().controlArray);
                 b.Clear();
                 return true; // don't destroy
             }
