@@ -464,10 +464,7 @@ public class ball : MonoBehaviour
         nearBalls.Clear();
         foreach (Collider2D obj in fixedBalls)
         {
-            if (1 <= 3)
-            {
-                nearBalls.Add(obj.gameObject);
-            }
+            nearBalls.Add(obj.gameObject);
         }
         countNearBalls = nearBalls.Count;
     }
