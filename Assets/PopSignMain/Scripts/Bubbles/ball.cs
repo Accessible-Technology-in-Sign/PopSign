@@ -81,12 +81,12 @@ public class ball : MonoBehaviour
     {
         //Checks if current video is right video for ball
         //If ball has not been launched and target has not been set and no new ball is being swapped in and a current ball exists
-        //and the game is currently in "play" mode or "wait for chicken" mode?
+        //and the game is currently in "play" mode or "wait for star" mode?
         if (!launched && !gameObject.GetComponent<ball>().setTarget &&
             mainscript.Instance.newBall2 == null &&
             newBall && !Camera.main.GetComponent<mainscript>().gameOver &&
             (GamePlay.Instance.GameStatus == GameState.Playing ||
-                GamePlay.Instance.GameStatus == GameState.WaitForChicken))
+                GamePlay.Instance.GameStatus == GameState.WaitForstar))
         {
             Video ballVideo = this.sharedVideoManager.getVideoByColor(gameObject.GetComponent<ColorBallScript>().mainColor);
             // If the current video doesn't exist or is not the video that matches the current ball, set it to the right video
@@ -106,7 +106,7 @@ public class ball : MonoBehaviour
                 !ball.GetComponent<ball>().setTarget && mainscript.Instance.newBall2 == null &&
                 !Camera.main.GetComponent<mainscript>().gameOver &&
                 (GamePlay.Instance.GameStatus == GameState.Playing ||
-                    GamePlay.Instance.GameStatus == GameState.WaitForChicken))
+                    GamePlay.Instance.GameStatus == GameState.WaitForstar))
             {
                 //Get the position of the click
                 Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -180,7 +180,7 @@ public class ball : MonoBehaviour
         if ((transform.position.y <= -10 || transform.position.y >= 5) && fireBall && !Destroyed)
         {
             Debug.Log("transform.position.y: " + transform.position.y);
-            mainscript.Instance.CheckFreeChicken();
+            mainscript.Instance.CheckFreestar();
             setTarget = false;
             launched = false;
             DestroySingle(gameObject, 0.00001f);
@@ -189,7 +189,7 @@ public class ball : MonoBehaviour
         if ((transform.position.y <= -10 || transform.position.y >= 5) && !Destroyed)
         {
             Debug.Log("transform.position.y: " + transform.position.y);
-            // mainscript.Instance.CheckFreeChicken();
+            // mainscript.Instance.CheckFreestar();
             setTarget = false;
             launched = false;
             DestroySingle(gameObject, 0.00001f);
@@ -305,7 +305,7 @@ public class ball : MonoBehaviour
             score += ballsToClear.Count * 50;
             destroy(ballsToClear, 0.00001f);
             mainscript.Score = score;
-            mainscript.Instance.CheckFreeChicken();
+            mainscript.Instance.CheckFreestar();
         } else {
             whiff = true;
         }
@@ -386,7 +386,7 @@ public class ball : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("OpenLevel") == 1 || PlayerPrefs.GetInt("OpenLevel") == 2)
         {
-            if ((mainscript.Instance.TopBorder.transform.position.y - transform.position.y <= 1.3 && LevelData.mode != ModeGame.Rounded) || (LevelData.mode == ModeGame.Rounded && tag == "chicken"))
+            if ((mainscript.Instance.TopBorder.transform.position.y - transform.position.y <= 1.3 && LevelData.mode != ModeGame.Rounded) || (LevelData.mode == ModeGame.Rounded && tag == "star"))
             {
                 Camera.main.GetComponent<mainscript>().controlArray = union(b, Camera.main.GetComponent<mainscript>().controlArray);
                 b.Clear();
@@ -421,7 +421,7 @@ public class ball : MonoBehaviour
         }
         else
         {
-            if ((mainscript.Instance.TopBorder.transform.position.y - transform.position.y <= 0 && LevelData.mode != ModeGame.Rounded) || (LevelData.mode == ModeGame.Rounded && tag == "chicken"))
+            if ((mainscript.Instance.TopBorder.transform.position.y - transform.position.y <= 0 && LevelData.mode != ModeGame.Rounded) || (LevelData.mode == ModeGame.Rounded && tag == "star"))
             {
                 Camera.main.GetComponent<mainscript>().controlArray = union(b, Camera.main.GetComponent<mainscript>().controlArray);
                 b.Clear();
@@ -601,7 +601,7 @@ public class ball : MonoBehaviour
     {
         animStarted = true;
         animTable.Add(gameObject, gameObject);
-        if (tag == "chicken") yield break;
+        if (tag == "star") yield break;
         yield return new WaitForFixedUpdate();
         float dist = Vector3.Distance(transform.position, newBallPos);
         force = 1 / dist + force;
@@ -689,7 +689,7 @@ public class ball : MonoBehaviour
                     StopBall(true, other.transform);
                 else
                 {
-                    if (other.gameObject.tag.Contains("animal") || other.gameObject.tag.Contains("empty") || other.gameObject.tag.Contains("chicken")) return;
+                    if (other.gameObject.tag.Contains("animal") || other.gameObject.tag.Contains("empty") || other.gameObject.tag.Contains("star")) return;
                     fireBallLimit--;
                     if (fireBallLimit > 0)
                         DestroySingle(other.gameObject, 0.000000000001f);
