@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public enum Target
 {
     Top = 0,
-    Chicken
+    star
 }
 
 namespace InitScriptName

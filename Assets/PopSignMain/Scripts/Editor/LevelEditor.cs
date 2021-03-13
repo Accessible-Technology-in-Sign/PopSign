@@ -364,12 +364,12 @@ public class LevelEditor : EditorWindow
             {
                 if (GUILayout.Button(ballTex[i - 1], new GUILayoutOption[] { GUILayout.Width(50), GUILayout.Height(50) }))
                 {
-                    if ((BallColor)i != BallColor.chicken)
+                    if ((BallColor)i != BallColor.star)
                         brush = (BallColor)i;
                     else
                     {
-                        target = Target.Chicken;
-                        levelSquares[5 * maxCols + 5] = BallColor.chicken;
+                        target = Target.star;
+                        levelSquares[5 * maxCols + 5] = BallColor.star;
                         SaveLevel();
                     }
                 }
@@ -440,7 +440,7 @@ public class LevelEditor : EditorWindow
                     {
                         imageButton = ballTex[5];
                     }
-                    else if (levelSquares[row * maxCols + col] == BallColor.chicken)
+                    else if (levelSquares[row * maxCols + col] == BallColor.star)
                     {
                         imageButton = ballTex[6];
                     }
@@ -470,14 +470,14 @@ public class LevelEditor : EditorWindow
 
     void SetType(int col, int row)
     {
-        bool chickenExist = false;
+        bool starExist = false;
         levelSquares[row * maxCols + col] = brush;
         foreach (BallColor item in levelSquares)
         {
-            if (item == BallColor.chicken)
-                chickenExist = true;
+            if (item == BallColor.star)
+                starExist = true;
         }
-        if (chickenExist) target = Target.Chicken;
+        if (starExist) target = Target.star;
         else target = Target.Top;
         SaveLevel();
         // GetSquare(col, row).type = (int) squareType;

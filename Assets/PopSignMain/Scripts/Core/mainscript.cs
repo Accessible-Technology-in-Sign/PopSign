@@ -218,7 +218,7 @@ void Update ()
     }
 
     // if there are balls to clear
-    if( flyingBall != null && ( GamePlay.Instance.GameStatus == GameState.Playing || GamePlay.Instance.GameStatus == GameState.WaitForChicken ))
+    if( flyingBall != null && ( GamePlay.Instance.GameStatus == GameState.Playing || GamePlay.Instance.GameStatus == GameState.WaitForstar ))
     {
         // this line decides which balls to pop
         flyingBall.GetComponent<ball>().checkNearestColor();
@@ -306,7 +306,7 @@ void Update ()
     }
     if( LevelData.mode == ModeGame.Vertical && TargetCounter == MustPopCount && GamePlay.Instance.GameStatus == GameState.Playing )
         GamePlay.Instance.GameStatus = GameState.Win;
-    else if( LevelData.mode == ModeGame.Rounded && TargetCounter >= 1 && GamePlay.Instance.GameStatus == GameState.WaitForChicken )
+    else if( LevelData.mode == ModeGame.Rounded && TargetCounter >= 1 && GamePlay.Instance.GameStatus == GameState.WaitForstar )
         GamePlay.Instance.GameStatus = GameState.Win;
     else if( LevelData.mode == ModeGame.Animals && TargetCounter >= TotalTargets && GamePlay.Instance.GameStatus == GameState.Playing )
         GamePlay.Instance.GameStatus = GameState.Win;
@@ -501,7 +501,7 @@ public void GetColorsInGame()
     colorsDict.Clear();
     foreach( Transform item in Balls )
     {
-        if( item.tag == "chicken" || item.tag == "empty" || item.tag == "Ball" ) continue;
+        if( item.tag == "star" || item.tag == "empty" || item.tag == "Ball" ) continue;
         BallColor col = (BallColor)System.Enum.Parse( typeof( BallColor ), item.tag );
         if( !colorsDict.ContainsValue( col ) && (int)col <= (int) BallColor.random)
         {
@@ -511,17 +511,17 @@ public void GetColorsInGame()
     }
 }
 
-public void CheckFreeChicken()
+public void CheckFreestar()
 {
     if( LevelData.mode != ModeGame.Rounded ) return;
     if(GamePlay.Instance.GameStatus == GameState.Playing)
-        StartCoroutine( CheckFreeChickenCor() );
+        StartCoroutine( CheckFreestarCor() );
 }
 
-IEnumerator CheckFreeChickenCor()
+IEnumerator CheckFreestarCor()
 {
     // yield return new WaitForSeconds( Mathf.Clamp( (float)countOfPreparedToDestroy / 100, 1.5f, (float)countOfPreparedToDestroy / 100 ) );
-    GamePlay.Instance.GameStatus = GameState.WaitForChicken;
+    GamePlay.Instance.GameStatus = GameState.WaitForstar;
     yield return new WaitForSeconds( 1.5f );
     bool finishGame = false;
     if( LevelData.mode == ModeGame.Rounded )
@@ -531,7 +531,7 @@ IEnumerator CheckFreeChickenCor()
         GameObject balls = GameObject.Find( "-Ball" );
         foreach( Transform item in balls.transform )
         {
-            if( item.tag != "Ball" && item.tag != "chicken" )
+            if( item.tag != "Ball" && item.tag != "star" )
             {
                 finishGame = false;
             }
@@ -544,26 +544,26 @@ IEnumerator CheckFreeChickenCor()
     }
     else if( finishGame )
     {
-        GamePlay.Instance.GameStatus = GameState.WaitForChicken;
+        GamePlay.Instance.GameStatus = GameState.WaitForstar;
 
-        GameObject chicken = GameObject.FindGameObjectWithTag( "chicken" );
-        chicken.GetComponent<SpriteRenderer>().sortingLayerName = "UI layer";
+        GameObject star = GameObject.FindGameObjectWithTag( "star" );
+        star.GetComponent<SpriteRenderer>().sortingLayerName = "UI layer";
         Vector3 targetPos = new Vector3( 2.3f, 6, 0 );
         mainscript.Instance.TargetCounter++;
-        AnimationCurve curveX = new AnimationCurve( new Keyframe( 0, chicken.transform.position.x ), new Keyframe( 0.5f, targetPos.x ) );
-        AnimationCurve curveY = new AnimationCurve( new Keyframe( 0, chicken.transform.position.y ), new Keyframe( 0.5f, targetPos.y ) );
-        curveY.AddKey( 0.2f, chicken.transform.position.y - 1 );
+        AnimationCurve curveX = new AnimationCurve( new Keyframe( 0, star.transform.position.x ), new Keyframe( 0.5f, targetPos.x ) );
+        AnimationCurve curveY = new AnimationCurve( new Keyframe( 0, star.transform.position.y ), new Keyframe( 0.5f, targetPos.y ) );
+        curveY.AddKey( 0.2f, star.transform.position.y - 1 );
         float startTime = Time.time;
-        Vector3 startPos = chicken.transform.position;
+        Vector3 startPos = star.transform.position;
         float distCovered = 0;
         while( distCovered < 0.6f )
         {
             distCovered = ( Time.time - startTime );
-            chicken.transform.position = new Vector3( curveX.Evaluate( distCovered ), curveY.Evaluate( distCovered ), 0 );
-            chicken.transform.Rotate( Vector3.back * 10 );
+            star.transform.position = new Vector3( curveX.Evaluate( distCovered ), curveY.Evaluate( distCovered ), 0 );
+            star.transform.Rotate( Vector3.back * 10 );
             yield return new WaitForEndOfFrame();
         }
-        Destroy( chicken );
+        Destroy( star );
     }
 }
 
@@ -613,8 +613,8 @@ public void destroy( ArrayList b)
             obj.GetComponent<ball>().StartFall();
         }
     }
-    // if this is a rounded level, check if the "chicken" (star) is free
-    CheckFreeChicken();
+    // if this is a rounded level, check if the "star" (star) is free
+    CheckFreestar();
 }
 
 // this gets called when the "new sign" button is pressed
@@ -644,11 +644,11 @@ public void destroyAllballs()
 {
     foreach( Transform item in Balls )
     {
-        if( item.tag != "chicken" )
+        if( item.tag != "star" )
         {
             destroy( item.gameObject );
         }
     }
-    CheckFreeChicken();
+    CheckFreestar();
 }
 }
