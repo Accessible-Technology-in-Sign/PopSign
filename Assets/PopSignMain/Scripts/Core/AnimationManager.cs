@@ -135,15 +135,13 @@ public class AnimationManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("OpenLevel", PlayerPrefs.GetInt( "OpenLevel" ) + 1);
             PlayerPrefs.Save();
-            SceneManager.LoadScene("game");
-            VideoManager.resetVideoManager ();
-        }
-        else if( gameObject.name == "NextLevel")
-        {
-            PlayerPrefs.SetInt("OpenLevel", PlayerPrefs.GetInt( "OpenLevel" ) + 1);
-            PlayerPrefs.Save();
-            SceneManager.LoadScene("game");
-            VideoManager.resetVideoManager ();
+            if (PlayerPrefs.GetInt("OpenLevel") % 5 == 0) {
+                    SceneManager.LoadScene("practice");
+                } else {
+                    SceneManager.LoadScene("game");
+                    VideoManager.resetVideoManager ();
+                }
+
         }
         else if( gameObject.name == "PlayMain" )
         {
