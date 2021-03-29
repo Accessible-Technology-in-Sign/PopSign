@@ -138,9 +138,9 @@ public class AnimationManager : MonoBehaviour
             SceneManager.LoadScene("game");
             VideoManager.resetVideoManager ();
         }
-        else if( gameObject.name == "NextLevel")
+        else if( gameObject.name == "TryAgain")
         {
-            PlayerPrefs.SetInt("OpenLevel", PlayerPrefs.GetInt( "OpenLevel" ) + 1);
+            PlayerPrefs.SetInt("OpenLevel", PlayerPrefs.GetInt( "OpenLevel" ));
             PlayerPrefs.Save();
             SceneManager.LoadScene("game");
             VideoManager.resetVideoManager ();
