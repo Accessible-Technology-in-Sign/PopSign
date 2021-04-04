@@ -86,7 +86,7 @@ public class ball : MonoBehaviour
             mainscript.Instance.newBall2 == null &&
             newBall && !Camera.main.GetComponent<mainscript>().gameOver &&
             (GamePlay.Instance.GameStatus == GameState.Playing ||
-                GamePlay.Instance.GameStatus == GameState.WaitForstar))
+                GamePlay.Instance.GameStatus == GameState.WaitForStar))
         {
             Video ballVideo = this.sharedVideoManager.getVideoByColor(gameObject.GetComponent<ColorBallScript>().mainColor);
             // If the current video doesn't exist or is not the video that matches the current ball, set it to the right video
@@ -106,7 +106,7 @@ public class ball : MonoBehaviour
                 !ball.GetComponent<ball>().setTarget && mainscript.Instance.newBall2 == null &&
                 !Camera.main.GetComponent<mainscript>().gameOver &&
                 (GamePlay.Instance.GameStatus == GameState.Playing ||
-                    GamePlay.Instance.GameStatus == GameState.WaitForstar))
+                    GamePlay.Instance.GameStatus == GameState.WaitForStar))
             {
                 //Get the position of the click
                 Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -180,7 +180,7 @@ public class ball : MonoBehaviour
         if ((transform.position.y <= -10 || transform.position.y >= 5) && fireBall && !Destroyed)
         {
             Debug.Log("transform.position.y: " + transform.position.y);
-            mainscript.Instance.CheckFreestar();
+            mainscript.Instance.CheckFreeStar();
             setTarget = false;
             launched = false;
             DestroySingle(gameObject, 0.00001f);
@@ -189,7 +189,6 @@ public class ball : MonoBehaviour
         if ((transform.position.y <= -10 || transform.position.y >= 5) && !Destroyed)
         {
             Debug.Log("transform.position.y: " + transform.position.y);
-            // mainscript.Instance.CheckFreestar();
             setTarget = false;
             launched = false;
             DestroySingle(gameObject, 0.00001f);
@@ -305,7 +304,7 @@ public class ball : MonoBehaviour
             score += ballsToClear.Count * 50;
             destroy(ballsToClear, 0.00001f);
             mainscript.Score = score;
-            mainscript.Instance.CheckFreestar();
+            mainscript.Instance.CheckFreeStar();
         } else {
             whiff = true;
         }
