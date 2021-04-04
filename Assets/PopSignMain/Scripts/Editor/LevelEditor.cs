@@ -368,7 +368,7 @@ public class LevelEditor : EditorWindow
                         brush = (BallColor)i;
                     else
                     {
-                        target = Target.star;
+                        target = Target.Star;
                         levelSquares[5 * maxCols + 5] = BallColor.star;
                         SaveLevel();
                     }
@@ -477,7 +477,7 @@ public class LevelEditor : EditorWindow
             if (item == BallColor.star)
                 starExist = true;
         }
-        if (starExist) target = Target.star;
+        if (starExist) target = Target.Star;
         else target = Target.Top;
         SaveLevel();
         // GetSquare(col, row).type = (int) squareType;
