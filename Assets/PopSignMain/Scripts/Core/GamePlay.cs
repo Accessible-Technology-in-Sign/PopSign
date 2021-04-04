@@ -14,7 +14,7 @@ public enum GameState
     BlockedGame,
     Tutorial,
     PreTutorial,
-    WaitForstar
+    WaitForStar
 }
 
 
