@@ -1214,7 +1214,7 @@ MonoBehaviour:
   m_Content: {fileID: 1484499179}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 1
   m_Elasticity: 0.1
   m_Inertia: 0
   m_DecelerationRate: 0.135
@@ -2172,6 +2172,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1484499179}
   - component: {fileID: 1484499180}
+  - component: {fileID: 1484499181}
   m_Layer: 5
   m_Name: ScrollContent
   m_TagString: Untagged
@@ -2196,8 +2197,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0005187988, y: 470}
-  m_SizeDelta: {x: 600, y: 0}
+  m_AnchoredPosition: {x: 0.0005187988, y: 419.75}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1484499180
 MonoBehaviour:
@@ -2223,6 +2224,20 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 5}
   m_Constraint: 0
   m_ConstraintCount: 1
+--- !u!114 &1484499181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484499178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 1
+  m_VerticalFit: 2
 --- !u!1 &1496830546
 GameObject:
   m_ObjectHideFlags: 0

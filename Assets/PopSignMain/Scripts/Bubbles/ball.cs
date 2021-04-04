@@ -356,6 +356,7 @@ public class ball : MonoBehaviour
         gameObject.GetComponent<CircleCollider2D>().radius = 0.3f;
 
         GetComponent<ball>().falling = true;
+
     }
 
 
@@ -384,92 +385,47 @@ public class ball : MonoBehaviour
     // the arraylist is updated to contain all the near balls, which is then passed to destroy()
     public bool checkNearestBall(ArrayList b)
     {
-        if (PlayerPrefs.GetInt("OpenLevel") == 1 || PlayerPrefs.GetInt("OpenLevel") == 2)
+        if ((mainscript.Instance.TopBorder.transform.position.y - transform.position.y <= 0 && LevelData.mode != ModeGame.Rounded) || (LevelData.mode == ModeGame.Rounded && tag == "star"))
         {
-            if ((mainscript.Instance.TopBorder.transform.position.y - transform.position.y <= 1.3 && LevelData.mode != ModeGame.Rounded) || (LevelData.mode == ModeGame.Rounded && tag == "star"))
+            b.Clear();
+            return true; // don't destroy
+        }
+        if (Camera.main.GetComponent<mainscript>().controlArray.Contains(gameObject))
+        {
+            b.Clear();
+            return true; // don't destroy
+        }
+        b.Add(gameObject);
+        foreach (GameObject obj in nearBalls)
+        {
+            if (obj != gameObject && obj != null)
             {
-                Camera.main.GetComponent<mainscript>().controlArray = union(b, Camera.main.GetComponent<mainscript>().controlArray);
-                b.Clear();
-                return false; // don't destroy
-            }
-            if (Camera.main.GetComponent<mainscript>().controlArray.Contains(gameObject))
-            {
-                b.Clear();
-                return true; // don't destroy
-            }
-            b.Add(gameObject);
-            foreach (GameObject obj in nearBalls)
-            {
-                if (obj != gameObject && obj != null)
+                if (obj.gameObject.layer == 9) // ball layer
                 {
-                    if (obj.gameObject.layer == 9) // ball layer
+                    float distanceToBall = Vector3.Distance(transform.position, obj.transform.position);
+                    if (distanceToBall <= 1.0f && distanceToBall > 0)
                     {
-                        float distanceToBall = Vector3.Distance(transform.position, obj.transform.position);
-                        if (distanceToBall <= 0.9f && distanceToBall > 0)
+                        if (!b.Contains(obj.gameObject))
                         {
-                            if (!b.Contains(obj.gameObject))
-                            {
-                                Camera.main.GetComponent<mainscript>().arraycounter++;
-                                if (obj.GetComponent<ball>().checkNearestBall(b))
-                                    return true;
-                            }
+                            Camera.main.GetComponent<mainscript>().arraycounter++;
+                            if (obj.GetComponent<ball>().checkNearestBall(b))
+                                return true;
                         }
                     }
                 }
             }
-            return false;
         }
-        else
-        {
-            if ((mainscript.Instance.TopBorder.transform.position.y - transform.position.y <= 0 && LevelData.mode != ModeGame.Rounded) || (LevelData.mode == ModeGame.Rounded && tag == "star"))
-            {
-                Camera.main.GetComponent<mainscript>().controlArray = union(b, Camera.main.GetComponent<mainscript>().controlArray);
-                b.Clear();
-                return true; // don't destroy
-            }
-            if (Camera.main.GetComponent<mainscript>().controlArray.Contains(gameObject))
-            {
-                b.Clear();
-                return true; // don't destroy
-            }
-            b.Add(gameObject);
-            foreach (GameObject obj in nearBalls)
-            {
-                if (obj != gameObject && obj != null)
-                {
-                    if (obj.gameObject.layer == 9) // ball layer
-                    {
-                        float distanceToBall = Vector3.Distance(transform.position, obj.transform.position);
-                        if (distanceToBall <= 0.9f && distanceToBall > 0)
-                        {
-                            if (!b.Contains(obj.gameObject))
-                            {
-                                Camera.main.GetComponent<mainscript>().arraycounter++;
-                                if (obj.GetComponent<ball>().checkNearestBall(b))
-                                    return true;
-                            }
-                        }
-                    }
-                }
-            }
-            return false;
-        }
-
-
+        return false;
     }
 
     public void connectNearBalls()
     {
         int layerMask = 1 << LayerMask.NameToLayer("Ball");
-        Collider2D[] fixedBalls = Physics2D.OverlapCircleAll(transform.position, 0.5f, layerMask);
+        Collider2D[] fixedBalls = Physics2D.OverlapCircleAll(transform.position, 1.0f, layerMask);
         nearBalls.Clear();
-
         foreach (Collider2D obj in fixedBalls)
         {
-            if (nearBalls.Count <= 7)
-            {
-                nearBalls.Add(obj.gameObject);
-            }
+            nearBalls.Add(obj.gameObject);
         }
         countNearBalls = nearBalls.Count;
     }
