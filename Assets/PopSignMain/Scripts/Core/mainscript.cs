@@ -218,7 +218,7 @@ void Update ()
     }
 
     // if there are balls to clear
-    if( flyingBall != null && ( GamePlay.Instance.GameStatus == GameState.Playing || GamePlay.Instance.GameStatus == GameState.WaitForstar ))
+    if( flyingBall != null && ( GamePlay.Instance.GameStatus == GameState.Playing || GamePlay.Instance.GameStatus == GameState.WaitForStar ))
     {
         // this line decides which balls to pop
         flyingBall.GetComponent<ball>().checkNearestColor();
@@ -306,7 +306,7 @@ void Update ()
     }
     if( LevelData.mode == ModeGame.Vertical && TargetCounter == MustPopCount && GamePlay.Instance.GameStatus == GameState.Playing )
         GamePlay.Instance.GameStatus = GameState.Win;
-    else if( LevelData.mode == ModeGame.Rounded && TargetCounter >= 1 && GamePlay.Instance.GameStatus == GameState.WaitForstar )
+    else if( LevelData.mode == ModeGame.Rounded && TargetCounter >= 1 && GamePlay.Instance.GameStatus == GameState.WaitForStar )
         GamePlay.Instance.GameStatus = GameState.Win;
     else if( LevelData.mode == ModeGame.Animals && TargetCounter >= TotalTargets && GamePlay.Instance.GameStatus == GameState.Playing )
         GamePlay.Instance.GameStatus = GameState.Win;
@@ -511,17 +511,17 @@ public void GetColorsInGame()
     }
 }
 
-public void CheckFreestar()
+public void CheckFreeStar()
 {
     if( LevelData.mode != ModeGame.Rounded ) return;
     if(GamePlay.Instance.GameStatus == GameState.Playing)
-        StartCoroutine( CheckFreestarCor() );
+        StartCoroutine( CheckFreeStarCor() );
 }
 
-IEnumerator CheckFreestarCor()
+IEnumerator CheckFreeStarCor()
 {
     // yield return new WaitForSeconds( Mathf.Clamp( (float)countOfPreparedToDestroy / 100, 1.5f, (float)countOfPreparedToDestroy / 100 ) );
-    GamePlay.Instance.GameStatus = GameState.WaitForstar;
+    GamePlay.Instance.GameStatus = GameState.WaitForStar;
     yield return new WaitForSeconds( 1.5f );
     bool finishGame = false;
     if( LevelData.mode == ModeGame.Rounded )
@@ -544,7 +544,7 @@ IEnumerator CheckFreestarCor()
     }
     else if( finishGame )
     {
-        GamePlay.Instance.GameStatus = GameState.WaitForstar;
+        GamePlay.Instance.GameStatus = GameState.WaitForStar;
 
         GameObject star = GameObject.FindGameObjectWithTag( "star" );
         star.GetComponent<SpriteRenderer>().sortingLayerName = "UI layer";
@@ -614,7 +614,7 @@ public void destroy( ArrayList b)
         }
     }
     // if this is a rounded level, check if the "star" (star) is free
-    CheckFreestar();
+    CheckFreeStar();
 }
 
 // this gets called when the "new sign" button is pressed
@@ -649,6 +649,6 @@ public void destroyAllballs()
             destroy( item.gameObject );
         }
     }
-    CheckFreestar();
+    CheckFreeStar();
 }
 }
