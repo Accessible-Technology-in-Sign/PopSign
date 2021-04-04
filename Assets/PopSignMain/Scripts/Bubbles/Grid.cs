@@ -45,7 +45,7 @@ public class Grid : MonoBehaviour
             // if the box is empty, create a new ball for it
             if( name == "boxCatapult" && !Grid.waitForAnim )
             {
-                if( ( GamePlay.Instance.GameStatus == GameState.Playing || GamePlay.Instance.GameStatus == GameState.Win || GamePlay.Instance.GameStatus == GameState.WaitForstar ) && LevelData.LimitAmount > 0 )
+                if( ( GamePlay.Instance.GameStatus == GameState.Playing || GamePlay.Instance.GameStatus == GameState.Win || GamePlay.Instance.GameStatus == GameState.WaitForStar ) && LevelData.LimitAmount > 0 )
                 {
                     busy = Camera.main.GetComponent<mainscript>().createCannonBall( transform.position );
                     GameObject ball = boxCatapult.GetComponent<Grid>().busy;
