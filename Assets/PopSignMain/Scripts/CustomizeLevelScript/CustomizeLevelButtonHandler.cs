@@ -7,6 +7,7 @@ public class CustomizeLevelButtonHandler : MonoBehaviour
 {
     public void handleButtonPressed ()
     {
+        CustomizeLevelManager.Instance.tryingToCustomize = true;
         SceneManager.LoadScene("wordlist");
     }
 }

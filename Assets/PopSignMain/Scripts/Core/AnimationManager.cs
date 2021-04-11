@@ -189,6 +189,10 @@ public class AnimationManager : MonoBehaviour
 
     public void CloseReview()
     {
+        if (CustomizeLevelManager.Instance.tryingToCustomize)
+        {
+            CustomizeLevelManager.Instance.tryingToCustomize = false;
+        }
         SceneManager.LoadScene("map");
     }
 
