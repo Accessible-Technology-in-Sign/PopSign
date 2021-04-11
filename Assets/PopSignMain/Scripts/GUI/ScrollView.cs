@@ -58,7 +58,9 @@ public class ScrollView : MonoBehaviour {
 							go.tag = "cloned";
 							ScrollButton sb = go.GetComponent<ScrollButton>();
 							sb.SetName(str);
-							go.transform.SetParent(ButtonTemplate.transform.parent);
+                            sb.ButtonText.transform.localPosition = new Vector3(77, 0, 0);
+                sb.CheckBox.SetActive(true);
+                            go.transform.SetParent(ButtonTemplate.transform.parent);
 							go.transform.localScale = new Vector3(1, 1, 1);
 							go.transform.localPosition = new Vector3(250, yPos, 0);
 							yPos -= 100;

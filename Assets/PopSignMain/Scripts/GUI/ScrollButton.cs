@@ -9,6 +9,7 @@ public class ScrollButton : MonoBehaviour {
 	public Text ButtonText;
 	public ScrollView ScrollView;
 	public GameObject checkmark;
+    public GameObject CheckBox;
 
 	public void Start()
 	{
