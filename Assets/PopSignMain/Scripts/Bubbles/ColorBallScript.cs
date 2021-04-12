@@ -10,7 +10,7 @@ public enum BallColor
     violet,
     yellow,
     random,
-    chicken
+    star
 }
 
 public class ColorBallScript : MonoBehaviour {
