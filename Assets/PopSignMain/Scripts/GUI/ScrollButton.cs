@@ -29,6 +29,10 @@ public class ScrollButton : MonoBehaviour {
 
 	public void ToggleSelection()
 	{
+        if (CustomizeLevelManager.Instance == null)
+        {
+            return;
+        }
 		int size = CustomizeLevelManager.Instance.selectedWord.Count;
 		if (size >= 5 & !selected) {
 			return;

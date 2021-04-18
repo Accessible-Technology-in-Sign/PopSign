@@ -174,7 +174,11 @@ public class ScrollView : MonoBehaviour {
 
 		public void UpdateSelection(string word, bool selected)
 		{
-			HashSet<string> set = CustomizeLevelManager.Instance.selectedWord;
+            if (CustomizeLevelManager.Instance == null)
+            {
+                return;
+            }
+            HashSet<string> set = CustomizeLevelManager.Instance.selectedWord;
 			if (selected) {
 				set.Add(word);
 			} else {
