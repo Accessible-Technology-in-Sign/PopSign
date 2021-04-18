@@ -6,6 +6,7 @@ using System;
 using System.IO;
 using System.Linq;
 
+
 public class ScrollView : MonoBehaviour {
 		VideoManager sharedVideoManager;
 		ReviewVideo reviewManager;
@@ -173,7 +174,12 @@ public class ScrollView : MonoBehaviour {
 
 		public void UpdateSelection(string word, bool selected)
 		{
-
+			HashSet<string> set = CustomizeLevelManager.Instance.selectedWord;
+			if (selected) {
+				set.Add(word);
+			} else {
+				set.Remove(word);
+			}
 		}
 
 		void CreateCustomLevel()

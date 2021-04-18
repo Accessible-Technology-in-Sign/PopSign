@@ -29,13 +29,19 @@ public class ScrollButton : MonoBehaviour {
 
 	public void ToggleSelection()
 	{
+		int size = CustomizeLevelManager.Instance.selectedWord.Count;
+		if (size >= 5 & !selected) {
+			return;
+		}
 		if(selected)
 		{
 			checkmark.SetActive(false);
 		}
 		else
 		{
+
 			checkmark.SetActive(true);
+	
 		}
 		selected = !selected;
 		ScrollView.UpdateSelection(Name, selected);
