@@ -2014,6 +2014,7 @@ GameObject:
   - component: {fileID: 1451390731}
   - component: {fileID: 1451390730}
   - component: {fileID: 1451390729}
+  - component: {fileID: 1451390732}
   m_Layer: 5
   m_Name: WordListText
   m_TagString: Untagged
@@ -2102,6 +2103,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1451390727}
   m_CullTransparentMesh: 0
+--- !u!114 &1451390732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451390727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3030368a08460473fbf3a93d6e460de8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 1451390730}
 --- !u!1 &1452095419
 GameObject:
   m_ObjectHideFlags: 0
