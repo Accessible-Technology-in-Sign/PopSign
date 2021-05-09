@@ -7,6 +7,7 @@ public class CustomizeLevelManager : MonoBehaviour
     static public CustomizeLevelManager Instance;
     public bool tryingToCustomize = false;
     public HashSet<string> selectedWord = new HashSet<string>();
+    public Dictionary<int, LinkedList<int>> levels = new Dictionary<int, LinkedList<int>>();
 
     void Awake()
     {
@@ -14,6 +15,7 @@ public class CustomizeLevelManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(Instance);
+            // filter level files and population levels variable
         }
     }
     // Start is called before the first frame update
