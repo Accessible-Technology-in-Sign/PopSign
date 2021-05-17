@@ -32,6 +32,15 @@ public class CustomizeLevelManager : MonoBehaviour
     {
         Instance.selectedWord = new HashSet<string>();
     }
+
+    public static void switchOff()
+    {
+        if (Instance != null)
+        {
+            Instance.tryingToCustomize = false;
+            Instance.selectedWord = new HashSet<string>();
+        }
+    }
         
     void Awake()
     {

@@ -118,6 +118,7 @@ public class AnimationManager : MonoBehaviour
         if( gameObject.name == "MenuGameOver" )
         {
 			      LogPlayTime ();
+            CustomizeLevelManager.switchOff();
             SceneManager.LoadScene( "map" );
             VideoManager.resetVideoManager ();
             if(PlayerPrefs.GetInt("AllLevelsCleared", 0) == 1 && PlayerPrefs.GetInt("CongratsModalShown", 0) == 0)
@@ -144,10 +145,18 @@ public class AnimationManager : MonoBehaviour
         }
         else if( gameObject.name == "NextLevel")
         {
-            PlayerPrefs.SetInt("OpenLevel", PlayerPrefs.GetInt( "OpenLevel" ) + 1);
-            PlayerPrefs.Save();
-            SceneManager.LoadScene("game");
-            VideoManager.resetVideoManager ();
+            if (CustomizeLevelManager.Instance.tryingToCustomize)
+            {
+                CustomizeLevelManager.reset();
+                SceneManager.LoadScene("wordlist");
+            }
+            else
+            {
+                PlayerPrefs.SetInt("OpenLevel", PlayerPrefs.GetInt("OpenLevel") + 1);
+                PlayerPrefs.Save();
+                SceneManager.LoadScene("game");
+                VideoManager.resetVideoManager();
+            }            
         }
         else if( gameObject.name == "TryAgain")
         {
@@ -167,6 +176,7 @@ public class AnimationManager : MonoBehaviour
         }
         else if( gameObject.name == "PlayMain" )
         {
+            CustomizeLevelManager.switchOff();
             SceneManager.LoadScene( "map" );
         }
     }
