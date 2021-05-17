@@ -14,10 +14,8 @@ public class CustomizeLevelManager : MonoBehaviour
         UnityEngine.Object[] level = Resources.LoadAll("Levels");
         foreach (UnityEngine.Object temp in level) {
             TextAsset textAsset = (TextAsset)temp;
-            //Debug.Log(textAsset.text);
             int index = textAsset.text.IndexOf("COLOR LIMIT");
             string numstr = textAsset.text.Substring(index + 12, 1);
-            Debug.Log(numstr);
             int numlevel = Int32.Parse(numstr);
             if (levels.ContainsKey(numlevel)) {
                 levels[numlevel].AddLast(textAsset);
@@ -27,8 +25,7 @@ public class CustomizeLevelManager : MonoBehaviour
                 levels.Add(numlevel, newlist);
             }
         }
-        Debug.Log(levels.Keys);
-        Debug.Log(levels.Values);
+
     }
         
     void Awake()

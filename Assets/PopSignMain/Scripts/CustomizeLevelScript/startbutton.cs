@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class startbutton : MonoBehaviour
+public class StartButton : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -18,5 +19,39 @@ public class startbutton : MonoBehaviour
     void Update()
     {
         
+    }
+
+    // Click start buttom
+    public void startCustomizedLevel()
+    {
+        CustomizeLevelManager clm = CustomizeLevelManager.Instance;
+        if (clm == null)
+        {
+            return;
+        }
+
+        int numOfWords = clm.selectedWord.Count;
+        if (numOfWords < 3 || numOfWords > 5)
+        {
+            return;
+        }
+
+        LinkedList<TextAsset> listOfLevelsToPick = clm.levels[numOfWords];
+        if (listOfLevelsToPick == null || listOfLevelsToPick.Count < 1)
+        {
+            return;
+        }
+
+        System.Random randomPicker = new System.Random();
+        int randomUpperBound = listOfLevelsToPick.Count;
+        int randomIndex = randomPicker.Next(randomUpperBound);
+        TextAsset pickedLevel = null;
+        LinkedList<TextAsset>.Enumerator enumerator = listOfLevelsToPick.GetEnumerator();
+        for (int i = 1; i < randomIndex; i++)
+        {
+            enumerator.MoveNext();
+        }
+
+        pickedLevel = enumerator.Current;
     }
 }
