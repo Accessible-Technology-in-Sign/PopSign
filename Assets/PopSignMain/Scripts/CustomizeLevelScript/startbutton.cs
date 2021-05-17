@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class StartButton : MonoBehaviour
@@ -62,6 +63,7 @@ public class StartButton : MonoBehaviour
         //以下内容有可能出问题，可能会改动
         LevelData.loadLevelByTextAsset(pickedLevel);
         VideoManager.loadCustomizedData();
+        SceneManager.LoadScene("game");
         //以上内容有可能出问题，可能会改动
 
 

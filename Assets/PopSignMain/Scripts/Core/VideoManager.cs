@@ -232,8 +232,28 @@ public class VideoManager {
 
             fakeJsonTxt = fakeJsonTxt + fileName + frameNumber + folderName + imageName;
         }
-        Debug.Log(fakeJsonTxt);
         //end prepare fake json file
+
+        JsonData jd = JsonMapper.ToObject(fakeJsonTxt);
+
+        foreach (BallColor color in Enum.GetValues(typeof(BallColor)))
+        {
+            if (color == BallColor.random)
+            {
+                break;
+            }
+            string fileName = jd[color + "fileName"] + "";
+            sharedVideoManager.folderName = jd[color + "folderName"] + "";
+            string frameNumber = jd[color + "frameNumber"] + "";
+            string imageName = jd[color + "ImageName"] + "";
+            if (fileName != "" && sharedVideoManager.folderName != "" && frameNumber != "" && imageName != "")
+            {
+                sharedVideoManager.videoList.Add(new Video(int.Parse(frameNumber), fileName, sharedVideoManager.folderName, imageName, color));
+            }
+        }
+        sharedVideoManager.curtVideo = (Video)sharedVideoManager.videoList[0];
+        sharedVideoManager.curtVideoIndex = 0;
+
     }
 
 }

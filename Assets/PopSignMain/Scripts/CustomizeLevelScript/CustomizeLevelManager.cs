@@ -27,6 +27,11 @@ public class CustomizeLevelManager : MonoBehaviour
         }
 
     }
+
+    public static void reset()
+    {
+        Instance.selectedWord = new HashSet<string>();
+    }
         
     void Awake()
     {

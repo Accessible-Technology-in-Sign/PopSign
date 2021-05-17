@@ -113,6 +113,7 @@ public class AnimationManager : MonoBehaviour
 
     public void Play()
     {
+        Debug.Log(gameObject.name);
         SoundBase.Instance.GetComponent<AudioSource>().PlayOneShot( SoundBase.Instance.click );
         if( gameObject.name == "MenuGameOver" )
         {
@@ -128,8 +129,18 @@ public class AnimationManager : MonoBehaviour
         }
         else if( gameObject.name == "PracticeScreen" || gameObject.name == "MenuInGamePause" || gameObject.name == "Settings" )
         {
-            SceneManager.LoadScene( "game" );
-				    VideoManager.resetVideoManager ();
+            if (gameObject.name == "MenuInGamePause" && CustomizeLevelManager.Instance.tryingToCustomize)
+            {
+                CustomizeLevelManager.reset();
+                SceneManager.LoadScene("wordlist");
+            }
+            else
+            {
+                SceneManager.LoadScene("game");
+                VideoManager.resetVideoManager();
+            }
+            
+
         }
         else if( gameObject.name == "NextLevel")
         {
@@ -140,10 +151,19 @@ public class AnimationManager : MonoBehaviour
         }
         else if( gameObject.name == "TryAgain")
         {
-            PlayerPrefs.SetInt("OpenLevel", PlayerPrefs.GetInt( "OpenLevel" ));
-            PlayerPrefs.Save();
-            SceneManager.LoadScene("game");
-            VideoManager.resetVideoManager ();
+            if (CustomizeLevelManager.Instance.tryingToCustomize)
+            {
+                CustomizeLevelManager.reset();
+                SceneManager.LoadScene("wordlist");
+            }
+            else
+            {
+                PlayerPrefs.SetInt("OpenLevel", PlayerPrefs.GetInt("OpenLevel"));
+                PlayerPrefs.Save();
+                SceneManager.LoadScene("game");
+                VideoManager.resetVideoManager();
+            }
+            
         }
         else if( gameObject.name == "PlayMain" )
         {
