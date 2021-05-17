@@ -246,6 +246,10 @@ public class AnimationManager : MonoBehaviour
 
     public void Quit()
     {
+        if (CustomizeLevelManager.Instance.tryingToCustomize)
+        {
+            CustomizeLevelManager.Instance.tryingToCustomize = false;
+        }
         if( SceneManager.GetActiveScene().name == "game" )
             SceneManager.LoadScene( "map" );
         else
