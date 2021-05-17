@@ -4561,6 +4561,7 @@ MonoBehaviour:
   - {fileID: 0}
   arrows: {fileID: 519754614}
   newBall2: {fileID: 0}
+  BallWhiffed: 0
   TargetCounter: 0
 --- !u!82 &729910747
 AudioSource:
@@ -9969,6 +9970,7 @@ GameObject:
   - component: {fileID: 1889979851}
   - component: {fileID: 1889979850}
   - component: {fileID: 1889979849}
+  - component: {fileID: 1889979852}
   m_Layer: 5
   m_Name: Restart
   m_TagString: Untagged
@@ -10091,6 +10093,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1889979847}
   m_CullTransparentMesh: 0
+--- !u!114 &1889979852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889979847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 108025b02a43b874394135e28299ae72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 751547381}
 --- !u!1 &1890438977
 GameObject:
   m_ObjectHideFlags: 0
