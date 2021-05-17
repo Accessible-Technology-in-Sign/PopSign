@@ -165,4 +165,75 @@ public class VideoManager {
 		shouldChangeVideo = true;
 	}
 
+    public static void loadCustomizedData()
+    {
+        if (sharedVideoManager == null)
+        {
+            resetVideoManager();
+        }
+
+        sharedVideoManager.videoList.Clear();
+
+        //start prepare fake json file
+        string fakeJsonTxt = "{\n";
+        CustomizeLevelManager clm = CustomizeLevelManager.Instance;
+        if (clm == null)
+        {
+            return;
+        }
+
+        HashSet<string> selectedWords = clm.selectedWord;
+        int numOfWords = selectedWords.Count;
+        if (numOfWords < 3 || numOfWords > 5)
+        {
+            return;
+        }
+
+        string allWords = (Resources.Load("words") as TextAsset).text;
+        for (int i = 0; i < numOfWords; i++)
+        {
+            string aWord = selectedWords.ToArray<string>()[i];
+            string color = "";
+            switch(i)
+            {
+                case 0:
+                    color = "blue";
+                    break;
+                case 1:
+                    color = "green";
+                    break;
+                case 2:
+                    color = "red";
+                    break;
+                case 3:
+                    color = "violet";
+                    break;
+                case 4:
+                    color = "yellow";
+                    break;
+            }
+
+            string fileName = "\"" + color + "fileName\":\"" + aWord + "\",\n";
+            string frameNumber = "\"" + color + "frameNumber\":";
+            string folderName = "\"" + color + "folderName\":\"MacarthurBates/";
+            string imageName = "\"" + color + "ImageName\":\"WordIcons/" + aWord + "\"" + (i + 1 == numOfWords? "\n}": ",\n");
+
+            int searchStartIndex = allWords.IndexOf(aWord) + aWord.Length;
+            string keySubstring = allWords.Substring(searchStartIndex);
+            int targetStartIndex = keySubstring.IndexOf("\"folderName\":\"") + "\"folderName\":\"".Length + " \"folderName\": \"".Length;
+            int targetEndIndex = keySubstring.IndexOf("\",", targetStartIndex);
+            folderName = folderName + keySubstring.Substring(targetStartIndex, targetEndIndex - targetStartIndex) + "/" + aWord + "\",\n";
+
+            searchStartIndex = targetEndIndex;
+            keySubstring = keySubstring.Substring(searchStartIndex);
+            targetStartIndex = keySubstring.IndexOf("\"frameNumber\":") + "\"frameNumber\":\"".Length;
+            targetEndIndex = keySubstring.IndexOf("},", targetStartIndex);
+            frameNumber = frameNumber + keySubstring.Substring(targetStartIndex, targetEndIndex - targetStartIndex - 5) + ",\n";
+
+            fakeJsonTxt = fakeJsonTxt + fileName + frameNumber + folderName + imageName;
+        }
+        Debug.Log(fakeJsonTxt);
+        //end prepare fake json file
+    }
+
 }

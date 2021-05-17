@@ -234,6 +234,12 @@ public class LevelData
         return true;
     }
 
+    public static bool loadLevelByTextAsset(TextAsset tx)
+    {
+        ProcesDataFromString(tx.text);
+        return true;
+    }
+
     static void ProcesDataFromString(string mapText)
     {
         string[] lines = mapText.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);

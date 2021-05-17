@@ -53,5 +53,17 @@ public class StartButton : MonoBehaviour
         }
 
         pickedLevel = enumerator.Current;
+        enumerator.Dispose();
+        if (pickedLevel == null)
+        {
+            return;
+        }
+
+        //以下内容有可能出问题，可能会改动
+        LevelData.loadLevelByTextAsset(pickedLevel);
+        VideoManager.loadCustomizedData();
+        //以上内容有可能出问题，可能会改动
+
+
     }
 }
