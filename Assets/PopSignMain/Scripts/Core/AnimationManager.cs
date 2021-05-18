@@ -162,8 +162,7 @@ public class AnimationManager : MonoBehaviour
         {
             if (CustomizeLevelManager.Instance.tryingToCustomize)
             {
-                CustomizeLevelManager.reset();
-                SceneManager.LoadScene("wordlist");
+                CustomizeLevelManager.startCustomizedLevel();
             }
             else
             {
@@ -258,7 +257,7 @@ public class AnimationManager : MonoBehaviour
     {
         if (CustomizeLevelManager.Instance.tryingToCustomize)
         {
-            CustomizeLevelManager.Instance.tryingToCustomize = false;
+            CustomizeLevelManager.switchOff();
         }
         if( SceneManager.GetActiveScene().name == "game" )
             SceneManager.LoadScene( "map" );

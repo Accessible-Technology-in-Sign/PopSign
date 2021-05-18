@@ -234,10 +234,10 @@ public class LevelData
         return true;
     }
 
-    public static bool loadLevelByTextAsset(TextAsset tx)
+    public static Target loadLevelByTextAsset(TextAsset tx)
     {
         ProcesDataFromString(tx.text);
-        return true;
+        return (Target)LevelData.mode;
     }
 
     static void ProcesDataFromString(string mapText)

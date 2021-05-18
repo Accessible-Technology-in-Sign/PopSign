@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class CustomizeLevelManager : MonoBehaviour
 {
@@ -62,5 +63,45 @@ public class CustomizeLevelManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public static void startCustomizedLevel()
+    {
+        if (Instance == null || !Instance.tryingToCustomize)
+        {
+            return;
+        }
+        int numOfWords = Instance.selectedWord.Count;
+        if (numOfWords < 3 || numOfWords > 5)
+        {
+            return;
+        }
+
+        Debug.Log(numOfWords);
+
+        LinkedList<TextAsset> listOfLevelsToPick = Instance.levels[numOfWords];
+        if (listOfLevelsToPick == null || listOfLevelsToPick.Count < 1)
+        {
+            return;
+        }
+
+        System.Random randomPicker = new System.Random();
+        int randomUpperBound = listOfLevelsToPick.Count;
+        int randomIndex = randomPicker.Next(randomUpperBound);
+        TextAsset pickedLevel = null;
+        LinkedList<TextAsset>.Enumerator enumerator = listOfLevelsToPick.GetEnumerator();
+        for (int i = 1; i < randomIndex; i++)
+        {
+            enumerator.MoveNext();
+        }
+
+        pickedLevel = enumerator.Current;
+        if (pickedLevel == null)
+        {
+            return;
+        }
+        InitScriptName.InitScript.Instance.currentTarget = LevelData.loadLevelByTextAsset(pickedLevel);
+        VideoManager.loadCustomizedData();
+        SceneManager.LoadScene("game");
     }
 }
