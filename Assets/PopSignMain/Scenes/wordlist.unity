@@ -474,6 +474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayOnEnable: 1
+  PRACTICE_LEVEL_INTERVAL: 5
 --- !u!222 &127189977
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -649,7 +650,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -6.4, y: -700}
+  m_AnchoredPosition: {x: -6.4, y: -650}
   m_SizeDelta: {x: 393.96582, y: 92.24013}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &256927822
@@ -1328,7 +1329,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 39.563995, y: -250.7}
-  m_SizeDelta: {x: 600, y: 775}
+  m_SizeDelta: {x: 600, y: 700}
   m_Pivot: {x: 0.5584385, y: 0.5}
 --- !u!114 &422203619
 MonoBehaviour:
@@ -2369,7 +2370,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0005187988, y: 387.49994}
+  m_AnchoredPosition: {x: 0.0005187988, y: 274.7439}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1484499180
