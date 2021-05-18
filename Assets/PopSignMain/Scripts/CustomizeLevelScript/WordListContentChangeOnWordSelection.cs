@@ -8,17 +8,18 @@ using UnityEngine.UI;
 public class WordListContentChangeOnWordSelection : MonoBehaviour
 {
     public UnityEngine.UI.Text text;
+    private static string textInCustomizedMode = "Tap any word to see its video. Select 5 words to create a custom practice level.";
     // Start is called before the first frame update
     void Start()
     {
-        text.text = "Tap any word to see its video. Select 5 words to create a custom practice level.";
+        text.text = textInCustomizedMode;
     }
 
     // Update is called once per frame
     void Update()
     {
         CustomizeLevelManager clm = CustomizeLevelManager.Instance;
-        string content = "Tap any word to see its video. Select 3 to 5 words to create a custom practice level.";
+        string content = textInCustomizedMode;
         if (clm != null)
         {
             HashSet<string> set = clm.selectedWord;
