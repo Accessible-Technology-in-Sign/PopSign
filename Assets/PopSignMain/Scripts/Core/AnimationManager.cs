@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 public class AnimationManager : MonoBehaviour
 {
     public bool PlayOnEnable = true;
+    public int PRACTICE_LEVEL_INTERVAL = 5;
     System.Collections.Generic.Dictionary<string, string> parameters;
 
     void OnEnable()
@@ -154,9 +155,13 @@ public class AnimationManager : MonoBehaviour
             {
                 PlayerPrefs.SetInt("OpenLevel", PlayerPrefs.GetInt("OpenLevel") + 1);
                 PlayerPrefs.Save();
-                SceneManager.LoadScene("game");
-                VideoManager.resetVideoManager();
-            }            
+                if (PlayerPrefs.GetInt("OpenLevel") % PRACTICE_LEVEL_INTERVAL == 0) {
+                    SceneManager.LoadScene("practice");
+                } else {
+                    SceneManager.LoadScene("game");
+                    VideoManager.resetVideoManager ();
+                }
+            }        
         }
         else if( gameObject.name == "TryAgain")
         {
