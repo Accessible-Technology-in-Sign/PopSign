@@ -10,6 +10,13 @@ public class ChangeTitle : MonoBehaviour
     public UnityEngine.UI.Text text;
     void Start()
     {
+       
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
         CustomizeLevelManager clm = CustomizeLevelManager.Instance;
         string content = "Words Learned";
 
@@ -18,12 +25,5 @@ public class ChangeTitle : MonoBehaviour
             content = "Customize Level";
         }
         text.text = content;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-
     }
 }
