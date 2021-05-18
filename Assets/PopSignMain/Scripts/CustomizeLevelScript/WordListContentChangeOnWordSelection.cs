@@ -11,7 +11,7 @@ public class WordListContentChangeOnWordSelection : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        text.text = "Tap any word to see its video. Select 3 to 5 words to create a custom practice level.";
+        text.text = "Tap any word to see its video. Select 5 words to create a custom practice level.";
     }
 
     // Update is called once per frame
