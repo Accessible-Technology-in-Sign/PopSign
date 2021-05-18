@@ -225,7 +225,7 @@ public class AnimationManager : MonoBehaviour
     {
         if (CustomizeLevelManager.Instance.tryingToCustomize)
         {
-            CustomizeLevelManager.Instance.tryingToCustomize = false;
+            CustomizeLevelManager.switchOff();
         }
         SceneManager.LoadScene("map");
     }
