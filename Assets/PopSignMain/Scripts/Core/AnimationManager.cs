@@ -114,10 +114,12 @@ public class AnimationManager : MonoBehaviour
 
     public void Play()
     {
+        Debug.Log(gameObject.name);
         SoundBase.Instance.GetComponent<AudioSource>().PlayOneShot( SoundBase.Instance.click );
         if( gameObject.name == "MenuGameOver" )
         {
 			      LogPlayTime ();
+            CustomizeLevelManager.switchOff();
             SceneManager.LoadScene( "map" );
             VideoManager.resetVideoManager ();
             if(PlayerPrefs.GetInt("AllLevelsCleared", 0) == 1 && PlayerPrefs.GetInt("CongratsModalShown", 0) == 0)
@@ -129,29 +131,56 @@ public class AnimationManager : MonoBehaviour
         }
         else if( gameObject.name == "PracticeScreen" || gameObject.name == "MenuInGamePause" || gameObject.name == "Settings" )
         {
-            SceneManager.LoadScene( "game" );
-				    VideoManager.resetVideoManager ();
+            if (gameObject.name == "MenuInGamePause" && CustomizeLevelManager.Instance.tryingToCustomize)
+            {
+                CustomizeLevelManager.reset();
+                SceneManager.LoadScene("wordlist");
+            }
+            else
+            {
+                SceneManager.LoadScene("game");
+                VideoManager.resetVideoManager();
+            }
+            
+
         }
         else if( gameObject.name == "NextLevel")
         {
-            PlayerPrefs.SetInt("OpenLevel", PlayerPrefs.GetInt( "OpenLevel" ) + 1);
-            PlayerPrefs.Save();
-            if (PlayerPrefs.GetInt("OpenLevel") % PRACTICE_LEVEL_INTERVAL == 0) {
+            if (CustomizeLevelManager.Instance.tryingToCustomize)
+            {
+                CustomizeLevelManager.reset();
+                SceneManager.LoadScene("wordlist");
+            }
+            else
+            {
+                PlayerPrefs.SetInt("OpenLevel", PlayerPrefs.GetInt("OpenLevel") + 1);
+                PlayerPrefs.Save();
+                if (PlayerPrefs.GetInt("OpenLevel") % PRACTICE_LEVEL_INTERVAL == 0) {
                     SceneManager.LoadScene("practice");
                 } else {
                     SceneManager.LoadScene("game");
                     VideoManager.resetVideoManager ();
                 }
+            }        
         }
         else if( gameObject.name == "TryAgain")
         {
-            PlayerPrefs.SetInt("OpenLevel", PlayerPrefs.GetInt( "OpenLevel" ));
-            PlayerPrefs.Save();
-            SceneManager.LoadScene("game");
-            VideoManager.resetVideoManager ();
+            if (CustomizeLevelManager.Instance.tryingToCustomize)
+            {
+                CustomizeLevelManager.startCustomizedLevel();
+            }
+            else
+            {
+                PlayerPrefs.SetInt("OpenLevel", PlayerPrefs.GetInt("OpenLevel"));
+                PlayerPrefs.Save();
+                SceneManager.LoadScene("game");
+                VideoManager.resetVideoManager();
+            }
+            
         }
         else if( gameObject.name == "PlayMain" )
         {
+            CustomizeLevelManager.switchOff();
             SceneManager.LoadScene( "map" );
         }
     }
@@ -194,6 +223,10 @@ public class AnimationManager : MonoBehaviour
 
     public void CloseReview()
     {
+        if (CustomizeLevelManager.Instance.tryingToCustomize)
+        {
+            CustomizeLevelManager.switchOff();
+        }
         SceneManager.LoadScene("map");
     }
 
@@ -227,6 +260,10 @@ public class AnimationManager : MonoBehaviour
 
     public void Quit()
     {
+        if (CustomizeLevelManager.Instance.tryingToCustomize)
+        {
+            CustomizeLevelManager.switchOff();
+        }
         if( SceneManager.GetActiveScene().name == "game" )
             SceneManager.LoadScene( "map" );
         else
