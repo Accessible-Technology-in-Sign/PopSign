@@ -575,6 +575,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayOnEnable: 1
+  PRACTICE_LEVEL_INTERVAL: 5
 --- !u!111 &63144155
 Animation:
   m_ObjectHideFlags: 0
@@ -1029,6 +1030,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayOnEnable: 0
+  PRACTICE_LEVEL_INTERVAL: 5
 --- !u!1 &110389111
 GameObject:
   m_ObjectHideFlags: 0
@@ -2268,6 +2270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayOnEnable: 0
+  PRACTICE_LEVEL_INTERVAL: 5
 --- !u!114 &354244038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6605,6 +6608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayOnEnable: 1
+  PRACTICE_LEVEL_INTERVAL: 5
 --- !u!111 &1304868470
 Animation:
   m_ObjectHideFlags: 0
@@ -7066,6 +7070,7 @@ GameObject:
   - component: {fileID: 1355235535}
   - component: {fileID: 1355235534}
   - component: {fileID: 1355235537}
+  - component: {fileID: 1355235538}
   m_Layer: 5
   m_Name: Video
   m_TagString: Untagged
@@ -7092,7 +7097,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 8400000, guid: 86d766d46454bb84eabe0633e7b0fa3a, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -7143,6 +7148,40 @@ MonoBehaviour:
   numberOfFrames: 0
   helpTextImageObject: {fileID: 2117083745}
   helpTextObject: {fileID: 2008326566}
+--- !u!328 &1355235538
+VideoPlayer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355235533}
+  m_Enabled: 1
+  m_VideoClip: {fileID: 0}
+  m_TargetCameraAlpha: 1
+  m_TargetCamera3DLayout: 0
+  m_TargetCamera: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: 86d766d46454bb84eabe0633e7b0fa3a, type: 2}
+  m_TimeReference: 0
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: _MainTex
+  m_RenderMode: 2
+  m_AspectRatio: 0
+  m_DataSource: 0
+  m_PlaybackSpeed: 1
+  m_AudioOutputMode: 2
+  m_TargetAudioSources:
+  - {fileID: 0}
+  m_DirectAudioVolumes:
+  - 1
+  m_Url: 
+  m_EnabledAudioTracks: 01
+  m_DirectAudioMutes: 00
+  m_ControlledAudioTrackCount: 1
+  m_PlayOnAwake: 0
+  m_SkipOnDrop: 1
+  m_Looping: 1
+  m_WaitForFirstFrame: 1
+  m_FrameReadyEventEnabled: 0
 --- !u!1001 &1365518177
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8360,6 +8399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayOnEnable: 1
+  PRACTICE_LEVEL_INTERVAL: 5
 --- !u!1 &1534241176
 GameObject:
   m_ObjectHideFlags: 0
@@ -10733,6 +10773,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayOnEnable: 0
+  PRACTICE_LEVEL_INTERVAL: 5
 --- !u!114 &1954909456
 MonoBehaviour:
   m_ObjectHideFlags: 0

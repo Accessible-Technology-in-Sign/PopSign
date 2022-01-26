@@ -522,6 +522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayOnEnable: 1
+  PRACTICE_LEVEL_INTERVAL: 5
 --- !u!114 &292401256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1903,6 +1904,7 @@ GameObject:
   - component: {fileID: 1293710039}
   - component: {fileID: 1293710038}
   - component: {fileID: 1293710037}
+  - component: {fileID: 1293710040}
   m_Layer: 5
   m_Name: Preview Videos
   m_TagString: Untagged
@@ -1926,8 +1928,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -32.000008}
-  m_SizeDelta: {x: 113, y: 80.9}
+  m_AnchoredPosition: {x: 0, y: -32}
+  m_SizeDelta: {x: 113, y: 84.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1293710037
 MonoBehaviour:
@@ -1965,7 +1967,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 8400000, guid: 86d766d46454bb84eabe0633e7b0fa3a, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1980,6 +1982,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1293710035}
   m_CullTransparentMesh: 0
+--- !u!328 &1293710040
+VideoPlayer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293710035}
+  m_Enabled: 1
+  m_VideoClip: {fileID: 0}
+  m_TargetCameraAlpha: 1
+  m_TargetCamera3DLayout: 0
+  m_TargetCamera: {fileID: 382868945}
+  m_TargetTexture: {fileID: 8400000, guid: 86d766d46454bb84eabe0633e7b0fa3a, type: 2}
+  m_TimeReference: 0
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: _MainTex
+  m_RenderMode: 2
+  m_AspectRatio: 0
+  m_DataSource: 0
+  m_PlaybackSpeed: 1
+  m_AudioOutputMode: 2
+  m_TargetAudioSources:
+  - {fileID: 0}
+  m_DirectAudioVolumes:
+  - 1
+  m_Url: 
+  m_EnabledAudioTracks: 01
+  m_DirectAudioMutes: 00
+  m_ControlledAudioTrackCount: 1
+  m_PlayOnAwake: 0
+  m_SkipOnDrop: 1
+  m_Looping: 1
+  m_WaitForFirstFrame: 1
+  m_FrameReadyEventEnabled: 0
 --- !u!1 &1557464956
 GameObject:
   m_ObjectHideFlags: 0
@@ -2009,15 +2045,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e57121ad395ad444a41b4513802e01f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: 21300000, guid: c9d38b47f8b3c2e4faa2ef03c763dea6, type: 3}
-  - {fileID: 21300000, guid: c16eb65f597e8494abe11e23663f5f4b, type: 3}
-  - {fileID: 21300000, guid: 252bd4574ae1d9a4aa39f00a3ac1332a, type: 3}
-  - {fileID: 21300000, guid: 106bd95171c358c45a7100c11e49b91c, type: 3}
-  - {fileID: 21300000, guid: bdd748563cec13f46b8731df24007ef7, type: 3}
-  - {fileID: 21300000, guid: 19ca967f222c60b4f8b0507c89abadcc, type: 3}
-  - {fileID: 21300000, guid: 2c287bacbf8a03a419eea29290b502e7, type: 3}
-  backgrounds: []
 --- !u!4 &1557464959
 Transform:
   m_ObjectHideFlags: 0

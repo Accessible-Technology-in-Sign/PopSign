@@ -52,8 +52,9 @@ public class VideoManager {
 	//POPSign Read Json file(The connection between colors and videos)
 	void ReadJsonFromTXT()
 	{
-    int currentLevel = PlayerPrefs.GetInt("OpenLevel");
+		int currentLevel = PlayerPrefs.GetInt("OpenLevel");
 
+		//This seems to fetc
 		TextAsset textReader = Resources.Load("VideoConnection/" + "level" + currentLevel ) as TextAsset;
 		JsonData jd = JsonMapper.ToObject(textReader.text);
 
