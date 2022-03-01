@@ -164,6 +164,8 @@ public class PreviewVideoSwitcher : MonoBehaviour
 		videoPlayer.url = Application.dataPath + "/StreamingAssets/" + folderName +".mp4";
 #elif UNITY_ANDROID
 		videoPlayer.url = "jar:file://" + Application.dataPath + "!/assets/"+ folderName +".mp4";
+#elif UNITY_IOS
+		videoPlayer.url = Application.dataPath + "/Raw/" + folderName + ".mp4";
 #endif
 		Debug.Log(videoPlayer.url);
 		videoPlayer.Prepare();
