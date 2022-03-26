@@ -281,24 +281,41 @@ public class LevelEditor : EditorWindow
             star1 = s;
             SaveLevel();
         }
-        if (star1 < 0)
-            star1 = 10;
+        if (star1 < 0) {
+            foreach (Mission mission in LevelData.requestMissions)
+            {
+                star1 = (mission.amount / 2);
+            }
+        }
+
+
         s = EditorGUILayout.IntField("", star2, new GUILayoutOption[] { GUILayout.Width(100) });
         if (s != star2)
         {
             star2 = s;
             SaveLevel();
         }
-        if (star2 < star1)
-            star2 = star1 + 10;
+
+        if (star2 < star1) {
+            foreach (Mission mission in LevelData.requestMissions)
+            {
+                star2 = ((mission.amount / 2) + (mission.amount / 4)); ;
+            }
+        }
+            
+
         s = EditorGUILayout.IntField("", star3, new GUILayoutOption[] { GUILayout.Width(100) });
         if (s != star3)
         {
             star3 = s;
             SaveLevel();
         }
-        if (star3 < star2)
-            star3 = star2 + 10;
+        if (star3 < star2) {
+            foreach (Mission mission in LevelData.requestMissions)
+            {
+                star3 = mission.amount;
+            }
+        }
         GUILayout.EndHorizontal();
         GUILayout.EndVertical();
         GUILayout.EndHorizontal();

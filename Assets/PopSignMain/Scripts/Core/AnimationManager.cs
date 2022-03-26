@@ -122,12 +122,23 @@ public class AnimationManager : MonoBehaviour
             CustomizeLevelManager.switchOff();
             SceneManager.LoadScene( "map" );
             VideoManager.resetVideoManager ();
-            if(PlayerPrefs.GetInt("AllLevelsCleared", 0) == 1 && PlayerPrefs.GetInt("CongratsModalShown", 0) == 0)
+
+            if (mainscript.Instance.stars > 0)
             {
-                GameObject.Find( "Canvas" ).transform.Find( "CongratsModal" ).gameObject.SetActive( true );
+                GameObject.Find("Canvas").transform.Find("CongratsModal").gameObject.SetActive(true);
                 PlayerPrefs.SetInt("CongratsModalShown", 1);
                 PlayerPrefs.Save();
             }
+            else
+            {
+                ShowGameOver();
+            }
+            //if(PlayerPrefs.GetInt("AllLevelsCleared", 0) == 1 && PlayerPrefs.GetInt("CongratsModalShown", 0) == 0)
+            //{
+            //    GameObject.Find( "Canvas" ).transform.Find( "CongratsModal" ).gameObject.SetActive( true );
+            //    PlayerPrefs.SetInt("CongratsModalShown", 1);
+            //    PlayerPrefs.Save();
+            //}
         }
         else if( gameObject.name == "PracticeScreen" || gameObject.name == "MenuInGamePause" || gameObject.name == "Settings" )
         {
