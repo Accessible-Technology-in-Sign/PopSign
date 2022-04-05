@@ -143,14 +143,14 @@ public class LevelData
             if (element.GetAttribute("name") == "GM") mode = (ModeGame)int.Parse(element.GetAttribute("value"));
             if (element.GetAttribute("name") == "LMT") limitAmount = int.Parse(element.GetAttribute("value"));
             if (element.GetAttribute("name") == "COLORS") colors = int.Parse(element.GetAttribute("value"));
-            //foreach (Mission mission in requestMissions)
-            //{
-   
-                    if (element.GetAttribute("name") == "STAR1") star1 = 20;//int.Parse(element.GetAttribute("value"));
-                    if (element.GetAttribute("name") == "STAR2") star2 = 30;//int.Parse(element.GetAttribute("value"));
-                    if (element.GetAttribute("name") == "STAR3") star3 = 40; //int.Parse(element.GetAttribute("value"));   
-                
-            //}
+            foreach (Mission mission in requestMissions)
+            {
+
+                if (element.GetAttribute("name") == "STAR1") star1 = 5;//int.Parse(element.GetAttribute("value"));
+                    if (element.GetAttribute("name") == "STAR2") star2 = 10;//int.Parse(element.GetAttribute("value"));
+                    if (element.GetAttribute("name") == "STAR3") star3 = 15; //int.Parse(element.GetAttribute("value"));   
+
+            }
 
             //    Debug.Log(element.GetAttribute("value"));
         }

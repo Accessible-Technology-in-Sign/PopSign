@@ -25,5 +25,6 @@ public class ChangeTitle : MonoBehaviour
             content = "Customize Level";
         }
         text.text = content;
+        VideoManager.resetVideoManager();
     }
 }

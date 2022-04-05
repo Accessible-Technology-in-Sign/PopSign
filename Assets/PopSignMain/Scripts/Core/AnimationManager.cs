@@ -127,18 +127,18 @@ public class AnimationManager : MonoBehaviour
             {
                 GameObject.Find("Canvas").transform.Find("CongratsModal").gameObject.SetActive(true);
                 PlayerPrefs.SetInt("CongratsModalShown", 1);
-                PlayerPrefs.Save();
+                //PlayerPrefs.Save();
             }
             else
             {
                 ShowGameOver();
             }
-            //if(PlayerPrefs.GetInt("AllLevelsCleared", 0) == 1 && PlayerPrefs.GetInt("CongratsModalShown", 0) == 0)
-            //{
-            //    GameObject.Find( "Canvas" ).transform.Find( "CongratsModal" ).gameObject.SetActive( true );
-            //    PlayerPrefs.SetInt("CongratsModalShown", 1);
-            //    PlayerPrefs.Save();
-            //}
+            if (PlayerPrefs.GetInt("AllLevelsCleared", 0) == 1 && PlayerPrefs.GetInt("CongratsModalShown", 0) == 0)
+            {
+                GameObject.Find("Canvas").transform.Find("CongratsModal").gameObject.SetActive(true);
+                PlayerPrefs.SetInt("CongratsModalShown", 1);
+                PlayerPrefs.Save();
+            }
         }
         else if( gameObject.name == "PracticeScreen" || gameObject.name == "MenuInGamePause" || gameObject.name == "Settings" )
         {

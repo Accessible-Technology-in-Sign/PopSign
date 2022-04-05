@@ -101,7 +101,7 @@ public class CustomizeLevelManager : MonoBehaviour
             return;
         }
         InitScriptName.InitScript.Instance.currentTarget = LevelData.loadLevelByTextAsset(pickedLevel);
-        VideoManager.loadCustomizedData();
         SceneManager.LoadScene("game");
+        VideoManager.loadCustomizedData();
     }
 }
