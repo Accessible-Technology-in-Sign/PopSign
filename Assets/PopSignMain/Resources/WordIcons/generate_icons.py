@@ -13,6 +13,8 @@ with open('FullWordBank.txt', 'r+') as f:
         # calculate the size of the word
         word_size = font.getsize(word)
         # if the word size will exceed the dimensions of the image, change the font size
+        font = ImageFont.truetype('MagallanesCondLight.otf', size=120)
+        word_size = font.getsize(word)
         if len(word) > 3:
             font = ImageFont.truetype('MagallanesCondLight.otf', size=110)
             word_size = font.getsize(word)
