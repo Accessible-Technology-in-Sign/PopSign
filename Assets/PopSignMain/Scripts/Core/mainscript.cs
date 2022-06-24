@@ -9,7 +9,7 @@ using InitScriptName;
 public class mainscript : MonoBehaviour {
 public int currentLevel;
 public static mainscript Instance;
-GameObject ball;
+public GameObject ball;
 GameObject PauseDialogLD;
 GameObject OverDialogLD;
 GameObject PauseDialogHD;
@@ -323,22 +323,21 @@ void Update ()
         ProgressBarScript.Instance.UpdateDisplay( (float)score * 100f / ( (float)LevelData.star1 / ( ( LevelData.star1 * 100f / LevelData.star3 ) ) * 100f ) /100f );
 
     // update the number of stars the player has received
-    bool gotAStar = false;
-        if ( score >= LevelData.star3)
+    bool gotAStar = score >= LevelData.star1;
+        if ( score >= LevelData.star1)
     {
-        stars = 3;
-        starsObject[2].SetActive( true );
+        stars = 1;
+        starsObject[0].SetActive( true );
     }
     if( score >= LevelData.star2)
     {
         stars = 2;
         starsObject[1].SetActive( true );
     }
-    if( score >= LevelData.star1)
+    if( score >= LevelData.star3)
     {
-        stars = 1;
-        starsObject[0].SetActive( true );
-        gotAStar = true; //to check if the user got at least one star. 
+        stars = 3;
+        starsObject[2].SetActive( true );
     }
 
         if (LevelData.mode == ModeGame.Vertical && TargetCounter == MustPopCount && GamePlay.Instance.GameStatus == GameState.Playing)
