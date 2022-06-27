@@ -1,0 +1,22 @@
+{
+	"bluefileName":"spaghetti",
+	"blueframeNumber":90,
+	"bluefolderName":"MacarthurBates/AllWords/FoodAndDrink/spaghetti",
+	"blueImageName":"WordIcons/spaghetti",
+	"greenfileName":"popcorn",
+	"greenframeNumber":55,
+	"greenfolderName":"MacarthurBates/AllWords/FoodAndDrink/popcorn",
+	"greenImageName":"WordIcons/popcorn",
+	"redfileName":"corn",
+	"redframeNumber":80,
+	"redfolderName":"MacarthurBates/AllWords/FoodAndDrink/corn",
+	"redImageName":"WordIcons/corn",
+	"violetfileName":"potato",
+	"violetframeNumber":39,
+	"violetfolderName":"MacarthurBates/AllWords/FoodAndDrink/potato",
+	"violetImageName":"WordIcons/potato",
+	"yellowfileName":"salt",
+	"yellowframeNumber":94,
+	"yellowfolderName":"MacarthurBates/AllWords/FoodAndDrink/salt",
+	"yellowImageName":"WordIcons/salt"
+}

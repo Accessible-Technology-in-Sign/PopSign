@@ -1,0 +1,22 @@
+{
+	"bluefileName":"flower",
+	"blueframeNumber":58,
+	"bluefolderName":"MacarthurBates/AllWords/OutsideThings/flower",
+	"blueImageName":"WordIcons/flower",
+	"greenfileName":"cloud",
+	"greenframeNumber":75,
+	"greenfolderName":"MacarthurBates/AllWords/OutsideThings/cloud",
+	"greenImageName":"WordIcons/cloud",
+	"redfileName":"sky",
+	"redframeNumber":70,
+	"redfolderName":"MacarthurBates/AllWords/OutsideThings/sky",
+	"redImageName":"WordIcons/sky",
+	"violetfileName":"tree",
+	"violetframeNumber":56,
+	"violetfolderName":"MacarthurBates/AllWords/OutsideThings/tree",
+	"violetImageName":"WordIcons/tree",
+	"yellowfileName":"flower(1)",
+	"yellowframeNumber":58,
+	"yellowfolderName":"MacarthurBates/AllWords/OutsideThings/flower(1)",
+	"yellowImageName":"WordIcons/flower(1)"
+}

@@ -1,0 +1,22 @@
+{
+	"bluefileName":"close",
+	"blueframeNumber":93,
+	"bluefolderName":"MacarthurBates/AllWords/ActionWords/close",
+	"blueImageName":"WordIcons/close",
+	"greenfileName":"skate-roller",
+	"greenframeNumber":67,
+	"greenfolderName":"MacarthurBates/AllWords/ActionWords/skate-roller",
+	"greenImageName":"WordIcons/skate-roller",
+	"redfileName":"say",
+	"redframeNumber":59,
+	"redfolderName":"MacarthurBates/AllWords/ActionWords/say",
+	"redImageName":"WordIcons/say",
+	"violetfileName":"play",
+	"violetframeNumber":45,
+	"violetfolderName":"MacarthurBates/AllWords/ActionWords/play",
+	"violetImageName":"WordIcons/play",
+	"yellowfileName":"love it",
+	"yellowframeNumber":49,
+	"yellowfolderName":"MacarthurBates/AllWords/ActionWords/love it",
+	"yellowImageName":"WordIcons/love it"
+}

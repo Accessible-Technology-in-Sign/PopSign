@@ -1,0 +1,22 @@
+{
+	"bluefileName":"fireman",
+	"blueframeNumber":63,
+	"bluefolderName":"MacarthurBates/AllWords/People/fireman",
+	"blueImageName":"WordIcons/fireman",
+	"greenfileName":"woman",
+	"greenframeNumber":74,
+	"greenfolderName":"MacarthurBates/AllWords/People/woman",
+	"greenImageName":"WordIcons/woman",
+	"redfileName":"child",
+	"redframeNumber":54,
+	"redfolderName":"MacarthurBates/AllWords/People/child",
+	"redImageName":"WordIcons/child",
+	"violetfileName":"father",
+	"violetframeNumber":49,
+	"violetfolderName":"MacarthurBates/AllWords/People/father",
+	"violetImageName":"WordIcons/father",
+	"yellowfileName":"people",
+	"yellowframeNumber":61,
+	"yellowfolderName":"MacarthurBates/AllWords/People/people",
+	"yellowImageName":"WordIcons/people"
+}

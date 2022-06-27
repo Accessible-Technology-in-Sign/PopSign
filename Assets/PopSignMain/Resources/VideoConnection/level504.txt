@@ -1,0 +1,22 @@
+{
+	"bluefileName":"dinner",
+	"blueframeNumber":53,
+	"bluefolderName":"MacarthurBates/AllWords/Games/dinner",
+	"blueImageName":"WordIcons/dinner",
+	"greenfileName":"bath",
+	"greenframeNumber":95,
+	"greenfolderName":"MacarthurBates/AllWords/Games/bath",
+	"greenImageName":"WordIcons/bath",
+	"redfileName":"tape,bandaid",
+	"redframeNumber":54,
+	"redfolderName":"MacarthurBates/AllWords/SmallObjects/tape,bandaid",
+	"redImageName":"WordIcons/tape,bandaid",
+	"violetfileName":"bucket",
+	"violetframeNumber":59,
+	"violetfolderName":"MacarthurBates/AllWords/SmallObjects/bucket",
+	"violetImageName":"WordIcons/bucket",
+	"yellowfileName":"knife",
+	"yellowframeNumber":69,
+	"yellowfolderName":"MacarthurBates/AllWords/SmallObjects/knife",
+	"yellowImageName":"WordIcons/knife"
+}

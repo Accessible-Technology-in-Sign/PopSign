@@ -1,0 +1,22 @@
+{
+	"bluefileName":"but",
+	"blueframeNumber":76,
+	"bluefolderName":"MacarthurBates/AllWords/ConnectingWords/but",
+	"blueImageName":"WordIcons/but",
+	"greenfileName":"if,suppose",
+	"greenframeNumber":58,
+	"greenfolderName":"MacarthurBates/AllWords/ConnectingWords/if,suppose",
+	"greenImageName":"WordIcons/if,suppose",
+	"redfileName":"because",
+	"redframeNumber":67,
+	"redfolderName":"MacarthurBates/AllWords/ConnectingWords/because",
+	"redImageName":"WordIcons/because",
+	"violetfileName":"and",
+	"violetframeNumber":65,
+	"violetfolderName":"MacarthurBates/AllWords/ConnectingWords/and",
+	"violetImageName":"WordIcons/and",
+	"yellowfileName":"so,or",
+	"yellowframeNumber":57,
+	"yellowfolderName":"MacarthurBates/AllWords/ConnectingWords/so,or",
+	"yellowImageName":"WordIcons/so,or"
+}

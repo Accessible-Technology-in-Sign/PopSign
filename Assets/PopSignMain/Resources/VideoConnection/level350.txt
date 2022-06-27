@@ -1,0 +1,22 @@
+{
+	"bluefileName":"firetruck",
+	"blueframeNumber":84,
+	"bluefolderName":"MacarthurBates/AllWords/Vehicles/firetruck",
+	"blueImageName":"WordIcons/firetruck",
+	"greenfileName":"carriage,cart",
+	"greenframeNumber":59,
+	"greenfolderName":"MacarthurBates/AllWords/Vehicles/carriage,cart",
+	"greenImageName":"WordIcons/carriage,cart",
+	"redfileName":"helicopter",
+	"redframeNumber":77,
+	"redfolderName":"MacarthurBates/AllWords/Vehicles/helicopter",
+	"redImageName":"WordIcons/helicopter",
+	"violetfileName":"train",
+	"violetframeNumber":70,
+	"violetfolderName":"MacarthurBates/AllWords/Vehicles/train",
+	"violetImageName":"WordIcons/train",
+	"yellowfileName":"boat",
+	"yellowframeNumber":60,
+	"yellowfolderName":"MacarthurBates/AllWords/Vehicles/boat",
+	"yellowImageName":"WordIcons/boat"
+}

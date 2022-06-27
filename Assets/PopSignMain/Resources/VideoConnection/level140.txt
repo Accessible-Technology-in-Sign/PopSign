@@ -1,0 +1,22 @@
+{
+	"bluefileName":"star",
+	"blueframeNumber":45,
+	"bluefolderName":"MacarthurBates/AllWords/Animals/star",
+	"blueImageName":"WordIcons/star",
+	"greenfileName":"shovel",
+	"greenframeNumber":64,
+	"greenfolderName":"MacarthurBates/AllWords/OutsideThings/shovel",
+	"greenImageName":"WordIcons/shovel",
+	"redfileName":"snowman",
+	"redframeNumber":71,
+	"redfolderName":"MacarthurBates/AllWords/OutsideThings/snowman",
+	"redImageName":"WordIcons/snowman",
+	"violetfileName":"rain",
+	"violetframeNumber":75,
+	"violetfolderName":"MacarthurBates/AllWords/OutsideThings/rain",
+	"violetImageName":"WordIcons/rain",
+	"yellowfileName":"slide",
+	"yellowframeNumber":70,
+	"yellowfolderName":"MacarthurBates/AllWords/OutsideThings/slide",
+	"yellowImageName":"WordIcons/slide"
+}

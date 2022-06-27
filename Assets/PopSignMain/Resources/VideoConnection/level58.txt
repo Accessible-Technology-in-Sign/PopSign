@@ -1,0 +1,22 @@
+{
+	"bluefileName":"broken",
+	"blueframeNumber":45,
+	"bluefolderName":"MacarthurBates/AllWords/DescriptiveWords/broken",
+	"blueImageName":"WordIcons/broken",
+	"greenfileName":"last",
+	"greenframeNumber":55,
+	"greenfolderName":"MacarthurBates/AllWords/DescriptiveWords/last",
+	"greenImageName":"WordIcons/last",
+	"redfileName":"tired",
+	"redframeNumber":58,
+	"redfolderName":"MacarthurBates/AllWords/DescriptiveWords/tired",
+	"redImageName":"WordIcons/tired",
+	"violetfileName":"wet",
+	"violetframeNumber":73,
+	"violetfolderName":"MacarthurBates/AllWords/DescriptiveWords/wet",
+	"violetImageName":"WordIcons/wet",
+	"yellowfileName":"poor",
+	"yellowframeNumber":83,
+	"yellowfolderName":"MacarthurBates/AllWords/DescriptiveWords/poor",
+	"yellowImageName":"WordIcons/poor"
+}

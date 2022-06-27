@@ -1,0 +1,22 @@
+{
+	"bluefileName":"cry",
+	"blueframeNumber":69,
+	"bluefolderName":"MacarthurBates/AllWords/ActionWords/cry",
+	"blueImageName":"WordIcons/cry",
+	"greenfileName":"talk",
+	"greenframeNumber":97,
+	"greenfolderName":"MacarthurBates/AllWords/ActionWords/talk",
+	"greenImageName":"WordIcons/talk",
+	"redfileName":"build",
+	"redframeNumber":107,
+	"redfolderName":"MacarthurBates/AllWords/ActionWords/build",
+	"redImageName":"WordIcons/build",
+	"violetfileName":"give",
+	"violetframeNumber":44,
+	"violetfolderName":"MacarthurBates/AllWords/ActionWords/give",
+	"violetImageName":"WordIcons/give",
+	"yellowfileName":"sleep",
+	"yellowframeNumber":55,
+	"yellowfolderName":"MacarthurBates/AllWords/ActionWords/sleep",
+	"yellowImageName":"WordIcons/sleep"
+}

@@ -1,0 +1,22 @@
+{
+	"bluefileName":"yucky",
+	"blueframeNumber":51,
+	"bluefolderName":"MacarthurBates/AllWords/DescriptiveWords/yucky",
+	"blueImageName":"WordIcons/yucky",
+	"greenfileName":"sick",
+	"greenframeNumber":61,
+	"greenfolderName":"MacarthurBates/AllWords/DescriptiveWords/sick",
+	"greenImageName":"WordIcons/sick",
+	"redfileName":"brown",
+	"redframeNumber":50,
+	"redfolderName":"MacarthurBates/AllWords/DescriptiveWords/brown",
+	"redImageName":"WordIcons/brown",
+	"violetfileName":"full-food",
+	"violetframeNumber":62,
+	"violetfolderName":"MacarthurBates/AllWords/DescriptiveWords/full-food",
+	"violetImageName":"WordIcons/full-food",
+	"yellowfileName":"gentle",
+	"yellowframeNumber":76,
+	"yellowfolderName":"MacarthurBates/AllWords/DescriptiveWords/gentle",
+	"yellowImageName":"WordIcons/gentle"
+}

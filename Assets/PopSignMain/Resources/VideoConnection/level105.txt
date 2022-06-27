@@ -1,0 +1,22 @@
+{
+	"bluefileName":"apple",
+	"blueframeNumber":100,
+	"bluefolderName":"MacarthurBates/AllWords/FoodAndDrink/apple",
+	"blueImageName":"WordIcons/apple",
+	"greenfileName":"lollipop",
+	"greenframeNumber":83,
+	"greenfolderName":"MacarthurBates/AllWords/FoodAndDrink/lollipop",
+	"greenImageName":"WordIcons/lollipop",
+	"redfileName":"french fries",
+	"redframeNumber":65,
+	"redfolderName":"MacarthurBates/AllWords/FoodAndDrink/french fries",
+	"redImageName":"WordIcons/french fries",
+	"violetfileName":"applesauce",
+	"violetframeNumber":94,
+	"violetfolderName":"MacarthurBates/AllWords/FoodAndDrink/applesauce",
+	"violetImageName":"WordIcons/applesauce",
+	"yellowfileName":"salad",
+	"yellowframeNumber":79,
+	"yellowfolderName":"MacarthurBates/AllWords/FoodAndDrink/salad",
+	"yellowImageName":"WordIcons/salad"
+}

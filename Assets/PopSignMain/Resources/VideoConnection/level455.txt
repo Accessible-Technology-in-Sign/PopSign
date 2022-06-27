@@ -1,0 +1,22 @@
+{
+	"bluefileName":"stand",
+	"blueframeNumber":49,
+	"bluefolderName":"MacarthurBates/AllWords/ActionWords/stand",
+	"blueImageName":"WordIcons/stand",
+	"greenfileName":"draw",
+	"greenframeNumber":83,
+	"greenfolderName":"MacarthurBates/AllWords/ActionWords/draw",
+	"greenImageName":"WordIcons/draw",
+	"redfileName":"fit,match",
+	"redframeNumber":98,
+	"redfolderName":"MacarthurBates/AllWords/ActionWords/fit,match",
+	"redImageName":"WordIcons/fit,match",
+	"violetfileName":"bump,hit",
+	"violetframeNumber":61,
+	"violetfolderName":"MacarthurBates/AllWords/ActionWords/bump,hit",
+	"violetImageName":"WordIcons/bump,hit",
+	"yellowfileName":"stop",
+	"yellowframeNumber":68,
+	"yellowfolderName":"MacarthurBates/AllWords/ActionWords/stop",
+	"yellowImageName":"WordIcons/stop"
+}

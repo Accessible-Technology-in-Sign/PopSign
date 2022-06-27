@@ -1,0 +1,22 @@
+{
+	"bluefileName":"carry",
+	"blueframeNumber":54,
+	"bluefolderName":"MacarthurBates/AllWords/ActionWords/carry",
+	"blueImageName":"WordIcons/carry",
+	"greenfileName":"see",
+	"greenframeNumber":62,
+	"greenfolderName":"MacarthurBates/AllWords/ActionWords/see",
+	"greenImageName":"WordIcons/see",
+	"redfileName":"knock",
+	"redframeNumber":54,
+	"redfolderName":"MacarthurBates/AllWords/ActionWords/knock",
+	"redImageName":"WordIcons/knock",
+	"violetfileName":"shake",
+	"violetframeNumber":51,
+	"violetfolderName":"MacarthurBates/AllWords/ActionWords/shake",
+	"violetImageName":"WordIcons/shake",
+	"yellowfileName":"listen",
+	"yellowframeNumber":52,
+	"yellowfolderName":"MacarthurBates/AllWords/ActionWords/listen",
+	"yellowImageName":"WordIcons/listen"
+}

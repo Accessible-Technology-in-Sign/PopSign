@@ -1,0 +1,22 @@
+{
+	"bluefileName":"boy",
+	"blueframeNumber":65,
+	"bluefolderName":"MacarthurBates/AllWords/People/boy",
+	"blueImageName":"WordIcons/boy",
+	"greenfileName":"police",
+	"greenframeNumber":44,
+	"greenfolderName":"MacarthurBates/AllWords/People/police",
+	"greenImageName":"WordIcons/police",
+	"redfileName":"grandfather",
+	"redframeNumber":62,
+	"redfolderName":"MacarthurBates/AllWords/People/grandfather",
+	"redImageName":"WordIcons/grandfather",
+	"violetfileName":"nurse",
+	"violetframeNumber":47,
+	"violetfolderName":"MacarthurBates/AllWords/People/nurse",
+	"violetImageName":"WordIcons/nurse",
+	"yellowfileName":"babysitter",
+	"yellowframeNumber":104,
+	"yellowfolderName":"MacarthurBates/AllWords/People/babysitter",
+	"yellowImageName":"WordIcons/babysitter"
+}
