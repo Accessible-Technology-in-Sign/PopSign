@@ -1,0 +1,22 @@
+{
+	"bluefileName":"hammer",
+	"blueframeNumber":59,
+	"bluefolderName":"MacarthurBates/AllWords/SmallObjects/hammer",
+	"blueImageName":"WordIcons/hammer",
+	"greenfileName":"soap",
+	"greenframeNumber":152,
+	"greenfolderName":"MacarthurBates/AllWords/SmallObjects/soap",
+	"greenImageName":"WordIcons/soap",
+	"redfileName":"tissue",
+	"redframeNumber":92,
+	"redfolderName":"MacarthurBates/AllWords/SmallObjects/tissue",
+	"redImageName":"WordIcons/tissue",
+	"violetfileName":"fork",
+	"violetframeNumber":53,
+	"violetfolderName":"MacarthurBates/AllWords/SmallObjects/fork",
+	"violetImageName":"WordIcons/fork",
+	"yellowfileName":"lamp",
+	"yellowframeNumber":83,
+	"yellowfolderName":"MacarthurBates/AllWords/SmallObjects/lamp",
+	"yellowImageName":"WordIcons/lamp"
+}

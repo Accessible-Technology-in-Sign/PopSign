@@ -1,0 +1,22 @@
+{
+	"bluefileName":"table",
+	"blueframeNumber":58,
+	"bluefolderName":"MacarthurBates/AllWords/Household/table",
+	"blueImageName":"WordIcons/table",
+	"greenfileName":"oven",
+	"greenframeNumber":95,
+	"greenfolderName":"MacarthurBates/AllWords/Household/oven",
+	"greenImageName":"WordIcons/oven",
+	"redfileName":"hairdryer",
+	"redframeNumber":70,
+	"redfolderName":"MacarthurBates/AllWords/Household/hairdryer",
+	"redImageName":"WordIcons/hairdryer",
+	"violetfileName":"chair",
+	"violetframeNumber":56,
+	"violetfolderName":"MacarthurBates/AllWords/Household/chair",
+	"violetImageName":"WordIcons/chair",
+	"yellowfileName":"window",
+	"yellowframeNumber":58,
+	"yellowfolderName":"MacarthurBates/AllWords/Household/window",
+	"yellowImageName":"WordIcons/window"
+}

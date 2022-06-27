@@ -1,0 +1,22 @@
+{
+	"bluefileName":"cup,mug",
+	"blueframeNumber":49,
+	"bluefolderName":"MacarthurBates/AllWords/SmallObjects/cup,mug",
+	"blueImageName":"WordIcons/cup,mug",
+	"greenfileName":"light",
+	"greenframeNumber":59,
+	"greenfolderName":"MacarthurBates/AllWords/SmallObjects/light",
+	"greenImageName":"WordIcons/light",
+	"redfileName":"quarter",
+	"redframeNumber":54,
+	"redfolderName":"MacarthurBates/AllWords/SmallObjects/quarter",
+	"redImageName":"WordIcons/quarter",
+	"violetfileName":"blanket",
+	"violetframeNumber":49,
+	"violetfolderName":"MacarthurBates/AllWords/SmallObjects/blanket",
+	"violetImageName":"WordIcons/blanket",
+	"yellowfileName":"comb",
+	"yellowframeNumber":58,
+	"yellowfolderName":"MacarthurBates/AllWords/SmallObjects/comb",
+	"yellowImageName":"WordIcons/comb"
+}

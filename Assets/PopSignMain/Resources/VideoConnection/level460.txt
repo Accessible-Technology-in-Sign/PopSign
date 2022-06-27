@@ -1,0 +1,22 @@
+{
+	"bluefileName":"jump",
+	"blueframeNumber":68,
+	"bluefolderName":"MacarthurBates/AllWords/ActionWords/jump",
+	"blueImageName":"WordIcons/jump",
+	"greenfileName":"taste",
+	"greenframeNumber":69,
+	"greenfolderName":"MacarthurBates/AllWords/ActionWords/taste",
+	"greenImageName":"WordIcons/taste",
+	"redfileName":"lick",
+	"redframeNumber":81,
+	"redfolderName":"MacarthurBates/AllWords/ActionWords/lick",
+	"redImageName":"WordIcons/lick",
+	"violetfileName":"dance",
+	"violetframeNumber":70,
+	"violetfolderName":"MacarthurBates/AllWords/ActionWords/dance",
+	"violetImageName":"WordIcons/dance",
+	"yellowfileName":"watch",
+	"yellowframeNumber":82,
+	"yellowfolderName":"MacarthurBates/AllWords/SmallObjects/watch",
+	"yellowImageName":"WordIcons/watch"
+}

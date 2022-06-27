@@ -1,0 +1,22 @@
+{
+	"bluefileName":"he,she,it",
+	"blueframeNumber":53,
+	"bluefolderName":"MacarthurBates/AllWords/PrepositionsAndPronouns/he,she,it",
+	"blueImageName":"WordIcons/he,she,it",
+	"greenfileName":"back",
+	"greenframeNumber":65,
+	"greenfolderName":"MacarthurBates/AllWords/PrepositionsAndPronouns/back",
+	"greenImageName":"WordIcons/back",
+	"redfileName":"under",
+	"redframeNumber":81,
+	"redfolderName":"MacarthurBates/AllWords/PrepositionsAndPronouns/under",
+	"redImageName":"WordIcons/under",
+	"violetfileName":"inside,enter",
+	"violetframeNumber":50,
+	"violetfolderName":"MacarthurBates/AllWords/PrepositionsAndPronouns/inside,enter",
+	"violetImageName":"WordIcons/inside,enter",
+	"yellowfileName":"behind",
+	"yellowframeNumber":70,
+	"yellowfolderName":"MacarthurBates/AllWords/PrepositionsAndPronouns/behind",
+	"yellowImageName":"WordIcons/behind"
+}

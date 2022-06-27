@@ -1,0 +1,22 @@
+{
+	"bluefileName":"alot,much",
+	"blueframeNumber":62,
+	"bluefolderName":"MacarthurBates/AllWords/QuantifiersAndArticles/alot,much",
+	"blueImageName":"WordIcons/alot,much",
+	"greenfileName":"many",
+	"greenframeNumber":64,
+	"greenfolderName":"MacarthurBates/AllWords/QuantifiersAndArticles/many",
+	"greenImageName":"WordIcons/many",
+	"redfileName":"all",
+	"redframeNumber":61,
+	"redfolderName":"MacarthurBates/AllWords/QuantifiersAndArticles/all",
+	"redImageName":"WordIcons/all",
+	"violetfileName":"too,also",
+	"violetframeNumber":63,
+	"violetfolderName":"MacarthurBates/AllWords/QuantifiersAndArticles/too,also",
+	"violetImageName":"WordIcons/too,also",
+	"yellowfileName":"same",
+	"yellowframeNumber":61,
+	"yellowfolderName":"MacarthurBates/AllWords/QuantifiersAndArticles/same",
+	"yellowImageName":"WordIcons/same"
+}

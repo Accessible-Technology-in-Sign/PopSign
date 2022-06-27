@@ -1,0 +1,22 @@
+{
+	"bluefileName":"glass,cup",
+	"blueframeNumber":95,
+	"bluefolderName":"MacarthurBates/AllWords/Clothing/glass,cup",
+	"blueImageName":"WordIcons/glass,cup",
+	"greenfileName":"diaper",
+	"greenframeNumber":62,
+	"greenfolderName":"MacarthurBates/AllWords/Clothing/diaper",
+	"greenImageName":"WordIcons/diaper",
+	"redfileName":"sweater",
+	"redframeNumber":81,
+	"redfolderName":"MacarthurBates/AllWords/Clothing/sweater",
+	"redImageName":"WordIcons/sweater",
+	"violetfileName":"cap",
+	"violetframeNumber":67,
+	"violetfolderName":"MacarthurBates/AllWords/Clothing/cap",
+	"violetImageName":"WordIcons/cap",
+	"yellowfileName":"flip flop",
+	"yellowframeNumber":111,
+	"yellowfolderName":"MacarthurBates/AllWords/Clothing/flip flop",
+	"yellowImageName":"WordIcons/flip flop"
+}

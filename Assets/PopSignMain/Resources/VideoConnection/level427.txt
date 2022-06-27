@@ -1,0 +1,22 @@
+{
+	"bluefileName":"push",
+	"blueframeNumber":54,
+	"bluefolderName":"MacarthurBates/AllWords/ActionWords/push",
+	"blueImageName":"WordIcons/push",
+	"greenfileName":"share",
+	"greenframeNumber":75,
+	"greenfolderName":"MacarthurBates/AllWords/ActionWords/share",
+	"greenImageName":"WordIcons/share",
+	"redfileName":"cover",
+	"redframeNumber":77,
+	"redfolderName":"MacarthurBates/AllWords/ActionWords/cover",
+	"redImageName":"WordIcons/cover",
+	"violetfileName":"take",
+	"violetframeNumber":92,
+	"violetfolderName":"MacarthurBates/AllWords/ActionWords/take",
+	"violetImageName":"WordIcons/take",
+	"yellowfileName":"drive",
+	"yellowframeNumber":83,
+	"yellowfolderName":"MacarthurBates/AllWords/ActionWords/drive",
+	"yellowImageName":"WordIcons/drive"
+}

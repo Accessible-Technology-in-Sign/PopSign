@@ -54,8 +54,31 @@ public class VideoManager {
 	{
 		int currentLevel = PlayerPrefs.GetInt("OpenLevel");
 
+		//For Random Levels (BK)
+		int randomizeLevels = PlayerPrefs.GetInt("RandomizeLevel", 0);
+
+
 		//This seems to fetc
-		TextAsset textReader = Resources.Load("VideoConnection/" + "level" + currentLevel ) as TextAsset;
+
+		//For Random Levels (BK)
+		TextAsset textReader;
+		if(randomizeLevels == 0)
+        {
+			//Original code
+			textReader = Resources.Load("VideoConnection/" + "level" + currentLevel) as TextAsset;
+		}
+        else
+        {
+			string path = Application.persistentDataPath + "/level" + currentLevel + ".txt";
+			string levelText;
+			using(StreamReader reader = new StreamReader(path))
+            {
+				levelText = reader.ReadToEnd();
+            }
+
+			textReader = new TextAsset(levelText);
+		}
+		
 		JsonData jd = JsonMapper.ToObject(textReader.text);
 
 		foreach(BallColor color in Enum.GetValues(typeof(BallColor)))

@@ -1,0 +1,22 @@
+{
+	"bluefileName":"above",
+	"blueframeNumber":97,
+	"bluefolderName":"MacarthurBates/AllWords/PrepositionsAndPronouns/above",
+	"blueImageName":"WordIcons/above",
+	"greenfileName":"off",
+	"greenframeNumber":44,
+	"greenfolderName":"MacarthurBates/AllWords/PrepositionsAndPronouns/off",
+	"greenImageName":"WordIcons/off",
+	"redfileName":"at",
+	"redframeNumber":50,
+	"redfolderName":"MacarthurBates/AllWords/PrepositionsAndPronouns/at",
+	"redImageName":"WordIcons/at",
+	"violetfileName":"up",
+	"violetframeNumber":41,
+	"violetfolderName":"MacarthurBates/AllWords/PrepositionsAndPronouns/up",
+	"violetImageName":"WordIcons/up",
+	"yellowfileName":"myself",
+	"yellowframeNumber":44,
+	"yellowfolderName":"MacarthurBates/AllWords/PlacesToGo/myself",
+	"yellowImageName":"WordIcons/myself"
+}

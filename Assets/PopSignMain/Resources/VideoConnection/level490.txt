@@ -1,0 +1,22 @@
+{
+	"bluefileName":"gift",
+	"blueframeNumber":54,
+	"bluefolderName":"MacarthurBates/AllWords/School/gift",
+	"blueImageName":"WordIcons/gift",
+	"greenfileName":"glue",
+	"greenframeNumber":50,
+	"greenfolderName":"MacarthurBates/AllWords/School/glue",
+	"greenImageName":"WordIcons/glue",
+	"redfileName":"puzzle",
+	"redframeNumber":65,
+	"redfolderName":"MacarthurBates/AllWords/School/puzzle",
+	"redImageName":"WordIcons/puzzle",
+	"violetfileName":"book",
+	"violetframeNumber":75,
+	"violetfolderName":"MacarthurBates/AllWords/School/book",
+	"violetImageName":"WordIcons/book",
+	"yellowfileName":"blocks",
+	"yellowframeNumber":76,
+	"yellowfolderName":"MacarthurBates/AllWords/School/blocks",
+	"yellowImageName":"WordIcons/blocks"
+}

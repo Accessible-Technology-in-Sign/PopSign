@@ -1,0 +1,22 @@
+{
+	"bluefileName":"can",
+	"blueframeNumber":46,
+	"bluefolderName":"MacarthurBates/AllWords/SmallObjects/can",
+	"blueImageName":"WordIcons/can",
+	"greenfileName":"bicycle",
+	"greenframeNumber":73,
+	"greenfolderName":"MacarthurBates/AllWords/Vehicles/bicycle",
+	"greenImageName":"WordIcons/bicycle",
+	"redfileName":"airplane",
+	"redframeNumber":56,
+	"redfolderName":"MacarthurBates/AllWords/Vehicles/airplane",
+	"redImageName":"WordIcons/airplane",
+	"violetfileName":"motorcycle",
+	"violetframeNumber":59,
+	"violetfolderName":"MacarthurBates/AllWords/Vehicles/motorcycle",
+	"violetImageName":"WordIcons/motorcycle",
+	"yellowfileName":"car",
+	"yellowframeNumber":52,
+	"yellowfolderName":"MacarthurBates/AllWords/Vehicles/car",
+	"yellowImageName":"WordIcons/car"
+}

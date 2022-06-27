@@ -1,0 +1,22 @@
+{
+	"bluefileName":"big",
+	"blueframeNumber":55,
+	"bluefolderName":"MacarthurBates/AllWords/DescriptiveWords/big",
+	"blueImageName":"WordIcons/big",
+	"greenfileName":"noisy",
+	"greenframeNumber":56,
+	"greenfolderName":"MacarthurBates/AllWords/DescriptiveWords/noisy",
+	"greenImageName":"WordIcons/noisy",
+	"redfileName":"scared",
+	"redframeNumber":55,
+	"redfolderName":"MacarthurBates/AllWords/DescriptiveWords/scared",
+	"redImageName":"WordIcons/scared",
+	"violetfileName":"old",
+	"violetframeNumber":44,
+	"violetfolderName":"MacarthurBates/AllWords/DescriptiveWords/old",
+	"violetImageName":"WordIcons/old",
+	"yellowfileName":"black",
+	"yellowframeNumber":68,
+	"yellowfolderName":"MacarthurBates/AllWords/DescriptiveWords/black",
+	"yellowImageName":"WordIcons/black"
+}

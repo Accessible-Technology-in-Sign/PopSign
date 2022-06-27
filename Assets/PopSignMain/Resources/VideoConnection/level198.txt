@@ -1,0 +1,22 @@
+{
+	"bluefileName":"then",
+	"blueframeNumber":56,
+	"bluefolderName":"MacarthurBates/AllWords/ConnectingWords/then",
+	"blueImageName":"WordIcons/then",
+	"greenfileName":"about",
+	"greenframeNumber":107,
+	"greenfolderName":"MacarthurBates/AllWords/PrepositionsAndPronouns/about",
+	"greenImageName":"WordIcons/about",
+	"redfileName":"to",
+	"redframeNumber":43,
+	"redfolderName":"MacarthurBates/AllWords/PrepositionsAndPronouns/to",
+	"redImageName":"WordIcons/to",
+	"violetfileName":"around",
+	"violetframeNumber":94,
+	"violetfolderName":"MacarthurBates/AllWords/PrepositionsAndPronouns/around",
+	"violetImageName":"WordIcons/around",
+	"yellowfileName":"here",
+	"yellowframeNumber":34,
+	"yellowfolderName":"MacarthurBates/AllWords/PrepositionsAndPronouns/here",
+	"yellowImageName":"WordIcons/here"
+}
