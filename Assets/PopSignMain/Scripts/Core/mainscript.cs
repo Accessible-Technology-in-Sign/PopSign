@@ -320,9 +320,12 @@ void Update ()
         //else if( LevelData.LimitAmount <= 0 && GamePlay.Instance.GameStatus == GameState.Playing && newBall == null )
         //    GamePlay.Instance.GameStatus = GameState.GameOver;
 
-        ProgressBarScript.Instance.UpdateDisplay( (float)score * 100f / ( (float)LevelData.star1 / ( ( LevelData.star1 * 100f / LevelData.star3 ) ) * 100f ) /100f );
+        // ProgressBarScript.Instance.UpdateDisplay( (float)score * 100f / ( (float)LevelData.star1 / ( ( LevelData.star1 * 100f / LevelData.star3 ) ) * 100f ) /100f );
+        ProgressBarScript.Instance.UpdateDisplay( (float)score * 100f / ( (float)5000 / ( ( 5000 * 100f / 10000 ) ) * 100f ) / 100f );
+
 
     // update the number of stars the player has received
+    /*
     bool gotAStar = score >= LevelData.star1;
         if ( score >= LevelData.star1)
     {
@@ -335,6 +338,24 @@ void Update ()
         starsObject[1].SetActive( true );
     }
     if( score >= LevelData.star3)
+    {
+        stars = 3;
+        starsObject[2].SetActive( true );
+    }
+    */
+
+    bool gotAStar = score >= 5000;
+        if ( score >= 5000)
+    {
+        stars = 1;
+        starsObject[0].SetActive( true );
+    }
+    if( score >= 7500)
+    {
+        stars = 2;
+        starsObject[1].SetActive( true );
+    }
+    if( score >= 10000)
     {
         stars = 3;
         starsObject[2].SetActive( true );
@@ -380,6 +401,13 @@ void Update ()
             score = 0;
             _ComboCount = 0;
             mainscript.score = 0;
+        }
+
+        if (GamePlay.Instance.GameStatus == GameState.Win) {
+            stars = 3;
+            starsObject[0].SetActive( true );
+            starsObject[1].SetActive( true );
+            starsObject[2].SetActive( true );
         }
 
     }
