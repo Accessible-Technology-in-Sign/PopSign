@@ -9,7 +9,7 @@ using InitScriptName;
 public class mainscript : MonoBehaviour {
 public int currentLevel;
 public static mainscript Instance;
-public GameObject ball;
+GameObject ball;
 GameObject PauseDialogLD;
 GameObject OverDialogLD;
 GameObject PauseDialogHD;
@@ -321,13 +321,13 @@ void Update ()
         //    GamePlay.Instance.GameStatus = GameState.GameOver;
 
         // ProgressBarScript.Instance.UpdateDisplay( (float)score * 100f / ( (float)LevelData.star1 / ( ( LevelData.star1 * 100f / LevelData.star3 ) ) * 100f ) /100f );
-        ProgressBarScript.Instance.UpdateDisplay( (float)score * 100f / ( (float)5000 / ( ( 5000 * 100f / 10000 ) ) * 100f ) / 100f );
+        ProgressBarScript.Instance.UpdateDisplay( (float)score * 100f / ( (float)1000 / ( ( 1000 * 100f / 2000 ) ) * 100f ) / 100f );
 
 
     // update the number of stars the player has received
     /*
     bool gotAStar = score >= LevelData.star1;
-        if ( score >= LevelData.star1)
+    if ( score >= LevelData.star1)
     {
         stars = 1;
         starsObject[0].SetActive( true );
@@ -343,19 +343,19 @@ void Update ()
         starsObject[2].SetActive( true );
     }
     */
-
-    bool gotAStar = score >= 5000;
-        if ( score >= 5000)
+    
+    bool gotAStar = score >= 1000;
+        if ( score >= 500)
     {
         stars = 1;
         starsObject[0].SetActive( true );
     }
-    if( score >= 7500)
+    if( score >= 1500)
     {
         stars = 2;
         starsObject[1].SetActive( true );
     }
-    if( score >= 10000)
+    if( score >= 2000)
     {
         stars = 3;
         starsObject[2].SetActive( true );
@@ -408,6 +408,8 @@ void Update ()
             starsObject[0].SetActive( true );
             starsObject[1].SetActive( true );
             starsObject[2].SetActive( true );
+            score = 0;
+            mainscript.score = 0;
         }
 
     }
