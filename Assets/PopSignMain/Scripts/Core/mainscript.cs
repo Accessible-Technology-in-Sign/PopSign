@@ -154,7 +154,19 @@ void Awake()
     if( InitScript.Instance == null )
         gameObject.AddComponent<InitScript>();
     currentLevel = PlayerPrefs.GetInt( "OpenLevel", 1 );
-    stage = 1;
+        if (currentLevel == 1)
+        {
+            GameObject.Find("Canvas").transform.Find("Tutorial1").gameObject.SetActive(true);
+        }
+        if (currentLevel == 2)
+        {
+            GameObject.Find("Canvas").transform.Find("Tutorial2").gameObject.SetActive(true);
+        }
+        if (currentLevel == 3)
+        {
+            GameObject.Find("Canvas").transform.Find("Tutorial3").gameObject.SetActive(true);
+        }
+        stage = 1;
     mainscript.StopControl = false;
     animTable.Clear();
     creatorBall = GameObject.Find("Creator").GetComponent<creatorBall>();

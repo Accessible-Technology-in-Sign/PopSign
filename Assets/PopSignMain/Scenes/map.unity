@@ -770,6 +770,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayOnEnable: 1
+  PRACTICE_LEVEL_INTERVAL: 5
 --- !u!1 &629368646
 GameObject:
   m_ObjectHideFlags: 0
@@ -826,6 +827,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayOnEnable: 1
+  PRACTICE_LEVEL_INTERVAL: 5
 --- !u!111 &629368649
 Animation:
   m_ObjectHideFlags: 0
@@ -939,6 +941,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayOnEnable: 1
+  PRACTICE_LEVEL_INTERVAL: 5
 --- !u!111 &683644417
 Animation:
   m_ObjectHideFlags: 0
@@ -1936,6 +1939,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayOnEnable: 0
+  PRACTICE_LEVEL_INTERVAL: 5
 --- !u!114 &1117028923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2385,6 +2389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayOnEnable: 0
+  PRACTICE_LEVEL_INTERVAL: 5
 --- !u!95 &1350991262
 Animator:
   serializedVersion: 3
@@ -2871,6 +2876,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayOnEnable: 1
+  PRACTICE_LEVEL_INTERVAL: 5
 --- !u!1 &1557464956
 GameObject:
   m_ObjectHideFlags: 0
@@ -3222,12 +3228,12 @@ PrefabInstance:
     - target: {fileID: 1626109992064982075, guid: bb97b9a36adebd247b8f6293c5ea0cb2,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 1626109992064982075, guid: bb97b9a36adebd247b8f6293c5ea0cb2,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -550
+      value: -505
       objectReference: {fileID: 0}
     - target: {fileID: 1626109992064982075, guid: bb97b9a36adebd247b8f6293c5ea0cb2,
         type: 3}

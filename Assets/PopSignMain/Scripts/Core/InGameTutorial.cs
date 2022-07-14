@@ -7,7 +7,6 @@ public class InGameTutorial : MonoBehaviour
 {
     public GameObject overlay1;
     public GameObject overlay2;
-    public GameObject overlay3;
     int currentPage;
 
   	void Start ()
@@ -15,8 +14,8 @@ public class InGameTutorial : MonoBehaviour
         if(PlayerPrefs.GetInt("TutorialPlayed") == 0)
         {
           currentPage = 1;
+            overlay1.SetActive(true);
           overlay2.SetActive(false);
-          overlay3.SetActive(false);
         }
         else
         {
@@ -24,47 +23,29 @@ public class InGameTutorial : MonoBehaviour
         }
   	}
 
-    public void Next()
+    public void StartTutorial()
     {
-      switch(currentPage)
-      {
-        case 1:
-          overlay1.SetActive(false);
-          overlay2.SetActive(true);
-          currentPage += 1;
-          break;
-        case 2:
-          overlay2.SetActive(false);
-          overlay3.SetActive(true);
-          currentPage += 1;
-          break;
-        case 3:
-          gameObject.SetActive(false);
-          break;
-        default:
-          break;
-      }
+        overlay1.SetActive(false);
+        overlay2.SetActive(true);
+        currentPage = 2;
     }
 
-    public void Back()
+    void Update()
     {
-      switch(currentPage)
-      {
-        case 1:
-          SceneManager.LoadScene("map");
-          break;
-        case 2:
-          overlay2.SetActive(false);
-          overlay1.SetActive(true);
-          currentPage -= 1;
-          break;
-        case 3:
-          overlay3.SetActive(false);
-          overlay2.SetActive(true);
-          currentPage -= 1;
-          break;
-        default:
-          break;
-      }
+        if (Input.touchCount > 0)
+        {
+            if (currentPage == 2)
+            {
+                if (Input.GetTouch(0).phase == TouchPhase.Began)
+                {
+                    gameObject.SetActive(false);
+                }
+            }
+        }
+    }
+
+    public void Skip()
+    {
+        gameObject.SetActive(false);
     }
 }

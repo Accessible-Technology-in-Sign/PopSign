@@ -44,7 +44,7 @@ public class GamePlay : MonoBehaviour {
                 {
                     StartCoroutine( LoseAction() );
                 }
-                else if( value == GameState.Tutorial && gameStatus != GameState.Playing )
+                else if( value == GameState.Tutorial )
                 {
                     value = GameState.Playing;
                     gameStatus = value;
