@@ -1,0 +1,22 @@
+{
+	"bluefileName":"belt",
+	"blueframeNumber":43,
+	"bluefolderName":"MacarthurBates/AllWords/Clothing/belt",
+	"blueImageName":"WordIcons/belt",
+	"greenfileName":"skirt",
+	"greenframeNumber":56,
+	"greenfolderName":"MacarthurBates/AllWords/Clothing/skirt",
+	"greenImageName":"WordIcons/skirt",
+	"redfileName":"gloves",
+	"redframeNumber":68,
+	"redfolderName":"MacarthurBates/AllWords/Clothing/gloves",
+	"redImageName":"WordIcons/gloves",
+	"violetfileName":"coat",
+	"violetframeNumber":79,
+	"violetfolderName":"MacarthurBates/AllWords/Clothing/coat",
+	"violetImageName":"WordIcons/coat",
+	"yellowfileName":"buttons",
+	"yellowframeNumber":98,
+	"yellowfolderName":"MacarthurBates/AllWords/Clothing/buttons",
+	"yellowImageName":"WordIcons/buttons"
+}

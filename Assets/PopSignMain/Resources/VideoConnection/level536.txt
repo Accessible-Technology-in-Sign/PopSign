@@ -1,0 +1,22 @@
+{
+	"bluefileName":"dime",
+	"blueframeNumber":49,
+	"bluefolderName":"MacarthurBates/AllWords/SmallObjects/dime",
+	"blueImageName":"WordIcons/dime",
+	"greenfileName":"toothbrush",
+	"greenframeNumber":56,
+	"greenfolderName":"MacarthurBates/AllWords/SmallObjects/toothbrush",
+	"greenImageName":"WordIcons/toothbrush",
+	"redfileName":"penny,cent",
+	"redframeNumber":59,
+	"redfolderName":"MacarthurBates/AllWords/SmallObjects/penny,cent",
+	"redImageName":"WordIcons/penny,cent",
+	"violetfileName":"basket,bag",
+	"violetframeNumber":187,
+	"violetfolderName":"MacarthurBates/AllWords/SmallObjects/basket,bag",
+	"violetImageName":"WordIcons/basket,bag",
+	"yellowfileName":"dollar",
+	"yellowframeNumber":59,
+	"yellowfolderName":"MacarthurBates/AllWords/SmallObjects/dollar",
+	"yellowImageName":"WordIcons/dollar"
+}

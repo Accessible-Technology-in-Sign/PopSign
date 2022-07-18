@@ -1,0 +1,22 @@
+{
+	"bluefileName":"catch-ball",
+	"blueframeNumber":60,
+	"bluefolderName":"MacarthurBates/AllWords/ActionWords/catch-ball",
+	"blueImageName":"WordIcons/catch-ball",
+	"greenfileName":"spread",
+	"greenframeNumber":56,
+	"greenfolderName":"MacarthurBates/AllWords/ActionWords/spread",
+	"greenImageName":"WordIcons/spread",
+	"redfileName":"chase",
+	"redframeNumber":184,
+	"redfolderName":"MacarthurBates/AllWords/ActionWords/chase",
+	"redImageName":"WordIcons/chase",
+	"violetfileName":"like",
+	"violetframeNumber":69,
+	"violetfolderName":"MacarthurBates/AllWords/ActionWords/like",
+	"violetImageName":"WordIcons/like",
+	"yellowfileName":"put",
+	"yellowframeNumber":63,
+	"yellowfolderName":"MacarthurBates/AllWords/ActionWords/put",
+	"yellowImageName":"WordIcons/put"
+}

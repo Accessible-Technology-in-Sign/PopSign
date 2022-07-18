@@ -1,0 +1,22 @@
+{
+	"bluefileName":"after2",
+	"blueframeNumber":85,
+	"bluefolderName":"MacarthurBates/AllWords/Time/after2",
+	"blueImageName":"WordIcons/after2",
+	"greenfileName":"day",
+	"greenframeNumber":88,
+	"greenfolderName":"MacarthurBates/AllWords/Time/day",
+	"greenImageName":"WordIcons/day",
+	"redfileName":"today",
+	"redframeNumber":72,
+	"redfolderName":"MacarthurBates/AllWords/Time/today",
+	"redImageName":"WordIcons/today",
+	"violetfileName":"before",
+	"violetframeNumber":65,
+	"violetfolderName":"MacarthurBates/AllWords/Time/before",
+	"violetImageName":"WordIcons/before",
+	"yellowfileName":"after",
+	"yellowframeNumber":74,
+	"yellowfolderName":"MacarthurBates/AllWords/Time/after",
+	"yellowImageName":"WordIcons/after"
+}

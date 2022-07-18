@@ -1,0 +1,22 @@
+{
+	"bluefileName":"fast",
+	"blueframeNumber":42,
+	"bluefolderName":"MacarthurBates/AllWords/DescriptiveWords/fast",
+	"blueImageName":"WordIcons/fast",
+	"greenfileName":"white",
+	"greenframeNumber":44,
+	"greenfolderName":"MacarthurBates/AllWords/DescriptiveWords/white",
+	"greenImageName":"WordIcons/white",
+	"redfileName":"cute",
+	"redframeNumber":46,
+	"redfolderName":"MacarthurBates/AllWords/DescriptiveWords/cute",
+	"redImageName":"WordIcons/cute",
+	"violetfileName":"bad",
+	"violetframeNumber":52,
+	"violetfolderName":"MacarthurBates/AllWords/DescriptiveWords/bad",
+	"violetImageName":"WordIcons/bad",
+	"yellowfileName":"allgone,gone",
+	"yellowframeNumber":81,
+	"yellowfolderName":"MacarthurBates/AllWords/DescriptiveWords/allgone,gone",
+	"yellowImageName":"WordIcons/allgone,gone"
+}

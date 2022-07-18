@@ -1,0 +1,22 @@
+{
+	"bluefileName":"sandwich",
+	"blueframeNumber":88,
+	"bluefolderName":"MacarthurBates/AllWords/FoodAndDrink/sandwich",
+	"blueImageName":"WordIcons/sandwich",
+	"greenfileName":"egg",
+	"greenframeNumber":45,
+	"greenfolderName":"MacarthurBates/AllWords/FoodAndDrink/egg",
+	"greenImageName":"WordIcons/egg",
+	"redfileName":"bean,pea",
+	"redframeNumber":102,
+	"redfolderName":"MacarthurBates/AllWords/FoodAndDrink/bean,pea",
+	"redImageName":"WordIcons/bean,pea",
+	"violetfileName":"jello",
+	"violetframeNumber":66,
+	"violetfolderName":"MacarthurBates/AllWords/FoodAndDrink/jello",
+	"violetImageName":"WordIcons/jello",
+	"yellowfileName":"pizza",
+	"yellowframeNumber":73,
+	"yellowfolderName":"MacarthurBates/AllWords/FoodAndDrink/pizza",
+	"yellowImageName":"WordIcons/pizza"
+}

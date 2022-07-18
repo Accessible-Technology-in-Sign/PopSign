@@ -1,0 +1,22 @@
+{
+	"bluefileName":"want",
+	"blueframeNumber":65,
+	"bluefolderName":"MacarthurBates/AllWords/HelpingVerbs/want",
+	"blueImageName":"WordIcons/want",
+	"greenfileName":"need,must,should,have to",
+	"greenframeNumber":86,
+	"greenfolderName":"MacarthurBates/AllWords/HelpingVerbs/need,must,should,have to",
+	"greenImageName":"WordIcons/need,must,should,have to",
+	"redfileName":"don_t",
+	"redframeNumber":57,
+	"redfolderName":"MacarthurBates/AllWords/HelpingVerbs/don_t",
+	"redImageName":"WordIcons/don_t",
+	"violetfileName":"will",
+	"violetframeNumber":55,
+	"violetfolderName":"MacarthurBates/AllWords/HelpingVerbs/will",
+	"violetImageName":"WordIcons/will",
+	"yellowfileName":"do",
+	"yellowframeNumber":74,
+	"yellowfolderName":"MacarthurBates/AllWords/HelpingVerbs/do",
+	"yellowImageName":"WordIcons/do"
+}

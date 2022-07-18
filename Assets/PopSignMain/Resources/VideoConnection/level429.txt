@@ -1,0 +1,22 @@
+{
+	"bluefileName":"think",
+	"blueframeNumber":50,
+	"bluefolderName":"MacarthurBates/AllWords/ActionWords/think",
+	"blueImageName":"WordIcons/think",
+	"greenfileName":"finish",
+	"greenframeNumber":46,
+	"greenfolderName":"MacarthurBates/AllWords/ActionWords/finish",
+	"greenImageName":"WordIcons/finish",
+	"redfileName":"fly-airplane",
+	"redframeNumber":56,
+	"redfolderName":"MacarthurBates/AllWords/ActionWords/fly-airplane",
+	"redImageName":"WordIcons/fly-airplane",
+	"violetfileName":"like,same",
+	"violetframeNumber":53,
+	"violetfolderName":"MacarthurBates/AllWords/ActionWords/like,same",
+	"violetImageName":"WordIcons/like,same",
+	"yellowfileName":"pretend,fake",
+	"yellowframeNumber":54,
+	"yellowfolderName":"MacarthurBates/AllWords/ActionWords/pretend,fake",
+	"yellowImageName":"WordIcons/pretend,fake"
+}

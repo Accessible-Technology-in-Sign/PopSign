@@ -1,0 +1,22 @@
+{
+	"bluefileName":"aunt",
+	"blueframeNumber":60,
+	"bluefolderName":"MacarthurBates/AllWords/People/aunt",
+	"blueImageName":"WordIcons/aunt",
+	"greenfileName":"grandmother",
+	"greenframeNumber":56,
+	"greenfolderName":"MacarthurBates/AllWords/People/grandmother",
+	"greenImageName":"WordIcons/grandmother",
+	"redfileName":"mailman",
+	"redframeNumber":76,
+	"redfolderName":"MacarthurBates/AllWords/People/mailman",
+	"redImageName":"WordIcons/mailman",
+	"violetfileName":"uncle",
+	"violetframeNumber":64,
+	"violetfolderName":"MacarthurBates/AllWords/People/uncle",
+	"violetImageName":"WordIcons/uncle",
+	"yellowfileName":"try",
+	"yellowframeNumber":102,
+	"yellowfolderName":"MacarthurBates/AllWords/HelpingVerbs/try",
+	"yellowImageName":"WordIcons/try"
+}

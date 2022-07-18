@@ -1,0 +1,22 @@
+{
+	"bluefileName":"closet",
+	"blueframeNumber":65,
+	"bluefolderName":"MacarthurBates/AllWords/Household/closet",
+	"blueImageName":"WordIcons/closet",
+	"greenfileName":"rocking chair",
+	"greenframeNumber":110,
+	"greenfolderName":"MacarthurBates/AllWords/Household/rocking chair",
+	"greenImageName":"WordIcons/rocking chair",
+	"redfileName":"plant",
+	"redframeNumber":46,
+	"redfolderName":"MacarthurBates/AllWords/Household/plant",
+	"redImageName":"WordIcons/plant",
+	"violetfileName":"living room",
+	"violetframeNumber":82,
+	"violetfolderName":"MacarthurBates/AllWords/Household/living room",
+	"violetImageName":"WordIcons/living room",
+	"yellowfileName":"basement",
+	"yellowframeNumber":78,
+	"yellowfolderName":"MacarthurBates/AllWords/Household/basement",
+	"yellowImageName":"WordIcons/basement"
+}

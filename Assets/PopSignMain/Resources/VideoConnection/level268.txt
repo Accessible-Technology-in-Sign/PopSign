@@ -1,0 +1,22 @@
+{
+	"bluefileName":"more",
+	"blueframeNumber":61,
+	"bluefolderName":"MacarthurBates/AllWords/QuantifiersAndArticles/more",
+	"blueImageName":"WordIcons/more",
+	"greenfileName":"another,other",
+	"greenframeNumber":77,
+	"greenfolderName":"MacarthurBates/AllWords/QuantifiersAndArticles/another,other",
+	"greenImageName":"WordIcons/another,other",
+	"redfileName":"some",
+	"redframeNumber":58,
+	"redfolderName":"MacarthurBates/AllWords/QuantifiersAndArticles/some",
+	"redImageName":"WordIcons/some",
+	"violetfileName":"not",
+	"violetframeNumber":61,
+	"violetfolderName":"MacarthurBates/AllWords/QuantifiersAndArticles/not",
+	"violetImageName":"WordIcons/not",
+	"yellowfileName":"each,every",
+	"yellowframeNumber":71,
+	"yellowfolderName":"MacarthurBates/AllWords/QuantifiersAndArticles/each,every",
+	"yellowImageName":"WordIcons/each,every"
+}

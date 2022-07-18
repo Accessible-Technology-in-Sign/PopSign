@@ -1,0 +1,22 @@
+{
+	"bluefileName":"bathtub",
+	"blueframeNumber":73,
+	"bluefolderName":"MacarthurBates/AllWords/Household/bathtub",
+	"blueImageName":"WordIcons/bathtub",
+	"greenfileName":"tv",
+	"greenframeNumber":50,
+	"greenfolderName":"MacarthurBates/AllWords/Household/tv",
+	"greenImageName":"WordIcons/tv",
+	"redfileName":"bedroom",
+	"redframeNumber":75,
+	"redfolderName":"MacarthurBates/AllWords/Household/bedroom",
+	"redImageName":"WordIcons/bedroom",
+	"violetfileName":"write",
+	"violetframeNumber":84,
+	"violetfolderName":"MacarthurBates/AllWords/ActionWords/write",
+	"violetImageName":"WordIcons/write",
+	"yellowfileName":"pick,choose",
+	"yellowframeNumber":59,
+	"yellowfolderName":"MacarthurBates/AllWords/ActionWords/pick,choose",
+	"yellowImageName":"WordIcons/pick,choose"
+}

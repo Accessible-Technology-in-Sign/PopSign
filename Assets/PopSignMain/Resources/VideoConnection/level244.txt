@@ -1,0 +1,22 @@
+{
+	"bluefileName":"farm",
+	"blueframeNumber":54,
+	"bluefolderName":"MacarthurBates/AllWords/PlacesToGo/farm",
+	"blueImageName":"WordIcons/farm",
+	"greenfileName":"yard",
+	"greenframeNumber":96,
+	"greenfolderName":"MacarthurBates/AllWords/PlacesToGo/yard",
+	"greenImageName":"WordIcons/yard",
+	"redfileName":"school",
+	"redframeNumber":55,
+	"redfolderName":"MacarthurBates/AllWords/PlacesToGo/school",
+	"redImageName":"WordIcons/school",
+	"violetfileName":"movie",
+	"violetframeNumber":56,
+	"violetfolderName":"MacarthurBates/AllWords/PlacesToGo/movie",
+	"violetImageName":"WordIcons/movie",
+	"yellowfileName":"now",
+	"yellowframeNumber":57,
+	"yellowfolderName":"MacarthurBates/AllWords/Time/now",
+	"yellowImageName":"WordIcons/now"
+}

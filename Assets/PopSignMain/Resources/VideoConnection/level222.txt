@@ -1,0 +1,22 @@
+{
+	"bluefileName":"my,mine",
+	"blueframeNumber":60,
+	"bluefolderName":"MacarthurBates/AllWords/PlacesToGo/my,mine",
+	"blueImageName":"WordIcons/my,mine",
+	"greenfileName":"they,them,those",
+	"greenframeNumber":64,
+	"greenfolderName":"MacarthurBates/AllWords/PlacesToGo/they,them,those",
+	"greenImageName":"WordIcons/they,them,those",
+	"redfileName":"picnic",
+	"redframeNumber":57,
+	"redfolderName":"MacarthurBates/AllWords/PlacesToGo/picnic",
+	"redImageName":"WordIcons/picnic",
+	"violetfileName":"this",
+	"violetframeNumber":48,
+	"violetfolderName":"MacarthurBates/AllWords/PlacesToGo/this",
+	"violetImageName":"WordIcons/this",
+	"yellowfileName":"your,their",
+	"yellowframeNumber":84,
+	"yellowfolderName":"MacarthurBates/AllWords/PlacesToGo/your,their",
+	"yellowImageName":"WordIcons/your,their"
+}

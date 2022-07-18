@@ -1,0 +1,22 @@
+{
+	"bluefileName":"clock",
+	"blueframeNumber":65,
+	"bluefolderName":"MacarthurBates/AllWords/SmallObjects/clock",
+	"blueImageName":"WordIcons/clock",
+	"greenfileName":"napkin",
+	"greenframeNumber":75,
+	"greenfolderName":"MacarthurBates/AllWords/SmallObjects/napkin",
+	"greenImageName":"WordIcons/napkin",
+	"redfileName":"phone",
+	"redframeNumber":51,
+	"redfolderName":"MacarthurBates/AllWords/SmallObjects/phone",
+	"redImageName":"WordIcons/phone",
+	"violetfileName":"money",
+	"violetframeNumber":79,
+	"violetfolderName":"MacarthurBates/AllWords/SmallObjects/money",
+	"violetImageName":"WordIcons/money",
+	"yellowfileName":"nickel",
+	"yellowframeNumber":49,
+	"yellowfolderName":"MacarthurBates/AllWords/SmallObjects/nickel",
+	"yellowImageName":"WordIcons/nickel"
+}

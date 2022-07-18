@@ -1,0 +1,22 @@
+{
+	"bluefileName":"mitten",
+	"blueframeNumber":62,
+	"bluefolderName":"MacarthurBates/AllWords/Clothing/mitten",
+	"blueImageName":"WordIcons/mitten",
+	"greenfileName":"clothes",
+	"greenframeNumber":75,
+	"greenfolderName":"MacarthurBates/AllWords/Clothing/clothes",
+	"greenImageName":"WordIcons/clothes",
+	"redfileName":"hat",
+	"redframeNumber":90,
+	"redfolderName":"MacarthurBates/AllWords/Clothing/hat",
+	"redImageName":"WordIcons/hat",
+	"violetfileName":"pajama",
+	"violetframeNumber":68,
+	"violetfolderName":"MacarthurBates/AllWords/Clothing/pajama",
+	"violetImageName":"WordIcons/pajama",
+	"yellowfileName":"slipper,sandal",
+	"yellowframeNumber":70,
+	"yellowfolderName":"MacarthurBates/AllWords/Clothing/slipper,sandal",
+	"yellowImageName":"WordIcons/slipper,sandal"
+}

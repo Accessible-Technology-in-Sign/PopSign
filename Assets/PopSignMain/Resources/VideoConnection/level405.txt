@@ -1,0 +1,22 @@
+{
+	"bluefileName":"kiss",
+	"blueframeNumber":51,
+	"bluefolderName":"MacarthurBates/AllWords/ActionWords/kiss",
+	"blueImageName":"WordIcons/kiss",
+	"greenfileName":"hit",
+	"greenframeNumber":41,
+	"greenfolderName":"MacarthurBates/AllWords/ActionWords/hit",
+	"greenImageName":"WordIcons/hit",
+	"redfileName":"go",
+	"redframeNumber":66,
+	"redfolderName":"MacarthurBates/AllWords/ActionWords/go",
+	"redImageName":"WordIcons/go",
+	"violetfileName":"wipe,clean",
+	"violetframeNumber":82,
+	"violetfolderName":"MacarthurBates/AllWords/ActionWords/wipe,clean",
+	"violetImageName":"WordIcons/wipe,clean",
+	"yellowfileName":"sit",
+	"yellowframeNumber":71,
+	"yellowfolderName":"MacarthurBates/AllWords/ActionWords/sit",
+	"yellowImageName":"WordIcons/sit"
+}

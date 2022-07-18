@@ -1,0 +1,22 @@
+{
+	"bluefileName":"bread",
+	"blueframeNumber":69,
+	"bluefolderName":"MacarthurBates/AllWords/FoodAndDrink/bread",
+	"blueImageName":"WordIcons/bread",
+	"greenfileName":"candy",
+	"greenframeNumber":65,
+	"greenfolderName":"MacarthurBates/AllWords/FoodAndDrink/candy",
+	"greenImageName":"WordIcons/candy",
+	"redfileName":"popsicle",
+	"redframeNumber":66,
+	"redfolderName":"MacarthurBates/AllWords/FoodAndDrink/popsicle",
+	"redImageName":"WordIcons/popsicle",
+	"violetfileName":"biscuit",
+	"violetframeNumber":81,
+	"violetfolderName":"MacarthurBates/AllWords/FoodAndDrink/biscuit",
+	"violetImageName":"WordIcons/biscuit",
+	"yellowfileName":"sun",
+	"yellowframeNumber":68,
+	"yellowfolderName":"MacarthurBates/AllWords/OutsideThings/sun",
+	"yellowImageName":"WordIcons/sun"
+}

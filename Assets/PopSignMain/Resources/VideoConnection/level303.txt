@@ -1,0 +1,22 @@
+{
+	"bluefileName":"dinosaur",
+	"blueframeNumber":65,
+	"bluefolderName":"MacarthurBates/AllWords/Animals/dinosaur",
+	"blueImageName":"WordIcons/dinosaur",
+	"greenfileName":"owl",
+	"greenframeNumber":60,
+	"greenfolderName":"MacarthurBates/AllWords/Animals/owl",
+	"greenImageName":"WordIcons/owl",
+	"redfileName":"hen",
+	"redframeNumber":61,
+	"redfolderName":"MacarthurBates/AllWords/Animals/hen",
+	"redImageName":"WordIcons/hen",
+	"violetfileName":"bee",
+	"violetframeNumber":65,
+	"violetfolderName":"MacarthurBates/AllWords/Animals/bee",
+	"violetImageName":"WordIcons/bee",
+	"yellowfileName":"donkey",
+	"yellowframeNumber":65,
+	"yellowfolderName":"MacarthurBates/AllWords/Animals/donkey",
+	"yellowImageName":"WordIcons/donkey"
+}

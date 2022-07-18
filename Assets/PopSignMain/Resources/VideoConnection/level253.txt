@@ -1,0 +1,22 @@
+{
+	"bluefileName":"night",
+	"blueframeNumber":66,
+	"bluefolderName":"MacarthurBates/AllWords/Time/night",
+	"blueImageName":"WordIcons/night",
+	"greenfileName":"tomorrow",
+	"greenframeNumber":39,
+	"greenfolderName":"MacarthurBates/AllWords/Time/tomorrow",
+	"greenImageName":"WordIcons/tomorrow",
+	"redfileName":"morning",
+	"redframeNumber":76,
+	"redfolderName":"MacarthurBates/AllWords/Time/morning",
+	"redImageName":"WordIcons/morning",
+	"violetfileName":"tonight",
+	"violetframeNumber":86,
+	"violetfolderName":"MacarthurBates/AllWords/Time/tonight",
+	"violetImageName":"WordIcons/tonight",
+	"yellowfileName":"yesterday",
+	"yellowframeNumber":65,
+	"yellowfolderName":"MacarthurBates/AllWords/Time/yesterday",
+	"yellowImageName":"WordIcons/yesterday"
+}

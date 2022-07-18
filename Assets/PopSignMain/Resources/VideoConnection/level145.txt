@@ -1,0 +1,22 @@
+{
+	"bluefileName":"sandbox",
+	"blueframeNumber":61,
+	"bluefolderName":"MacarthurBates/AllWords/OutsideThings/sandbox",
+	"blueImageName":"WordIcons/sandbox",
+	"greenfileName":"roof",
+	"greenframeNumber":47,
+	"greenfolderName":"MacarthurBates/AllWords/OutsideThings/roof",
+	"greenImageName":"WordIcons/roof",
+	"redfileName":"moon",
+	"redframeNumber":57,
+	"redfolderName":"MacarthurBates/AllWords/OutsideThings/moon",
+	"redImageName":"WordIcons/moon",
+	"violetfileName":"grass",
+	"violetframeNumber":65,
+	"violetfolderName":"MacarthurBates/AllWords/OutsideThings/grass",
+	"violetImageName":"WordIcons/grass",
+	"yellowfileName":"garden",
+	"yellowframeNumber":93,
+	"yellowfolderName":"MacarthurBates/AllWords/OutsideThings/garden",
+	"yellowImageName":"WordIcons/garden"
+}

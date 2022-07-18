@@ -119,12 +119,14 @@ public class GamePlay : MonoBehaviour {
           PlayerPrefs.SetInt( string.Format( "Level.{0:000}.StarsCount", mainscript.Instance.currentLevel ), mainscript.Instance.stars );
           PlayerPrefs.Save();
       }
+      /*
       if( PlayerPrefs.GetInt( string.Format( "Level.{0:000}.Score", mainscript.Instance.currentLevel ), 0) < mainscript.Score )
       {
           PlayerPrefs.SetInt( string.Format( "Level.{0:000}.Score", mainscript.Instance.currentLevel ), mainscript.Score );
           // PlayerPrefs.SetInt( "Score" + mainscript.Instance.currentLevel, mainscript.Score );
           PlayerPrefs.Save();
       }
+      */
       GameObject.Find( "Canvas" ).transform.Find( "LevelCleared" ).gameObject.SetActive( false );
       GameObject.Find( "Canvas" ).transform.Find( "MenuComplete" ).gameObject.SetActive( true );
       if(mainscript.Instance.stars < 3)

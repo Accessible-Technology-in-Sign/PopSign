@@ -1,0 +1,22 @@
+{
+	"bluefileName":"yourself",
+	"blueframeNumber":48,
+	"bluefolderName":"MacarthurBates/AllWords/PlacesToGo/yourself",
+	"blueImageName":"WordIcons/yourself",
+	"greenfileName":"house",
+	"greenframeNumber":55,
+	"greenfolderName":"MacarthurBates/AllWords/PlacesToGo/house",
+	"greenImageName":"WordIcons/house",
+	"redfileName":"our",
+	"redframeNumber":52,
+	"redfolderName":"MacarthurBates/AllWords/PlacesToGo/our",
+	"redImageName":"WordIcons/our",
+	"violetfileName":"fair,carnival",
+	"violetframeNumber":70,
+	"violetfolderName":"MacarthurBates/AllWords/PlacesToGo/fair,carnival",
+	"violetImageName":"WordIcons/fair,carnival",
+	"yellowfileName":"home",
+	"yellowframeNumber":47,
+	"yellowfolderName":"MacarthurBates/AllWords/PlacesToGo/home",
+	"yellowImageName":"WordIcons/home"
+}

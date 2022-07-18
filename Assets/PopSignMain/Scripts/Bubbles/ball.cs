@@ -301,9 +301,10 @@ public class ball : MonoBehaviour
         {   
             whiff = false;
             mainscript.Instance.ComboCount++;
-            score += ballsToClear.Count * 50;
+            // score += ballsToClear.Count * 50;
             destroy(ballsToClear, 0.00001f);
-            mainscript.Score = score;
+            // mainscript.Score = score;
+            mainscript.Score += ballsToClear.Count * 50;
             mainscript.Instance.CheckFreeStar();
         } else {
             whiff = true;

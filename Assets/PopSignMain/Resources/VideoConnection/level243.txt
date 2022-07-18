@@ -1,0 +1,22 @@
+{
+	"bluefileName":"woods,forest",
+	"blueframeNumber":72,
+	"bluefolderName":"MacarthurBates/AllWords/PlacesToGo/woods,forest",
+	"blueImageName":"WordIcons/woods,forest",
+	"greenfileName":"we,us",
+	"greenframeNumber":51,
+	"greenfolderName":"MacarthurBates/AllWords/PlacesToGo/we,us",
+	"greenImageName":"WordIcons/we,us",
+	"redfileName":"work",
+	"redframeNumber":51,
+	"redfolderName":"MacarthurBates/AllWords/ActionWords/work",
+	"redImageName":"WordIcons/work",
+	"violetfileName":"outside",
+	"violetframeNumber":48,
+	"violetfolderName":"MacarthurBates/AllWords/PlacesToGo/outside",
+	"violetImageName":"WordIcons/outside",
+	"yellowfileName":"store",
+	"yellowframeNumber":66,
+	"yellowfolderName":"MacarthurBates/AllWords/PlacesToGo/store",
+	"yellowImageName":"WordIcons/store"
+}
