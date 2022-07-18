@@ -36,6 +36,7 @@ public Vector2[][] meshArray;
 int offset;
 public GameObject flyingBall;
 public GameObject newBall;
+public BallColor oldBallColor;
 public static int stage = 1;
 const int STAGE_1 = 0;
 const int STAGE_2 = 300;
@@ -703,6 +704,8 @@ public void destroy( ArrayList b)
 // that a new ball should be created to replace it
 public void GetNewBall()
 {
+
+    oldBallColor = boxCatapult.GetComponent<Grid>().Busy.GetComponent<ColorBallScript>().mainColor;
     SoundBase.Instance.GetComponent<AudioSource>().PlayOneShot( SoundBase.Instance.swish[0] );
     destroy(boxCatapult.GetComponent<Grid>().Busy);
     boxCatapult.GetComponent<Grid>().Busy = null;
