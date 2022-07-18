@@ -12,7 +12,7 @@ public class EnableRandomLevels : MonoBehaviour
 	private int randomizeLevels;
 
 	//Will need to be changed when number of levels increases
-	private int numLevels = 24;
+	private int numLevels = 548;
 
 	public void Start()
 	{
@@ -56,10 +56,21 @@ public class EnableRandomLevels : MonoBehaviour
 		TextAsset textReader = Resources.Load("words") as TextAsset;
 		JsonData jd = JsonMapper.ToObject(textReader.text);
 
+		// Knuth shuffle algorithmn to randomize words in list
+		for(int i = 0; i < wordList.Length; i++)
+		{
+			string temp = wordList[i];
+			int randomNumber = Random.Range(0, wordList.Length);
+			wordList[i] = wordList[randomNumber];
+			wordList[randomNumber] = temp;
+		}
+
+
 		for(int level = 1; level <= numLevels; level++)
 		{
+			
 			string[] selectedWords = new string[5];
-
+			/*
 			for (int i = 0; i < selectedWords.Length; i++)
 			{
 				int randomNumber = Random.Range(0, wordList.Length);
@@ -75,8 +86,18 @@ public class EnableRandomLevels : MonoBehaviour
 				}
 				selectedWords[i] = wordSelected;
 			}
-
-
+			*/
+			
+			for(int i = 0; i < selectedWords.Length; i++)
+			{
+				int wordIndex = (((level - 1) / 5)*5) + i;
+				if(wordIndex >= wordList.Length)
+				{
+					wordIndex = wordIndex - wordList.Length;
+				}
+				selectedWords[i] = wordList[wordIndex].Trim();
+			}
+			
 			StringBuilder sb = new StringBuilder();
 			JsonWriter writer = new JsonWriter(sb);
 
