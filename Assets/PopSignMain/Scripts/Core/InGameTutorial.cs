@@ -5,8 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class InGameTutorial : MonoBehaviour
 {
-    public GameObject overlay1;
-    public GameObject overlay2;
+    public GameObject practice;
+    public GameObject tap;
+    public GameObject drag;
+    public GameObject bounce;
+    public GameObject answer;
+    public GameObject newSign;
     int currentPage;
 
   	void Start ()
@@ -14,8 +18,12 @@ public class InGameTutorial : MonoBehaviour
         if(PlayerPrefs.GetInt("TutorialPlayed") == 0)
         {
           currentPage = 1;
-            overlay1.SetActive(true);
-          overlay2.SetActive(false);
+            practice.SetActive(true);
+            tap.SetActive(false);
+            drag.SetActive(false);
+            bounce.SetActive(false);
+            answer.SetActive(false);
+            newSign.SetActive(false);
         }
         else
         {
@@ -25,21 +33,55 @@ public class InGameTutorial : MonoBehaviour
 
     public void StartTutorial()
     {
-        overlay1.SetActive(false);
-        overlay2.SetActive(true);
-        currentPage = 2;
+        practice.SetActive(false);
+        tap.SetActive(true);
+        currentPage += 1;
     }
 
     void Update()
     {
         if (Input.touchCount > 0)
         {
-            if (currentPage == 2)
+            switch (currentPage)
             {
-                if (Input.GetTouch(0).phase == TouchPhase.Began)
-                {
-                    gameObject.SetActive(false);
-                }
+                case 2:
+                    if (Input.GetTouch(0).phase == TouchPhase.Ended)
+                    {
+                        tap.SetActive(false);
+                        drag.SetActive(true);
+                        currentPage += 1;
+                    }
+                    break;
+                case 3:
+                    if (Input.GetTouch(0).phase == TouchPhase.Ended)
+                    {
+                        drag.SetActive(false);
+                        bounce.SetActive(true);
+                        currentPage += 1;
+                    }
+                    break;
+                case 4:
+                    if (Input.GetTouch(0).phase == TouchPhase.Ended)
+                    {
+                        bounce.SetActive(false);
+                        answer.SetActive(true);
+                        currentPage += 1;
+                    }
+                    break;
+                case 5:
+                    if (Input.GetTouch(0).phase == TouchPhase.Ended)
+                    {
+                        answer.SetActive(false);
+                        newSign.SetActive(true);
+                        currentPage += 1;
+                    }
+                    break;
+                case 6:
+                    if (Input.GetTouch(0).phase == TouchPhase.Ended)
+                    {
+                        gameObject.SetActive(false);
+                    }
+                    break;
             }
         }
     }
