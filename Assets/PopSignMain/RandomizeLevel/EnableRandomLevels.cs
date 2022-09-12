@@ -70,7 +70,7 @@ public class EnableRandomLevels : MonoBehaviour
 		{
 			
 			string[] selectedWords = new string[5];
-			/*
+			
 			for (int i = 0; i < selectedWords.Length; i++)
 			{
 				int randomNumber = Random.Range(0, wordList.Length);
@@ -86,8 +86,9 @@ public class EnableRandomLevels : MonoBehaviour
 				}
 				selectedWords[i] = wordSelected;
 			}
-			*/
 			
+			
+			/* 
 			for(int i = 0; i < selectedWords.Length; i++)
 			{
 				int wordIndex = (((level - 1) / 5)*5) + i;
@@ -97,7 +98,7 @@ public class EnableRandomLevels : MonoBehaviour
 				}
 				selectedWords[i] = wordList[wordIndex].Trim();
 			}
-			
+			*/
 			StringBuilder sb = new StringBuilder();
 			JsonWriter writer = new JsonWriter(sb);
 
