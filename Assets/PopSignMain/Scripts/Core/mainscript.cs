@@ -116,7 +116,6 @@ public int ComboCount
         if( value > 0 )
         {
             SoundBase.Instance.GetComponent<AudioSource>().PlayOneShot(SoundBase.Instance.combo[Mathf.Clamp(value-1, 0, 5)]);
-            creatorBall.Instance.CreateBug( lastBall, value );
             if( value >= 6 )
             {
                 SoundBase.Instance.GetComponent<AudioSource>().PlayOneShot(SoundBase.Instance.combo[5]);
@@ -126,7 +125,6 @@ public int ComboCount
         }
         else
         {
-            DestroyBugs();
             //    FireEffect.SetActive( false );
             doubleScore = 1;
         }
@@ -182,22 +180,6 @@ IEnumerator ShowArrows()
         }
         yield return new WaitForSeconds( 3 );
         arrows.SetActive( false );
-    }
-}
-
-private void DestroyBugs()
-{
-    Transform spiders = GameObject.Find( "Spiders" ).transform;
-    List<Bug> listFreePlaces = new List<Bug>();
-    for( int i = 0; i < 2; i++ )
-    {
-        listFreePlaces.Clear();
-        foreach( Transform item in spiders )
-        {
-            if( item.childCount > 0 ) listFreePlaces.Add( item.GetChild(0).GetComponent<Bug>() );
-        }
-        if( listFreePlaces.Count > 0)
-            listFreePlaces[Random.Range( 0, listFreePlaces.Count )].MoveOut();
     }
 }
 
@@ -263,13 +245,13 @@ void Update ()
                     //connectNearBallsGlobal();
                     // destringAloneBall = true;
                     //StartCoroutine(clearDisconnectedBalls());
-                    //	droppingDown = true;
+                    //  droppingDown = true;
                 }
 
             }
             */
         }
-        //		createBall();
+        //      createBall();
     }
 
     if( arcadeMode && Time.time > ArcadedropDownTime && GamePlay.Instance.GameStatus == GameState.Playing )
@@ -521,7 +503,7 @@ public IEnumerator clearDisconnectedBalls()
         if(obj!=null) {
             if(obj.layer == BallLayer) {
                 if(obj.GetComponent<ball>().nearBalls.Count>0) {
-                    //		if(droppingDown) yield return new WaitForSeconds(1f);
+                    //      if(droppingDown) yield return new WaitForSeconds(1f);
                     yield return new WaitForEndOfFrame();
                     ArrayList b = new ArrayList();
                     obj.GetComponent<ball>().checkNearestBall(b);
@@ -713,8 +695,8 @@ public void destroy( GameObject obj)
 {
     if(obj.name.IndexOf("ball")==0) obj.layer = 0;
     Camera.main.GetComponent<mainscript>().bounceCounter = 0;
-    //	obj.GetComponent<OTSprite>().collidable = false;
-    //	Destroy(obj);
+    //  obj.GetComponent<OTSprite>().collidable = false;
+    //  Destroy(obj);
     obj.GetComponent<ball>().Destroyed = true;
     obj.GetComponent<ball>().growUp();
     Camera.main.GetComponent<mainscript>().explode(obj.gameObject);

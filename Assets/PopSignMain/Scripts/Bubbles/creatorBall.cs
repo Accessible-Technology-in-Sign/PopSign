@@ -294,34 +294,6 @@ private bool BubbleBelowLine()
 }
 
 
-public void CreateBug( Vector3 pos, int value = 1 )
-{
-    // I have no fricking clue why the Spiders GameObject is necessary
-    // but you definitely can't get rid of it -D
-    Transform spiders = GameObject.Find( "Spiders" ).transform;
-    List<Bug> listFreePlaces = new List<Bug>();
-    foreach( Transform item in spiders )
-    {
-        if( item.childCount > 0 ) listFreePlaces.Add( item.GetChild( 0 ).GetComponent<Bug>() );
-    }
-
-    if( listFreePlaces.Count < 6 )
-        Instantiate( bugPrefab, pos, Quaternion.identity );
-    else
-    {
-        listFreePlaces.Clear();
-        foreach( Transform item in spiders )
-        {
-            if( item.childCount > 0 )
-            {
-                if( item.GetChild( 0 ).GetComponent<Bug>().color == 0 ) listFreePlaces.Add( item.GetChild( 0 ).GetComponent<Bug>() );
-            }
-        }
-        if( listFreePlaces.Count > 0 )
-            listFreePlaces[UnityEngine.Random.Range( 0, listFreePlaces.Count )].ChangeColor( 1 );
-    }
-}
-
 IEnumerator getBallsForMesh()
 {
     int ballLayerMask = 1 << 9;
