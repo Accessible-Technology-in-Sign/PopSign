@@ -189,6 +189,11 @@ void Start()
     score = 0;
     arcadeMode = false;
     GamePlay.Instance.GameStatus = GameState.BlockedGame;
+
+    //Tutorial in level 1:
+    // GameObject tutorial_text = GameObject.Find("arrowtextbox");
+    // Debug.Log("Setting tutorial text on " + tutorial_text.name);
+    // tutorial_text.SetActive(true);
 }
 
 // Update is called once per frame

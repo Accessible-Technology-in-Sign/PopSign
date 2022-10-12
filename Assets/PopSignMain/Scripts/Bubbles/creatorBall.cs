@@ -45,10 +45,11 @@ void Start()
         ob.transform.position -= Vector3.left * -.5f;
         GamePlay.Instance.GameStatus = GameState.PreTutorial;
     }
-    createMesh();
+    createMesh(); 
     LoadMap( LevelData.map );
     Camera.main.GetComponent<mainscript>().connectNearBallsGlobal();
     StartCoroutine( getBallsForMesh() );
+
 
 }
 
