@@ -199,6 +199,7 @@ void Start()
 // Update is called once per frame
 void Update ()
 {
+    
     if(gameOver && !gameOverShown)
     {
         gameOverShown = true;
@@ -526,6 +527,8 @@ public IEnumerator clearDisconnectedBalls()
                         {
                             TargetCounter++;
                         }
+                        //loop through array b, sum their total values (* some modifier if necessary) and add to point total
+                        
                         destroy (b);
                     }
                 }
@@ -678,6 +681,9 @@ public void destroy( ArrayList b)
             //}
             //scoreCounter++;
             // this is the function that causes the balls to fall away
+
+            //figure out point functionality...
+
             obj.GetComponent<ball>().StartFall();
         }
     }
