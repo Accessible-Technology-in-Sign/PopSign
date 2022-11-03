@@ -376,7 +376,7 @@ public class ball : MonoBehaviour
         gameObject.GetComponent<CircleCollider2D>().radius = 0.3f;
 
         GetComponent<ball>().falling = true;
-
+        mainscript.Score += 50;
     }
 
 
