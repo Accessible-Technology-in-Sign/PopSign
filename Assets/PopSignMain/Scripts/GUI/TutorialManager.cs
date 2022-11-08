@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
+// using DG.Tweening;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -9,13 +9,13 @@ public class TutorialManager : MonoBehaviour
 
     // new stuff:
     public GameObject step1;
-    public Transform hand1;
+    // public Transform hand1;
     public GameObject step2;
-    public Transform hand2;
+    // public Transform hand2;
 
 
-    private Vector3 _originalScale;
-    private Vector3 _scaleTo;
+    // private Vector3 _originalScale;
+    // private Vector3 _scaleTo;
 
     private int numberOfTries = 0; // counter for number of times bubble is shot
 
@@ -23,8 +23,11 @@ public class TutorialManager : MonoBehaviour
     {
         currentLevel = PlayerPrefs.GetInt( "OpenLevel", 1 );
 
-        _originalScale = hand1.localScale;
-        _scaleTo = _originalScale * 0.1f;
+        // _originalScale = hand1.localScale;
+        // _scaleTo = _originalScale * 0.1f;
+
+        step1.SetActive(false);
+        step2.SetActive(false);
     }
     
     // Start is called before the first frame update
@@ -34,21 +37,21 @@ public class TutorialManager : MonoBehaviour
         
             step1.SetActive(true);
             step2.SetActive(false);
-            OnScale(hand1);
+            // OnScale(hand1);
         }
     }
 
-    private void OnScale(Transform hand)
-    {
-        hand.DOScale(_scaleTo, 2.0f)
-            .SetEase(Ease.InOutSine)
-            .OnComplete(() =>
-            {
-                hand.DOScale(_originalScale, 2.0f)
-                    .SetEase(Ease.OutBounce)
-                    .OnComplete(() => OnScale(hand));
-            });
-    }
+    // private void OnScale(Transform hand)
+    // {
+    //     hand.DOScale(_scaleTo, 2.0f)
+    //         .SetEase(Ease.InOutSine)
+    //         .OnComplete(() =>
+    //         {
+    //             hand.DOScale(_originalScale, 2.0f)
+    //                 .SetEase(Ease.OutBounce)
+    //                 .OnComplete(() => OnScale(hand));
+    //         });
+    // }
 
     // Update is called once per frame
     void Update()
@@ -56,17 +59,19 @@ public class TutorialManager : MonoBehaviour
     }
 
     public void BallHit(){
-        numberOfTries++;
-        if(numberOfTries == 1){
+        if (currentLevel == 1) {
+            numberOfTries++;
+            if(numberOfTries == 1){
 
-            step1.SetActive(false);
-            step2.SetActive(false);
+                step1.SetActive(false);
+                step2.SetActive(false);
 
-            StartCoroutine(Step2Animation());
-        } else if (numberOfTries == 2){
-            step1.SetActive(false);
-            step2.SetActive(false);
-        }
+                StartCoroutine(Step2Animation());
+            } else if (numberOfTries == 2){
+                step1.SetActive(false);
+                step2.SetActive(false);
+            }
+        } 
     }
 
     private IEnumerator Step2Animation(){
@@ -74,6 +79,6 @@ public class TutorialManager : MonoBehaviour
         
         step1.SetActive(false);
         step2.SetActive(true);
-        OnScale(hand2);
+        // OnScale(hand2);
     }
 }
