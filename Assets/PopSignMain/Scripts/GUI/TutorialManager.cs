@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TutorialManager : MonoBehaviour
 {
-    // private int currentLevel;
+    private int currentLevel;
 
     // new stuff:
     public GameObject step1;
@@ -21,7 +21,7 @@ public class TutorialManager : MonoBehaviour
 
     void Awake()
     {
-        // currentLevel = PlayerPrefs.GetInt( "OpenLevel", 1 );
+        currentLevel = PlayerPrefs.GetInt( "OpenLevel", 1 );
 
         // _originalScale = hand1.localScale;
         // _scaleTo = _originalScale * 0.1f;
@@ -33,9 +33,7 @@ public class TutorialManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
-        if(Camera.main.GetComponent<mainscript>().currentLevel == 1) { 
-            
+        if(currentLevel == 1) { 
         
             step1.SetActive(true);
             step2.SetActive(false);
@@ -68,17 +66,12 @@ public class TutorialManager : MonoBehaviour
                 step1.SetActive(false);
                 step2.SetActive(false);
 
-        if (Camera.main.GetComponent<mainscript>().currentLevel > 1)
-        {
-    
-            step1.SetActive(false);
-            step2.SetActive(false);
-        } else{
-        numberOfTries++;
-            if(numberOfTries == 1){
-
+                StartCoroutine(Step2Animation());
+            } else if (numberOfTries == 2){
                 step1.SetActive(false);
                 step2.SetActive(false);
+            }
+        } 
     }
 
     private IEnumerator Step2Animation(){
