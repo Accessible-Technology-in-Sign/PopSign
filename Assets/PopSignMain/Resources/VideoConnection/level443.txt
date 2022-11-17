@@ -1,0 +1,22 @@
+{
+	"bluefileName":"hear",
+	"blueframeNumber":74,
+	"bluefolderName":"MacarthurBates/AllWords/ActionWords/hear",
+	"blueImageName":"WordIcons/hear",
+	"greenfileName":"hold",
+	"greenframeNumber":89,
+	"greenfolderName":"MacarthurBates/AllWords/ActionWords/hold",
+	"greenImageName":"WordIcons/hold",
+	"redfileName":"have",
+	"redframeNumber":43,
+	"redfolderName":"MacarthurBates/AllWords/ActionWords/have",
+	"redImageName":"WordIcons/have",
+	"violetfileName":"wake up",
+	"violetframeNumber":63,
+	"violetfolderName":"MacarthurBates/AllWords/ActionWords/wake up",
+	"violetImageName":"WordIcons/wake up",
+	"yellowfileName":"throw",
+	"yellowframeNumber":74,
+	"yellowfolderName":"MacarthurBates/AllWords/ActionWords/throw",
+	"yellowImageName":"WordIcons/throw"
+}

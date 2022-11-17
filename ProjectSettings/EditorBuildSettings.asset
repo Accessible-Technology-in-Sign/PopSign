@@ -26,3 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/PopSignMain/Scenes/settings.unity
     guid: 2ba547201e2cb407093d5267b0fc33d3
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: Assets/MediaPipeUnity/Tutorial/Official Solution/Official Solution.unity
+    guid: 14d8a9174a4263d83bdc4e90eb9a2ef7
+  m_configObjects: {}

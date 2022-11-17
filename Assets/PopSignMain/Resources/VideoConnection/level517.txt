@@ -1,0 +1,22 @@
+{
+	"bluefileName":"picture",
+	"blueframeNumber":59,
+	"bluefolderName":"MacarthurBates/AllWords/SmallObjects/picture",
+	"blueImageName":"WordIcons/picture",
+	"greenfileName":"purse",
+	"greenframeNumber":63,
+	"greenfolderName":"MacarthurBates/AllWords/SmallObjects/purse",
+	"greenImageName":"WordIcons/purse",
+	"redfileName":"camera",
+	"redframeNumber":55,
+	"redfolderName":"MacarthurBates/AllWords/SmallObjects/camera",
+	"redImageName":"WordIcons/camera",
+	"violetfileName":"vacuum",
+	"violetframeNumber":99,
+	"violetfolderName":"MacarthurBates/AllWords/SmallObjects/vacuum",
+	"violetImageName":"WordIcons/vacuum",
+	"yellowfileName":"broom",
+	"yellowframeNumber":60,
+	"yellowfolderName":"MacarthurBates/AllWords/SmallObjects/broom",
+	"yellowImageName":"WordIcons/broom"
+}

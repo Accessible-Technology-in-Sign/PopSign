@@ -36,6 +36,8 @@ public class ball : MonoBehaviour
     private bool animStarted;
     private VideoManager sharedVideoManager;
 
+    public GameObject tutorialText;
+
     //this is true when the launched ball does not hit at least 2 balls of the same color as it
     public bool whiff;
 
@@ -76,12 +78,24 @@ public class ball : MonoBehaviour
         //POPSign using the gray bubble instead of colorful bubbles.
         GetComponent<SpriteRenderer>().sprite = gameObject.GetComponent<ColorBallScript>().sprites[6];
         sharedVideoManager = VideoManager.getVideoManager();
+
+        tutorialText = GameObject.Find("arrow+textbox");
     }
     void Update() 
     {
         //Checks if current video is right video for ball
         //If ball has not been launched and target has not been set and no new ball is being swapped in and a current ball exists
         //and the game is currently in "play" mode or "wait for star" mode?
+        if (launched && !gameObject.GetComponent<ball>().setTarget &&
+            mainscript.Instance.newBall2 == null &&
+            newBall && !Camera.main.GetComponent<mainscript>().gameOver &&
+            (GamePlay.Instance.GameStatus == GameState.Playing ||
+                GamePlay.Instance.GameStatus == GameState.WaitForStar)) {
+            Debug.Log("ball was launched");
+            GameObject tutorialText2 = GameObject.Find("rebound");
+            tutorialText2.SetActive(false);
+        }
+
         if (!launched && !gameObject.GetComponent<ball>().setTarget &&
             mainscript.Instance.newBall2 == null &&
             newBall && !Camera.main.GetComponent<mainscript>().gameOver &&
@@ -102,8 +116,12 @@ public class ball : MonoBehaviour
         {
             GameObject ball = gameObject;
             //If the click has been released and the ball hasn't been launched yet
-            if (!ClickOnGUI(Input.mousePosition) && !launched &&
-                !ball.GetComponent<ball>().setTarget && mainscript.Instance.newBall2 == null &&
+            //if (!ClickOnGUI(Input.mousePosition) && !launched &&
+            //    !ball.GetComponent<ball>().setTarget && mainscript.Instance.newBall2 == null &&
+            //    !Camera.main.GetComponent<mainscript>().gameOver &&
+            //    (GamePlay.Instance.GameStatus == GameState.Playing ||
+            //        GamePlay.Instance.GameStatus == GameState.WaitForStar))
+            if (!launched && !ball.GetComponent<ball>().setTarget && mainscript.Instance.newBall2 == null &&
                 !Camera.main.GetComponent<mainscript>().gameOver &&
                 (GamePlay.Instance.GameStatus == GameState.Playing ||
                     GamePlay.Instance.GameStatus == GameState.WaitForStar))
@@ -148,6 +166,10 @@ public class ball : MonoBehaviour
                     GetComponent<Rigidbody2D>().AddForce(target - dropTarget, ForceMode2D.Force);
                     launched = true;
                     SoundBase.Instance.GetComponent<AudioSource>().PlayOneShot(SoundBase.Instance.swish[0]);
+
+                    // Disappear the tutorial instructions
+                    Camera.main.GetComponent<TutorialManager>().BallHit();
+                    
                 }
             }
         }
@@ -196,15 +218,15 @@ public class ball : MonoBehaviour
         }
     }
 
-    bool ClickOnGUI(Vector3 mousePos)
-    {
-        UnityEngine.EventSystems.EventSystem ct = UnityEngine.EventSystems.EventSystem.current;
+    //bool ClickOnGUI(Vector3 mousePos) // the problem
+    //{
+    //    UnityEngine.EventSystems.EventSystem ct = UnityEngine.EventSystems.EventSystem.current;
 
-        if (ct.IsPointerOverGameObject())
-            return true;
-        else
-            return false;
-    }
+    //    if (ct.IsPointerOverGameObject())
+    //        return true;
+    //    else
+    //        return false;
+    //}
 
 
     void FixedUpdate() 
@@ -301,9 +323,10 @@ public class ball : MonoBehaviour
         {   
             whiff = false;
             mainscript.Instance.ComboCount++;
-            score += ballsToClear.Count * 50;
+            // score += ballsToClear.Count * 50;
             destroy(ballsToClear, 0.00001f);
-            mainscript.Score = score;
+            // mainscript.Score = score;
+            mainscript.Score += ballsToClear.Count * 50;
             mainscript.Instance.CheckFreeStar();
         } else {
             whiff = true;

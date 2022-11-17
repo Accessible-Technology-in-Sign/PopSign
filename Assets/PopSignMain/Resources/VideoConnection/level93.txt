@@ -1,0 +1,22 @@
+{
+	"bluefileName":"banana",
+	"blueframeNumber":83,
+	"bluefolderName":"MacarthurBates/AllWords/FoodAndDrink/banana",
+	"blueImageName":"WordIcons/banana",
+	"greenfileName":"peanut,nut",
+	"greenframeNumber":83,
+	"greenfolderName":"MacarthurBates/AllWords/FoodAndDrink/peanut,nut",
+	"greenImageName":"WordIcons/peanut,nut",
+	"redfileName":"juice",
+	"redframeNumber":55,
+	"redfolderName":"MacarthurBates/AllWords/FoodAndDrink/juice",
+	"redImageName":"WordIcons/juice",
+	"violetfileName":"toast",
+	"violetframeNumber":65,
+	"violetfolderName":"MacarthurBates/AllWords/FoodAndDrink/toast",
+	"violetImageName":"WordIcons/toast",
+	"yellowfileName":"soup",
+	"yellowframeNumber":73,
+	"yellowfolderName":"MacarthurBates/AllWords/FoodAndDrink/soup",
+	"yellowImageName":"WordIcons/soup"
+}

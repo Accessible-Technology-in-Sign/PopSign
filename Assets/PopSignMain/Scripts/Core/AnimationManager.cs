@@ -122,9 +122,20 @@ public class AnimationManager : MonoBehaviour
             CustomizeLevelManager.switchOff();
             SceneManager.LoadScene( "map" );
             VideoManager.resetVideoManager ();
-            if(PlayerPrefs.GetInt("AllLevelsCleared", 0) == 1 && PlayerPrefs.GetInt("CongratsModalShown", 0) == 0)
+
+            if (mainscript.Instance.stars > 0)
             {
-                GameObject.Find( "Canvas" ).transform.Find( "CongratsModal" ).gameObject.SetActive( true );
+                GameObject.Find("Canvas").transform.Find("CongratsModal").gameObject.SetActive(true);
+                PlayerPrefs.SetInt("CongratsModalShown", 1);
+                //PlayerPrefs.Save();
+            }
+            else
+            {
+                ShowGameOver();
+            }
+            if (PlayerPrefs.GetInt("AllLevelsCleared", 0) == 1 && PlayerPrefs.GetInt("CongratsModalShown", 0) == 0)
+            {
+                GameObject.Find("Canvas").transform.Find("CongratsModal").gameObject.SetActive(true);
                 PlayerPrefs.SetInt("CongratsModalShown", 1);
                 PlayerPrefs.Save();
             }
@@ -155,7 +166,12 @@ public class AnimationManager : MonoBehaviour
             {
                 PlayerPrefs.SetInt("OpenLevel", PlayerPrefs.GetInt("OpenLevel") + 1);
                 PlayerPrefs.Save();
-                if (PlayerPrefs.GetInt("OpenLevel") % PRACTICE_LEVEL_INTERVAL == 0) {
+
+                int randomizeLevels = PlayerPrefs.GetInt("RandomizeLevel", 0); //Added for randomized levels
+
+                //Added or statement to check if randomizedLevels = 1 to see if practice should be shown before every level
+                if (PlayerPrefs.GetInt("OpenLevel") % PRACTICE_LEVEL_INTERVAL == 0 || randomizeLevels == 1) {
+                    VideoManager.resetVideoManager(); //Added to fix bug where words from previous level were shown in practice video rather than current level
                     SceneManager.LoadScene("practice");
                 } else {
                     SceneManager.LoadScene("game");

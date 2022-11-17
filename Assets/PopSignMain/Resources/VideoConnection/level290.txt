@@ -1,0 +1,22 @@
+{
+	"bluefileName":"penguin",
+	"blueframeNumber":79,
+	"bluefolderName":"MacarthurBates/AllWords/Animals/penguin",
+	"blueImageName":"WordIcons/penguin",
+	"greenfileName":"rooster",
+	"greenframeNumber":74,
+	"greenfolderName":"MacarthurBates/AllWords/Animals/rooster",
+	"greenImageName":"WordIcons/rooster",
+	"redfileName":"frog",
+	"redframeNumber":59,
+	"redfolderName":"MacarthurBates/AllWords/Animals/frog",
+	"redImageName":"WordIcons/frog",
+	"violetfileName":"sheep",
+	"violetframeNumber":61,
+	"violetfolderName":"MacarthurBates/AllWords/Animals/sheep",
+	"violetImageName":"WordIcons/sheep",
+	"yellowfileName":"tiger",
+	"yellowframeNumber":48,
+	"yellowfolderName":"MacarthurBates/AllWords/Animals/tiger",
+	"yellowImageName":"WordIcons/tiger"
+}

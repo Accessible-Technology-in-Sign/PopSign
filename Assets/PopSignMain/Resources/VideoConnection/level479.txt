@@ -1,0 +1,22 @@
+{
+	"bluefileName":"make",
+	"blueframeNumber":38,
+	"bluefolderName":"MacarthurBates/AllWords/ActionWords/make",
+	"blueImageName":"WordIcons/make",
+	"greenfileName":"bring",
+	"greenframeNumber":52,
+	"greenfolderName":"MacarthurBates/AllWords/ActionWords/bring",
+	"greenImageName":"WordIcons/bring",
+	"redfileName":"dump",
+	"redframeNumber":61,
+	"redfolderName":"MacarthurBates/AllWords/ActionWords/dump",
+	"redImageName":"WordIcons/dump",
+	"violetfileName":"look",
+	"violetframeNumber":58,
+	"violetfolderName":"MacarthurBates/AllWords/ActionWords/look",
+	"violetImageName":"WordIcons/look",
+	"yellowfileName":"bubbles",
+	"yellowframeNumber":65,
+	"yellowfolderName":"MacarthurBates/AllWords/School/bubbles",
+	"yellowImageName":"WordIcons/bubbles"
+}

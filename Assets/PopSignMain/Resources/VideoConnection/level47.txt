@@ -1,0 +1,22 @@
+{
+	"bluefileName":"cold",
+	"blueframeNumber":58,
+	"bluefolderName":"MacarthurBates/AllWords/DescriptiveWords/cold",
+	"blueImageName":"WordIcons/cold",
+	"greenfileName":"small-short",
+	"greenframeNumber":54,
+	"greenfolderName":"MacarthurBates/AllWords/DescriptiveWords/small-short",
+	"greenImageName":"WordIcons/small-short",
+	"redfileName":"soft",
+	"redframeNumber":55,
+	"redfolderName":"MacarthurBates/AllWords/DescriptiveWords/soft",
+	"redImageName":"WordIcons/soft",
+	"violetfileName":"clean",
+	"violetframeNumber":113,
+	"violetfolderName":"MacarthurBates/AllWords/ActionWords/clean",
+	"violetImageName":"WordIcons/clean",
+	"yellowfileName":"better",
+	"yellowframeNumber":45,
+	"yellowfolderName":"MacarthurBates/AllWords/DescriptiveWords/better",
+	"yellowImageName":"WordIcons/better"
+}

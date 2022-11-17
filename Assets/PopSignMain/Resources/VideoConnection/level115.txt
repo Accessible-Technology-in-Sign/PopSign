@@ -1,0 +1,22 @@
+{
+	"bluefileName":"yogurt",
+	"blueframeNumber":88,
+	"bluefolderName":"MacarthurBates/AllWords/FoodAndDrink/yogurt",
+	"blueImageName":"WordIcons/yogurt",
+	"greenfileName":"carrot",
+	"greenframeNumber":74,
+	"greenfolderName":"MacarthurBates/AllWords/FoodAndDrink/carrot",
+	"greenImageName":"WordIcons/carrot",
+	"redfileName":"gum",
+	"redframeNumber":64,
+	"redfolderName":"MacarthurBates/AllWords/FoodAndDrink/gum",
+	"redImageName":"WordIcons/gum",
+	"violetfileName":"grape",
+	"violetframeNumber":73,
+	"violetfolderName":"MacarthurBates/AllWords/FoodAndDrink/grape",
+	"violetImageName":"WordIcons/grape",
+	"yellowfileName":"meat",
+	"yellowframeNumber":83,
+	"yellowfolderName":"MacarthurBates/AllWords/FoodAndDrink/meat",
+	"yellowImageName":"WordIcons/meat"
+}

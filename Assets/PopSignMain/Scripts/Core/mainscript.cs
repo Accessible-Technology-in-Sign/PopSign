@@ -116,7 +116,6 @@ public int ComboCount
         if( value > 0 )
         {
             SoundBase.Instance.GetComponent<AudioSource>().PlayOneShot(SoundBase.Instance.combo[Mathf.Clamp(value-1, 0, 5)]);
-            creatorBall.Instance.CreateBug( lastBall, value );
             if( value >= 6 )
             {
                 SoundBase.Instance.GetComponent<AudioSource>().PlayOneShot(SoundBase.Instance.combo[5]);
@@ -126,7 +125,6 @@ public int ComboCount
         }
         else
         {
-            DestroyBugs();
             //    FireEffect.SetActive( false );
             doubleScore = 1;
         }
@@ -185,28 +183,17 @@ IEnumerator ShowArrows()
     }
 }
 
-private void DestroyBugs()
-{
-    Transform spiders = GameObject.Find( "Spiders" ).transform;
-    List<Bug> listFreePlaces = new List<Bug>();
-    for( int i = 0; i < 2; i++ )
-    {
-        listFreePlaces.Clear();
-        foreach( Transform item in spiders )
-        {
-            if( item.childCount > 0 ) listFreePlaces.Add( item.GetChild(0).GetComponent<Bug>() );
-        }
-        if( listFreePlaces.Count > 0)
-            listFreePlaces[Random.Range( 0, listFreePlaces.Count )].MoveOut();
-    }
-}
-
 void Start()
 {
     Instance = this;
     score = 0;
     arcadeMode = false;
     GamePlay.Instance.GameStatus = GameState.BlockedGame;
+
+    //Tutorial in level 1:
+    // GameObject tutorial_text = GameObject.Find("arrowtextbox");
+    // Debug.Log("Setting tutorial text on " + tutorial_text.name);
+    // tutorial_text.SetActive(true);
 }
 
 // Update is called once per frame
@@ -215,7 +202,11 @@ void Update ()
     if(gameOver && !gameOverShown)
     {
         gameOverShown = true;
-    }
+        GamePlay.Instance.GameStatus = GameState.Playing;
+        score = 0;
+            _ComboCount = 0;
+            mainscript.score = 0;
+     }
 
     // if there are balls to clear
     if( flyingBall != null && ( GamePlay.Instance.GameStatus == GameState.Playing || GamePlay.Instance.GameStatus == GameState.WaitForStar ))
@@ -259,13 +250,13 @@ void Update ()
                     //connectNearBallsGlobal();
                     // destringAloneBall = true;
                     //StartCoroutine(clearDisconnectedBalls());
-                    //	droppingDown = true;
+                    //  droppingDown = true;
                 }
 
             }
             */
         }
-        //		createBall();
+        //      createBall();
     }
 
     if( arcadeMode && Time.time > ArcadedropDownTime && GamePlay.Instance.GameStatus == GameState.Playing )
@@ -282,56 +273,133 @@ void Update ()
         StartCoroutine(getBallsForMesh());
     }
 
-    // update game state
-    if (PlayerPrefs.GetInt("OpenLevel") == 7 || PlayerPrefs.GetInt("OpenLevel") == 11 ||  PlayerPrefs.GetInt("OpenLevel") == 21)
-    {
-        MustPopCount = 4;
-    } else if (PlayerPrefs.GetInt("OpenLevel") == 10 ||  PlayerPrefs.GetInt("OpenLevel") == 23)
-    {
-        MustPopCount = 7;
-    } else if (PlayerPrefs.GetInt("OpenLevel") == 12 || PlayerPrefs.GetInt("OpenLevel") == 14 ||  PlayerPrefs.GetInt("OpenLevel") == 17)
-    {
-        MustPopCount = 9;
-    } else if (PlayerPrefs.GetInt("OpenLevel") == 13)
-    {
-        MustPopCount = 1;
-    }
-    else if (LevelData.mode == ModeGame.Vertical)
-    {
+        // update game state
+        if (PlayerPrefs.GetInt("OpenLevel") == 7 || PlayerPrefs.GetInt("OpenLevel") == 11 || PlayerPrefs.GetInt("OpenLevel") == 21)
+        {
+            MustPopCount = 4;
+        }
+        else if (PlayerPrefs.GetInt("OpenLevel") == 10 || PlayerPrefs.GetInt("OpenLevel") == 23)
+        {
+            MustPopCount = 7;
+        }
+        else if (PlayerPrefs.GetInt("OpenLevel") == 12 || PlayerPrefs.GetInt("OpenLevel") == 14 || PlayerPrefs.GetInt("OpenLevel") == 17)
+        {
+            MustPopCount = 9;
+        }
+        else if (PlayerPrefs.GetInt("OpenLevel") == 13)
+        {
+            MustPopCount = 1;
+        }
+        else if (LevelData.mode == ModeGame.Vertical)
+        {
             MustPopCount = 11;
-    }
-    else
-    {
-        MustPopCount = 11;
-    }
-    if( LevelData.mode == ModeGame.Vertical && TargetCounter == MustPopCount && GamePlay.Instance.GameStatus == GameState.Playing )
-        GamePlay.Instance.GameStatus = GameState.Win;
-    else if( LevelData.mode == ModeGame.Rounded && TargetCounter >= 1 && GamePlay.Instance.GameStatus == GameState.WaitForStar )
-        GamePlay.Instance.GameStatus = GameState.Win;
-    else if( LevelData.mode == ModeGame.Animals && TargetCounter >= TotalTargets && GamePlay.Instance.GameStatus == GameState.Playing )
-        GamePlay.Instance.GameStatus = GameState.Win;
-    else if( LevelData.LimitAmount <= 0 && GamePlay.Instance.GameStatus == GameState.Playing && newBall == null )
-        GamePlay.Instance.GameStatus = GameState.GameOver;
+        }
+        else
+        {
+            MustPopCount = 11;
+        }
+        //if( LevelData.mode == ModeGame.Vertical && TargetCounter == MustPopCount && GamePlay.Instance.GameStatus == GameState.Playing )
+        //    GamePlay.Instance.GameStatus = GameState.Win;
+        //else if( LevelData.mode == ModeGame.Rounded && TargetCounter >= 1 && GamePlay.Instance.GameStatus == GameState.WaitForStar )
+        //    GamePlay.Instance.GameStatus = GameState.Win;
+        //else if( LevelData.mode == ModeGame.Animals && TargetCounter >= TotalTargets && GamePlay.Instance.GameStatus == GameState.Playing )
+        //    GamePlay.Instance.GameStatus = GameState.Win;
+        //else if( LevelData.LimitAmount <= 0 && GamePlay.Instance.GameStatus == GameState.Playing && newBall == null )
+        //    GamePlay.Instance.GameStatus = GameState.GameOver;
 
-    ProgressBarScript.Instance.UpdateDisplay( (float)score * 100f / ( (float)LevelData.star1 / ( ( LevelData.star1 * 100f / LevelData.star3 ) ) * 100f ) /100f );
+        // ProgressBarScript.Instance.UpdateDisplay( (float)score * 100f / ( (float)LevelData.star1 / ( ( LevelData.star1 * 100f / LevelData.star3 ) ) * 100f ) /100f );
+        ProgressBarScript.Instance.UpdateDisplay( (float)score * 100f / ( (float)1000 / ( ( 1000 * 100f / 2000 ) ) * 100f ) / 100f );
+
 
     // update the number of stars the player has received
-    if( score >= LevelData.star3)
+    /*
+    bool gotAStar = score >= LevelData.star1;
+    if ( score >= LevelData.star1)
     {
-        stars = 3;
-        starsObject[2].SetActive( true );
+        stars = 1;
+        starsObject[0].SetActive( true );
     }
     if( score >= LevelData.star2)
     {
         stars = 2;
         starsObject[1].SetActive( true );
     }
-    if( score >= LevelData.star1)
+    if( score >= LevelData.star3)
+    {
+        stars = 3;
+        starsObject[2].SetActive( true );
+    }
+    */
+    
+    bool gotAStar = score >= 1000;
+        if ( score >= 500)
     {
         stars = 1;
         starsObject[0].SetActive( true );
     }
-}
+    if( score >= 1500)
+    {
+        stars = 2;
+        starsObject[1].SetActive( true );
+    }
+    if( score >= 2000)
+    {
+        stars = 3;
+        starsObject[2].SetActive( true );
+    }
+
+        if (LevelData.mode == ModeGame.Vertical && TargetCounter == MustPopCount && GamePlay.Instance.GameStatus == GameState.Playing)
+        {
+            GamePlay.Instance.GameStatus = GameState.Win;
+            score = 0;
+            _ComboCount = 0;
+            mainscript.score = 0;
+        }
+        else if (LevelData.mode == ModeGame.Rounded && TargetCounter >= 1 && GamePlay.Instance.GameStatus == GameState.WaitForStar)
+        {
+            GamePlay.Instance.GameStatus = GameState.Win;
+            score = 0;
+            _ComboCount = 0;
+            mainscript.score = 0;
+        }
+        else if (LevelData.mode == ModeGame.Animals && TargetCounter >= TotalTargets && GamePlay.Instance.GameStatus == GameState.Playing)
+        {
+            GamePlay.Instance.GameStatus = GameState.Win;
+            score = 0;
+            _ComboCount = 0;
+            mainscript.score = 0;
+        }
+        else if (LevelData.LimitAmount <= 0 && !gotAStar && GamePlay.Instance.GameStatus == GameState.Playing && newBall == null)
+        {
+            GamePlay.Instance.GameStatus = GameState.Win;
+            score = 0;
+            _ComboCount = 0;
+            mainscript.score = 0;
+        }
+        else if (LevelData.mode == ModeGame.Vertical && GamePlay.Instance.GameStatus == GameState.Playing && stars == 3)
+        {
+            GamePlay.Instance.GameStatus = GameState.Win;
+            score = 0;
+            _ComboCount = 0;
+            mainscript.score = 0;
+        }
+        else if (LevelData.LimitAmount <= 0 && gotAStar && GamePlay.Instance.GameStatus == GameState.Playing && newBall == null) {
+            GamePlay.Instance.GameStatus = GameState.Win;
+            score = 0;
+            _ComboCount = 0;
+            mainscript.score = 0;
+        }
+
+        if (GamePlay.Instance.GameStatus == GameState.Win) {
+            stars = 3;
+            starsObject[0].SetActive( true );
+            starsObject[1].SetActive( true );
+            starsObject[2].SetActive( true );
+            score = 0;
+            mainscript.score = 0;
+        }
+
+    }
 
 // Use OnApplicationPause instead of OnApplicationQuit for Android
 void OnApplicationPause(bool pauseStatus){
@@ -440,7 +508,7 @@ public IEnumerator clearDisconnectedBalls()
         if(obj!=null) {
             if(obj.layer == BallLayer) {
                 if(obj.GetComponent<ball>().nearBalls.Count>0) {
-                    //		if(droppingDown) yield return new WaitForSeconds(1f);
+                    //      if(droppingDown) yield return new WaitForSeconds(1f);
                     yield return new WaitForEndOfFrame();
                     ArrayList b = new ArrayList();
                     obj.GetComponent<ball>().checkNearestBall(b);
@@ -563,8 +631,8 @@ IEnumerator CheckFreeStarCor()
             star.transform.Rotate( Vector3.back * 10 );
             yield return new WaitForEndOfFrame();
         }
-        Destroy( star );
-    }
+            Destroy(star);
+        }
 }
 
 
@@ -589,8 +657,8 @@ public bool findInArray(ArrayList b, GameObject destObj)
 public void destroy( ArrayList b)
 {
     Camera.main.GetComponent<mainscript>().bounceCounter = 0;
-    int scoreCounter = 0;
-    int rate = 0;
+    //int scoreCounter = 0;
+    //int rate = 0;
     bool hasTarget = false;
     foreach(GameObject obj in b) {
         if (obj.GetComponent<ball>().isTarget)
@@ -604,11 +672,11 @@ public void destroy( ArrayList b)
     foreach (GameObject obj in b) {
         // if(obj.name.IndexOf("ball")==0) obj.layer = 0;
         if(!obj.GetComponent<ball>().Destroyed) {
-            if(scoreCounter > 3) {
-                rate +=3;
-                scoreCounter += rate;
-            }
-            scoreCounter++;
+            //if(scoreCounter > 3) {
+            //    rate +=3;
+            //    scoreCounter += rate;
+            //}
+            //scoreCounter++;
             // this is the function that causes the balls to fall away
             obj.GetComponent<ball>().StartFall();
         }
@@ -632,8 +700,8 @@ public void destroy( GameObject obj)
 {
     if(obj.name.IndexOf("ball")==0) obj.layer = 0;
     Camera.main.GetComponent<mainscript>().bounceCounter = 0;
-    //	obj.GetComponent<OTSprite>().collidable = false;
-    //	Destroy(obj);
+    //  obj.GetComponent<OTSprite>().collidable = false;
+    //  Destroy(obj);
     obj.GetComponent<ball>().Destroyed = true;
     obj.GetComponent<ball>().growUp();
     Camera.main.GetComponent<mainscript>().explode(obj.gameObject);

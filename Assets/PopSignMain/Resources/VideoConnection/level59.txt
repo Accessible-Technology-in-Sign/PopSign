@@ -1,0 +1,22 @@
+{
+	"bluefileName":"sticky",
+	"blueframeNumber":61,
+	"bluefolderName":"MacarthurBates/AllWords/DescriptiveWords/sticky",
+	"blueImageName":"WordIcons/sticky",
+	"greenfileName":"blue",
+	"greenframeNumber":59,
+	"greenfolderName":"MacarthurBates/AllWords/DescriptiveWords/blue",
+	"greenImageName":"WordIcons/blue",
+	"redfileName":"mad",
+	"redframeNumber":47,
+	"redfolderName":"MacarthurBates/AllWords/DescriptiveWords/mad",
+	"redImageName":"WordIcons/mad",
+	"violetfileName":"hurt",
+	"violetframeNumber":73,
+	"violetfolderName":"MacarthurBates/AllWords/DescriptiveWords/hurt",
+	"violetImageName":"WordIcons/hurt",
+	"yellowfileName":"full-container",
+	"yellowframeNumber":38,
+	"yellowfolderName":"MacarthurBates/AllWords/DescriptiveWords/full-container",
+	"yellowImageName":"WordIcons/full-container"
+}

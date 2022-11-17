@@ -1,0 +1,22 @@
+{
+	"bluefileName":"butterfly",
+	"blueframeNumber":42,
+	"bluefolderName":"MacarthurBates/AllWords/Animals/butterfly",
+	"blueImageName":"WordIcons/butterfly",
+	"greenfileName":"turtle",
+	"greenframeNumber":70,
+	"greenfolderName":"MacarthurBates/AllWords/Animals/turtle",
+	"greenImageName":"WordIcons/turtle",
+	"redfileName":"horse",
+	"redframeNumber":70,
+	"redfolderName":"MacarthurBates/AllWords/Animals/horse",
+	"redImageName":"WordIcons/horse",
+	"violetfileName":"duck",
+	"violetframeNumber":56,
+	"violetfolderName":"MacarthurBates/AllWords/Animals/duck",
+	"violetImageName":"WordIcons/duck",
+	"yellowfileName":"dog",
+	"yellowframeNumber":35,
+	"yellowfolderName":"MacarthurBates/AllWords/Animals/dog",
+	"yellowImageName":"WordIcons/dog"
+}

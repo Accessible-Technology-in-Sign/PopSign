@@ -1,0 +1,22 @@
+{
+	"bluefileName":"pencil",
+	"blueframeNumber":50,
+	"bluefolderName":"MacarthurBates/AllWords/School/pencil",
+	"blueImageName":"WordIcons/pencil",
+	"greenfileName":"clay,play doh",
+	"greenframeNumber":69,
+	"greenfolderName":"MacarthurBates/AllWords/School/clay,play doh",
+	"greenImageName":"WordIcons/clay,play doh",
+	"redfileName":"story",
+	"redframeNumber":76,
+	"redfolderName":"MacarthurBates/AllWords/School/story",
+	"redImageName":"WordIcons/story",
+	"violetfileName":"doll",
+	"violetframeNumber":54,
+	"violetfolderName":"MacarthurBates/AllWords/School/doll",
+	"violetImageName":"WordIcons/doll",
+	"yellowfileName":"balloon",
+	"yellowframeNumber":77,
+	"yellowfolderName":"MacarthurBates/AllWords/School/balloon",
+	"yellowImageName":"WordIcons/balloon"
+}

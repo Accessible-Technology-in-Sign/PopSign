@@ -1,0 +1,22 @@
+{
+	"bluefileName":"paint",
+	"blueframeNumber":55,
+	"bluefolderName":"MacarthurBates/AllWords/ActionWords/paint",
+	"blueImageName":"WordIcons/paint",
+	"greenfileName":"fall",
+	"greenframeNumber":67,
+	"greenfolderName":"MacarthurBates/AllWords/ActionWords/fall",
+	"greenImageName":"WordIcons/fall",
+	"redfileName":"show",
+	"redframeNumber":78,
+	"redfolderName":"MacarthurBates/AllWords/ActionWords/show",
+	"redImageName":"WordIcons/show",
+	"violetfileName":"pour",
+	"violetframeNumber":63,
+	"violetfolderName":"MacarthurBates/AllWords/ActionWords/pour",
+	"violetImageName":"WordIcons/pour",
+	"yellowfileName":"sing,song,music,play music",
+	"yellowframeNumber":66,
+	"yellowfolderName":"MacarthurBates/AllWords/ActionWords/sing,song,music,play music",
+	"yellowImageName":"WordIcons/sing,song,music,play music"
+}

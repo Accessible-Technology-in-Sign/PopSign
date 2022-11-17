@@ -1,0 +1,22 @@
+{
+	"bluefileName":"sprinkler",
+	"blueframeNumber":81,
+	"bluefolderName":"MacarthurBates/AllWords/OutsideThings/sprinkler",
+	"blueImageName":"WordIcons/sprinkler",
+	"greenfileName":"wind",
+	"greenframeNumber":108,
+	"greenfolderName":"MacarthurBates/AllWords/OutsideThings/wind",
+	"greenImageName":"WordIcons/wind",
+	"redfileName":"ladder",
+	"redframeNumber":63,
+	"redfolderName":"MacarthurBates/AllWords/OutsideThings/ladder",
+	"redImageName":"WordIcons/ladder",
+	"violetfileName":"snow",
+	"violetframeNumber":83,
+	"violetfolderName":"MacarthurBates/AllWords/OutsideThings/snow",
+	"violetImageName":"WordIcons/snow",
+	"yellowfileName":"rock",
+	"yellowframeNumber":47,
+	"yellowfolderName":"MacarthurBates/AllWords/OutsideThings/rock",
+	"yellowImageName":"WordIcons/rock"
+}

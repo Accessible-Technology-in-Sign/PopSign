@@ -1,0 +1,22 @@
+{
+	"bluefileName":"skate-ice",
+	"blueframeNumber":78,
+	"bluefolderName":"MacarthurBates/AllWords/ActionWords/skate-ice",
+	"blueImageName":"WordIcons/skate-ice",
+	"greenfileName":"climb",
+	"greenframeNumber":75,
+	"greenfolderName":"MacarthurBates/AllWords/ActionWords/climb",
+	"greenImageName":"WordIcons/climb",
+	"redfileName":"cook",
+	"redframeNumber":67,
+	"redfolderName":"MacarthurBates/AllWords/ActionWords/cook",
+	"redImageName":"WordIcons/cook",
+	"violetfileName":"run",
+	"violetframeNumber":59,
+	"violetfolderName":"MacarthurBates/AllWords/ActionWords/run",
+	"violetImageName":"WordIcons/run",
+	"yellowfileName":"pick up",
+	"yellowframeNumber":61,
+	"yellowfolderName":"MacarthurBates/AllWords/ActionWords/pick up",
+	"yellowImageName":"WordIcons/pick up"
+}

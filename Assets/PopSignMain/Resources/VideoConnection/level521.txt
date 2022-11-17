@@ -1,0 +1,22 @@
+{
+	"bluefileName":"box",
+	"blueframeNumber":72,
+	"bluefolderName":"MacarthurBates/AllWords/SmallObjects/box",
+	"blueImageName":"WordIcons/box",
+	"greenfileName":"tray",
+	"greenframeNumber":72,
+	"greenfolderName":"MacarthurBates/AllWords/SmallObjects/tray",
+	"greenImageName":"WordIcons/tray",
+	"redfileName":"washcloth",
+	"redframeNumber":72,
+	"redfolderName":"MacarthurBates/AllWords/SmallObjects/washcloth",
+	"redImageName":"WordIcons/washcloth",
+	"violetfileName":"cup-tea",
+	"violetframeNumber":56,
+	"violetfolderName":"MacarthurBates/AllWords/SmallObjects/cup-tea",
+	"violetImageName":"WordIcons/cup-tea",
+	"yellowfileName":"mop",
+	"yellowframeNumber":109,
+	"yellowfolderName":"MacarthurBates/AllWords/SmallObjects/mop",
+	"yellowImageName":"WordIcons/mop"
+}

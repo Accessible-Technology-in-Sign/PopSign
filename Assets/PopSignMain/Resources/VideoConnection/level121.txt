@@ -1,0 +1,22 @@
+{
+	"bluefileName":"drink",
+	"blueframeNumber":86,
+	"bluefolderName":"MacarthurBates/AllWords/ActionWords/drink",
+	"blueImageName":"WordIcons/drink",
+	"greenfileName":"melon,pumpkin",
+	"greenframeNumber":76,
+	"greenfolderName":"MacarthurBates/AllWords/FoodAndDrink/melon,pumpkin",
+	"greenImageName":"WordIcons/melon,pumpkin",
+	"redfileName":"butter",
+	"redframeNumber":55,
+	"redfolderName":"MacarthurBates/AllWords/FoodAndDrink/butter",
+	"redImageName":"WordIcons/butter",
+	"violetfileName":"sauce",
+	"violetframeNumber":78,
+	"violetfolderName":"MacarthurBates/AllWords/FoodAndDrink/sauce",
+	"violetImageName":"WordIcons/sauce",
+	"yellowfileName":"milk",
+	"yellowframeNumber":63,
+	"yellowfolderName":"MacarthurBates/AllWords/FoodAndDrink/milk",
+	"yellowImageName":"WordIcons/milk"
+}

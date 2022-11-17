@@ -1,0 +1,22 @@
+{
+	"bluefileName":"over,across",
+	"blueframeNumber":51,
+	"bluefolderName":"MacarthurBates/AllWords/PrepositionsAndPronouns/over,across",
+	"blueImageName":"WordIcons/over,across",
+	"greenfileName":"down",
+	"greenframeNumber":46,
+	"greenfolderName":"MacarthurBates/AllWords/PrepositionsAndPronouns/down",
+	"greenImageName":"WordIcons/down",
+	"redfileName":"out",
+	"redframeNumber":51,
+	"redfolderName":"MacarthurBates/AllWords/PrepositionsAndPronouns/out",
+	"redImageName":"WordIcons/out",
+	"violetfileName":"in",
+	"violetframeNumber":46,
+	"violetfolderName":"MacarthurBates/AllWords/PrepositionsAndPronouns/in",
+	"violetImageName":"WordIcons/in",
+	"yellowfileName":"beside",
+	"yellowframeNumber":38,
+	"yellowfolderName":"MacarthurBates/AllWords/PrepositionsAndPronouns/beside",
+	"yellowImageName":"WordIcons/beside"
+}

@@ -1,0 +1,22 @@
+{
+	"bluefileName":"bug",
+	"blueframeNumber":65,
+	"bluefolderName":"MacarthurBates/AllWords/Animals/bug",
+	"blueImageName":"WordIcons/bug",
+	"greenfileName":"bear",
+	"greenframeNumber":58,
+	"greenfolderName":"MacarthurBates/AllWords/Animals/bear",
+	"greenImageName":"WordIcons/bear",
+	"redfileName":"fish",
+	"redframeNumber":60,
+	"redfolderName":"MacarthurBates/AllWords/Animals/fish",
+	"redImageName":"WordIcons/fish",
+	"violetfileName":"pig",
+	"violetframeNumber":56,
+	"violetfolderName":"MacarthurBates/AllWords/Animals/pig",
+	"violetImageName":"WordIcons/pig",
+	"yellowfileName":"animal",
+	"yellowframeNumber":98,
+	"yellowfolderName":"MacarthurBates/AllWords/Animals/animal",
+	"yellowImageName":"WordIcons/animal"
+}

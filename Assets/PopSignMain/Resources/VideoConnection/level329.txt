@@ -1,0 +1,22 @@
+{
+	"bluefileName":"girl",
+	"blueframeNumber":53,
+	"bluefolderName":"MacarthurBates/AllWords/People/girl",
+	"blueImageName":"WordIcons/girl",
+	"greenfileName":"person",
+	"greenframeNumber":44,
+	"greenfolderName":"MacarthurBates/AllWords/People/person",
+	"greenImageName":"WordIcons/person",
+	"redfileName":"mother",
+	"redframeNumber":43,
+	"redfolderName":"MacarthurBates/AllWords/People/mother",
+	"redImageName":"WordIcons/mother",
+	"violetfileName":"children",
+	"violetframeNumber":59,
+	"violetfolderName":"MacarthurBates/AllWords/People/children",
+	"violetImageName":"WordIcons/children",
+	"yellowfileName":"teacher",
+	"yellowframeNumber":57,
+	"yellowfolderName":"MacarthurBates/AllWords/People/teacher",
+	"yellowImageName":"WordIcons/teacher"
+}
