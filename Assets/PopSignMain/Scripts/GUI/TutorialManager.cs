@@ -67,7 +67,7 @@ public class TutorialManager : MonoBehaviour
                 step2.SetActive(false);
 
                 StartCoroutine(Step2Animation());
-            } else if (numberOfTries == 2){
+            } else if (numberOfTries >= 2 && step2.activeSelf){
                 step1.SetActive(false);
                 step2.SetActive(false);
             }
