@@ -26,6 +26,8 @@ namespace Mediapipe.Unity.Tutorial
     private Texture2D _outputTexture;
     private Color32[] _outputPixelData;
 
+    public VideoButton videoButton;
+
     private IEnumerator Start()
     {
       if (WebCamTexture.devices.Length == 0)
@@ -85,6 +87,7 @@ namespace Mediapipe.Unity.Tutorial
 
       var screenRect = _screen.GetComponent<RectTransform>().rect;
 
+
       while (true)
       {
         _inputTexture.SetPixels32(_webCamTexture.GetPixels32(_inputPixelData));
@@ -100,6 +103,13 @@ namespace Mediapipe.Unity.Tutorial
           {
             _outputTexture.SetPixels32(_outputPixelData);
             _outputTexture.Apply();
+            
+            if(videoButton.pointerDown)
+            {
+              var bytes = _outputTexture.EncodeToPNG();
+              File.WriteAllBytes(Application.dataPath + "/Images/screen_shot" + videoButton.pictureNumber + ".png", bytes);
+              videoButton.pictureNumber++;
+            }
           }
         }
 
