@@ -106,8 +106,11 @@ namespace Mediapipe.Unity.Tutorial
             
             if(videoButton.pointerDown)
             {
-              var bytes = _outputTexture.EncodeToPNG();
-              File.WriteAllBytes(Application.dataPath + "/Images/screen_shot" + videoButton.pictureNumber + ".png", bytes);
+              //ScreenCapture.CaptureScreenshot(Application.dataPath + "/Images/screen_shot" + videoButton.pictureNumber + ".png");
+              //var bytes = _outputTexture.EncodeToPNG();
+              var bytes = _outputTexture.EncodeToJPG();
+              //File.WriteAllBytes(Application.dataPath + "/Images/screen_shot" + videoButton.pictureNumber + ".png", bytes);
+              File.WriteAllBytes(Application.persistentDataPath + "/Images/screen_shot" + videoButton.pictureNumber + ".jpg", bytes);
               videoButton.pictureNumber++;
             }
           }

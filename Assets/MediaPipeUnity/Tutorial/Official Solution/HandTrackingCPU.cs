@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using Mediapipe;
 using Mediapipe.Unity;
 using Mediapipe.Unity.CoordinateSystem;
+using System.IO;
 
 using Stopwatch = System.Diagnostics.Stopwatch;
 
@@ -26,6 +27,8 @@ namespace Mediapipe.Unity.Tutorial
         private WebCamTexture _webCamTexture;
         private Texture2D _inputTexture;
         private Color32[] _inputPixelData;
+
+        public VideoButton videoButton;
 
         private IEnumerator Start()
         {
@@ -91,9 +94,26 @@ namespace Mediapipe.Unity.Tutorial
 
                 yield return new WaitForEndOfFrame();
 
+                if(videoButton.pointerDown)
+                {
+                    var bytes = _inputTexture.EncodeToJPG();
+                    File.WriteAllBytes(Application.dataPath + "/Images/screen_shot" + videoButton.pictureNumber + ".jpg", bytes);
+                    videoButton.pictureNumber++;
+                }
+
                 if (handLandmarksStream.TryGetNext(out var handLandmarks))
                 {
                     _multiHandLandmarksAnnotationController.DrawNow(handLandmarks);
+                    if (handLandmarks != null && handLandmarks.Count > 0)
+                    {
+                        foreach (var landmarks in handLandmarks)
+                        {
+                            // top of the head
+                            var topOfHead = landmarks.Landmark[8];
+                            Debug.Log($"Unity Local Coordinates: {screenRect.GetPoint(topOfHead)}, Image Coordinates: {topOfHead}");
+                
+                        }
+                    }
                 }
                 else 
                 {

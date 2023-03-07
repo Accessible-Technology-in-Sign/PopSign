@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using Mediapipe;
 using Mediapipe.Unity;
 using Mediapipe.Unity.CoordinateSystem;
+using System.IO;
 
 using Stopwatch = System.Diagnostics.Stopwatch;
 
@@ -26,6 +27,8 @@ namespace Mediapipe.Unity.Tutorial
         private WebCamTexture _webCamTexture;
         private Texture2D _inputTexture;
         private Color32[] _inputPixelData;
+
+        public VideoButton videoButton;
 
         private IEnumerator Start()
         {
@@ -97,6 +100,13 @@ namespace Mediapipe.Unity.Tutorial
                 _graph.AddPacketToInputStream("input_video", new ImageFramePacket(imageFrame, new Timestamp(currentTimestamp))).AssertOk();
 
                 yield return new WaitForEndOfFrame();
+
+                if(videoButton.pointerDown)
+                {
+                    var bytes = _inputTexture.EncodeToJPG();
+                    File.WriteAllBytes(Application.persistentDataPath + "screen_shot" + videoButton.pictureNumber + ".jpg", bytes);
+                    videoButton.pictureNumber++;
+                }
 
                 if (handLandmarksStream.TryGetNext(out var handLandmarks))
                 {

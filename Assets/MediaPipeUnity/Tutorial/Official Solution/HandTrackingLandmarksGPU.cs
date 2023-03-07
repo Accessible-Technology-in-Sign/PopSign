@@ -7,7 +7,6 @@ using System.IO;
 
 using Stopwatch = System.Diagnostics.Stopwatch;
 
-//Testingcdcd
 namespace Mediapipe.Unity.Tutorial
 {
     public class HandTrackingLandmarksGPU : MonoBehaviour
@@ -27,6 +26,8 @@ namespace Mediapipe.Unity.Tutorial
         private Texture2D _outputTexture;
         private Color32[] _outputPixelData;
 
+        public VideoButton videoButton;
+
         private IEnumerator Start()
         {
         if (WebCamTexture.devices.Length == 0)
@@ -40,8 +41,8 @@ namespace Mediapipe.Unity.Tutorial
         {
             if(WebCamTexture.devices[i].isFrontFacing == true)
             {
-            defaultSource = i;
-            break;
+                defaultSource = i;
+                break;
             }
         }
 
@@ -51,7 +52,6 @@ namespace Mediapipe.Unity.Tutorial
         _webCamTexture.Play();
 
         yield return new WaitUntil(() => _webCamTexture.width > 16);
-        
         yield return GpuManager.Initialize();
 
         if (!GpuManager.IsInitialized)
@@ -109,6 +109,15 @@ namespace Mediapipe.Unity.Tutorial
                 {
                     _outputTexture.SetPixels32(_outputPixelData);
                     _outputTexture.Apply();
+
+                    /* 
+                    if(videoButton.pointerDown)
+                    {
+                        var bytes = _outputTexture.EncodeToJPG();
+                        File.WriteAllBytes(Application.persistentDataPath + "/Images/screen_shot" + videoButton.pictureNumber + ".jpg", bytes);
+                        videoButton.pictureNumber++;
+                    }
+                    */
                 }
             }
 

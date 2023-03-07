@@ -7333,6 +7333,7 @@ MonoBehaviour:
   _height: 480
   _fps: 30
   _multiHandLandmarksAnnotationController: {fileID: 1320290061}
+  videoButton: {fileID: 2132430221}
 --- !u!114 &1270330335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7351,6 +7352,7 @@ MonoBehaviour:
   _height: 480
   _fps: 30
   _multiHandLandmarksAnnotationController: {fileID: 1320290061}
+  videoButton: {fileID: 2132430221}
 --- !u!114 &1270330336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7418,6 +7420,7 @@ MonoBehaviour:
   _width: 640
   _height: 480
   _fps: 30
+  videoButton: {fileID: 2132430221}
 --- !u!1 &1284974436
 GameObject:
   m_ObjectHideFlags: 0
