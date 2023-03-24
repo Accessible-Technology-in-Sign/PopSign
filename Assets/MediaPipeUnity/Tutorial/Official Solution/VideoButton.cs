@@ -10,11 +10,15 @@ public class VideoButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public bool pointerDown = false;
     public int pictureNumber = 0;
 	public float timer = 0;
+	public int sessionNumber = 0;
+	public int frameNumber = 0;
 
 	public void OnPointerDown(PointerEventData eventData)
 	{
 		pointerDown = true;
+		sessionNumber++;
 		Debug.Log("Start time of capture");
+		frameNumber = 0;
 	}
 
 	public void OnPointerUp(PointerEventData eventData)

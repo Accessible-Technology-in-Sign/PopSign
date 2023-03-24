@@ -1,0 +1,2 @@
+Packages/com.github.homuler.mediapipe/Runtime/Plugins/iOS/MediaPipeUnity.framework/MediaPipeUnity filter=lfs diff=lfs merge=lfs -text
+Packages/com.github.homuler.mediapipe/Runtime/Plugins/Android/mediapipe_android.aar filter=lfs diff=lfs merge=lfs -text

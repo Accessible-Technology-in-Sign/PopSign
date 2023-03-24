@@ -85,6 +85,9 @@ namespace Mediapipe.Unity.Tutorial
 
             var screenRect = _screen.GetComponent<RectTransform>().rect;
 
+            
+
+            
             while (true)
             {
                 _inputTexture.SetPixels32(_webCamTexture.GetPixels32(_inputPixelData));
@@ -94,24 +97,33 @@ namespace Mediapipe.Unity.Tutorial
 
                 yield return new WaitForEndOfFrame();
 
+                /*
                 if(videoButton.pointerDown)
                 {
                     var bytes = _inputTexture.EncodeToJPG();
                     File.WriteAllBytes(Application.dataPath + "/Images/screen_shot" + videoButton.pictureNumber + ".jpg", bytes);
                     videoButton.pictureNumber++;
                 }
+                */
 
                 if (handLandmarksStream.TryGetNext(out var handLandmarks))
                 {
                     _multiHandLandmarksAnnotationController.DrawNow(handLandmarks);
-                    if (handLandmarks != null && handLandmarks.Count > 0)
+                    if (videoButton.pointerDown)
                     {
-                        foreach (var landmarks in handLandmarks)
+                                               
+                        if (handLandmarks != null && handLandmarks.Count > 0)
                         {
-                            // top of the head
-                            var topOfHead = landmarks.Landmark[8];
-                            Debug.Log($"Unity Local Coordinates: {screenRect.GetPoint(topOfHead)}, Image Coordinates: {topOfHead}");
-                
+                            foreach (var landmarks in handLandmarks)
+                            {
+                                
+                                string path = Application.dataPath + "/Images/" +  videoButton.sessionNumber + " landmarks.txt"; //dir to be changed accordingly
+                                StreamWriter sWriter = new StreamWriter(path, true);
+                                sWriter.Write("{" + videoButton.frameNumber + ": " + landmarks + "}");
+                                sWriter.Close();
+                                //Debug.Log("Testing coordinates: " +oneLandmark); 
+                                videoButton.frameNumber++;
+                            }
                         }
                     }
                 }
@@ -143,3 +155,5 @@ namespace Mediapipe.Unity.Tutorial
         }
     }
 }
+
+

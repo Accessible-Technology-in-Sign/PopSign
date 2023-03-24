@@ -101,15 +101,35 @@ namespace Mediapipe.Unity.Tutorial
 
                 yield return new WaitForEndOfFrame();
 
+                // Saves frames
+                /*
                 if(videoButton.pointerDown)
                 {
                     var bytes = _inputTexture.EncodeToJPG();
                     File.WriteAllBytes(Application.persistentDataPath + "screen_shot" + videoButton.pictureNumber + ".jpg", bytes);
                     videoButton.pictureNumber++;
                 }
+                */
 
                 if (handLandmarksStream.TryGetNext(out var handLandmarks))
                 {
+                    if (videoButton.pointerDown)
+                    {
+                                               
+                        if (handLandmarks != null && handLandmarks.Count > 0)
+                        {
+                            foreach (var landmarks in handLandmarks)
+                            {
+                                
+                                string path = Application.dataPath + "/Images/" +  videoButton.sessionNumber + " landmarks.txt"; //dir to be changed accordingly
+                                StreamWriter sWriter = new StreamWriter(path, true);
+                                sWriter.Write("{" + videoButton.frameNumber + ": " + landmarks + "}");
+                                sWriter.Close();
+                                //Debug.Log("Testing coordinates: " +oneLandmark); 
+                                videoButton.frameNumber++;
+                            }
+                        }
+                    }
                     _multiHandLandmarksAnnotationController.DrawNow(handLandmarks);
                 }
                 else 
