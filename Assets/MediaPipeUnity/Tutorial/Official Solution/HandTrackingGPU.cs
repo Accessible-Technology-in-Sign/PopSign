@@ -71,6 +71,8 @@ namespace Mediapipe.Unity.Tutorial
             _resourceManager = new StreamingAssetsResourceManager();
             yield return _resourceManager.PrepareAssetAsync("hand_landmark_full.bytes");
             yield return _resourceManager.PrepareAssetAsync("hand_landmark_lite.bytes");
+            yield return _resourceManager.PrepareAssetAsync("palm_detection_full.bytes");
+            yield return _resourceManager.PrepareAssetAsync("palm_detection_lite.bytes");
             yield return _resourceManager.PrepareAssetAsync("hand_recrop.bytes");
             yield return _resourceManager.PrepareAssetAsync("handedness.txt");
 

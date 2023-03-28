@@ -12998,6 +12998,8 @@ MonoBehaviour:
   pointerDown: 0
   pictureNumber: 0
   timer: 0
+  sessionNumber: 0
+  frameNumber: 0
 --- !u!1 &2133001634
 GameObject:
   m_ObjectHideFlags: 0
