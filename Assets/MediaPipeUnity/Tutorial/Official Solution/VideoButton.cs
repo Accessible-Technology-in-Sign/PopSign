@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using TensorFlowLite;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -13,27 +12,24 @@ public class VideoButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 	public bool pointerDown = false;
 
 	[HideInInspector]
-	public float[,,,] data;
-	float[,] outputs = new float[1, 5];
+	public bool sessionDone = false;
 
 	[HideInInspector]
-	public bool sessionDone = false;
 	public int pictureNumber = 0;
+	
+	[HideInInspector]
 	public float timer = 0;
+	
+	[HideInInspector]
 	public int sessionNumber = 0;
+	
+	[HideInInspector]
 	public int frameNumber = 0;
 
 
-	public static string[] labels = {"dad","elephant","red","where","yellow"};
-
-	void Awake()
-	{
-
-	}
-
 	public void OnPointerDown(PointerEventData eventData)
 	{
-		data = new float[1, 300, 63, 1];
+		TfLiteManager.Instance.EmptyData();
 		pointerDown = true;
 		sessionNumber++;
 		Debug.Log("Start time of capture");
@@ -50,47 +46,9 @@ public class VideoButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 		Debug.Log("FPS: " + pictureNumber / timer);
 		pictureNumber = 0;
 		timer = 0;
-		StartCoroutine(ReadFile());
+		//StartCoroutine(ReadFile());
 
-
-		var options = new InterpreterOptions()
-		{
-			threads = 1,
-		};
-		var interpreter = new Interpreter(FileUtil.LoadFile("model_final.tflite"), options);
-		var info = interpreter.GetInputTensorInfo(0);
-
-		Debug.Log("Input " + info);
-
-		// Allocate input buffer
-		//interpreter.ResizeInputTensor(0, new int[] { 1, 300, 63, 1 });
-		interpreter.AllocateTensors();
-
-		interpreter.SetInputTensorData(0, data);
-
-		// Blackbox!!
-		interpreter.Invoke();
-
-		Debug.Log("Output index " + interpreter.GetOutputTensorIndex(20));
-
-		// Get data
-		interpreter.GetOutputTensorData(0, outputs);
-
-		Debug.Log("results!!!!!!!!!!!!!!!!!! " + outputs[0, 1]);
-
-		//label1: 
-		float max = 0f;
-		string answer = "";
-		for (int i = 0; i < 5; i++){
-			if (outputs[0, i] > max)
-            {
-				max = outputs[0, i];
-				answer = labels[i];
-
-			}
-        }
-
-		Debug.Log("results!!!!!!!!!!!!!!!!!! " + answer);
+		TfLiteManager.Instance.RunModel();
 	}
 
 	private IEnumerator ReadFile()
@@ -100,8 +58,6 @@ public class VideoButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 		StreamWriter sWriter = new StreamWriter(path, true);
 		sWriter.Write("}");
 		sWriter.Close();
-
-		
 	}
 	
 	private void Update()
