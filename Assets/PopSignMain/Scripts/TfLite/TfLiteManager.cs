@@ -7,7 +7,7 @@ public class TfLiteManager : MonoBehaviour
 {
     public static TfLiteManager Instance;
 
-	[SerializeField, FilePopup("*.tflite")] string modelName = "model_600_frames.tflite";
+	[SerializeField, FilePopup("*.tflite")] string modelName;
 
 	[HideInInspector]
     public float[,,,] data;
@@ -46,10 +46,17 @@ public class TfLiteManager : MonoBehaviour
 
     public void RunModel()
     {
-		
+		outputs = new float[1, 5];
+
+		var options = new InterpreterOptions()
+		{
+			threads = 1,
+		};
+		interpreter = new Interpreter(FileUtil.LoadFile(modelName), options);
+
 		var info = interpreter.GetInputTensorInfo(0);
 
-		Debug.Log("Input " + info);
+		Debug.Log("Input " + data[0,10,10,0]);
 
 		// Allocate input buffer
 		interpreter.AllocateTensors();
