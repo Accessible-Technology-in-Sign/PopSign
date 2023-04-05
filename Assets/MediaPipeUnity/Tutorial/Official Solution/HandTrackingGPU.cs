@@ -29,6 +29,7 @@ namespace Mediapipe.Unity.Tutorial
         private Color32[] _inputPixelData;
 
         public VideoButton videoButton;
+        public bool inferSign;
 
         private IEnumerator Start()
         {
@@ -38,6 +39,7 @@ namespace Mediapipe.Unity.Tutorial
             }
 
             int defaultSource = 0;
+            inferSign = false;
             
             for (int i = 0; i < WebCamTexture.devices.Length; i++)
             {
@@ -117,20 +119,47 @@ namespace Mediapipe.Unity.Tutorial
                 {
                     if (videoButton.pointerDown)
                     {
-                                               
+
                         if (handLandmarks != null && handLandmarks.Count > 0)
                         {
                             foreach (var landmarks in handLandmarks)
                             {
-                                
-                                string path = Application.dataPath + "/Images/" +  videoButton.sessionNumber + " landmarks.txt"; //dir to be changed accordingly
+
+                                string path = Application.dataPath + "/Images/" + videoButton.sessionNumber + " landmarks.txt"; //dir to be changed accordingly
                                 StreamWriter sWriter = new StreamWriter(path, true);
-                                sWriter.Write("{" + videoButton.frameNumber + ": " + landmarks + "}");
+                                if (videoButton.frameNumber == 0)
+                                {
+                                    sWriter.Write("{\"" + videoButton.frameNumber + "\": " + landmarks);
+
+                                }
+                                else
+                                {
+                                    sWriter.Write(",\"" + videoButton.frameNumber + "\": " + landmarks);
+                                }
+
+                                if (videoButton.frameNumber < 300)
+                                {
+                                    for (int i = 0; i < landmarks.Landmark.Count; i++)
+                                    {
+                                        videoButton.data[0,videoButton.frameNumber, i * 3 + 0,0] = landmarks.Landmark[i].X;
+                                        videoButton.data[0,videoButton.frameNumber, i * 3 + 1,0] = landmarks.Landmark[i].Y;
+                                        videoButton.data[0,videoButton.frameNumber, i * 3 + 2,0] = landmarks.Landmark[i].Z;
+                                    }
+                                }
+                                else
+                                {
+                                    Debug.Log("done");
+                                }
                                 sWriter.Close();
                                 //Debug.Log("Testing coordinates: " +oneLandmark); 
                                 videoButton.frameNumber++;
                             }
                         }
+                    }
+                    else if (videoButton.sessionDone)
+                    {
+                        videoButton.sessionDone = false;
+                        inferSign = true;
                     }
                     _multiHandLandmarksAnnotationController.DrawNow(handLandmarks);
                 }

@@ -1,5 +1,7 @@
 using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
+using System.Diagnostics;
 
 public class ball : MonoBehaviour
 {
@@ -7,11 +9,11 @@ public class ball : MonoBehaviour
     public bool isTarget;
     public Vector3 target;
     Vector2 worldPos;
-    
+
     public bool setTarget;
     public float startTime;
     public GameObject mesh;
-    
+
     public bool findMesh;
     Vector3 dropTarget;
     public bool newBall;
@@ -35,6 +37,8 @@ public class ball : MonoBehaviour
     private bool launched;
     private bool animStarted;
     private VideoManager sharedVideoManager;
+    public GameObject officialSolution;
+    private Mediapipe.Unity.Tutorial.HandTrackingGPU tracking;
 
     public GameObject tutorialText;
 
@@ -59,7 +63,7 @@ public class ball : MonoBehaviour
     }
 
     // Use this for initialization
-    void Start() 
+    void Start()
     {
         meshPos = new Vector3(-1000, -1000, -10);
         dropTarget = transform.position;
@@ -80,8 +84,47 @@ public class ball : MonoBehaviour
         sharedVideoManager = VideoManager.getVideoManager();
 
         tutorialText = GameObject.Find("arrow+textbox");
+
+        officialSolution = GameObject.Find("OfficialSolution");
+        tracking = officialSolution.GetComponent<Mediapipe.Unity.Tutorial.HandTrackingGPU>();
+
+        // UnityEngine.Debug Code
+        // UnityEngine.Debug.Log("Tracking Component: " + tracking.GetType());
+        // Mediapipe.Unity.Tutorial.HandTrackingGPU[] components = officialSolution.GetComponents<Mediapipe.Unity.Tutorial.HandTrackingGPU>();
+        // foreach(Mediapipe.Unity.Tutorial.HandTrackingGPU component in components) {
+        //     UnityEngine.Debug.Log("Component: " + component.ToString());
+        // }
     }
-    void Update() 
+
+    public IEnumerator getBallColorFromServer()
+    {
+        string uri = "https://128.61.63.98:8000";
+        using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
+        {
+            // Request and wait for the desired page.
+            yield return webRequest.SendWebRequest();
+
+            string[] pages = uri.Split('/');
+            int page = pages.Length - 1;
+
+            switch (webRequest.result)
+            {
+                case UnityWebRequest.Result.ConnectionError:
+                case UnityWebRequest.Result.DataProcessingError:
+                    UnityEngine.Debug.Log("HTTP REQUEST: " + pages[page] + ": Error: " + webRequest.error);
+                    break;
+                case UnityWebRequest.Result.ProtocolError:
+                    UnityEngine.Debug.Log("HTTP REQUEST: " + pages[page] + ": HTTP Error: " + webRequest.error);
+                    break;
+                case UnityWebRequest.Result.Success:
+                    UnityEngine.Debug.Log("HTTP REQUEST: " + pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
+                    break;
+            }
+        }
+
+    }
+
+    void Update()
     {
         //Checks if current video is right video for ball
         //If ball has not been launched and target has not been set and no new ball is being swapped in and a current ball exists
@@ -90,8 +133,10 @@ public class ball : MonoBehaviour
             mainscript.Instance.newBall2 == null &&
             newBall && !Camera.main.GetComponent<mainscript>().gameOver &&
             (GamePlay.Instance.GameStatus == GameState.Playing ||
-                GamePlay.Instance.GameStatus == GameState.WaitForStar)) {
-            Debug.Log("ball was launched");
+                GamePlay.Instance.GameStatus == GameState.WaitForStar))
+        {
+            UnityEngine.Debug.Log("ball was launched");
+            //UnityEngine.Debug.Log("*****IN FIRST IF CLAUSE*****");
             GameObject tutorialText2 = GameObject.Find("rebound");
             tutorialText2.SetActive(false);
         }
@@ -102,6 +147,17 @@ public class ball : MonoBehaviour
             (GamePlay.Instance.GameStatus == GameState.Playing ||
                 GamePlay.Instance.GameStatus == GameState.WaitForStar))
         {
+            //UnityEngine.Debug.Log("*****IN SECOND IF CLAUSE*****");
+            // UnityEngine.Debug.Log("App Data Path (ball.cs): " + Application.dataPath);
+            if (tracking.inferSign)
+            {
+                tracking.inferSign = false;
+                UnityEngine.Debug.Log("Session Number of Hand Tracking: " + tracking.videoButton.sessionNumber.ToString());
+                // UnityEngine.Debug.Log("Application Persistent Data Path: " + Application.persistentDataPath);
+
+                getBallColorFromServer();
+            }
+
             Video ballVideo = this.sharedVideoManager.getVideoByColor(gameObject.GetComponent<ColorBallScript>().mainColor);
             // If the current video doesn't exist or is not the video that matches the current ball, set it to the right video
             if (this.sharedVideoManager.curtVideo == null || this.sharedVideoManager.curtVideo.fileName != ballVideo.fileName)
@@ -114,6 +170,7 @@ public class ball : MonoBehaviour
         // If user left clicks screen
         if (Input.GetMouseButtonUp(0))
         {
+            //UnityEngine.Debug.Log("*****IN THIRD IF CLAUSE*****");
             GameObject ball = gameObject;
             //If the click has been released and the ball hasn't been launched yet
             //if (!ClickOnGUI(Input.mousePosition) && !launched &&
@@ -127,12 +184,13 @@ public class ball : MonoBehaviour
                     GamePlay.Instance.GameStatus == GameState.WaitForStar))
             {
                 //Get the position of the click
+                //UnityEngine.Debug.Log("*****IN FOURTH IF CLAUSE*****");
                 Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 worldPos = pos;
                 //If the y position of the click is within 4 units of the bottom of the original lowest row of balls and you have control over the ball
                 if (worldPos.y > -4f && worldPos.y < 4f && !mainscript.StopControl)
                 {
-
+                    UnityEngine.Debug.Log("*****IN NESTED IF CLAUSE OF FOURTH IF CLAUSE*****");
                     //Once ball is launched, set color of ball to the color of its word.
                     int orginalColor = (int)ball.GetComponent<ColorBallScript>().mainColor;
                     GetComponent<SpriteRenderer>().sprite = gameObject.GetComponent<ColorBallScript>().sprites[orginalColor - 1];
@@ -169,13 +227,14 @@ public class ball : MonoBehaviour
 
                     // Disappear the tutorial instructions
                     Camera.main.GetComponent<TutorialManager>().BallHit();
-                    
+
                 }
             }
         }
         //If the ball has not hit the target location and is still moving
         if (transform.position != target && setTarget && !stoppedBall && !isPaused && Camera.main.GetComponent<mainscript>().dropDownTime < Time.time)
         {
+            //UnityEngine.Debug.Log("*****IN FIFTH IF CLAUSE*****");
             float totalVelocity = Vector3.Magnitude(GetComponent<Rigidbody2D>().velocity);
             if (totalVelocity > 20)
             {
@@ -201,7 +260,7 @@ public class ball : MonoBehaviour
         // commenting this section out doesn't seem to do anything
         if ((transform.position.y <= -10 || transform.position.y >= 5) && fireBall && !Destroyed)
         {
-            Debug.Log("transform.position.y: " + transform.position.y);
+            UnityEngine.Debug.Log("transform.position.y: " + transform.position.y);
             mainscript.Instance.CheckFreeStar();
             setTarget = false;
             launched = false;
@@ -210,7 +269,7 @@ public class ball : MonoBehaviour
         }
         if ((transform.position.y <= -10 || transform.position.y >= 5) && !Destroyed)
         {
-            Debug.Log("transform.position.y: " + transform.position.y);
+            UnityEngine.Debug.Log("transform.position.y: " + transform.position.y);
             setTarget = false;
             launched = false;
             DestroySingle(gameObject, 0.00001f);
@@ -229,7 +288,7 @@ public class ball : MonoBehaviour
     //}
 
 
-    void FixedUpdate() 
+    void FixedUpdate()
     {
         if (Camera.main.GetComponent<mainscript>().gameOver) return;
 
@@ -320,7 +379,7 @@ public class ball : MonoBehaviour
 
         // if we have a grouping of three or more bubbles, pop them!
         if (ballsToClear.Count >= 3)
-        {   
+        {
             whiff = false;
             mainscript.Instance.ComboCount++;
             // score += ballsToClear.Count * 50;
@@ -328,7 +387,9 @@ public class ball : MonoBehaviour
             // mainscript.Score = score;
             mainscript.Score += ballsToClear.Count * 50;
             mainscript.Instance.CheckFreeStar();
-        } else {
+        }
+        else
+        {
             whiff = true;
         }
 
@@ -526,7 +587,8 @@ public class ball : MonoBehaviour
 
             // if we still haven't found a place, increase our search radius
             if (findMesh) searchRadius += 0.2f;
-            if (searchRadius > 0.6f) {
+            if (searchRadius > 0.6f)
+            {
                 DestroySingle(gameObject, 0.00001f);
                 findMesh = false;
             }

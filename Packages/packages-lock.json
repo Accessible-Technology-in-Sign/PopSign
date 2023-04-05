@@ -1,5 +1,21 @@
 {
   "dependencies": {
+    "com.github.asus4.tflite": {
+      "version": "2.10.0-p1",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://registry.npmjs.com"
+    },
+    "com.github.asus4.tflite.common": {
+      "version": "2.10.0-p1",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.github.asus4.tflite": "2.10.0-p1"
+      },
+      "url": "https://registry.npmjs.com"
+    },
     "com.github.homuler.mediapipe": {
       "version": "file:com.github.homuler.mediapipe",
       "depth": 0,
@@ -72,6 +88,13 @@
     },
     "com.unity.ide.vscode": {
       "version": "1.2.5",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.mathematics": {
+      "version": "1.2.6",
       "depth": 0,
       "source": "registry",
       "dependencies": {},

@@ -7334,6 +7334,7 @@ MonoBehaviour:
   _fps: 30
   _multiHandLandmarksAnnotationController: {fileID: 1320290061}
   videoButton: {fileID: 2132430221}
+  inferSign: 0
 --- !u!114 &1270330335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12996,6 +12997,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointerDown: 0
+  sessionDone: 0
   pictureNumber: 0
   timer: 0
   sessionNumber: 0
