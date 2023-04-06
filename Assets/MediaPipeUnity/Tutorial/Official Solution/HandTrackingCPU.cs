@@ -128,19 +128,18 @@ namespace Mediapipe.Unity.Tutorial
                                     sWriter.Write(",\"" + videoButton.frameNumber + "\": " + landmarks);
                                 }
                                 sWriter.Close();
-                                if (videoButton.frameNumber < TfLiteManager.Instance.maxFrames)
+
+                                List<float> currentFrame = new List<float>();
+
+                                for (int i = 0; i < landmarks.Landmark.Count; i++)
                                 {
-                                    for (int i = 0; i < landmarks.Landmark.Count; i++)
-                                    {
-                                        TfLiteManager.Instance.data[0, videoButton.frameNumber, i * 3 + 0, 0] = landmarks.Landmark[i].X;
-                                        TfLiteManager.Instance.data[0, videoButton.frameNumber, i * 3 + 1, 0] = landmarks.Landmark[i].Y;
-                                        TfLiteManager.Instance.data[0, videoButton.frameNumber, i * 3 + 2, 0] = landmarks.Landmark[i].Z;
-                                    }
+                                    currentFrame.Add(landmarks.Landmark[i].X);
+                                    currentFrame.Add(landmarks.Landmark[i].Y);
+                                    currentFrame.Add(landmarks.Landmark[i].Z);
                                 }
-                                else
-                                {
-                                    Debug.Log("done");
-                                }
+
+                                TfLiteManager.Instance.AddDataToList(currentFrame);
+
                                 videoButton.frameNumber++;
                             }
                         }

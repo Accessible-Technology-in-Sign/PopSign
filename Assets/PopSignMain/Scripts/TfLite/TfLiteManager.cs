@@ -22,6 +22,8 @@ public class TfLiteManager : MonoBehaviour
 
 	private Interpreter interpreter;
 
+	public List<List<float>> allData = new List<List<float>>();
+
 
     // Start is called before the first frame update
     void Awake()
@@ -42,11 +44,40 @@ public class TfLiteManager : MonoBehaviour
 	public void EmptyData()
     {
 		data = new float[1, maxFrames, 63, 1];
+		allData = new List<List<float>>();
 	}
+
+	public void AddDataToList(List<float> singleFrameData)
+    {
+		allData.Add(singleFrameData);
+		if(allData.Count > maxFrames)
+        {
+			allData.RemoveAt(0);
+        }
+    }
 
     public void RunModel()
     {
 		outputs = new float[1, 5];
+
+
+		if (allData.Count < maxFrames)
+        {
+			var middleData = allData[allData.Count / 2];
+			int middleDataIndex = allData.Count / 2;
+			int framesToAdd = maxFrames - allData.Count;
+			for (int i = 0; i < framesToAdd; i++) {
+				allData.Insert(middleDataIndex, middleData);
+			}
+        }
+
+		for(int frameNumber = 0; frameNumber < maxFrames; frameNumber++)
+        {
+			for(int mediapipevalue = 0; mediapipevalue < 63; mediapipevalue++)
+            {
+				data[0, frameNumber, mediapipevalue, 0] = allData[frameNumber][mediapipevalue];
+            }
+        }
 
 		var options = new InterpreterOptions()
 		{
