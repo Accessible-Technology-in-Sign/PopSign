@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using TensorFlowLite;
 using System.IO;
+using UnityEngine.Networking;
 
 public class TfLiteManager : MonoBehaviour
 {
     public static TfLiteManager Instance;
 
 	[SerializeField, FilePopup("*.tflite")] string modelName;
+	[SerializeField] bool useRemote;
+	[SerializeField] string remoteUri;
 
 	[HideInInspector]
     public float[,,,] data;
@@ -35,9 +38,18 @@ public class TfLiteManager : MonoBehaviour
 
 	public List<List<float>> allData = new List<List<float>>();
 
+	[HideInInspector]
+	public bool isWaitingForResponse = false;
+	[HideInInspector]
+	public bool isResponseReady = false;
 
-    // Start is called before the first frame update
-    void Awake()
+	[HideInInspector]
+	private string finalResponse = "";
+
+
+
+	// Start is called before the first frame update
+	void Awake()
     {
         if(Instance == null)
         {
@@ -72,13 +84,69 @@ public class TfLiteManager : MonoBehaviour
 		recordingFrameNumber = 0;
 	}
 
-	public string StopRecording()
+	public void StopRecording()
     {
 		isCapturingMediaPipeData = false;
 		timer = 0;
-		StartCoroutine(ReadFile());
+		
 
-		return RunModel();
+		if (useRemote)
+		{
+			isWaitingForResponse = true;
+			StartCoroutine(ReadFileAndPostRequest());
+		}
+		else
+		{
+			StartCoroutine(ReadFile());
+			finalResponse = RunModel();
+		}
+	}
+
+	public string GetFinalResponse()
+    {
+		return finalResponse;
+    }
+
+	private IEnumerator ReadFileAndPostRequest()
+	{
+		yield return new WaitForEndOfFrame();
+		string path = Application.persistentDataPath + "/" + sessionNumber + "_landmarks.txt"; //dir to be changed accordingly
+		Debug.Log("Path data " + path);
+		StreamWriter sWriter = new StreamWriter(path, true);
+		sWriter.Write("}");
+		sWriter.Close();
+
+		StreamReader reader = new StreamReader(path);
+		string txtData = reader.ReadToEnd();
+
+		reader.Close();
+
+		UnityWebRequest www = UnityWebRequest.Post(remoteUri, txtData);
+
+		byte[] bodyRaw = new System.Text.UTF8Encoding(true).GetBytes(txtData);
+		www.uploadHandler = (UploadHandler)new UploadHandlerRaw(bodyRaw);
+		www.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
+		www.SetRequestHeader("content-type", "application/json");
+
+		yield return www.SendWebRequest();
+
+
+		if (www.result != UnityWebRequest.Result.Success)
+		{
+			Debug.Log(www.error);
+			isWaitingForResponse = false;
+		}
+		else
+		{
+			Debug.Log("HTTP REQUEST: Landmark upload complete!");
+			string result = System.Text.Encoding.UTF8.GetString(www.downloadHandler.data);
+			Debug.Log("Result " + result);
+			var response = JsonUtility.FromJson<ServerResponse>(result);
+			finalResponse = response.FindMaxLabel();
+			Debug.Log("finalResponse " + finalResponse);
+			isWaitingForResponse = false;
+			isResponseReady = true;
+		}
 	}
 
 	private IEnumerator ReadFile()

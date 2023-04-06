@@ -7322,7 +7322,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1270330333}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 446cb7a90dbbfbb448939dce7a65398f, type: 3}
   m_Name: 
@@ -7340,7 +7340,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1270330333}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31cffb4d0e67be94999b0a8a63042cc9, type: 3}
   m_Name: 
@@ -9992,10 +9992,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modelName: TfLiteModels/model_not_holistic.tflite
+  useRemote: 0
+  remoteUri: http://128.61.51.97:8000/predict_lstm
   maxFrames: 600
   isCapturingMediaPipeData: 0
   sessionNumber: 0
   recordingFrameNumber: 0
+  isWaitingForResponse: 0
+  isResponseReady: 0
 --- !u!1 &1721588044
 GameObject:
   m_ObjectHideFlags: 0

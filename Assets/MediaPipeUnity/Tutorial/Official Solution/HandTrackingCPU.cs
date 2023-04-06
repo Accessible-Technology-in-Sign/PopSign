@@ -116,6 +116,10 @@ namespace Mediapipe.Unity.Tutorial
                             {
 
                                 string path = Application.persistentDataPath + "/" + TfLiteManager.Instance.sessionNumber + "_landmarks.txt"; //dir to be changed accordingly
+                                if (TfLiteManager.Instance.recordingFrameNumber == 0)
+                                {
+                                    File.WriteAllText(path, string.Empty);
+                                }
                                 StreamWriter sWriter = new StreamWriter(path, true);
                                 if (TfLiteManager.Instance.recordingFrameNumber== 0)
                                 {
