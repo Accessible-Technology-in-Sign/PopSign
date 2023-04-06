@@ -104,14 +104,16 @@ namespace Mediapipe.Unity.Tutorial
             _outputTexture.SetPixels32(_outputPixelData);
             _outputTexture.Apply();
             
-            if(videoButton.pointerDown)
+            if(TfLiteManager.Instance.isCapturingMediaPipeData)
             {
               //ScreenCapture.CaptureScreenshot(Application.dataPath + "/Images/screen_shot" + videoButton.pictureNumber + ".png");
               //var bytes = _outputTexture.EncodeToPNG();
               var bytes = _outputTexture.EncodeToJPG();
               //File.WriteAllBytes(Application.dataPath + "/Images/screen_shot" + videoButton.pictureNumber + ".png", bytes);
-              File.WriteAllBytes(Application.persistentDataPath + "/Images/screen_shot" + videoButton.pictureNumber + ".jpg", bytes);
-              videoButton.pictureNumber++;
+              
+                // Commenting this out because this script isn't being used anymore
+              //File.WriteAllBytes(Application.persistentDataPath + "/Images/screen_shot" + videoButton.pictureNumber + ".jpg", bytes);
+              //videoButton.pictureNumber++;
             }
           }
         }

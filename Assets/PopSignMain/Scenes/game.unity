@@ -7322,7 +7322,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1270330333}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 446cb7a90dbbfbb448939dce7a65398f, type: 3}
   m_Name: 
@@ -7333,8 +7333,6 @@ MonoBehaviour:
   _height: 480
   _fps: 30
   _multiHandLandmarksAnnotationController: {fileID: 1320290061}
-  videoButton: {fileID: 2132430221}
-  inferSign: 0
 --- !u!114 &1270330335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7342,7 +7340,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1270330333}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31cffb4d0e67be94999b0a8a63042cc9, type: 3}
   m_Name: 
@@ -7353,7 +7351,6 @@ MonoBehaviour:
   _height: 480
   _fps: 30
   _multiHandLandmarksAnnotationController: {fileID: 1320290061}
-  videoButton: {fileID: 2132430221}
 --- !u!114 &1270330336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7403,7 +7400,7 @@ MonoBehaviour:
   _width: 640
   _height: 480
   _fps: 30
-  videoButton: {fileID: 2132430221}
+  videoButton: {fileID: 0}
 --- !u!114 &1270330339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7421,7 +7418,7 @@ MonoBehaviour:
   _width: 640
   _height: 480
   _fps: 30
-  videoButton: {fileID: 2132430221}
+  videoButton: {fileID: 0}
 --- !u!1 &1284974436
 GameObject:
   m_ObjectHideFlags: 0
@@ -9996,6 +9993,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modelName: TfLiteModels/model_not_holistic.tflite
   maxFrames: 600
+  isCapturingMediaPipeData: 0
+  sessionNumber: 0
+  recordingFrameNumber: 0
 --- !u!1 &1721588044
 GameObject:
   m_ObjectHideFlags: 0
@@ -12905,7 +12905,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2132430217}
   - component: {fileID: 2132430220}
-  - component: {fileID: 2132430221}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -12942,24 +12941,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2132430216}
   m_CullTransparentMesh: 1
---- !u!114 &2132430221
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2132430216}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 744f8b29aa98d714990e5bbcfd05561c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pointerDown: 0
-  sessionDone: 0
-  pictureNumber: 0
-  timer: 0
-  sessionNumber: 0
-  frameNumber: 0
 --- !u!1 &2133001634
 GameObject:
   m_ObjectHideFlags: 0

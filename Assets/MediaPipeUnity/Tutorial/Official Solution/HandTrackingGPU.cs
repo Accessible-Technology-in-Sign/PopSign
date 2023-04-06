@@ -28,9 +28,6 @@ namespace Mediapipe.Unity.Tutorial
         private Texture2D _inputTexture;
         private Color32[] _inputPixelData;
 
-        public VideoButton videoButton;
-        public bool inferSign;
-
         private IEnumerator Start()
         {
             if (WebCamTexture.devices.Length == 0)
@@ -39,7 +36,6 @@ namespace Mediapipe.Unity.Tutorial
             }
 
             int defaultSource = 0;
-            inferSign = false;
             
             for (int i = 0; i < WebCamTexture.devices.Length; i++)
             {
@@ -117,7 +113,7 @@ namespace Mediapipe.Unity.Tutorial
 
                 if (handLandmarksStream.TryGetNext(out var handLandmarks))
                 {
-                    if (videoButton.pointerDown)
+                    if (TfLiteManager.Instance.isCapturingMediaPipeData)
                     {
 
                         if (handLandmarks != null && handLandmarks.Count > 0)
@@ -125,15 +121,15 @@ namespace Mediapipe.Unity.Tutorial
                             foreach (var landmarks in handLandmarks)
                             {
 
-                                string path = Application.persistentDataPath + "/" + videoButton.sessionNumber + "_landmarks.txt"; //dir to be changed accordingly
+                                string path = Application.persistentDataPath + "/" + TfLiteManager.Instance.sessionNumber + "_landmarks.txt"; //dir to be changed accordingly
                                 StreamWriter sWriter = new StreamWriter(path, true);
-                                if (videoButton.frameNumber == 0)
+                                if (TfLiteManager.Instance.recordingFrameNumber == 0)
                                 {
-                                    sWriter.Write("{\"" + videoButton.frameNumber + "\": " + landmarks);
+                                    sWriter.Write("{\"" + TfLiteManager.Instance.recordingFrameNumber + "\": " + landmarks);
                                 }
                                 else
                                 {
-                                    sWriter.Write(",\"" + videoButton.frameNumber + "\": " + landmarks);
+                                    sWriter.Write(",\"" + TfLiteManager.Instance.recordingFrameNumber + "\": " + landmarks);
                                 }
                                 sWriter.Close();
 
@@ -148,14 +144,9 @@ namespace Mediapipe.Unity.Tutorial
 
                                 TfLiteManager.Instance.AddDataToList(currentFrame);
 
-                                videoButton.frameNumber++;
+                                TfLiteManager.Instance.recordingFrameNumber++;
                             }
                         }
-                    }
-                    else if (videoButton.sessionDone)
-                    {
-                        videoButton.sessionDone = false;
-                        inferSign = true;
                     }
                     _multiHandLandmarksAnnotationController.DrawNow(handLandmarks);
                 }

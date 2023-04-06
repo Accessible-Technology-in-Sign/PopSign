@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TensorFlowLite;
+using System.IO;
 
 public class TfLiteManager : MonoBehaviour
 {
@@ -18,9 +19,19 @@ public class TfLiteManager : MonoBehaviour
 	[HideInInspector]
 	public int maxFrames;
 
-    public static string[] LABELS = { "dad", "elephant", "red", "where", "yellow" };
+	[HideInInspector]
+	public bool isCapturingMediaPipeData = false;
+
+	[HideInInspector]
+	public int sessionNumber = 0;
+
+	[HideInInspector]
+	public int recordingFrameNumber = 0;
+
+	public static string[] LABELS = { "dad", "elephant", "red", "where", "yellow" };
 
 	private Interpreter interpreter;
+	private float timer = 0f;
 
 	public List<List<float>> allData = new List<List<float>>();
 
@@ -41,12 +52,6 @@ public class TfLiteManager : MonoBehaviour
 		maxFrames = interpreter.GetInputTensorInfo(0).shape[1];
 	}
 
-	public void EmptyData()
-    {
-		data = new float[1, maxFrames, 63, 1];
-		allData = new List<List<float>>();
-	}
-
 	public void AddDataToList(List<float> singleFrameData)
     {
 		allData.Add(singleFrameData);
@@ -56,7 +61,36 @@ public class TfLiteManager : MonoBehaviour
         }
     }
 
-    public void RunModel()
+	public void StartRecording()
+    {
+		//Clear Data
+		data = new float[1, maxFrames, 63, 1];
+		allData = new List<List<float>>();
+
+		isCapturingMediaPipeData = true;
+		sessionNumber++;
+		recordingFrameNumber = 0;
+	}
+
+	public string StopRecording()
+    {
+		isCapturingMediaPipeData = false;
+		timer = 0;
+		StartCoroutine(ReadFile());
+
+		return RunModel();
+	}
+
+	private IEnumerator ReadFile()
+	{
+		yield return new WaitForEndOfFrame();
+		string path = Application.persistentDataPath + "/" + sessionNumber + "_landmarks.txt"; //dir to be changed accordingly
+		StreamWriter sWriter = new StreamWriter(path, true);
+		sWriter.Write("}");
+		sWriter.Close();
+	}
+
+	private string RunModel()
     {
 		outputs = new float[1, 5];
 
@@ -117,5 +151,15 @@ public class TfLiteManager : MonoBehaviour
 
 		Debug.Log("Max Probability " + max);
 		Debug.Log("results!!!!!!!!!!!!!!!!!! " + answer);
+
+		return answer;
+	}
+
+	private void Update()
+	{
+		if (TfLiteManager.Instance.isCapturingMediaPipeData)
+		{
+			timer += Time.deltaTime;
+		}
 	}
 }

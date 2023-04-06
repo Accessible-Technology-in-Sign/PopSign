@@ -37,8 +37,6 @@ public class ball : MonoBehaviour
     private bool launched;
     private bool animStarted;
     private VideoManager sharedVideoManager;
-    public GameObject officialSolution;
-    private Mediapipe.Unity.Tutorial.HandTrackingGPU tracking;
 
     public GameObject tutorialText;
 
@@ -84,44 +82,6 @@ public class ball : MonoBehaviour
         sharedVideoManager = VideoManager.getVideoManager();
 
         tutorialText = GameObject.Find("arrow+textbox");
-
-        officialSolution = GameObject.Find("OfficialSolution");
-        tracking = officialSolution.GetComponent<Mediapipe.Unity.Tutorial.HandTrackingGPU>();
-
-        // UnityEngine.Debug Code
-        // UnityEngine.Debug.Log("Tracking Component: " + tracking.GetType());
-        // Mediapipe.Unity.Tutorial.HandTrackingGPU[] components = officialSolution.GetComponents<Mediapipe.Unity.Tutorial.HandTrackingGPU>();
-        // foreach(Mediapipe.Unity.Tutorial.HandTrackingGPU component in components) {
-        //     UnityEngine.Debug.Log("Component: " + component.ToString());
-        // }
-    }
-
-    public IEnumerator getBallColorFromServer()
-    {
-        string uri = "https://128.61.63.98:8000";
-        using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
-        {
-            // Request and wait for the desired page.
-            yield return webRequest.SendWebRequest();
-
-            string[] pages = uri.Split('/');
-            int page = pages.Length - 1;
-
-            switch (webRequest.result)
-            {
-                case UnityWebRequest.Result.ConnectionError:
-                case UnityWebRequest.Result.DataProcessingError:
-                    UnityEngine.Debug.Log("HTTP REQUEST: " + pages[page] + ": Error: " + webRequest.error);
-                    break;
-                case UnityWebRequest.Result.ProtocolError:
-                    UnityEngine.Debug.Log("HTTP REQUEST: " + pages[page] + ": HTTP Error: " + webRequest.error);
-                    break;
-                case UnityWebRequest.Result.Success:
-                    UnityEngine.Debug.Log("HTTP REQUEST: " + pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
-                    break;
-            }
-        }
-
     }
 
     void Update()
@@ -136,7 +96,7 @@ public class ball : MonoBehaviour
                 GamePlay.Instance.GameStatus == GameState.WaitForStar))
         {
             UnityEngine.Debug.Log("ball was launched");
-            //UnityEngine.Debug.Log("*****IN FIRST IF CLAUSE*****");
+
             GameObject tutorialText2 = GameObject.Find("rebound");
             tutorialText2.SetActive(false);
         }
@@ -147,16 +107,8 @@ public class ball : MonoBehaviour
             (GamePlay.Instance.GameStatus == GameState.Playing ||
                 GamePlay.Instance.GameStatus == GameState.WaitForStar))
         {
-            //UnityEngine.Debug.Log("*****IN SECOND IF CLAUSE*****");
-            // UnityEngine.Debug.Log("App Data Path (ball.cs): " + Application.dataPath);
-            if (tracking.inferSign)
-            {
-                tracking.inferSign = false;
-                UnityEngine.Debug.Log("Session Number of Hand Tracking: " + tracking.videoButton.sessionNumber.ToString());
-                // UnityEngine.Debug.Log("Application Persistent Data Path: " + Application.persistentDataPath);
 
-                getBallColorFromServer();
-            }
+            // UnityEngine.Debug.Log("App Data Path (ball.cs): " + Application.dataPath);
 
             Video ballVideo = this.sharedVideoManager.getVideoByColor(gameObject.GetComponent<ColorBallScript>().mainColor);
             // If the current video doesn't exist or is not the video that matches the current ball, set it to the right video
@@ -170,9 +122,11 @@ public class ball : MonoBehaviour
         // If user left clicks screen
         if (Input.GetMouseButtonUp(0))
         {
-            //UnityEngine.Debug.Log("*****IN THIRD IF CLAUSE*****");
             GameObject ball = gameObject;
             //If the click has been released and the ball hasn't been launched yet
+
+            //This is where we start the model.
+
             //if (!ClickOnGUI(Input.mousePosition) && !launched &&
             //    !ball.GetComponent<ball>().setTarget && mainscript.Instance.newBall2 == null &&
             //    !Camera.main.GetComponent<mainscript>().gameOver &&
@@ -184,13 +138,19 @@ public class ball : MonoBehaviour
                     GamePlay.Instance.GameStatus == GameState.WaitForStar))
             {
                 //Get the position of the click
-                //UnityEngine.Debug.Log("*****IN FOURTH IF CLAUSE*****");
                 Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 worldPos = pos;
                 //If the y position of the click is within 4 units of the bottom of the original lowest row of balls and you have control over the ball
                 if (worldPos.y > -4f && worldPos.y < 4f && !mainscript.StopControl)
                 {
-                    UnityEngine.Debug.Log("*****IN NESTED IF CLAUSE OF FOURTH IF CLAUSE*****");
+
+                    //Stop Recording
+                    string result = TfLiteManager.Instance.StopRecording();
+
+                    //We Rewrite the color
+                    var newColor = this.sharedVideoManager.getBallColorFromVideoName(result);
+                    ball.GetComponent<ColorBallScript>().SetColor(newColor);
+
                     //Once ball is launched, set color of ball to the color of its word.
                     int orginalColor = (int)ball.GetComponent<ColorBallScript>().mainColor;
                     GetComponent<SpriteRenderer>().sprite = gameObject.GetComponent<ColorBallScript>().sprites[orginalColor - 1];
