@@ -117,17 +117,17 @@ namespace Mediapipe.Unity.Tutorial
                             foreach (var landmarks in handLandmarks)
                             {
 
-                                //string path = Application.dataPath + "/Images/" + videoButton.sessionNumber + " landmarks.txt"; //dir to be changed accordingly
-                                //StreamWriter sWriter = new StreamWriter(path, true);
-                                //if (videoButton.frameNumber == 0)
-                                //{
-                                //    sWriter.Write("{\"" + videoButton.frameNumber + "\": " + landmarks);
-                                //}
-                                //else
-                                //{
-                                //    sWriter.Write(",\"" + videoButton.frameNumber + "\": " + landmarks);
-                                //}
-                                //sWriter.Close();
+                                string path = Application.persistentDataPath + "/" + videoButton.sessionNumber + "_landmarks.txt"; //dir to be changed accordingly
+                                StreamWriter sWriter = new StreamWriter(path, true);
+                                if (videoButton.frameNumber == 0)
+                                {
+                                    sWriter.Write("{\"" + videoButton.frameNumber + "\": " + landmarks);
+                                }
+                                else
+                                {
+                                    sWriter.Write(",\"" + videoButton.frameNumber + "\": " + landmarks);
+                                }
+                                sWriter.Close();
                                 if (videoButton.frameNumber < TfLiteManager.Instance.maxFrames)
                                 {
                                     for (int i = 0; i < landmarks.Landmark.Count; i++)

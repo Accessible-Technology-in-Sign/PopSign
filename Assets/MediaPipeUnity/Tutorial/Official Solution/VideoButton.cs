@@ -43,10 +43,10 @@ public class VideoButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 		Debug.Log("End time of capture");
 		Debug.Log("pictureNumber: " + pictureNumber);
 		Debug.Log("timer: " + timer);
-		Debug.Log("FPS: " + pictureNumber / timer);
+		Debug.Log("FPS: " + pictureNumber / timer); 
 		pictureNumber = 0;
 		timer = 0;
-		//StartCoroutine(ReadFile());
+		StartCoroutine(ReadFile());
 
 		TfLiteManager.Instance.RunModel();
 	}
@@ -54,7 +54,7 @@ public class VideoButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 	private IEnumerator ReadFile()
     {
 		yield return new WaitForEndOfFrame();
-		string path = Application.dataPath + "/Images/" + sessionNumber + " landmarks.txt"; //dir to be changed accordingly
+		string path = Application.persistentDataPath + "/" + sessionNumber + "_landmarks.txt"; //dir to be changed accordingly
 		StreamWriter sWriter = new StreamWriter(path, true);
 		sWriter.Write("}");
 		sWriter.Close();
