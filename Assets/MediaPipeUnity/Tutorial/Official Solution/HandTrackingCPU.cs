@@ -22,7 +22,6 @@ namespace Mediapipe.Unity.Tutorial
         [SerializeField] private MultiHandLandmarkListAnnotationController _multiHandLandmarksAnnotationController;
 
         private CalculatorGraph _graph;
-        private ResourceManager _resourceManager;
 
         private WebCamTexture _webCamTexture;
         private Texture2D _inputTexture;
@@ -60,11 +59,10 @@ namespace Mediapipe.Unity.Tutorial
             
             _screen.texture = _webCamTexture;
 
-            _resourceManager = new StreamingAssetsResourceManager();
-            yield return _resourceManager.PrepareAssetAsync("hand_landmark_full.bytes");
-            yield return _resourceManager.PrepareAssetAsync("hand_landmark_lite.bytes");
-            yield return _resourceManager.PrepareAssetAsync("hand_recrop.bytes");
-            yield return _resourceManager.PrepareAssetAsync("handedness.txt");
+            yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("hand_landmark_full.bytes");
+            yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("hand_landmark_lite.bytes");
+            yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("hand_recrop.bytes");
+            yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("handedness.txt");
 
             var stopwatch = new Stopwatch();
 
