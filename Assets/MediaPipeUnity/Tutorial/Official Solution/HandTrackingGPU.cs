@@ -99,16 +99,6 @@ namespace Mediapipe.Unity.Tutorial
 
                 yield return new WaitForEndOfFrame();
 
-                // Saves frames
-                /*
-                if(videoButton.pointerDown)
-                {
-                    var bytes = _inputTexture.EncodeToJPG();
-                    File.WriteAllBytes(Application.persistentDataPath + "screen_shot" + videoButton.pictureNumber + ".jpg", bytes);
-                    videoButton.pictureNumber++;
-                }
-                */
-
                 if (handLandmarksStream.TryGetNext(out var handLandmarks))
                 {
                     if (TfLiteManager.Instance.isCapturingMediaPipeData)

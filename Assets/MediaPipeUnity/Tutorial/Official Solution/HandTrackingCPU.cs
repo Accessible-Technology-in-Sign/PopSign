@@ -14,12 +14,14 @@ namespace Mediapipe.Unity.Tutorial
 {
     public class HandTrackingCPU : MonoBehaviour
     {
-        [SerializeField] private TextAsset _configAsset;
+        [SerializeField] private TextAsset _configAssetCPU;
+        [SerializeField] private TextAsset _configAssetGPU;
         [SerializeField] private RawImage _screen;
         [SerializeField] private int _width;
         [SerializeField] private int _height;
         [SerializeField] private int _fps;
         [SerializeField] private MultiHandLandmarkListAnnotationController _multiHandLandmarksAnnotationController;
+        [SerializeField] private bool useGPU;
 
         private CalculatorGraph _graph;
 
@@ -51,6 +53,15 @@ namespace Mediapipe.Unity.Tutorial
             _webCamTexture.Play();
 
             yield return new WaitUntil(() => _webCamTexture.width > 16);
+            if (useGPU)
+            {
+                yield return GpuManager.Initialize();
+
+                if (!GpuManager.IsInitialized)
+                {
+                    throw new System.Exception("Failed to initialize GPU resources");
+                }
+            }
 
             _screen.rectTransform.sizeDelta = new Vector2(_width, _height);
             
@@ -60,13 +71,24 @@ namespace Mediapipe.Unity.Tutorial
             _screen.texture = _webCamTexture;
 
             yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("hand_landmark_full.bytes");
-            yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("hand_landmark_lite.bytes");
+            //yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("hand_landmark_lite.bytes");
+            yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("palm_detection_full.bytes");
+            //yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("palm_detection_lite.bytes");
             yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("hand_recrop.bytes");
             yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("handedness.txt");
 
             var stopwatch = new Stopwatch();
 
-            _graph = new CalculatorGraph(_configAsset.text);
+            if (useGPU)
+            {
+                _graph = new CalculatorGraph(_configAssetGPU.text);
+                _graph.SetGpuResources(GpuManager.GpuResources).AssertOk();
+            }
+            else
+            {
+                _graph = new CalculatorGraph(_configAssetCPU.text);
+            }
+
             var handLandmarksStream = new OutputStream<NormalizedLandmarkListVectorPacket, List<NormalizedLandmarkList>>(_graph, "hand_landmarks");
             handLandmarksStream.StartPolling().AssertOk();
 
@@ -81,9 +103,6 @@ namespace Mediapipe.Unity.Tutorial
 
             var screenRect = _screen.GetComponent<RectTransform>().rect;
 
-            
-
-            
             while (true)
             {
                 _inputTexture.SetPixels32(_webCamTexture.GetPixels32(_inputPixelData));
@@ -93,18 +112,8 @@ namespace Mediapipe.Unity.Tutorial
 
                 yield return new WaitForEndOfFrame();
 
-                /*
-                if(videoButton.pointerDown)
-                {
-                    var bytes = _inputTexture.EncodeToJPG();
-                    File.WriteAllBytes(Application.dataPath + "/Images/screen_shot" + videoButton.pictureNumber + ".jpg", bytes);
-                    videoButton.pictureNumber++;
-                }
-                */
-
                 if (handLandmarksStream.TryGetNext(out var handLandmarks))
                 {
-                    _multiHandLandmarksAnnotationController.DrawNow(handLandmarks);
                     if (TfLiteManager.Instance.isCapturingMediaPipeData)
                     {
                                                
@@ -112,22 +121,7 @@ namespace Mediapipe.Unity.Tutorial
                         {
                             foreach (var landmarks in handLandmarks)
                             {
-
-                                string path = Application.persistentDataPath + "/" + TfLiteManager.Instance.sessionNumber + "_landmarks.txt"; //dir to be changed accordingly
-                                if (TfLiteManager.Instance.recordingFrameNumber == 0)
-                                {
-                                    File.WriteAllText(path, string.Empty);
-                                }
-                                StreamWriter sWriter = new StreamWriter(path, true);
-                                if (TfLiteManager.Instance.recordingFrameNumber== 0)
-                                {
-                                    sWriter.Write("{\"" + TfLiteManager.Instance.recordingFrameNumber + "\": " + landmarks);
-                                }
-                                else
-                                {
-                                    sWriter.Write(",\"" + TfLiteManager.Instance.recordingFrameNumber + "\": " + landmarks);
-                                }
-                                sWriter.Close();
+                                SaveToFile(landmarks);
 
                                 List<float> currentFrame = new List<float>();
 
@@ -144,12 +138,32 @@ namespace Mediapipe.Unity.Tutorial
                             }
                         }
                     }
+                    _multiHandLandmarksAnnotationController.DrawNow(handLandmarks);
                 }
                 else 
                 {
                     _multiHandLandmarksAnnotationController.DrawNow(null);
                 }
             }
+        }
+
+        private void SaveToFile(NormalizedLandmarkList landmarks)
+        {
+            string path = Application.persistentDataPath + "/" + TfLiteManager.Instance.sessionNumber + "_landmarks.txt"; //dir to be changed accordingly
+            if (TfLiteManager.Instance.recordingFrameNumber == 0)
+            {
+                File.WriteAllText(path, string.Empty);
+            }
+            StreamWriter sWriter = new StreamWriter(path, true);
+            if (TfLiteManager.Instance.recordingFrameNumber == 0)
+            {
+                sWriter.Write("{\"" + TfLiteManager.Instance.recordingFrameNumber + "\": " + landmarks);
+            }
+            else
+            {
+                sWriter.Write(",\"" + TfLiteManager.Instance.recordingFrameNumber + "\": " + landmarks);
+            }
+            sWriter.Close();
         }
 
         private void OnDestroy()
@@ -169,6 +183,10 @@ namespace Mediapipe.Unity.Tutorial
                 {
                     _graph.Dispose();
                 }
+            }
+            if (useGPU)
+            {
+                GpuManager.Shutdown();
             }
         }
     }

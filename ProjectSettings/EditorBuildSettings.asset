@@ -5,6 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: Assets/MediaPipeUnity/Samples/Scenes/Holistic/Holistic.unity
+    guid: 530502d398830609297010a1521c815f
   - enabled: 1
     path: Assets/PopSignMain/Scenes/opening.unity
     guid: 0eb3846d64bee476ba3f59c8917504a9
