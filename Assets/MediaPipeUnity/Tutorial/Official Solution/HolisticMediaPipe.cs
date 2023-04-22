@@ -67,7 +67,7 @@ public class HolisticMediaPipe : MonoBehaviour
         _inputPixelData = new Color32[_width * _height];
             
         _screen.texture = _webCamTexture;
-        yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("face_detection_full_range.bytes");
+        yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("face_detection_short_range.bytes");
         yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("face_landmark.bytes");
         yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("hand_landmark_full.bytes");
         yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("hand_recrop.bytes");

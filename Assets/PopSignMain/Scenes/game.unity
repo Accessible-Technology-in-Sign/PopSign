@@ -7466,7 +7466,7 @@ MonoBehaviour:
   _height: 480
   _fps: 30
   _multiHandLandmarksAnnotationController: {fileID: 1320290061}
-  useGPU: 1
+  useGPU: 0
 --- !u!1 &1284974436
 GameObject:
   m_ObjectHideFlags: 0
