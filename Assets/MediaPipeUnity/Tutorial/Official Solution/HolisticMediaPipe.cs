@@ -18,7 +18,7 @@ public class HolisticMediaPipe : MonoBehaviour
     [SerializeField] private int _width;
     [SerializeField] private int _height;
     [SerializeField] private int _fps;
-    [SerializeField] private HolisticLandmarkListAnnotationController _multiHandLandmarksAnnotationController;
+    [SerializeField] private MultiHandLandmarkListAnnotationController _multiHandLandmarksAnnotationController;
     [SerializeField] private bool useGPU;
 
     private CalculatorGraph _graph;
@@ -67,14 +67,12 @@ public class HolisticMediaPipe : MonoBehaviour
         _inputPixelData = new Color32[_width * _height];
             
         _screen.texture = _webCamTexture;
-        yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("face_detection_short_range.bytes");
+        yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("face_detection_full_range.bytes");
         yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("face_landmark.bytes");
-        yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("iris_landmark.bytes");
         yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("hand_landmark_full.bytes");
         yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("hand_recrop.bytes");
         yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("handedness.txt");
         yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("palm_detection_full.bytes");
-
         yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("pose_detection.bytes");
         yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("pose_landmark_full.bytes");
 
@@ -89,8 +87,15 @@ public class HolisticMediaPipe : MonoBehaviour
         {
             _graph = new CalculatorGraph(_configAssetCPU.text);
         }
-        var handLandmarksStream = new OutputStream<NormalizedLandmarkListPacket, NormalizedLandmarkList>(_graph, "pose_landmarks");
-        handLandmarksStream.StartPolling().AssertOk();
+        var poseLandmarksStream = new OutputStream<NormalizedLandmarkListPacket, NormalizedLandmarkList>(_graph, "pose_landmarks");
+        poseLandmarksStream.StartPolling().AssertOk();
+        var leftHandLandmarksStream = new OutputStream<NormalizedLandmarkListPacket, NormalizedLandmarkList>(_graph, "left_hand_landmarks");
+        leftHandLandmarksStream.StartPolling().AssertOk();
+        var rightHandLandmarksStream = new OutputStream<NormalizedLandmarkListPacket, NormalizedLandmarkList>(_graph, "right_hand_landmarks");
+        rightHandLandmarksStream.StartPolling().AssertOk();
+        var faceLandmarksStream = new OutputStream<NormalizedLandmarkListPacket, NormalizedLandmarkList>(_graph, "face_landmarks");
+        faceLandmarksStream.StartPolling().AssertOk();
+
 
         var sidePacket = new SidePacket();
         sidePacket.Emplace("input_horizontally_flipped", new BoolPacket(false));
@@ -99,7 +104,6 @@ public class HolisticMediaPipe : MonoBehaviour
         sidePacket.Emplace("output_rotation", new IntPacket(0));
         sidePacket.Emplace("input_vertically_flipped", new BoolPacket(true));
         sidePacket.Emplace("output_vertically_flipped", new BoolPacket(true));
-        sidePacket.Emplace("num_hands", new IntPacket(1));
 
         _graph.StartRun(sidePacket).AssertOk();
 
@@ -116,39 +120,22 @@ public class HolisticMediaPipe : MonoBehaviour
 
             yield return new WaitForEndOfFrame();
 
-            if (handLandmarksStream.TryGetNext(out var handLandmarks))
+            poseLandmarksStream.TryGetNext(out var poseLandmarks);
+            leftHandLandmarksStream.TryGetNext(out var leftHandLandmarks);
+            faceLandmarksStream.TryGetNext(out var faceLandmarks);
+
+            if(rightHandLandmarksStream.TryGetNext(out var rightHandLandmarks))
             {
-                if (TfLiteManager.Instance.isCapturingMediaPipeData)
-                {
-                    /*
-                                               
-                    if (handLandmarks != null && handLandmarks.Count > 0)
-                    {
-                        foreach (var landmarks in handLandmarks)
-                        {
-                            SaveToFile(landmarks);
-
-                            List<float> currentFrame = new List<float>();
-
-                            for (int i = 0; i < landmarks.Landmark.Count; i++)
-                            {
-                                currentFrame.Add(landmarks.Landmark[i].X);
-                                currentFrame.Add(landmarks.Landmark[i].Y);
-                                currentFrame.Add(landmarks.Landmark[i].Z);
-                            }
-
-                            TfLiteManager.Instance.AddDataToList(currentFrame);
-
-                            TfLiteManager.Instance.recordingFrameNumber++;
-                        }
-                    }*/
-                }
-                _multiHandLandmarksAnnotationController.DrawNow(handLandmarks, handLandmarks, handLandmarks, handLandmarks);
+                List<NormalizedLandmarkList> rightHandList = new List<NormalizedLandmarkList>();
+                rightHandList.Add(rightHandLandmarks);
+                _multiHandLandmarksAnnotationController.DrawNow(rightHandList);
             }
-            else 
+            else
             {
-                _multiHandLandmarksAnnotationController.DrawNow(handLandmarks, null, null, null);
+                _multiHandLandmarksAnnotationController.DrawNow(null);
             }
+            
+
         }
     }
 

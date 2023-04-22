@@ -7431,7 +7431,7 @@ MonoBehaviour:
   _height: 480
   _fps: 30
   _multiHandLandmarksAnnotationController: {fileID: 1320290061}
-  useGPU: 1
+  useGPU: 0
 --- !u!4 &1270330337
 Transform:
   m_ObjectHideFlags: 0
@@ -7465,8 +7465,8 @@ MonoBehaviour:
   _width: 640
   _height: 480
   _fps: 30
-  _multiHandLandmarksAnnotationController: {fileID: 304991139}
-  useGPU: 0
+  _multiHandLandmarksAnnotationController: {fileID: 1320290061}
+  useGPU: 1
 --- !u!1 &1284974436
 GameObject:
   m_ObjectHideFlags: 0
@@ -7768,7 +7768,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1320290060
 Transform:
   m_ObjectHideFlags: 0
@@ -11081,6 +11081,52 @@ MonoBehaviour:
   helpText: {fileID: 2008326566}
   normalImage: {fileID: 21300000, guid: 0c80371a7cb08405c9664981afc70c7c, type: 3}
   selectedImage: {fileID: 21300000, guid: efad3a1c165954e6a88cc97faa5f92b7, type: 3}
+--- !u!1 &1872838312
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1872838314}
+  - component: {fileID: 1872838313}
+  m_Layer: 0
+  m_Name: FpsCounter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1872838313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872838312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a19cc6d86af749047908bd374e792575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fpsDisplay: {fileID: 0}
+  fpsDisplayNormalText: {fileID: 325114868}
+--- !u!4 &1872838314
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872838312}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.278779, y: 0.79390854, z: -11.277828}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1878206036
 GameObject:
   m_ObjectHideFlags: 0
@@ -14646,7 +14692,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &6970292337631802548
 GameObject:
   m_ObjectHideFlags: 0
