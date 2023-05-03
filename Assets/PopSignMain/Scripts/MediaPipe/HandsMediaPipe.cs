@@ -76,9 +76,7 @@ public class HandsMediaPipe : MonoBehaviour
         _screen.texture = _webCamTexture;
 
         yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("hand_landmark_full.bytes");
-        //yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("hand_landmark_lite.bytes");
         yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("palm_detection_full.bytes");
-        //yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("palm_detection_lite.bytes");
         yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("hand_recrop.bytes");
         yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("handedness.txt");
 
@@ -132,6 +130,8 @@ public class HandsMediaPipe : MonoBehaviour
 
                             for (int i = 0; i < landmarks.Landmark.Count; i++)
                             {
+                                if(i == 0)
+                                    Debug.Log(landmarks.Landmark[i].X + " " + landmarks.Landmark[i].Y + " " + landmarks.Landmark[i].Z);
                                 currentFrame.Add(landmarks.Landmark[i].X);
                                 currentFrame.Add(landmarks.Landmark[i].Y);
                                 currentFrame.Add(landmarks.Landmark[i].Z);
