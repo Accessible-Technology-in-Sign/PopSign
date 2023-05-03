@@ -5067,9 +5067,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   step1: {fileID: 512636229}
-  hand1: {fileID: 1032721475}
   step2: {fileID: 756125149}
-  hand2: {fileID: 820406613}
 --- !u!1 &744044597
 GameObject:
   m_ObjectHideFlags: 0
@@ -7403,7 +7401,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1270330337}
-  - component: {fileID: 1270330335}
+  - component: {fileID: 1270330339}
   - component: {fileID: 1270330338}
   m_Layer: 0
   m_Name: OfficialSolution
@@ -7412,26 +7410,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1270330335
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1270330333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31cffb4d0e67be94999b0a8a63042cc9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _configAssetCPU: {fileID: 4900000, guid: 1a6169be4f688231182390ef6c4122b2, type: 3}
-  _configAssetGPU: {fileID: 4900000, guid: d1c2a5074cb12172d9cbc3098fe038ba, type: 3}
-  _screen: {fileID: 399984493}
-  _width: 640
-  _height: 480
-  _fps: 30
-  _multiHandLandmarksAnnotationController: {fileID: 1320290061}
-  useGPU: 1
 --- !u!4 &1270330337
 Transform:
   m_ObjectHideFlags: 0
@@ -7466,7 +7444,25 @@ MonoBehaviour:
   _height: 480
   _fps: 30
   _multiHandLandmarksAnnotationController: {fileID: 1320290061}
-  useGPU: 1
+--- !u!114 &1270330339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270330333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7476ef7105da1d4f98083bdd26c203f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _configAssetCPU: {fileID: 4900000, guid: 1a6169be4f688231182390ef6c4122b2, type: 3}
+  _configAssetGPU: {fileID: 4900000, guid: d1c2a5074cb12172d9cbc3098fe038ba, type: 3}
+  _screen: {fileID: 399984493}
+  _width: 640
+  _height: 480
+  _fps: 30
+  _multiHandLandmarksAnnotationController: {fileID: 1320290061}
 --- !u!1 &1284974436
 GameObject:
   m_ObjectHideFlags: 0
