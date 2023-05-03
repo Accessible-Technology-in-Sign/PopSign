@@ -199,6 +199,7 @@ void Start()
 // Update is called once per frame
 void Update ()
 {
+    
     if(gameOver && !gameOverShown)
     {
         gameOverShown = true;
@@ -274,30 +275,30 @@ void Update ()
     }
 
         // update game state
-        if (PlayerPrefs.GetInt("OpenLevel") == 7 || PlayerPrefs.GetInt("OpenLevel") == 11 || PlayerPrefs.GetInt("OpenLevel") == 21)
-        {
-            MustPopCount = 4;
-        }
-        else if (PlayerPrefs.GetInt("OpenLevel") == 10 || PlayerPrefs.GetInt("OpenLevel") == 23)
-        {
-            MustPopCount = 7;
-        }
-        else if (PlayerPrefs.GetInt("OpenLevel") == 12 || PlayerPrefs.GetInt("OpenLevel") == 14 || PlayerPrefs.GetInt("OpenLevel") == 17)
-        {
-            MustPopCount = 9;
-        }
-        else if (PlayerPrefs.GetInt("OpenLevel") == 13)
-        {
-            MustPopCount = 1;
-        }
-        else if (LevelData.mode == ModeGame.Vertical)
-        {
-            MustPopCount = 11;
-        }
-        else
-        {
-            MustPopCount = 11;
-        }
+        // if (PlayerPrefs.GetInt("OpenLevel") == 7 || PlayerPrefs.GetInt("OpenLevel") == 11 || PlayerPrefs.GetInt("OpenLevel") == 21)
+        // {
+        //     MustPopCount = 4;
+        // }
+        // else if (PlayerPrefs.GetInt("OpenLevel") == 10 || PlayerPrefs.GetInt("OpenLevel") == 23)
+        // {
+        //     MustPopCount = 7;
+        // }
+        // else if (PlayerPrefs.GetInt("OpenLevel") == 12 || PlayerPrefs.GetInt("OpenLevel") == 14 || PlayerPrefs.GetInt("OpenLevel") == 17)
+        // {
+        //     MustPopCount = 9;
+        // }
+        // else if (PlayerPrefs.GetInt("OpenLevel") == 13)
+        // {
+        //     MustPopCount = 1;
+        // }
+        // else if (LevelData.mode == ModeGame.Vertical)
+        // {
+        //     MustPopCount = 11;
+        // }
+        // else
+        // {
+        //     MustPopCount = 11;
+        // }
         //if( LevelData.mode == ModeGame.Vertical && TargetCounter == MustPopCount && GamePlay.Instance.GameStatus == GameState.Playing )
         //    GamePlay.Instance.GameStatus = GameState.Win;
         //else if( LevelData.mode == ModeGame.Rounded && TargetCounter >= 1 && GamePlay.Instance.GameStatus == GameState.WaitForStar )
@@ -312,7 +313,6 @@ void Update ()
 
 
     // update the number of stars the player has received
-    /*
     bool gotAStar = score >= LevelData.star1;
     if ( score >= LevelData.star1)
     {
@@ -329,24 +329,23 @@ void Update ()
         stars = 3;
         starsObject[2].SetActive( true );
     }
-    */
     
-    bool gotAStar = score >= 1000;
-        if ( score >= 500)
-    {
-        stars = 1;
-        starsObject[0].SetActive( true );
-    }
-    if( score >= 1500)
-    {
-        stars = 2;
-        starsObject[1].SetActive( true );
-    }
-    if( score >= 2000)
-    {
-        stars = 3;
-        starsObject[2].SetActive( true );
-    }
+    // bool gotAStar = score >= 1000;
+    //     if ( score >= 500)
+    // {
+    //     stars = 1;
+    //     starsObject[0].SetActive( true );
+    // }
+    // if( score >= 1500)
+    // {
+    //     stars = 2;
+    //     starsObject[1].SetActive( true );
+    // }
+    // if( score >= 2000)
+    // {
+    //     stars = 3;
+    //     starsObject[2].SetActive( true );
+    // }
 
         if (LevelData.mode == ModeGame.Vertical && TargetCounter == MustPopCount && GamePlay.Instance.GameStatus == GameState.Playing)
         {
@@ -526,6 +525,8 @@ public IEnumerator clearDisconnectedBalls()
                         {
                             TargetCounter++;
                         }
+                        //loop through array b, sum their total values (* some modifier if necessary) and add to point total
+                        
                         destroy (b);
                     }
                 }
@@ -678,6 +679,9 @@ public void destroy( ArrayList b)
             //}
             //scoreCounter++;
             // this is the function that causes the balls to fall away
+
+            //figure out point functionality...
+
             obj.GetComponent<ball>().StartFall();
         }
     }

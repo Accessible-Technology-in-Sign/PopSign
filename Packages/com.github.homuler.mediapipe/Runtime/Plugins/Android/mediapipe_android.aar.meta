@@ -1,32 +1,33 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Packages/com.github.homuler.mediapipe/Runtime/Plugins/Android/mediapipe_android.aar.meta
 guid: d9d6130858d3ff24db93b0ce109e1831
+========
+guid: a811bde74b26b53498b4f6d872b09b6d
+>>>>>>>> AppleSiliconiOS:Assets/Plugins/Demigiant/DOTween/DOTween.dll.meta
 PluginImporter:
-  externalObjects: {}
-  serializedVersion: 2
+  serializedVersion: 1
   iconMap: {}
   executionOrder: {}
   defineConstraints: []
   isPreloaded: 0
+<<<<<<<< HEAD:Packages/com.github.homuler.mediapipe/Runtime/Plugins/Android/mediapipe_android.aar.meta
   isOverridable: 1
   isExplicitlyReferenced: 0
   validateReferences: 1
+========
+>>>>>>>> AppleSiliconiOS:Assets/Plugins/Demigiant/DOTween/DOTween.dll.meta
   platformData:
-  - first:
-      Android: Android
-    second:
+    Any:
       enabled: 1
       settings: {}
-  - first:
-      Any: 
-    second:
-      enabled: 0
-      settings: {}
-  - first:
-      Editor: Editor
-    second:
+    Editor:
       enabled: 0
       settings:
         DefaultValueInitialized: true
+    WindowsStoreApps:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
   userData: 
   assetBundleName: 
   assetBundleVariant: 
