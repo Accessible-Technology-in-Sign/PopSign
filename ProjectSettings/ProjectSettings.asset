@@ -165,7 +165,7 @@ PlayerSettings:
     iPhone: 0
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
-  AndroidBundleVersionCode: 124
+  AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 31
   AndroidTargetSdkVersion: 31
   AndroidPreferredInstallLocation: 1
@@ -253,7 +253,7 @@ PlayerSettings:
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: D:/Downloads/upload.keystore
+  AndroidKeystoreName: '{inproject}: upload.keystore'
   AndroidKeyaliasName: upload
   AndroidBuildApkPerCpuArchitecture: 1
   AndroidTVCompatibility: 1
