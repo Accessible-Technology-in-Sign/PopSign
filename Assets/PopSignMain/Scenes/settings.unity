@@ -3961,7 +3961,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -161.5, y: 179.50003}
+  m_AnchoredPosition: {x: -161.5, y: 290.5}
   m_SizeDelta: {x: 247, y: 115}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1154741078
@@ -5609,11 +5609,13 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "This app was developed by the Georgia Institute of Technology. It focuses
-    on American Sign Language. The vocabulary is based on the Macarthur-Bates Communicative
-    Development Inventories, which are lists of words used to evaluate how well a
-    child is learning language. \n\nIf you have a comment or suggestion, please let
-    us know by emailing thad.starner@cc.gatech.edu. "
+  m_Text: "PopSign is an educational bubble shooter game developed by the Georgia
+    Institute of Technology and RIT/NTID\u2019s Center on Access Technology. The
+    game teaches a selection of foundational American Sign Language (ASL) vocabulary.
+    The vocabulary is based on the Macarthur-Bates Communicative Development Inventories,
+    which are lists of words used to evaluate how well a child is learning language.
+    \n\nFeel free to email us at PopSignGame@gmail.com with any comments or suggestions
+    you may have."
 --- !u!222 &1909103355
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6215,7 +6217,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2081816967
 RectTransform:
   m_ObjectHideFlags: 0
