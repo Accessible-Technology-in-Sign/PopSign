@@ -5,9 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/MediaPipeUnity/Samples/Scenes/Holistic/Holistic.unity
-    guid: 530502d398830609297010a1521c815f
   - enabled: 1
     path: Assets/PopSignMain/Scenes/opening.unity
     guid: 0eb3846d64bee476ba3f59c8917504a9
@@ -18,9 +15,6 @@ EditorBuildSettings:
     path: Assets/PopSignMain/Scenes/game.unity
     guid: 00a82a29244fb469fb78b4a9750164c0
   - enabled: 1
-    path: Assets/PopSignMain/Scenes/wordlist.unity
-    guid: c6f694df6fdb44535935b8f512be1b04
-  - enabled: 1
     path: Assets/PopSignMain/Scenes/tutorial.unity
     guid: ccd1e8e56a4e042cfa820accf5a6c928
   - enabled: 1
@@ -29,14 +23,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/PopSignMain/Scenes/settings.unity
     guid: 2ba547201e2cb407093d5267b0fc33d3
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: Assets/MediaPipeUnity/Tutorial/Official Solution/Official Solution.unity
-    guid: 14d8a9174a4263d83bdc4e90eb9a2ef7
-  m_configObjects: {}
-  - enabled: 0
-    path: Assets/PopSignMain/RandomizeLevel/randomize.unity
-    guid: 46fc900256af0e4409e2e7fba7640b81
   m_configObjects: {}
