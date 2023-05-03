@@ -7419,7 +7419,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1270330333}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31cffb4d0e67be94999b0a8a63042cc9, type: 3}
   m_Name: 
@@ -7454,7 +7454,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1270330333}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d033e3e00222a247aa3ff31e2efeee9, type: 3}
   m_Name: 
@@ -10039,7 +10039,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5404e65a633df4942b0fb9fd7e77f214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modelName: TfLiteModels/random_holistic_cnn.tflite
+  modelName: TfLiteModels/model_not_holistic.tflite
   useRemote: 0
   remoteUri: http://128.61.51.97:8000/predict_lstm
   maxFrames: 600
@@ -11135,7 +11135,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1872838312}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f916bfc085b715c439617ad6659a2326, type: 3}
   m_Name: 
