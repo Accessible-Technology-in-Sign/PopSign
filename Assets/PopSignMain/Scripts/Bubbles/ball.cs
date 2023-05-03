@@ -38,8 +38,6 @@ public class ball : MonoBehaviour
     private bool animStarted;
     private VideoManager sharedVideoManager;
 
-    public GameObject tutorialText;
-
     //this is true when the launched ball does not hit at least 2 balls of the same color as it
     public bool whiff;
 
@@ -80,8 +78,6 @@ public class ball : MonoBehaviour
         //POPSign using the gray bubble instead of colorful bubbles.
         GetComponent<SpriteRenderer>().sprite = gameObject.GetComponent<ColorBallScript>().sprites[6];
         sharedVideoManager = VideoManager.getVideoManager();
-
-        tutorialText = GameObject.Find("arrow+textbox");
     }
 
     void Update()
@@ -94,16 +90,15 @@ public class ball : MonoBehaviour
         //Checks if current video is right video for ball
         //If ball has not been launched and target has not been set and no new ball is being swapped in and a current ball exists
         //and the game is currently in "play" mode or "wait for star" mode?
+    
         if (launched && !gameObject.GetComponent<ball>().setTarget &&
             mainscript.Instance.newBall2 == null &&
             newBall && !Camera.main.GetComponent<mainscript>().gameOver &&
             (GamePlay.Instance.GameStatus == GameState.Playing ||
-                GamePlay.Instance.GameStatus == GameState.WaitForStar))
-        {
-            UnityEngine.Debug.Log("ball was launched");
-
-            GameObject tutorialText2 = GameObject.Find("rebound");
-            tutorialText2.SetActive(false);
+                GamePlay.Instance.GameStatus == GameState.WaitForStar)) {
+    
+            // GameObject tutorialText2 = GameObject.Find("rebound");
+            // tutorialText2.SetActive(false);
         }
 
         if (!launched && !gameObject.GetComponent<ball>().setTarget &&
@@ -112,9 +107,6 @@ public class ball : MonoBehaviour
             (GamePlay.Instance.GameStatus == GameState.Playing ||
                 GamePlay.Instance.GameStatus == GameState.WaitForStar))
         {
-
-            // UnityEngine.Debug.Log("App Data Path (ball.cs): " + Application.dataPath);
-
             Video ballVideo = this.sharedVideoManager.getVideoByColor(gameObject.GetComponent<ColorBallScript>().mainColor);
             // If the current video doesn't exist or is not the video that matches the current ball, set it to the right video
             if (this.sharedVideoManager.curtVideo == null || this.sharedVideoManager.curtVideo.fileName != ballVideo.fileName)
@@ -197,8 +189,6 @@ public class ball : MonoBehaviour
                 (GamePlay.Instance.GameStatus == GameState.Playing ||
                     GamePlay.Instance.GameStatus == GameState.WaitForStar))
             {
-                UnityEngine.Debug.Log("Running the c");
-                
                 //Get the position of the click
                 Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 worldPos = pos;
@@ -263,7 +253,6 @@ public class ball : MonoBehaviour
         //If the ball has not hit the target location and is still moving
         if (transform.position != target && setTarget && !stoppedBall && !isPaused && Camera.main.GetComponent<mainscript>().dropDownTime < Time.time)
         {
-            //UnityEngine.Debug.Log("*****IN FIFTH IF CLAUSE*****");
             float totalVelocity = Vector3.Magnitude(GetComponent<Rigidbody2D>().velocity);
             if (totalVelocity > 20)
             {
@@ -414,6 +403,7 @@ public class ball : MonoBehaviour
             // score += ballsToClear.Count * 50;
             destroy(ballsToClear, 0.00001f);
             // mainscript.Score = score;
+            //already should add this score???
             mainscript.Score += ballsToClear.Count * 50;
             mainscript.Instance.CheckFreeStar();
         }
@@ -468,7 +458,7 @@ public class ball : MonoBehaviour
         gameObject.GetComponent<CircleCollider2D>().radius = 0.3f;
 
         GetComponent<ball>().falling = true;
-
+        mainscript.Score += 50;
     }
 
 

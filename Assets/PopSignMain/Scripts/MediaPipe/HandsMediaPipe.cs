@@ -8,9 +8,7 @@ using Mediapipe.Unity;
 using Mediapipe.Unity.CoordinateSystem;
 using System.IO;
 
-using Stopwatch = System.Diagnostics.Stopwatch;
-
-public class HolisticMediaPipe : MonoBehaviour
+public class HandsMediaPipe : MonoBehaviour
 {
     [SerializeField] private TextAsset _configAssetCPU;
     [SerializeField] private TextAsset _configAssetGPU;
@@ -31,6 +29,11 @@ public class HolisticMediaPipe : MonoBehaviour
     private Texture2D _inputTexture;
     private Color32[] _inputPixelData;
 
+    void Awake()
+    {
+        
+    }
+
     private IEnumerator Start()
     {
         if (WebCamTexture.devices.Length == 0)
@@ -39,10 +42,10 @@ public class HolisticMediaPipe : MonoBehaviour
         }
 
         int defaultSource = 0;
-            
+
         for (int i = 0; i < WebCamTexture.devices.Length; i++)
         {
-            if(WebCamTexture.devices[i].isFrontFacing == true)
+            if (WebCamTexture.devices[i].isFrontFacing == true)
             {
                 defaultSource = i;
                 break;
@@ -66,21 +69,18 @@ public class HolisticMediaPipe : MonoBehaviour
         }
 
         _screen.rectTransform.sizeDelta = new Vector2(_width, _height);
-            
+
         _inputTexture = new Texture2D(_width, _height, TextureFormat.RGBA32, false);
         _inputPixelData = new Color32[_width * _height];
-            
+
         _screen.texture = _webCamTexture;
-        yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("face_detection_short_range.bytes");
-        yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("face_landmark.bytes");
+
         yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("hand_landmark_full.bytes");
+        yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("palm_detection_full.bytes");
         yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("hand_recrop.bytes");
         yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("handedness.txt");
-        yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("palm_detection_full.bytes");
-        yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("pose_detection.bytes");
-        yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("pose_landmark_full.bytes");
 
-        var stopwatch = new Stopwatch();
+        var stopwatch = new System.Diagnostics.Stopwatch();
 
         if (useGPU)
         {
@@ -91,26 +91,17 @@ public class HolisticMediaPipe : MonoBehaviour
         {
             _graph = new CalculatorGraph(_configAssetCPU.text);
         }
-        var poseLandmarksStream = new OutputStream<NormalizedLandmarkListPacket, NormalizedLandmarkList>(_graph, "pose_landmarks");
-        poseLandmarksStream.StartPolling().AssertOk();
-        var leftHandLandmarksStream = new OutputStream<NormalizedLandmarkListPacket, NormalizedLandmarkList>(_graph, "left_hand_landmarks");
-        leftHandLandmarksStream.StartPolling().AssertOk();
-        var rightHandLandmarksStream = new OutputStream<NormalizedLandmarkListPacket, NormalizedLandmarkList>(_graph, "right_hand_landmarks");
-        rightHandLandmarksStream.StartPolling().AssertOk();
-        var faceLandmarksStream = new OutputStream<NormalizedLandmarkListPacket, NormalizedLandmarkList>(_graph, "face_landmarks");
-        faceLandmarksStream.StartPolling().AssertOk();
 
+        var handLandmarksStream = new OutputStream<NormalizedLandmarkListVectorPacket, List<NormalizedLandmarkList>>(_graph, "hand_landmarks");
+        handLandmarksStream.StartPolling().AssertOk();
 
         var sidePacket = new SidePacket();
         sidePacket.Emplace("input_horizontally_flipped", new BoolPacket(false));
-        sidePacket.Emplace("output_horizontally_flipped", new BoolPacket(false));
         sidePacket.Emplace("input_rotation", new IntPacket(0));
-        sidePacket.Emplace("output_rotation", new IntPacket(0));
         sidePacket.Emplace("input_vertically_flipped", new BoolPacket(true));
-        sidePacket.Emplace("output_vertically_flipped", new BoolPacket(true));
+        sidePacket.Emplace("num_hands", new IntPacket(1));
 
         _graph.StartRun(sidePacket).AssertOk();
-
         stopwatch.Start();
 
         var screenRect = _screen.GetComponent<RectTransform>().rect;
@@ -124,46 +115,40 @@ public class HolisticMediaPipe : MonoBehaviour
 
             yield return new WaitForEndOfFrame();
 
-            poseLandmarksStream.TryGetNext(out var poseLandmarks);
-            leftHandLandmarksStream.TryGetNext(out var leftHandLandmarks);
-            faceLandmarksStream.TryGetNext(out var faceLandmarks);
-
-            if(rightHandLandmarksStream.TryGetNext(out var rightHandLandmarks))
+            if (handLandmarksStream.TryGetNext(out var handLandmarks))
             {
-                List<NormalizedLandmarkList> rightHandList = new List<NormalizedLandmarkList>();
-                rightHandList.Add(rightHandLandmarks);
-                /*
-
-                if (handLandmarks != null)
+                if (TfLiteManager.Instance.isCapturingMediaPipeData)
                 {
-                    foreach (var landmarks in handLandmarks)
+
+                    if (handLandmarks != null && handLandmarks.Count > 0)
                     {
-                        SaveToFile(landmarks);
-
-                        List<float> currentFrame = new List<float>();
-
-                        for (int i = 0; i < landmarks.Landmark.Count; i++)
+                        foreach (var landmarks in handLandmarks)
                         {
-                            currentFrame.Add(landmarks.Landmark[i].X);
-                            currentFrame.Add(landmarks.Landmark[i].Y);
-                            currentFrame.Add(landmarks.Landmark[i].Z);
+                            SaveToFile(landmarks);
+
+                            List<float> currentFrame = new List<float>();
+
+                            for (int i = 0; i < landmarks.Landmark.Count; i++)
+                            {
+                                if(i == 0)
+                                    Debug.Log(landmarks.Landmark[i].X + " " + landmarks.Landmark[i].Y + " " + landmarks.Landmark[i].Z);
+                                currentFrame.Add(landmarks.Landmark[i].X);
+                                currentFrame.Add(landmarks.Landmark[i].Y);
+                                currentFrame.Add(landmarks.Landmark[i].Z);
+                            }
+
+                            TfLiteManager.Instance.AddDataToList(currentFrame);
+
+                            TfLiteManager.Instance.recordingFrameNumber++;
                         }
-
-                        TfLiteManager.Instance.AddDataToList(currentFrame);
-
-                        TfLiteManager.Instance.recordingFrameNumber++;
                     }
                 }
-                */
-
-                _multiHandLandmarksAnnotationController.DrawNow(rightHandList);
+                _multiHandLandmarksAnnotationController.DrawNow(handLandmarks);
             }
             else
             {
                 _multiHandLandmarksAnnotationController.DrawNow(null);
             }
-            
-
         }
     }
 
@@ -210,5 +195,3 @@ public class HolisticMediaPipe : MonoBehaviour
         }
     }
 }
-
-

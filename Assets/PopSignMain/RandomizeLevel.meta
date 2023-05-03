@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Images.meta
+guid: 2ced56ea241b3ee4d978300e12e71a49
+========
 guid: a7da2d95295978c4a8ee8ca69feb7d3c
+>>>>>>>> AppleSiliconiOS:Assets/PopSignMain/RandomizeLevel.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

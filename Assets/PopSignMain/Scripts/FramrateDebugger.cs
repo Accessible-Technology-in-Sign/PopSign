@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FramrateDebugger : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class FramrateDebugger : MonoBehaviour
     private string fps;
 
     [SerializeField] private TMPro.TMP_Text fpsDisplay;
+    [SerializeField] private Text fpsDisplayNormalText;
 
     void Start()
     {
@@ -29,7 +31,10 @@ public class FramrateDebugger : MonoBehaviour
             // Display it
 
             fps = "" + Mathf.RoundToInt(frameCount / timeSpan);
-            fpsDisplay.text = fps;
+            if (fpsDisplay != null)
+                fpsDisplay.text = fps;
+            else
+                fpsDisplayNormalText.text = fps;
         }
     }
 }

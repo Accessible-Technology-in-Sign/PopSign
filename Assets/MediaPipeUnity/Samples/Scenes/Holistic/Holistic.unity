@@ -424,9 +424,9 @@ MonoBehaviour:
   _timeoutMicrosec: 100000
   refineFaceLandmarks: 0
   modelComplexity: 1
-  smoothLandmarks: 1
-  enableSegmentation: 1
-  smoothSegmentation: 1
+  smoothLandmarks: 0
+  enableSegmentation: 0
+  smoothSegmentation: 0
 --- !u!114 &275874969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -506,7 +506,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 275874966}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 498146e99d4934673bd948c8be11227e, type: 3}
   m_Name: 
@@ -550,13 +550,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 275874966}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4d846393f8d9f20fa64b924b0d95e68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _defaultImageSource: 0
-  _preferableInferenceMode: 1
+  _preferableInferenceMode: 0
   _assetLoaderType: 0
   _enableGlog: 1
 --- !u!1 &298505179
@@ -1690,6 +1690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fpsDisplay: {fileID: 1226516567}
+  fpsDisplayNormalText: {fileID: 0}
 --- !u!4 &1709831789
 Transform:
   m_ObjectHideFlags: 0
