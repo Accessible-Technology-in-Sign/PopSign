@@ -15,9 +15,6 @@ EditorBuildSettings:
     path: Assets/PopSignMain/Scenes/game.unity
     guid: 00a82a29244fb469fb78b4a9750164c0
   - enabled: 1
-    path: Assets/PopSignMain/Scenes/tutorial.unity
-    guid: ccd1e8e56a4e042cfa820accf5a6c928
-  - enabled: 1
     path: Assets/PopSignMain/Scenes/practice.unity
     guid: cff81e4261a4f401a8441b5570a3ce4c
   - enabled: 1

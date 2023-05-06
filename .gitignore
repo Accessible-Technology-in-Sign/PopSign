@@ -77,3 +77,4 @@ crashlytics-build.properties
 Packages/com.github.homuler.mediapipe/Runtime/Plugins/Android/mediapipe_android.aar
 Packages/com.github.homuler.mediapipe/Runtime/Plugins/iOS/MediaPipeUnity.framework/MediaPipeUnity
 Builds_BackUpThisFolder_ButDontShipItWithYourGame/
+Packages/com.github.homuler.mediapipe/Runtime/Plugins/Android/Ignore/

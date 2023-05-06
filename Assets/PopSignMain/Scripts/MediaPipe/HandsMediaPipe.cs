@@ -124,7 +124,7 @@ public class HandsMediaPipe : MonoBehaviour
                     {
                         foreach (var landmarks in handLandmarks)
                         {
-                            SaveToFile(landmarks);
+                            //SaveToFile(landmarks);
 
                             List<float> currentFrame = new List<float>();
 

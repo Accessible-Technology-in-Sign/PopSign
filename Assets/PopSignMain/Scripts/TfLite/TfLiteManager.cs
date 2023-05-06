@@ -93,11 +93,11 @@ public class TfLiteManager : MonoBehaviour
 		if (useRemote)
 		{
 			isWaitingForResponse = true;
-			StartCoroutine(ReadFileAndPostRequest());
+			//StartCoroutine(ReadFileAndPostRequest());
 		}
 		else
 		{
-			StartCoroutine(ReadFile());
+			//StartCoroutine(ReadFile());
 			finalResponse = RunModel();
 		}
 	}
