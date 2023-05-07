@@ -132,29 +132,8 @@ public class HolisticMediaPipe : MonoBehaviour
             {
                 List<NormalizedLandmarkList> rightHandList = new List<NormalizedLandmarkList>();
                 rightHandList.Add(rightHandLandmarks);
-                /*
 
-                if (handLandmarks != null)
-                {
-                    foreach (var landmarks in handLandmarks)
-                    {
-                        SaveToFile(landmarks);
-
-                        List<float> currentFrame = new List<float>();
-
-                        for (int i = 0; i < landmarks.Landmark.Count; i++)
-                        {
-                            currentFrame.Add(landmarks.Landmark[i].X);
-                            currentFrame.Add(landmarks.Landmark[i].Y);
-                            currentFrame.Add(landmarks.Landmark[i].Z);
-                        }
-
-                        TfLiteManager.Instance.AddDataToList(currentFrame);
-
-                        TfLiteManager.Instance.recordingFrameNumber++;
-                    }
-                }
-                */
+                Debug.Log(rightHandLandmarks.Landmark[0].X + " " + rightHandLandmarks.Landmark[0].Y + " " + rightHandLandmarks.Landmark[0].Z);
 
                 _multiHandLandmarksAnnotationController.DrawNow(rightHandList);
             }
