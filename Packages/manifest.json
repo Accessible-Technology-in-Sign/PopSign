@@ -16,7 +16,6 @@
     }
   ],
   "dependencies": {
-    "com.github.asus4.tflite": "2.10.0-p1",
     "com.github.asus4.tflite.common": "2.10.0-p1",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.tilemap": "1.0.0",

@@ -199,7 +199,7 @@ public class TfLiteManager : MonoBehaviour
 		// Blackbox!!
 		interpreter.Invoke();
 
-		Debug.Log("Output index " + interpreter.GetOutputTensorIndex(20));
+		// Debug.Log("Output index " + interpreter.GetOutputTensorIndex(20));
 
 		// Get data
 		interpreter.GetOutputTensorData(0, outputs);

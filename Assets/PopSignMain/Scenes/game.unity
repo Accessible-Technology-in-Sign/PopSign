@@ -9897,7 +9897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5404e65a633df4942b0fb9fd7e77f214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modelName: TfLiteModels/model_not_holistic.tflite
+  modelName: TfLiteModels/model.tflite
   useRemote: 0
   remoteUri: http://128.61.51.97:8000/predict_lstm
   maxFrames: 600
