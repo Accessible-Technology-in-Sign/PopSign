@@ -5,13 +5,11 @@ using TensorFlowLite;
 using System.IO;
 using UnityEngine.Networking;
 
-public class TfLiteManager : MonoBehaviour
+public class TfLiteManagerHands : MonoBehaviour
 {
-    public static TfLiteManager Instance;
+    public static TfLiteManagerHands Instance;
 
 	[SerializeField, FilePopup("*.tflite")] string modelName;
-	[SerializeField] bool useRemote;
-	[SerializeField] string remoteUri;
 
 	[HideInInspector]
     public float[,,,] data;
@@ -39,12 +37,7 @@ public class TfLiteManager : MonoBehaviour
 	public List<List<float>> allData = new List<List<float>>();
 
 	[HideInInspector]
-	public bool isWaitingForResponse = false;
-	[HideInInspector]
 	public bool isResponseReady = false;
-
-	[HideInInspector]
-	private string finalResponse = "";
 
 
 
@@ -84,69 +77,13 @@ public class TfLiteManager : MonoBehaviour
 		recordingFrameNumber = 0;
 	}
 
-	public void StopRecording()
+	public string StopRecording()
     {
 		isCapturingMediaPipeData = false;
 		timer = 0;
 		
-
-		if (useRemote)
-		{
-			isWaitingForResponse = true;
-			//StartCoroutine(ReadFileAndPostRequest());
-		}
-		else
-		{
-			//StartCoroutine(ReadFile());
-			finalResponse = RunModel();
-		}
-	}
-
-	public string GetFinalResponse()
-    {
-		return finalResponse;
-    }
-
-	private IEnumerator ReadFileAndPostRequest()
-	{
-		yield return new WaitForEndOfFrame();
-		string path = Application.persistentDataPath + "/" + sessionNumber + "_landmarks.txt"; //dir to be changed accordingly
-		Debug.Log("Path data " + path);
-		StreamWriter sWriter = new StreamWriter(path, true);
-		sWriter.Write("}");
-		sWriter.Close();
-
-		StreamReader reader = new StreamReader(path);
-		string txtData = reader.ReadToEnd();
-
-		reader.Close();
-
-		UnityWebRequest www = UnityWebRequest.Post(remoteUri, txtData);
-
-		byte[] bodyRaw = new System.Text.UTF8Encoding(true).GetBytes(txtData);
-		www.uploadHandler = (UploadHandler)new UploadHandlerRaw(bodyRaw);
-		www.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
-		www.SetRequestHeader("content-type", "application/json");
-
-		yield return www.SendWebRequest();
-
-
-		if (www.result != UnityWebRequest.Result.Success)
-		{
-			Debug.Log(www.error);
-			isWaitingForResponse = false;
-		}
-		else
-		{
-			Debug.Log("HTTP REQUEST: Landmark upload complete!");
-			string result = System.Text.Encoding.UTF8.GetString(www.downloadHandler.data);
-			Debug.Log("Result " + result);
-			var response = JsonUtility.FromJson<ServerResponse>(result);
-			finalResponse = response.FindMaxLabel();
-			Debug.Log("finalResponse " + finalResponse);
-			isWaitingForResponse = false;
-			isResponseReady = true;
-		}
+		//StartCoroutine(ReadFile());
+		return RunModel();
 	}
 
 	private IEnumerator ReadFile()
@@ -225,7 +162,7 @@ public class TfLiteManager : MonoBehaviour
 
 	private void Update()
 	{
-		if (TfLiteManager.Instance.isCapturingMediaPipeData)
+		if (TfLiteManagerHands.Instance.isCapturingMediaPipeData)
 		{
 			timer += Time.deltaTime;
 		}

@@ -26,8 +26,6 @@ namespace Mediapipe.Unity.Tutorial
     private Texture2D _outputTexture;
     private Color32[] _outputPixelData;
 
-    public VideoButton videoButton;
-
     private IEnumerator Start()
     {
       if (WebCamTexture.devices.Length == 0)
@@ -104,7 +102,7 @@ namespace Mediapipe.Unity.Tutorial
             _outputTexture.SetPixels32(_outputPixelData);
             _outputTexture.Apply();
             
-            if(TfLiteManager.Instance.isCapturingMediaPipeData)
+            if(TfLiteManagerHands.Instance.isCapturingMediaPipeData)
             {
               //ScreenCapture.CaptureScreenshot(Application.dataPath + "/Images/screen_shot" + videoButton.pictureNumber + ".png");
               //var bytes = _outputTexture.EncodeToPNG();

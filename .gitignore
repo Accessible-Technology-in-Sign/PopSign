@@ -78,3 +78,4 @@ Packages/com.github.homuler.mediapipe/Runtime/Plugins/Android/mediapipe_android.
 Packages/com.github.homuler.mediapipe/Runtime/Plugins/iOS/MediaPipeUnity.framework/MediaPipeUnity
 Builds_BackUpThisFolder_ButDontShipItWithYourGame/
 Packages/com.github.homuler.mediapipe/Runtime/Plugins/Android/Ignore/
+Packages/com.github.asus4.tflite/Plugins/

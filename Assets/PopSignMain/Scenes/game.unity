@@ -7482,7 +7482,7 @@ MonoBehaviour:
   _screen: {fileID: 399984493}
   _width: 640
   _height: 480
-  _fps: 30
+  _fps: 15
   _multiHandLandmarksAnnotationController: {fileID: 1320290061}
 --- !u!114 &1270330339
 MonoBehaviour:
@@ -9894,10 +9894,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1717354418}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5404e65a633df4942b0fb9fd7e77f214, type: 3}
+  m_Script: {fileID: 11500000, guid: 27a81064d954fbd43a81a05cdaeec8ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modelName: TfLiteModels/model.tflite
+  modelName: TfLiteModels/model_not_holistic.tflite
   useRemote: 0
   remoteUri: http://128.61.51.97:8000/predict_lstm
   maxFrames: 600
@@ -10998,7 +10998,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f916bfc085b715c439617ad6659a2326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target30FPS: 1
+  target30FPS: 0
 --- !u!1 &1878206036
 GameObject:
   m_ObjectHideFlags: 0

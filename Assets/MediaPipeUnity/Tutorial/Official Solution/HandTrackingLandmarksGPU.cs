@@ -26,8 +26,6 @@ namespace Mediapipe.Unity.Tutorial
         private Texture2D _outputTexture;
         private Color32[] _outputPixelData;
 
-        public VideoButton videoButton;
-
         private IEnumerator Start()
         {
         if (WebCamTexture.devices.Length == 0)

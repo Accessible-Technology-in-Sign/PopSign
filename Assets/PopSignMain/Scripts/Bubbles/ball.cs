@@ -82,11 +82,6 @@ public class ball : MonoBehaviour
 
     void Update()
     {
-        if (TfLiteManager.Instance.isWaitingForResponse)
-        {
-            UnityEngine.Debug.Log("I am still waiting to hear back from Guru's server");
-            return;
-        }
         //Checks if current video is right video for ball
         //If ball has not been launched and target has not been set and no new ball is being swapped in and a current ball exists
         //and the game is currently in "play" mode or "wait for star" mode?
@@ -116,58 +111,6 @@ public class ball : MonoBehaviour
             }
         }
 
-        //Incase server replies
-        if (TfLiteManager.Instance.isResponseReady)
-        {
-            TfLiteManager.Instance.isResponseReady = false;
-            GameObject ball = gameObject;
-            if (worldPos.y > -4f && worldPos.y < 4f && !mainscript.StopControl)
-            {
-                string result = TfLiteManager.Instance.GetFinalResponse();
-
-                //We Rewrite the color
-                var newColor = this.sharedVideoManager.getBallColorFromVideoName(result);
-                ball.GetComponent<ColorBallScript>().SetColor(newColor);
-
-                //Once ball is launched, set color of ball to the color of its word.
-                int orginalColor = (int)ball.GetComponent<ColorBallScript>().mainColor;
-                GetComponent<SpriteRenderer>().sprite = gameObject.GetComponent<ColorBallScript>().sprites[orginalColor - 1];
-
-                //160-170 puts image of word on the launched ball
-                GameObject imageObject = new GameObject();
-                imageObject.transform.parent = ball.transform;
-
-                SpriteRenderer ballImage = imageObject.AddComponent<SpriteRenderer>();
-                // Consider the image size
-                ballImage.transform.localScale = new Vector3(0.2f, 0.2f, 0.0f);
-                ballImage.transform.localPosition = new Vector3(0f, 0f, 5.0f);
-                string imageName = this.sharedVideoManager.getVideoByColor(ball.GetComponent<ColorBallScript>().mainColor).imageName;
-                ballImage.sprite = (Sprite)Resources.Load(imageName, typeof(Sprite));
-                ballImage.sortingLayerName = "WordIconsLayer";
-                ballImage.sortingOrder = 2;
-
-                // If the ball is a fireball, disable collision.
-                if (!fireBall)
-                {
-                    GetComponent<CircleCollider2D>().enabled = false;
-                }
-
-                // Launch the ball! Make the ball movement sound
-                target = worldPos;
-                setTarget = true;
-                startTime = Time.time;
-                dropTarget = transform.position;
-                mainscript.Instance.newBall = gameObject;
-                mainscript.Instance.newBall2 = gameObject;
-                GetComponent<Rigidbody2D>().AddForce(target - dropTarget, ForceMode2D.Force);
-                launched = true;
-                SoundBase.Instance.GetComponent<AudioSource>().PlayOneShot(SoundBase.Instance.swish[0]);
-
-                // Disappear the tutorial instructions
-                Camera.main.GetComponent<TutorialManager>().BallHit();
-
-            }
-        }
 
         // If user left clicks screen
         if (Input.GetMouseButtonUp(0))
@@ -195,16 +138,8 @@ public class ball : MonoBehaviour
                 //If the y position of the click is within 4 units of the bottom of the original lowest row of balls and you have control over the ball
                 if (worldPos.y > -4f && worldPos.y < 4f && !mainscript.StopControl)
                 {
-                    
-                    //Stop Recording
-                    TfLiteManager.Instance.StopRecording();
-                    if (TfLiteManager.Instance.isWaitingForResponse) //true for online
-                    {
-                        return;
-                    }
-                        
                     //Get local response result
-                    string result = TfLiteManager.Instance.GetFinalResponse();
+                    string result = TfLiteManagerHands.Instance.StopRecording();
 
                     //We Rewrite the color
                     var newColor = this.sharedVideoManager.getBallColorFromVideoName(result);

@@ -122,7 +122,7 @@ public class DrawLine : MonoBehaviour
                     draw = true;
 
                     //Start Recording Data!
-                    TfLiteManager.Instance.StartRecording();
+                    TfLiteManagerHands.Instance.StartRecording();
                 }
             }
             else

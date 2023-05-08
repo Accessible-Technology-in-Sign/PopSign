@@ -117,7 +117,7 @@ public class HandsMediaPipe : MonoBehaviour
 
             if (handLandmarksStream.TryGetNext(out var handLandmarks))
             {
-                if (TfLiteManager.Instance.isCapturingMediaPipeData)
+                if (TfLiteManagerHands.Instance.isCapturingMediaPipeData)
                 {
 
                     if (handLandmarks != null && handLandmarks.Count > 0)
@@ -140,9 +140,9 @@ public class HandsMediaPipe : MonoBehaviour
                                 currentFrame.Add(landmarks.Landmark[i].Z);
                             }
 
-                            TfLiteManager.Instance.AddDataToList(currentFrame);
+                            TfLiteManagerHands.Instance.AddDataToList(currentFrame);
 
-                            TfLiteManager.Instance.recordingFrameNumber++;
+                            TfLiteManagerHands.Instance.recordingFrameNumber++;
                         }
                     }
                 }
@@ -157,19 +157,19 @@ public class HandsMediaPipe : MonoBehaviour
 
     private void SaveToFile(NormalizedLandmarkList landmarks)
     {
-        string path = Application.persistentDataPath + "/" + TfLiteManager.Instance.sessionNumber + "_landmarks.txt"; //dir to be changed accordingly
-        if (TfLiteManager.Instance.recordingFrameNumber == 0)
+        string path = Application.persistentDataPath + "/" + TfLiteManagerHands.Instance.sessionNumber + "_landmarks.txt"; //dir to be changed accordingly
+        if (TfLiteManagerHands.Instance.recordingFrameNumber == 0)
         {
             File.WriteAllText(path, string.Empty);
         }
         StreamWriter sWriter = new StreamWriter(path, true);
-        if (TfLiteManager.Instance.recordingFrameNumber == 0)
+        if (TfLiteManagerHands.Instance.recordingFrameNumber == 0)
         {
-            sWriter.Write("{\"" + TfLiteManager.Instance.recordingFrameNumber + "\": " + landmarks);
+            sWriter.Write("{\"" + TfLiteManagerHands.Instance.recordingFrameNumber + "\": " + landmarks);
         }
         else
         {
-            sWriter.Write(",\"" + TfLiteManager.Instance.recordingFrameNumber + "\": " + landmarks);
+            sWriter.Write(",\"" + TfLiteManagerHands.Instance.recordingFrameNumber + "\": " + landmarks);
         }
         sWriter.Close();
     }

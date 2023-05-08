@@ -127,15 +127,69 @@ public class HolisticMediaPipe : MonoBehaviour
             poseLandmarksStream.TryGetNext(out var poseLandmarks);
             leftHandLandmarksStream.TryGetNext(out var leftHandLandmarks);
             faceLandmarksStream.TryGetNext(out var faceLandmarks);
+            rightHandLandmarksStream.TryGetNext(out var rightHandLandmarks);
 
-            if(rightHandLandmarksStream.TryGetNext(out var rightHandLandmarks))
+            if (faceLandmarks != null || poseLandmarks != null || leftHandLandmarks != null || rightHandLandmarks != null)
             {
-                List<NormalizedLandmarkList> rightHandList = new List<NormalizedLandmarkList>();
-                rightHandList.Add(rightHandLandmarks);
+                if (TfLiteManagerHolistic.Instance.isCapturingMediaPipeData)
+                {
+                    //SaveToFile(landmarks);
 
-                Debug.Log(rightHandLandmarks.Landmark[0].X + " " + rightHandLandmarks.Landmark[0].Y + " " + rightHandLandmarks.Landmark[0].Z);
+                    float?[,] currentFrame = new float?[543,3];
+                    if (faceLandmarks != null)
+                    {
+                        for (int i = 0; i < faceLandmarks.Landmark.Count; i++)
+                        {
+                            currentFrame[i, 0] = faceLandmarks.Landmark[i].X;
+                            currentFrame[i, 1] = faceLandmarks.Landmark[i].Y;
+                            currentFrame[i, 2] = faceLandmarks.Landmark[i].Z;
+                        }
+                    }
 
-                _multiHandLandmarksAnnotationController.DrawNow(rightHandList);
+                    if (poseLandmarks != null)
+                    {
+                        for (int i = 0; i < poseLandmarks.Landmark.Count; i++)
+                        {
+                            currentFrame[i + 468, 0] = poseLandmarks.Landmark[i].X;
+                            currentFrame[i + 468, 1] = poseLandmarks.Landmark[i].Y;
+                            currentFrame[i + 468, 2] = poseLandmarks.Landmark[i].Z;
+                        }
+                    }
+
+                    if (leftHandLandmarks != null)
+                    {
+                        for (int i = 0; i < leftHandLandmarks.Landmark.Count; i++)
+                        {
+                            currentFrame[i + 501, 0] = leftHandLandmarks.Landmark[i].X;
+                            currentFrame[i + 501, 1] = leftHandLandmarks.Landmark[i].Y;
+                            currentFrame[i + 501, 2] = leftHandLandmarks.Landmark[i].Z;
+                        }
+                    }
+                    if (rightHandLandmarks != null)
+                    {
+                        for (int i = 0; i < rightHandLandmarks.Landmark.Count; i++)
+                        {
+                            currentFrame[i + 522, 0] = rightHandLandmarks.Landmark[i].X;
+                            currentFrame[i + 522, 1] = rightHandLandmarks.Landmark[i].Y;
+                            currentFrame[i + 522, 2] = rightHandLandmarks.Landmark[i].Z;
+                        }
+                    }
+
+                    TfLiteManagerHolistic.Instance.AddDataToList(currentFrame);
+
+                    TfLiteManagerHolistic.Instance.recordingFrameNumber++;
+                }
+            }
+
+            //Visualize hands
+            if (leftHandLandmarks != null || rightHandLandmarks != null)
+            {
+                List<NormalizedLandmarkList> handList = new List<NormalizedLandmarkList>();
+                if (rightHandLandmarks != null)
+                    handList.Add(rightHandLandmarks);
+                if (leftHandLandmarks != null)
+                    handList.Add(leftHandLandmarks);
+                _multiHandLandmarksAnnotationController.DrawNow(handList);
             }
             else
             {
@@ -148,19 +202,19 @@ public class HolisticMediaPipe : MonoBehaviour
 
     private void SaveToFile(NormalizedLandmarkList landmarks)
     {
-        string path = Application.persistentDataPath + "/" + TfLiteManager.Instance.sessionNumber + "_landmarks.txt"; //dir to be changed accordingly
-        if (TfLiteManager.Instance.recordingFrameNumber == 0)
+        string path = Application.persistentDataPath + "/" + TfLiteManagerHolistic.Instance.sessionNumber + "_landmarks.txt"; //dir to be changed accordingly
+        if (TfLiteManagerHolistic.Instance.recordingFrameNumber == 0)
         {
             File.WriteAllText(path, string.Empty);
         }
         StreamWriter sWriter = new StreamWriter(path, true);
-        if (TfLiteManager.Instance.recordingFrameNumber == 0)
+        if (TfLiteManagerHolistic.Instance.recordingFrameNumber == 0)
         {
-            sWriter.Write("{\"" + TfLiteManager.Instance.recordingFrameNumber + "\": " + landmarks);
+            sWriter.Write("{\"" + TfLiteManagerHolistic.Instance.recordingFrameNumber + "\": " + landmarks);
         }
         else
         {
-            sWriter.Write(",\"" + TfLiteManager.Instance.recordingFrameNumber + "\": " + landmarks);
+            sWriter.Write(",\"" + TfLiteManagerHolistic.Instance.recordingFrameNumber + "\": " + landmarks);
         }
         sWriter.Close();
     }
