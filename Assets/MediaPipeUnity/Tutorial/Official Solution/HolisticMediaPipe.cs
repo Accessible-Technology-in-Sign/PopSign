@@ -131,7 +131,7 @@ public class HolisticMediaPipe : MonoBehaviour
 
             if (faceLandmarks != null || poseLandmarks != null || leftHandLandmarks != null || rightHandLandmarks != null)
             {
-                if (TfLiteManagerHolistic.Instance.isCapturingMediaPipeData)
+                if (TfLiteManager.Instance.IsRecording())
                 {
                     //SaveToFile(landmarks);
 
@@ -175,9 +175,10 @@ public class HolisticMediaPipe : MonoBehaviour
                         }
                     }
 
-                    TfLiteManagerHolistic.Instance.AddDataToList(currentFrame);
+                    //TfLiteManager.Instance.AddDataToList(currentFrame);
+                    TfLiteManager.Instance.AddDataToList(new List<float>());
 
-                    TfLiteManagerHolistic.Instance.recordingFrameNumber++;
+                    //TfLiteManager.Instance.SaveToFile(faceLandmarks.ToString());
                 }
             }
 
@@ -198,25 +199,6 @@ public class HolisticMediaPipe : MonoBehaviour
             
 
         }
-    }
-
-    private void SaveToFile(NormalizedLandmarkList landmarks)
-    {
-        string path = Application.persistentDataPath + "/" + TfLiteManagerHolistic.Instance.sessionNumber + "_landmarks.txt"; //dir to be changed accordingly
-        if (TfLiteManagerHolistic.Instance.recordingFrameNumber == 0)
-        {
-            File.WriteAllText(path, string.Empty);
-        }
-        StreamWriter sWriter = new StreamWriter(path, true);
-        if (TfLiteManagerHolistic.Instance.recordingFrameNumber == 0)
-        {
-            sWriter.Write("{\"" + TfLiteManagerHolistic.Instance.recordingFrameNumber + "\": " + landmarks);
-        }
-        else
-        {
-            sWriter.Write(",\"" + TfLiteManagerHolistic.Instance.recordingFrameNumber + "\": " + landmarks);
-        }
-        sWriter.Close();
     }
 
     private void OnDestroy()

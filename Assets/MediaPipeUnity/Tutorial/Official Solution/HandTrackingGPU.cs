@@ -101,46 +101,6 @@ namespace Mediapipe.Unity.Tutorial
 
                 if (handLandmarksStream.TryGetNext(out var handLandmarks))
                 {
-                    if (TfLiteManagerHands.Instance.isCapturingMediaPipeData)
-                    {
-
-                        if (handLandmarks != null && handLandmarks.Count > 0)
-                        {
-                            foreach (var landmarks in handLandmarks)
-                            {
-
-                                string path = Application.persistentDataPath + "/" + TfLiteManagerHands.Instance.sessionNumber + "_landmarks.txt"; //dir to be changed accordingly
-                                if (TfLiteManagerHands.Instance.recordingFrameNumber == 0)
-                                {
-                                    File.WriteAllText(path, string.Empty);
-                                }
-                                StreamWriter sWriter = new StreamWriter(path, true);
-
-                                if (TfLiteManagerHands.Instance.recordingFrameNumber == 0)
-                                {
-                                    sWriter.Write("{\"" + TfLiteManagerHands.Instance.recordingFrameNumber + "\": " + landmarks);
-                                }
-                                else
-                                {
-                                    sWriter.Write(",\"" + TfLiteManagerHands.Instance.recordingFrameNumber + "\": " + landmarks);
-                                }
-                                sWriter.Close();
-
-                                List<float> currentFrame = new List<float>();
-
-                                for (int i = 0; i < landmarks.Landmark.Count; i++)
-                                {
-                                    currentFrame.Add(landmarks.Landmark[i].X);
-                                    currentFrame.Add(landmarks.Landmark[i].Y);
-                                    currentFrame.Add(landmarks.Landmark[i].Z);
-                                }
-
-                                TfLiteManagerHands.Instance.AddDataToList(currentFrame);
-
-                                TfLiteManagerHands.Instance.recordingFrameNumber++;
-                            }
-                        }
-                    }
                     _multiHandLandmarksAnnotationController.DrawNow(handLandmarks);
                 }
                 else 

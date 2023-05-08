@@ -139,7 +139,7 @@ public class ball : MonoBehaviour
                 if (worldPos.y > -4f && worldPos.y < 4f && !mainscript.StopControl)
                 {
                     //Get local response result
-                    string result = TfLiteManagerHands.Instance.StopRecording();
+                    string result = TfLiteManager.Instance.StopRecording();
 
                     //We Rewrite the color
                     var newColor = this.sharedVideoManager.getBallColorFromVideoName(result);

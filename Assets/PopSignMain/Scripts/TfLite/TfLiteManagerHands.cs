@@ -5,9 +5,8 @@ using TensorFlowLite;
 using System.IO;
 using UnityEngine.Networking;
 
-public class TfLiteManagerHands : MonoBehaviour
+public class TfLiteManagerHands : MonoBehaviour, ITfLiteManager
 {
-    public static TfLiteManagerHands Instance;
 
 	[SerializeField, FilePopup("*.tflite")] string modelName;
 
@@ -20,8 +19,7 @@ public class TfLiteManagerHands : MonoBehaviour
 	[HideInInspector]
 	public int maxFrames;
 
-	[HideInInspector]
-	public bool isCapturingMediaPipeData = false;
+	private bool isCapturingMediaPipeData = false;
 
 	[HideInInspector]
 	public int sessionNumber = 0;
@@ -44,9 +42,9 @@ public class TfLiteManagerHands : MonoBehaviour
 	// Start is called before the first frame update
 	void Awake()
     {
-        if(Instance == null)
+        if(TfLiteManager.Instance == null)
         {
-            Instance = this;
+			TfLiteManager.Instance = this;
         }
 
 		var options = new InterpreterOptions()
@@ -82,9 +80,14 @@ public class TfLiteManagerHands : MonoBehaviour
 		isCapturingMediaPipeData = false;
 		timer = 0;
 		
-		//StartCoroutine(ReadFile());
+		StartCoroutine(ReadFile());
 		return RunModel();
 	}
+
+	public bool IsRecording()
+    {
+		return isCapturingMediaPipeData;
+    }
 
 	private IEnumerator ReadFile()
 	{
@@ -162,9 +165,29 @@ public class TfLiteManagerHands : MonoBehaviour
 
 	private void Update()
 	{
-		if (TfLiteManagerHands.Instance.isCapturingMediaPipeData)
+		if (isCapturingMediaPipeData)
 		{
 			timer += Time.deltaTime;
 		}
+	}
+
+	public void SaveToFile(string landmarks)
+	{
+		string path = Application.persistentDataPath + "/" + sessionNumber + "_landmarks.txt"; //dir to be changed accordingly
+		if (recordingFrameNumber == 0)
+		{
+			File.WriteAllText(path, string.Empty);
+		}
+		StreamWriter sWriter = new StreamWriter(path, true);
+		if (recordingFrameNumber == 0)
+		{
+			sWriter.Write("{\"" + recordingFrameNumber + "\": " + landmarks);
+		}
+		else
+		{
+			sWriter.Write(",\"" + recordingFrameNumber + "\": " + landmarks);
+		}
+		sWriter.Close();
+		recordingFrameNumber++;
 	}
 }

@@ -5,9 +5,8 @@ using TensorFlowLite;
 using System.IO;
 using UnityEngine.Networking;
 
-public class TfLiteManagerHolistic : MonoBehaviour
+public class TfLiteManagerHolistic : MonoBehaviour, ITfLiteManager
 {
-	public static TfLiteManagerHolistic Instance;
 
 	[SerializeField, FilePopup("*.tflite")] string modelName;
 
@@ -19,8 +18,7 @@ public class TfLiteManagerHolistic : MonoBehaviour
 
 	public int maxFrames;
 
-	[HideInInspector]
-	public bool isCapturingMediaPipeData = false;
+	private bool isCapturingMediaPipeData = false;
 
 	[HideInInspector]
 	public int sessionNumber = 0;
@@ -45,9 +43,9 @@ public class TfLiteManagerHolistic : MonoBehaviour
 	// Start is called before the first frame update
 	void Awake()
 	{
-		if (Instance == null)
+		if (TfLiteManager.Instance == null)
 		{
-			Instance = this;
+			TfLiteManager.Instance = this;
 		}
 
 		var options = new InterpreterOptions()
@@ -89,6 +87,11 @@ public class TfLiteManagerHolistic : MonoBehaviour
 
 		//StartCoroutine(ReadFile());
 		return RunModel();
+	}
+
+	public bool IsRecording()
+	{
+		return isCapturingMediaPipeData;
 	}
 
 	private IEnumerator ReadFile()
@@ -174,9 +177,33 @@ public class TfLiteManagerHolistic : MonoBehaviour
 
 	private void Update()
 	{
-		if (TfLiteManagerHolistic.Instance.isCapturingMediaPipeData)
+		if (isCapturingMediaPipeData)
 		{
 			timer += Time.deltaTime;
 		}
 	}
+
+	public void SaveToFile(string landmarks)
+	{
+		string path = Application.persistentDataPath + "/" + sessionNumber + "_landmarks.txt"; //dir to be changed accordingly
+		if (recordingFrameNumber == 0)
+		{
+			File.WriteAllText(path, string.Empty);
+		}
+		StreamWriter sWriter = new StreamWriter(path, true);
+		if (recordingFrameNumber == 0)
+		{
+			sWriter.Write("{\"" + recordingFrameNumber + "\": " + landmarks);
+		}
+		else
+		{
+			sWriter.Write(",\"" + recordingFrameNumber + "\": " + landmarks);
+		}
+		sWriter.Close();
+	}
+
+    public void AddDataToList(List<float> v)
+    {
+        throw new System.NotImplementedException();
+    }
 }
