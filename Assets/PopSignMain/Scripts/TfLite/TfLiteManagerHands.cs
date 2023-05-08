@@ -55,9 +55,10 @@ public class TfLiteManagerHands : MonoBehaviour, ITfLiteManager
 		maxFrames = interpreter.GetInputTensorInfo(0).shape[1];
 	}
 
-	public void AddDataToList(List<float> singleFrameData)
+	public void AddDataToList(object singleFrameData)
     {
-		allData.Add(singleFrameData);
+		var listdata = (List<float>)singleFrameData;
+		allData.Add(listdata);
 		if(allData.Count > maxFrames)
         {
 			allData.RemoveAt(0);

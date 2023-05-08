@@ -4,19 +4,12 @@ using UnityEngine;
 
 public class FramerateSetter : MonoBehaviour
 {
-    public bool target30FPS = false;
+    public int targetFPS = 30;
 
     // Start is called before the first frame update
     void Start()
-    {
-        if (target30FPS)
-        {
-            Application.targetFrameRate = 30;
-        }
-        else
-        {
-            Application.targetFrameRate = 15;
-        }
+{
+        Application.targetFrameRate = targetFPS;
     }
 
     // Update is called once per frame

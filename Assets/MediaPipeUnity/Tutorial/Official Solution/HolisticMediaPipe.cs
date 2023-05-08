@@ -175,8 +175,7 @@ public class HolisticMediaPipe : MonoBehaviour
                         }
                     }
 
-                    //TfLiteManager.Instance.AddDataToList(currentFrame);
-                    TfLiteManager.Instance.AddDataToList(new List<float>());
+                    TfLiteManager.Instance.AddDataToList(currentFrame);
 
                     //TfLiteManager.Instance.SaveToFile(faceLandmarks.ToString());
                 }

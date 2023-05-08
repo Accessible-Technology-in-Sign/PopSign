@@ -61,9 +61,10 @@ public class TfLiteManagerHolistic : MonoBehaviour, ITfLiteManager
         }
 	}
 
-	public void AddDataToList(float?[,] singleFrameData)
+	public void AddDataToList(object singleFrameData)
 	{
-		allData.Enqueue(singleFrameData);
+		var floatdata = (float?[,])singleFrameData;
+		allData.Enqueue(floatdata);
 		if (allData.Count > maxFrames)
 		{
 			allData.Dequeue();
@@ -201,9 +202,4 @@ public class TfLiteManagerHolistic : MonoBehaviour, ITfLiteManager
 		}
 		sWriter.Close();
 	}
-
-    public void AddDataToList(List<float> v)
-    {
-        throw new System.NotImplementedException();
-    }
 }

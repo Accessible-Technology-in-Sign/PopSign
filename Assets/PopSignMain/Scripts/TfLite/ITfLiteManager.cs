@@ -10,7 +10,7 @@ public interface ITfLiteManager
 
     public bool IsRecording();
 
-    public void AddDataToList(List<float> v);
+    public void AddDataToList(object v);
 
     public void SaveToFile(string landmarks);
 }
