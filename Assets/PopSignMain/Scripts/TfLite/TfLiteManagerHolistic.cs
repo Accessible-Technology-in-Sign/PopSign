@@ -82,7 +82,7 @@ public class TfLiteManagerHolistic : MonoBehaviour, ITfLiteManager
 		isCapturingMediaPipeData = false;
 		timer = 0;
 
-		StartCoroutine(SaveFile());
+		CloseFileIfExists();
 		return RunModel();
 	}
 
@@ -191,10 +191,14 @@ public class TfLiteManagerHolistic : MonoBehaviour, ITfLiteManager
 		sWriter.Close();
 	}
 
-	private IEnumerator SaveFile()
+	private void CloseFileIfExists()
 	{
-		yield return new WaitForEndOfFrame();
 		string path = Application.persistentDataPath + "/" + sessionNumber + "_landmarks.txt"; //dir to be changed accordingly
+		
+		//if file doesn't exist, than no need to write the final line
+		if (!File.Exists(path))
+			return;
+		
 		Debug.Log("File Saved to " + path);
 		StreamWriter sWriter = new StreamWriter(path, true);
 		sWriter.Write("}");
