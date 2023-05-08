@@ -5,13 +5,13 @@ using TensorFlowLite;
 using System.IO;
 using UnityEngine.Networking;
 
-public class TfLiteManagerHolistic : MonoBehaviour, ITfLiteManager
+public class TfLiteManagerHolisticGuru : MonoBehaviour, ITfLiteManager
 {
 
 	[SerializeField, FilePopup("*.tflite")] string modelName;
 
 	[HideInInspector]
-	public float?[,,] input;
+	public float[,,] input;
 
 	[HideInInspector]
 	public float[] outputs = new float[250];
@@ -31,7 +31,7 @@ public class TfLiteManagerHolistic : MonoBehaviour, ITfLiteManager
 	private SignatureRunner runner;
 	private float timer = 0f;
 
-	public Queue<float?[,]> allData = new Queue<float?[,]>();
+	public Queue<float[,]> allData = new Queue<float[,]>();
 
 	[HideInInspector]
 	public bool isWaitingForResponse = false;
@@ -57,7 +57,7 @@ public class TfLiteManagerHolistic : MonoBehaviour, ITfLiteManager
 
 	public void AddDataToList(object singleFrameData)
 	{
-		var floatdata = (float?[,])singleFrameData;
+		var floatdata = (float[,])singleFrameData;
 		allData.Enqueue(floatdata);
 		if (allData.Count > maxFrames)
 		{
@@ -70,8 +70,8 @@ public class TfLiteManagerHolistic : MonoBehaviour, ITfLiteManager
 	public void StartRecording()
 	{
 		//Clear Data
-		input = new float?[maxFrames, 543, 3];
-		allData = new Queue<float?[,]>();
+		input = new float[maxFrames, 543, 3];
+		allData = new Queue<float[,]>();
 		isCapturingMediaPipeData = true;
 		sessionNumber++;
 		recordingFrameNumber = 0;
@@ -108,7 +108,7 @@ public class TfLiteManagerHolistic : MonoBehaviour, ITfLiteManager
 		//}
 
 		int dataRecordedSize = allData.Count;
-		input = new float?[dataRecordedSize, 543, 3];
+		input = new float[dataRecordedSize, 543, 3];
 
 		for (int frameNumber = 0; frameNumber < dataRecordedSize; frameNumber++)
 		{
