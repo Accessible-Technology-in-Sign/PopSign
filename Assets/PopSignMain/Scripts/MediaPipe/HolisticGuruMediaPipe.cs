@@ -130,30 +130,12 @@ public class HolisticGuruMediaPipe : MonoBehaviour
             faceLandmarksStream.TryGetNext(out var faceLandmarks);
             rightHandLandmarksStream.TryGetNext(out var rightHandLandmarks);
 
-            if (faceLandmarks != null && poseLandmarks != null && (leftHandLandmarks != null || rightHandLandmarks != null))
+            if (poseLandmarks != null && (leftHandLandmarks != null || rightHandLandmarks != null))
             {
                 if (TfLiteManager.Instance.IsRecording())
                 {
-                    float[,] currentFrame = new float[543,3];
+                    float[] currentFrame = new float[108];
                     string currentString = "";
-                    if (faceLandmarks != null)
-                    {
-                        if (_saveFile)
-                        {
-                            if(currentString != "")
-                            {
-                                currentString += ",";
-                            }
-                            currentString += faceLandmarks.ToString().Insert(3, "face");
-                        }
-
-                        for (int i = 0; i < faceLandmarks.Landmark.Count; i++)
-                        {
-                            currentFrame[i, 0] = faceLandmarks.Landmark[i].X;
-                            currentFrame[i, 1] = faceLandmarks.Landmark[i].Y;
-                            currentFrame[i, 2] = faceLandmarks.Landmark[i].Z;
-                        }
-                    }
 
                     if (poseLandmarks != null)
                     {
@@ -168,9 +150,8 @@ public class HolisticGuruMediaPipe : MonoBehaviour
 
                         for (int i = 0; i < poseLandmarks.Landmark.Count; i++)
                         {
-                            currentFrame[i + 468, 0] = poseLandmarks.Landmark[i].X;
-                            currentFrame[i + 468, 1] = poseLandmarks.Landmark[i].Y;
-                            currentFrame[i + 468, 2] = poseLandmarks.Landmark[i].Z;
+                            currentFrame[i*2] = poseLandmarks.Landmark[i].X;
+                            currentFrame[i*2+1] = poseLandmarks.Landmark[i].Y;
                         }
                     }
 
@@ -187,12 +168,10 @@ public class HolisticGuruMediaPipe : MonoBehaviour
 
                         for (int i = 0; i < leftHandLandmarks.Landmark.Count; i++)
                         {
-                            currentFrame[i + 501, 0] = leftHandLandmarks.Landmark[i].X;
-                            currentFrame[i + 501, 1] = leftHandLandmarks.Landmark[i].Y;
-                            currentFrame[i + 501, 2] = leftHandLandmarks.Landmark[i].Z;
+                            currentFrame[i*2 + 66] = leftHandLandmarks.Landmark[i].X;
+                            currentFrame[i*2 + 67] = leftHandLandmarks.Landmark[i].Y;
                         }
-                    }
-                    if (rightHandLandmarks != null)
+                    }else if (rightHandLandmarks != null)
                     {
                         if (_saveFile)
                         {
@@ -205,9 +184,8 @@ public class HolisticGuruMediaPipe : MonoBehaviour
 
                         for (int i = 0; i < rightHandLandmarks.Landmark.Count; i++)
                         {
-                            currentFrame[i + 522, 0] = rightHandLandmarks.Landmark[i].X;
-                            currentFrame[i + 522, 1] = rightHandLandmarks.Landmark[i].Y;
-                            currentFrame[i + 522, 2] = rightHandLandmarks.Landmark[i].Z;
+                            currentFrame[i * 2 + 66] = rightHandLandmarks.Landmark[i].X;
+                            currentFrame[i * 2 + 67] = rightHandLandmarks.Landmark[i].Y;
                         }
                     }
 

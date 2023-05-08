@@ -32,12 +32,12 @@ public class TfLiteManagerHands : MonoBehaviour, ITfLiteManager
 	private Interpreter interpreter;
 	private float timer = 0f;
 
-	public List<List<float>> allData = new List<List<float>>();
+	public List<float[]> allData = new List<float[]>();
 
 	[HideInInspector]
 	public bool isResponseReady = false;
 
-
+	private int inputSize;
 
 	// Start is called before the first frame update
 	void Awake()
@@ -53,11 +53,12 @@ public class TfLiteManagerHands : MonoBehaviour, ITfLiteManager
 		};
 		interpreter = new Interpreter(FileUtil.LoadFile(modelName), options);
 		maxFrames = interpreter.GetInputTensorInfo(0).shape[1];
+		inputSize = interpreter.GetInputTensorInfo(0).shape[2];
 	}
 
 	public void AddDataToList(object singleFrameData)
     {
-		var listdata = (List<float>)singleFrameData;
+		var listdata = (float[])singleFrameData;
 		allData.Add(listdata);
 		if(allData.Count > maxFrames)
         {
@@ -70,8 +71,8 @@ public class TfLiteManagerHands : MonoBehaviour, ITfLiteManager
 	public void StartRecording()
     {
 		//Clear Data
-		data = new float[1, maxFrames, 63, 1];
-		allData = new List<List<float>>();
+		data = new float[1, maxFrames, inputSize, 1];
+		allData = new List<float[]>();
 
 		isCapturingMediaPipeData = true;
 		sessionNumber++;
@@ -82,8 +83,8 @@ public class TfLiteManagerHands : MonoBehaviour, ITfLiteManager
     {
 		isCapturingMediaPipeData = false;
 		timer = 0;
-		
-		StartCoroutine(ReadFile());
+
+		CloseFileIfExists();
 		return RunModel();
 	}
 
@@ -92,10 +93,14 @@ public class TfLiteManagerHands : MonoBehaviour, ITfLiteManager
 		return isCapturingMediaPipeData;
     }
 
-	private IEnumerator ReadFile()
+	private void CloseFileIfExists()
 	{
-		yield return new WaitForEndOfFrame();
 		string path = Application.persistentDataPath + "/" + sessionNumber + "_landmarks.txt"; //dir to be changed accordingly
+
+		//if file doesn't exist, than no need to write the final line
+		if (!File.Exists(path))
+			return;
+
 		StreamWriter sWriter = new StreamWriter(path, true);
 		sWriter.Write("}");
 		sWriter.Close();
@@ -118,7 +123,7 @@ public class TfLiteManagerHands : MonoBehaviour, ITfLiteManager
 
 		for(int frameNumber = 0; frameNumber < maxFrames; frameNumber++)
         {
-			for(int mediapipevalue = 0; mediapipevalue < 63; mediapipevalue++)
+			for(int mediapipevalue = 0; mediapipevalue < inputSize; mediapipevalue++)
             {
 				data[0, frameNumber, mediapipevalue, 0] = allData[frameNumber][mediapipevalue];
             }
