@@ -63,7 +63,9 @@ public class TfLiteManagerHands : MonoBehaviour, ITfLiteManager
         {
 			allData.RemoveAt(0);
         }
-    }
+
+		recordingFrameNumber++;
+	}
 
 	public void StartRecording()
     {

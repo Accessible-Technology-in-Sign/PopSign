@@ -28,7 +28,7 @@ public class TfLiteManagerHolistic : MonoBehaviour, ITfLiteManager
 
 	public static string[] LABELS = { "dad", "elephant", "red", "where", "yellow" };
 
-	private Interpreter interpreter;
+	private SignatureRunner runner;
 	private float timer = 0f;
 
 	public Queue<float?[,]> allData = new Queue<float?[,]>();
@@ -52,13 +52,7 @@ public class TfLiteManagerHolistic : MonoBehaviour, ITfLiteManager
 		{
 			threads = 1,
 		};
-		interpreter = new Interpreter(FileUtil.LoadFile(modelName), options);
-		if(interpreter.GetInputTensorInfo(0).shape[0] > 0)
-			maxFrames = interpreter.GetInputTensorInfo(0).shape[1];
-		else if(maxFrames == 0)
-        {
-			maxFrames = 30;
-        }
+		runner = new SignatureRunner("serving_default", FileUtil.LoadFile(modelName), options);
 	}
 
 	public void AddDataToList(object singleFrameData)
@@ -69,6 +63,8 @@ public class TfLiteManagerHolistic : MonoBehaviour, ITfLiteManager
 		{
 			allData.Dequeue();
 		}
+
+		recordingFrameNumber++;
 	}
 
 	public void StartRecording()
@@ -86,22 +82,13 @@ public class TfLiteManagerHolistic : MonoBehaviour, ITfLiteManager
 		isCapturingMediaPipeData = false;
 		timer = 0;
 
-		//StartCoroutine(ReadFile());
+		StartCoroutine(SaveFile());
 		return RunModel();
 	}
 
 	public bool IsRecording()
 	{
 		return isCapturingMediaPipeData;
-	}
-
-	private IEnumerator ReadFile()
-	{
-		yield return new WaitForEndOfFrame();
-		string path = Application.persistentDataPath + "/" + sessionNumber + "_landmarks.txt"; //dir to be changed accordingly
-		StreamWriter sWriter = new StreamWriter(path, true);
-		sWriter.Write("}");
-		sWriter.Close();
 	}
 
 	private string RunModel()
@@ -140,22 +127,22 @@ public class TfLiteManagerHolistic : MonoBehaviour, ITfLiteManager
 		{
 			threads = 1,
 		};
-		interpreter = new Interpreter(FileUtil.LoadFile(modelName), options);
+		runner = new SignatureRunner("serving_default", FileUtil.LoadFile(modelName), options);
 
-		var info = interpreter.GetInputTensorInfo(0);
+		var info = runner.GetInputTensorInfo(0);
 
 		// Allocate input buffer
-		interpreter.AllocateTensors();
+		//interpreter.AllocateTensors();
 
-		interpreter.SetInputTensorData(0, input);
+		//runner.SetSignatureInputTensorData(0, input);
 
 		// Blackbox!!
-		interpreter.Invoke();
+		//interpreter.Invoke();
 
 		// Debug.Log("Output index " + interpreter.GetOutputTensorIndex(20));
 
 		// Get data
-		interpreter.GetOutputTensorData(0, outputs);
+		//interpreter.GetOutputTensorData(0, outputs);
 
 		//label1: 
 		float max = 0f;
@@ -187,6 +174,7 @@ public class TfLiteManagerHolistic : MonoBehaviour, ITfLiteManager
 	public void SaveToFile(string landmarks)
 	{
 		string path = Application.persistentDataPath + "/" + sessionNumber + "_landmarks.txt"; //dir to be changed accordingly
+
 		if (recordingFrameNumber == 0)
 		{
 			File.WriteAllText(path, string.Empty);
@@ -194,12 +182,22 @@ public class TfLiteManagerHolistic : MonoBehaviour, ITfLiteManager
 		StreamWriter sWriter = new StreamWriter(path, true);
 		if (recordingFrameNumber == 0)
 		{
-			sWriter.Write("{\"" + recordingFrameNumber + "\": " + landmarks);
+			sWriter.Write("{\"" + recordingFrameNumber + "\": [" + landmarks + "]");
 		}
 		else
 		{
-			sWriter.Write(",\"" + recordingFrameNumber + "\": " + landmarks);
+			sWriter.Write(",\"" + recordingFrameNumber + "\": [" + landmarks + "]");
 		}
+		sWriter.Close();
+	}
+
+	private IEnumerator SaveFile()
+	{
+		yield return new WaitForEndOfFrame();
+		string path = Application.persistentDataPath + "/" + sessionNumber + "_landmarks.txt"; //dir to be changed accordingly
+		Debug.Log("File Saved to " + path);
+		StreamWriter sWriter = new StreamWriter(path, true);
+		sWriter.Write("}");
 		sWriter.Close();
 	}
 }

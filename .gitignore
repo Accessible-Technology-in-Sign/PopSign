@@ -79,3 +79,4 @@ Packages/com.github.homuler.mediapipe/Runtime/Plugins/iOS/MediaPipeUnity.framewo
 Builds_BackUpThisFolder_ButDontShipItWithYourGame/
 Packages/com.github.homuler.mediapipe/Runtime/Plugins/Android/Ignore/
 Packages/com.github.asus4.tflite/Plugins/
+Assets/StreamingAssets/TfLiteModels/1stplace.tflite

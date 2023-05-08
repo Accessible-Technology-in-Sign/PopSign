@@ -19,6 +19,7 @@ public class HolisticMediaPipe : MonoBehaviour
     [SerializeField] private int _height;
     [SerializeField] private int _fps;
     [SerializeField] private MultiHandLandmarkListAnnotationController _multiHandLandmarksAnnotationController;
+    [SerializeField] private bool _saveFile = false;
 #if UNITY_EDITOR
     private bool useGPU = false;
 #else
@@ -133,11 +134,19 @@ public class HolisticMediaPipe : MonoBehaviour
             {
                 if (TfLiteManager.Instance.IsRecording())
                 {
-                    //SaveToFile(landmarks);
-
                     float?[,] currentFrame = new float?[543,3];
+                    string currentString = "";
                     if (faceLandmarks != null)
                     {
+                        if (_saveFile)
+                        {
+                            if(currentString != "")
+                            {
+                                currentString += ",";
+                            }
+                            currentString += faceLandmarks.ToString().Insert(3, "face");
+                        }
+
                         for (int i = 0; i < faceLandmarks.Landmark.Count; i++)
                         {
                             currentFrame[i, 0] = faceLandmarks.Landmark[i].X;
@@ -148,6 +157,15 @@ public class HolisticMediaPipe : MonoBehaviour
 
                     if (poseLandmarks != null)
                     {
+                        if (_saveFile)
+                        {
+                            if (currentString != "")
+                            {
+                                currentString += ",";
+                            }
+                            currentString += poseLandmarks.ToString().Insert(3, "pose");
+                        }
+
                         for (int i = 0; i < poseLandmarks.Landmark.Count; i++)
                         {
                             currentFrame[i + 468, 0] = poseLandmarks.Landmark[i].X;
@@ -158,6 +176,15 @@ public class HolisticMediaPipe : MonoBehaviour
 
                     if (leftHandLandmarks != null)
                     {
+                        if (_saveFile)
+                        {
+                            if (currentString != "")
+                            {
+                                currentString += ",";
+                            }
+                            currentString += leftHandLandmarks.ToString().Insert(3, "lefthand");
+                        }
+
                         for (int i = 0; i < leftHandLandmarks.Landmark.Count; i++)
                         {
                             currentFrame[i + 501, 0] = leftHandLandmarks.Landmark[i].X;
@@ -167,6 +194,15 @@ public class HolisticMediaPipe : MonoBehaviour
                     }
                     if (rightHandLandmarks != null)
                     {
+                        if (_saveFile)
+                        {
+                            if (currentString != "")
+                            {
+                                currentString += ",";
+                            }
+                            currentString += rightHandLandmarks.ToString().Insert(3, "righthand");
+                        }
+
                         for (int i = 0; i < rightHandLandmarks.Landmark.Count; i++)
                         {
                             currentFrame[i + 522, 0] = rightHandLandmarks.Landmark[i].X;
@@ -175,9 +211,10 @@ public class HolisticMediaPipe : MonoBehaviour
                         }
                     }
 
-                    TfLiteManager.Instance.AddDataToList(currentFrame);
+                    if(_saveFile && currentString!="")
+                        TfLiteManager.Instance.SaveToFile(currentString);
 
-                    //TfLiteManager.Instance.SaveToFile(faceLandmarks.ToString());
+                    TfLiteManager.Instance.AddDataToList(currentFrame);
                 }
             }
 
