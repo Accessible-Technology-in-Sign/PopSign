@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/PopSignMain/Textures/logos/PopSignAI Logo/PopSignAILogo.svg.meta
+guid: d19f90fba67139247bdb2707f80ea69b
+========
+guid: d9786f9fd3d0d44b6ac5790f5c150351
+>>>>>>>> origin/PopRec_Universal_Model:Packages/com.github.asus4.tflite/Plugins/iOS/TensorFlowLiteC.framework/Headers/TensorFlowLiteC.h.meta
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

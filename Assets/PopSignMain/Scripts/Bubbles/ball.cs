@@ -1,5 +1,7 @@
 using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
+using System.Diagnostics;
 
 public class ball : MonoBehaviour
 {
@@ -7,11 +9,11 @@ public class ball : MonoBehaviour
     public bool isTarget;
     public Vector3 target;
     Vector2 worldPos;
-    
+
     public bool setTarget;
     public float startTime;
     public GameObject mesh;
-    
+
     public bool findMesh;
     Vector3 dropTarget;
     public bool newBall;
@@ -57,7 +59,7 @@ public class ball : MonoBehaviour
     }
 
     // Use this for initialization
-    void Start() 
+    void Start()
     {
         meshPos = new Vector3(-1000, -1000, -10);
         dropTarget = transform.position;
@@ -77,7 +79,8 @@ public class ball : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = gameObject.GetComponent<ColorBallScript>().sprites[6];
         sharedVideoManager = VideoManager.getVideoManager();
     }
-    void Update() 
+
+    void Update()
     {
         //Checks if current video is right video for ball
         //If ball has not been launched and target has not been set and no new ball is being swapped in and a current ball exists
@@ -108,16 +111,22 @@ public class ball : MonoBehaviour
             }
         }
 
+
         // If user left clicks screen
         if (Input.GetMouseButtonUp(0))
         {
+
             GameObject ball = gameObject;
             //If the click has been released and the ball hasn't been launched yet
+
+            //This is where we start the model.
+
             //if (!ClickOnGUI(Input.mousePosition) && !launched &&
             //    !ball.GetComponent<ball>().setTarget && mainscript.Instance.newBall2 == null &&
             //    !Camera.main.GetComponent<mainscript>().gameOver &&
             //    (GamePlay.Instance.GameStatus == GameState.Playing ||
             //        GamePlay.Instance.GameStatus == GameState.WaitForStar))
+
             if (!launched && !ball.GetComponent<ball>().setTarget && mainscript.Instance.newBall2 == null &&
                 !Camera.main.GetComponent<mainscript>().gameOver &&
                 (GamePlay.Instance.GameStatus == GameState.Playing ||
@@ -129,6 +138,12 @@ public class ball : MonoBehaviour
                 //If the y position of the click is within 4 units of the bottom of the original lowest row of balls and you have control over the ball
                 if (worldPos.y > -4f && worldPos.y < 4f && !mainscript.StopControl)
                 {
+                    //Get local response result
+                    string result = TfLiteManager.Instance.StopRecording();
+
+                    //We Rewrite the color
+                    var newColor = this.sharedVideoManager.getBallColorFromVideoName(result);
+                    ball.GetComponent<ColorBallScript>().SetColor(newColor);
 
                     //Once ball is launched, set color of ball to the color of its word.
                     int orginalColor = (int)ball.GetComponent<ColorBallScript>().mainColor;
@@ -166,7 +181,7 @@ public class ball : MonoBehaviour
 
                     // Disappear the tutorial instructions
                     Camera.main.GetComponent<TutorialManager>().BallHit();
-                    
+
                 }
             }
         }
@@ -198,7 +213,7 @@ public class ball : MonoBehaviour
         // commenting this section out doesn't seem to do anything
         if ((transform.position.y <= -10 || transform.position.y >= 5) && fireBall && !Destroyed)
         {
-            Debug.Log("transform.position.y: " + transform.position.y);
+            UnityEngine.Debug.Log("transform.position.y: " + transform.position.y);
             mainscript.Instance.CheckFreeStar();
             setTarget = false;
             launched = false;
@@ -207,7 +222,7 @@ public class ball : MonoBehaviour
         }
         if ((transform.position.y <= -10 || transform.position.y >= 5) && !Destroyed)
         {
-            Debug.Log("transform.position.y: " + transform.position.y);
+            UnityEngine.Debug.Log("transform.position.y: " + transform.position.y);
             setTarget = false;
             launched = false;
             DestroySingle(gameObject, 0.00001f);
@@ -226,7 +241,7 @@ public class ball : MonoBehaviour
     //}
 
 
-    void FixedUpdate() 
+    void FixedUpdate()
     {
         if (Camera.main.GetComponent<mainscript>().gameOver) return;
 
@@ -317,7 +332,7 @@ public class ball : MonoBehaviour
 
         // if we have a grouping of three or more bubbles, pop them!
         if (ballsToClear.Count >= 3)
-        {   
+        {
             whiff = false;
             mainscript.Instance.ComboCount++;
             // score += ballsToClear.Count * 50;
@@ -326,7 +341,9 @@ public class ball : MonoBehaviour
             //already should add this score???
             mainscript.Score += ballsToClear.Count * 50;
             mainscript.Instance.CheckFreeStar();
-        } else {
+        }
+        else
+        {
             whiff = true;
         }
 
@@ -524,7 +541,8 @@ public class ball : MonoBehaviour
 
             // if we still haven't found a place, increase our search radius
             if (findMesh) searchRadius += 0.2f;
-            if (searchRadius > 0.6f) {
+            if (searchRadius > 0.6f)
+            {
                 DestroySingle(gameObject, 0.00001f);
                 findMesh = false;
             }

@@ -25,11 +25,25 @@ MonoBehaviour:
     m_Scopes: []
     m_IsDefault: 1
     m_Capabilities: 7
-  m_UserSelectedRegistryName: 
+  - m_Id: scoped:package.openupm.com
+    m_Name: package.openupm.com
+    m_Url: https://package.openupm.com
+    m_Scopes:
+    - com.cysharp.unitask
+    m_IsDefault: 0
+    m_Capabilities: 0
+  - m_Id: scoped:npm
+    m_Name: npm
+    m_Url: https://registry.npmjs.com
+    m_Scopes:
+    - com.github.asus4
+    m_IsDefault: 0
+    m_Capabilities: 0
+  m_UserSelectedRegistryName: package.openupm.com
   m_UserAddingNewScopedRegistry: 0
   m_RegistryInfoDraft:
     m_Modified: 0
     m_ErrorMessage: 
-    m_UserModificationsInstanceId: -832
-    m_OriginalInstanceId: -834
+    m_UserModificationsInstanceId: -848
+    m_OriginalInstanceId: -850
   m_LoadAssets: 0
