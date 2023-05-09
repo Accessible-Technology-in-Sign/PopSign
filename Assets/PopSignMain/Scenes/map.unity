@@ -2170,7 +2170,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1056154263
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3235,7 +3235,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1487227249
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3905,11 +3905,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CustomizeLevelButton
-      objectReference: {fileID: 0}
-    - target: {fileID: 1626109992592064979, guid: bb97b9a36adebd247b8f6293c5ea0cb2,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb97b9a36adebd247b8f6293c5ea0cb2, type: 3}

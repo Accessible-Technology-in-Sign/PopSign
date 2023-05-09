@@ -147,18 +147,6 @@ public class VideoManager {
 		return (Video) videoList[(int)color - 1];
 	}
 
-	public BallColor getBallColorFromVideoName(string videoName)
-    {
-		for (int i = 0; i <videoList.Count; i++)
-		{
-			if (((Video)videoList[i]).fileName == videoName)
-			{
-				return (BallColor)(i + 1);
-			}
-		}
-		return 0;
-	}
-
 	public string getFolderName()
 	{
 		return folderName;

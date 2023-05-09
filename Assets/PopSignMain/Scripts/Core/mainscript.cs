@@ -308,7 +308,8 @@ void Update ()
         //else if( LevelData.LimitAmount <= 0 && GamePlay.Instance.GameStatus == GameState.Playing && newBall == null )
         //    GamePlay.Instance.GameStatus = GameState.GameOver;
 
-        ProgressBarScript.Instance.UpdateDisplay((float) score / (float) LevelData.star3);
+        // ProgressBarScript.Instance.UpdateDisplay( (float)score * 100f / ( (float)LevelData.star1 / ( ( LevelData.star1 * 100f / LevelData.star3 ) ) * 100f ) /100f );
+        ProgressBarScript.Instance.UpdateDisplay( (float)score * 100f / ( (float)1000 / ( ( 1000 * 100f / 2000 ) ) * 100f ) / 100f );
 
 
     // update the number of stars the player has received

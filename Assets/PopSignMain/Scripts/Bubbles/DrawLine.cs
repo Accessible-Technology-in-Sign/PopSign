@@ -120,9 +120,6 @@ public class DrawLine : MonoBehaviour
                 if(topBorder.transform.position.y > Camera.main.ScreenToWorldPoint(Input.mousePosition).y)
                 {
                     draw = true;
-
-                    //Start Recording Data!
-                    TfLiteManager.Instance.StartRecording();
                 }
             }
             else

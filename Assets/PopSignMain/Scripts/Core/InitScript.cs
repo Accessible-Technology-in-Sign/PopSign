@@ -50,10 +50,10 @@ namespace InitScriptName
 
         void Start()
         {
-            //if (Application.platform == RuntimePlatform.WindowsEditor)
-            //{
-            //    Application.targetFrameRate = 60;
-            //}
+            if (Application.platform == RuntimePlatform.WindowsEditor)
+            {
+                Application.targetFrameRate = 60;
+            }
             GameObject.Find("Music").GetComponent<AudioSource>().volume = PlayerPrefs.GetInt("Music");
             SoundBase.Instance.GetComponent<AudioSource>().volume = PlayerPrefs.GetInt("Sound");
         }

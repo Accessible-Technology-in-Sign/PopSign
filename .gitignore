@@ -72,11 +72,3 @@ crashlytics-build.properties
 
 # Mac files
 .DS_Store
-
-# Large Files
-Packages/com.github.homuler.mediapipe/Runtime/Plugins/Android/mediapipe_android.aar
-Packages/com.github.homuler.mediapipe/Runtime/Plugins/iOS/MediaPipeUnity.framework/MediaPipeUnity
-Builds_BackUpThisFolder_ButDontShipItWithYourGame/
-Packages/com.github.homuler.mediapipe/Runtime/Plugins/Android/Ignore/
-Packages/com.github.asus4.tflite/Plugins/
-Assets/StreamingAssets/TfLiteModels/1stplace.tflite
