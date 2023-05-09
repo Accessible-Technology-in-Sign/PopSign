@@ -93,7 +93,9 @@ public class HandsMediaPipe : MonoBehaviour
         }
 
         var handLandmarksStream = new OutputStream<NormalizedLandmarkListVectorPacket, List<NormalizedLandmarkList>>(_graph, "hand_landmarks");
+        var handednessStream = new OutputStream<ClassificationListVectorPacket, List<ClassificationList>>(_graph, "handedness");
         handLandmarksStream.StartPolling().AssertOk();
+        handednessStream.StartPolling().AssertOk();
 
         var sidePacket = new SidePacket();
         sidePacket.Emplace("input_horizontally_flipped", new BoolPacket(false));
@@ -115,6 +117,8 @@ public class HandsMediaPipe : MonoBehaviour
 
             yield return new WaitForEndOfFrame();
 
+            handednessStream.TryGetNext(out var handedness);
+
             if (handLandmarksStream.TryGetNext(out var handLandmarks))
             {
                 if (TfLiteManager.Instance.IsRecording())
@@ -123,17 +127,22 @@ public class HandsMediaPipe : MonoBehaviour
                     {
                         foreach (var landmarks in handLandmarks)
                         {
+                            
                             var currentFrame = new float[63];
 
                             for (int i = 0; i < landmarks.Landmark.Count; i++)
                             {
-                                if(i == 0)
-                                    Debug.Log(landmarks.Landmark[i].X + " " + landmarks.Landmark[i].Y + " " + landmarks.Landmark[i].Z);
+                                if (handedness[0].Classification[0].Label.Contains("Left"))
+                                {
+                                    currentFrame[i * 3] = 1.0f - landmarks.Landmark[i].Y;
+                                } else
+                                {
+                                    currentFrame[i * 3] = landmarks.Landmark[i].Y;
+                                }
+                                currentFrame[i*3 + 1] = 1.0f - landmarks.Landmark[i].X;
 
-                                currentFrame[i*3] = landmarks.Landmark[i].X;
-                                currentFrame[i*3 + 1] = landmarks.Landmark[i].Y;
-                                //currentFrame.Add(1.0f - landmarks.Landmark[i].X);
-                                //currentFrame.Add(1.0f - landmarks.Landmark[i].Y);
+                                 if (i == 0)
+                                    Debug.Log(currentFrame[i * 3] + " " + currentFrame[i * 3 + 1] + " " + landmarks.Landmark[i].Z);
                                 currentFrame[i*3 + 2] = landmarks.Landmark[i].Z;
                             }
 

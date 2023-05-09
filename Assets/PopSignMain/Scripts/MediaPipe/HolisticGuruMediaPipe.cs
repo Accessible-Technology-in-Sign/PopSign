@@ -72,8 +72,8 @@ public class HolisticGuruMediaPipe : MonoBehaviour
         _inputPixelData = new Color32[_width * _height];
             
         _screen.texture = _webCamTexture;
-        yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("face_detection_short_range.bytes");
-        yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("face_landmark.bytes");
+        //yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("face_detection_short_range.bytes");
+        //yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("face_landmark.bytes");
         yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("hand_landmark_full.bytes");
         yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("hand_recrop.bytes");
         yield return MediapipeResourceManager.Instance.resourceManager.PrepareAssetAsync("handedness.txt");
@@ -98,8 +98,8 @@ public class HolisticGuruMediaPipe : MonoBehaviour
         leftHandLandmarksStream.StartPolling().AssertOk();
         var rightHandLandmarksStream = new OutputStream<NormalizedLandmarkListPacket, NormalizedLandmarkList>(_graph, "right_hand_landmarks");
         rightHandLandmarksStream.StartPolling().AssertOk();
-        var faceLandmarksStream = new OutputStream<NormalizedLandmarkListPacket, NormalizedLandmarkList>(_graph, "face_landmarks");
-        faceLandmarksStream.StartPolling().AssertOk();
+        //var faceLandmarksStream = new OutputStream<NormalizedLandmarkListPacket, NormalizedLandmarkList>(_graph, "face_landmarks");
+        //faceLandmarksStream.StartPolling().AssertOk();
 
 
         var sidePacket = new SidePacket();
@@ -127,7 +127,7 @@ public class HolisticGuruMediaPipe : MonoBehaviour
 
             poseLandmarksStream.TryGetNext(out var poseLandmarks);
             leftHandLandmarksStream.TryGetNext(out var leftHandLandmarks);
-            faceLandmarksStream.TryGetNext(out var faceLandmarks);
+            //faceLandmarksStream.TryGetNext(out var faceLandmarks);
             rightHandLandmarksStream.TryGetNext(out var rightHandLandmarks);
 
             if (poseLandmarks != null && (leftHandLandmarks != null || rightHandLandmarks != null))
@@ -150,8 +150,8 @@ public class HolisticGuruMediaPipe : MonoBehaviour
 
                         for (int i = 0; i < poseLandmarks.Landmark.Count; i++)
                         {
-                            currentFrame[i*2] = poseLandmarks.Landmark[i].X;
-                            currentFrame[i*2+1] = poseLandmarks.Landmark[i].Y;
+                            currentFrame[i*2] = 1f - poseLandmarks.Landmark[i].X;
+                            currentFrame[i*2+1] = 1f - poseLandmarks.Landmark[i].Y;
                         }
                     }
 
@@ -168,8 +168,8 @@ public class HolisticGuruMediaPipe : MonoBehaviour
 
                         for (int i = 0; i < leftHandLandmarks.Landmark.Count; i++)
                         {
-                            currentFrame[i*2 + 66] = leftHandLandmarks.Landmark[i].X;
-                            currentFrame[i*2 + 67] = leftHandLandmarks.Landmark[i].Y;
+                            currentFrame[i*2 + 66] = 1f - leftHandLandmarks.Landmark[i].X;
+                            currentFrame[i*2 + 67] = 1f - leftHandLandmarks.Landmark[i].Y;
                         }
                     }else if (rightHandLandmarks != null)
                     {
@@ -184,8 +184,8 @@ public class HolisticGuruMediaPipe : MonoBehaviour
 
                         for (int i = 0; i < rightHandLandmarks.Landmark.Count; i++)
                         {
-                            currentFrame[i * 2 + 66] = rightHandLandmarks.Landmark[i].X;
-                            currentFrame[i * 2 + 67] = rightHandLandmarks.Landmark[i].Y;
+                            currentFrame[i * 2 + 66] = 1f - rightHandLandmarks.Landmark[i].X;
+                            currentFrame[i * 2 + 67] = 1f - rightHandLandmarks.Landmark[i].Y;
                         }
                     }
 

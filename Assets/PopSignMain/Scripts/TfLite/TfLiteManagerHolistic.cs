@@ -26,7 +26,7 @@ public class TfLiteManagerHolistic : MonoBehaviour, ITfLiteManager
 	[HideInInspector]
 	public int recordingFrameNumber = 0;
 
-	public static string[] LABELS = { "dad", "elephant", "red", "where", "yellow" };
+	public static string[] LABELS = { "chocolate", "for", "frenchfries", "sleep", "stuck" };
 
 	private SignatureRunner runner;
 	private float timer = 0f;
@@ -134,7 +134,7 @@ public class TfLiteManagerHolistic : MonoBehaviour, ITfLiteManager
 		// Allocate input buffer
 		//interpreter.AllocateTensors();
 
-		runner.SetSignatureInputTensorData("inputs", input);
+		runner.SetInputTensorData(0, input);
 
 		// Blackbox!!
 		//interpreter.Invoke();

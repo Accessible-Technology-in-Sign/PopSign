@@ -1465,7 +1465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27a81064d954fbd43a81a05cdaeec8ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modelName: TfLiteModels/model_not_holistic.tflite
+  modelName: TfLiteModels/model.tflite
   maxFrames: 0
   sessionNumber: 0
   recordingFrameNumber: 0
@@ -1916,7 +1916,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c8003baa1f5c64645a6884376b315d2a, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c8003baa1f5c64645a6884376b315d2a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2614,7 +2614,7 @@ RectTransform:
   - {fileID: 1534241174}
   - {fileID: 570424161}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2651,7 +2651,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -2870,7 +2870,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 402878, guid: a8a8c085200639a4faf330f7659ef8bd, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 402878, guid: a8a8c085200639a4faf330f7659ef8bd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2928,9 +2928,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 399984490}
-  m_LocalRotation: {x: 0.7071068, y: 0.7071068, z: 0, w: 0}
+  m_LocalRotation: {x: 0.7071068, y: 0.7071068, z: -0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.38, y: 0.38, z: 0.38}
+  m_LocalScale: {x: 0.23000005, y: 0.23000005, z: 0.38000005}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5075749627703603650}
@@ -2938,11 +2938,11 @@ RectTransform:
   m_Father: {fileID: 464056971}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 90}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -7, y: 32}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 130, y: -25}
+  m_SizeDelta: {x: 1920, y: 1079.9999}
+  m_Pivot: {x: 1, y: 0}
 --- !u!114 &399984492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3194,7 +3194,7 @@ GameObject:
   - component: {fileID: 464056969}
   - component: {fileID: 464056968}
   m_Layer: 5
-  m_Name: Canvas (1)
+  m_Name: MediaPipe Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3229,12 +3229,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -4448,7 +4448,7 @@ RectTransform:
   - {fileID: 1764793633}
   - {fileID: 1333426465}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5633,7 +5633,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &788255269
 GameObject:
@@ -7534,7 +7534,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1270330337
 Transform:
   m_ObjectHideFlags: 0
@@ -7565,8 +7565,8 @@ MonoBehaviour:
   _configAssetCPU: {fileID: 4900000, guid: 1a6169be4f688231182390ef6c4122b2, type: 3}
   _configAssetGPU: {fileID: 4900000, guid: d1c2a5074cb12172d9cbc3098fe038ba, type: 3}
   _screen: {fileID: 399984493}
-  _width: 640
-  _height: 480
+  _width: 1280
+  _height: 720
   _fps: 30
   _multiHandLandmarksAnnotationController: {fileID: 1320290061}
 --- !u!114 &1270330340
@@ -8360,7 +8360,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 484928, guid: 7d028e4fec77cab4e926e4b65414b360, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 484928, guid: 7d028e4fec77cab4e926e4b65414b360, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11006,7 +11006,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1872838312}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a19cc6d86af749047908bd374e792575, type: 3}
   m_Name: 
@@ -11623,7 +11623,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1945342373
 MonoBehaviour:
   m_ObjectHideFlags: 0

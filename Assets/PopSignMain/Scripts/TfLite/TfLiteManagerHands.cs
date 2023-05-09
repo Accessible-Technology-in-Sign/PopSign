@@ -28,6 +28,7 @@ public class TfLiteManagerHands : MonoBehaviour, ITfLiteManager
 	public int recordingFrameNumber = 0;
 
 	public static string[] LABELS = { "dad", "elephant", "red", "where", "yellow" };
+	//public static string[] LABELS = { "chocolate", "for", "frenchfries", "sleep", "stuck" };
 
 	private Interpreter interpreter;
 	private float timer = 0f;
