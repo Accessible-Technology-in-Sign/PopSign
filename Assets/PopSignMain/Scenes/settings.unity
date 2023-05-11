@@ -3961,7 +3961,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -161.5, y: 179.50003}
+  m_AnchoredPosition: {x: -161.5, y: 300}
   m_SizeDelta: {x: 247, y: 115}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1154741078
@@ -5573,8 +5573,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 153.85007}
-  m_SizeDelta: {x: 502.2, y: 659.2}
+  m_AnchoredPosition: {x: 0, y: -100}
+  m_SizeDelta: {x: 502.2, y: 1200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1909103354
 MonoBehaviour:
@@ -5609,11 +5609,14 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "This app was developed by the Georgia Institute of Technology. It focuses
-    on American Sign Language. The vocabulary is based on the Macarthur-Bates Communicative
-    Development Inventories, which are lists of words used to evaluate how well a
-    child is learning language. \n\nIf you have a comment or suggestion, please let
-    us know by emailing thad.starner@cc.gatech.edu. "
+  m_Text: "PopSign is an educational bubble shooter game developed by the Georgia
+    Institute of Technology and RIT/NTID\u2019s Center on Access Technology. The
+    game teaches over 500 American Sign Language (ASL) signs based on the MacArthur-Bates
+    Communicative Development Inventories, which are the first concepts used to teach
+    a language to a child.\n\nPopSign is still in beta testing! Feel free to email
+    us at PopSignGame@gmail.com with any comments or suggestions. Use the Google
+    Form linked on the app's store page to report bugs.\n\nSee www.PopSign.org for
+    more!"
 --- !u!222 &1909103355
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6215,7 +6218,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2081816967
 RectTransform:
   m_ObjectHideFlags: 0
