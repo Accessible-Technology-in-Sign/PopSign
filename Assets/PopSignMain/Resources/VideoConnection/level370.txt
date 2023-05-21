@@ -1,0 +1,22 @@
+{
+	"bluefileName":"shower",
+	"blueframeNumber":78,
+	"bluefolderName":"MacarthurBates/AllWords/Household/shower",
+	"blueImageName":"WordIcons/shower",
+	"greenfileName":"room",
+	"greenframeNumber":63,
+	"greenfolderName":"MacarthurBates/AllWords/Household/room",
+	"greenImageName":"WordIcons/room",
+	"redfileName":"drawer",
+	"redframeNumber":43,
+	"redfolderName":"MacarthurBates/AllWords/Household/drawer",
+	"redImageName":"WordIcons/drawer",
+	"violetfileName":"bathroom",
+	"violetframeNumber":63,
+	"violetfolderName":"MacarthurBates/AllWords/Household/bathroom",
+	"violetImageName":"WordIcons/bathroom",
+	"yellowfileName":"bed",
+	"yellowframeNumber":60,
+	"yellowfolderName":"MacarthurBates/AllWords/Household/bed",
+	"yellowImageName":"WordIcons/bed"
+}

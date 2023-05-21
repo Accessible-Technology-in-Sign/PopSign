@@ -20,7 +20,7 @@ public class Grid : MonoBehaviour
 
                 //        value.GetComponent<SpriteRenderer>().sortingOrder = Mathf.FloorToInt( 1 / ( transform.position.y + 10 ) * 100 );
                         value.GetComponent<ball>().mesh = gameObject;
-                        if( value.tag == "chicken" ) value.GetComponent<SpriteRenderer>().sortingOrder = 100;
+                        if( value.tag == "star" ) value.GetComponent<SpriteRenderer>().sortingOrder = 100;
                     }
                 }
 
@@ -45,7 +45,7 @@ public class Grid : MonoBehaviour
             // if the box is empty, create a new ball for it
             if( name == "boxCatapult" && !Grid.waitForAnim )
             {
-                if( ( GamePlay.Instance.GameStatus == GameState.Playing || GamePlay.Instance.GameStatus == GameState.Win || GamePlay.Instance.GameStatus == GameState.WaitForChicken ) && LevelData.LimitAmount > 0 )
+                if( ( GamePlay.Instance.GameStatus == GameState.Playing || GamePlay.Instance.GameStatus == GameState.Win || GamePlay.Instance.GameStatus == GameState.WaitForStar ) && LevelData.LimitAmount > 0 )
                 {
                     busy = Camera.main.GetComponent<mainscript>().createCannonBall( transform.position );
                     GameObject ball = boxCatapult.GetComponent<Grid>().busy;
@@ -71,7 +71,6 @@ public class Grid : MonoBehaviour
         GameObject ball = box.GetComponent<Grid>().busy;
         if( ball != null && busy != null )
         {
-            //		ball.GetComponent<bouncer>().bounceToCatapult(transform.position);
             busy.GetComponent<bouncer>().bounceTo( box.transform.position );
             box.GetComponent<Grid>().busy = busy;
             busy = ball;
@@ -97,12 +96,6 @@ public class Grid : MonoBehaviour
         }
     }
 
-    /*void createBall(GameObject ball){
-        setColorTag( ball);
-        GameObject gm = GameObject.Find ("Creator");
-        gm.GetComponent<creatorBall>().createBall();
-    }*/
-
     void OnCollisionStay2D( Collision2D other )
     {
         if( other.gameObject.name.IndexOf( "ball" ) > -1 && busy == null )
@@ -110,12 +103,6 @@ public class Grid : MonoBehaviour
             busy = other.gameObject;
         }
     }
-
-    //	void OnTriggerStay2D(Collider2D other){
-    //		if(other.gameObject.name.IndexOf("ball")>-1 && busy == null) {
-    //			busy = other.gameObject;
-    //		}
-    //	}
 
     void OnTriggerExit( Collider other )
     {

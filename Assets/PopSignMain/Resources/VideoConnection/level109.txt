@@ -1,0 +1,22 @@
+{
+	"bluefileName":"ice",
+	"blueframeNumber":56,
+	"bluefolderName":"MacarthurBates/AllWords/FoodAndDrink/ice",
+	"blueImageName":"WordIcons/ice",
+	"greenfileName":"water",
+	"greenframeNumber":43,
+	"greenfolderName":"MacarthurBates/AllWords/OutsideThings/water",
+	"greenImageName":"WordIcons/water",
+	"redfileName":"cookie",
+	"redframeNumber":81,
+	"redfolderName":"MacarthurBates/AllWords/FoodAndDrink/cookie",
+	"redImageName":"WordIcons/cookie",
+	"violetfileName":"cereal",
+	"violetframeNumber":96,
+	"violetfolderName":"MacarthurBates/AllWords/FoodAndDrink/cereal",
+	"violetImageName":"WordIcons/cereal",
+	"yellowfileName":"cracker",
+	"yellowframeNumber":62,
+	"yellowfolderName":"MacarthurBates/AllWords/FoodAndDrink/cracker",
+	"yellowImageName":"WordIcons/cracker"
+}

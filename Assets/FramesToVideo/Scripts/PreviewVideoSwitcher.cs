@@ -1,6 +1,7 @@
 using UnityEngine; // 41 Post - Created by DimasTheDriver on Apr/20/2012 . Part of the 'Unity: Animated texture from image sequence' post series. Available at: http://www.41post.com/?p=4742
 using System.Collections; //Script featured at Part 2 of the post series.
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class PreviewVideoSwitcher : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class PreviewVideoSwitcher : MonoBehaviour
 
 	//Gets the raw image
 	private RawImage img;
+
+	private VideoPlayer videoPlayer;
 
 	//An integer to advance frames
 	private int frameCounter = 0;
@@ -37,6 +40,7 @@ public class PreviewVideoSwitcher : MonoBehaviour
 		this.sharedVideoManager = VideoManager.getVideoManager ();
 		//Get a reference to the Material of the game object this script is attached to
 		this.img = (RawImage)this.GetComponent<RawImage>();
+		this.videoPlayer = this.GetComponent<VideoPlayer>();
 		//With the folder name and the sequence name, get the full path of the images (without the numbers)
 		this.baseName = this.folderName + "/" + this.imageSequenceName;
 	}
@@ -118,14 +122,17 @@ public class PreviewVideoSwitcher : MonoBehaviour
 			}
 
 			sharedVideoManager.shouldChangeVideo = false;
-		} else {
+
+			StartCoroutine(PlayUsingVideoPlayer());
+		} 
+		/*else {
 			//Start the 'PlayLoop' method as a coroutine with a 0.04 delay
 			StartCoroutine("PlayLoop", 0.04f);
 			//Set the material's texture to the current value of the frameCounter variable
 			if (this.texture != null) {
 				img.texture = this.texture;
 			}
-		}
+		}*/
 	}
 
 	//The following methods return a IEnumerator so they can be yielded:
@@ -135,19 +142,36 @@ public class PreviewVideoSwitcher : MonoBehaviour
         //wait for the time defined at the delay parameter
         yield return new WaitForSeconds(delay);
 
-				//advance one frame
-				if (numberOfFrames != 0) {
-					frameCounter = (++frameCounter)%numberOfFrames;
-				}
+		//advance one frame
+		if (numberOfFrames != 0) {
+			frameCounter = (++frameCounter)%numberOfFrames;
+		}
 
-				//load the current frame
-				if (baseName != "") {
-					this.texture = (Texture)Resources.Load(baseName + frameCounter.ToString(), typeof(Texture));
-				}
+		//load the current frame
+		if (baseName != "") {
+			this.texture = (Texture)Resources.Load(baseName + frameCounter.ToString(), typeof(Texture));
+		}
 
         //Stop this coroutine
         StopCoroutine("PlayLoop");
     }
+
+	IEnumerator PlayUsingVideoPlayer()
+	{
+		yield return null;
+
+#if UNITY_EDITOR
+		videoPlayer.url = Application.dataPath + "/StreamingAssets/" + folderName +".mp4";
+#elif UNITY_ANDROID
+		videoPlayer.url = "jar:file://" + Application.dataPath + "!/assets/"+ folderName +".mp4";
+#elif UNITY_IOS
+		videoPlayer.url = Application.dataPath + "/Raw/" + folderName + ".mp4";
+#endif
+		Debug.Log(videoPlayer.url);
+		videoPlayer.Prepare();
+		videoPlayer.Play();
+		Debug.Log(videoPlayer.isPlaying);
+	}
 
 	//A method to play the animation just once
     IEnumerator Play(float delay)
@@ -155,17 +179,17 @@ public class PreviewVideoSwitcher : MonoBehaviour
         //wait for the time defined at the delay parameter
         yield return new WaitForSeconds(delay);
 
-				//if it isn't the last frame
-				if(frameCounter < numberOfFrames-1)
-				{
-					//Advance one frame
-					++frameCounter;
+		//if it isn't the last frame
+		if(frameCounter < numberOfFrames-1)
+		{
+			//Advance one frame
+			++frameCounter;
 
-					//load the current frame
-					if (baseName != "") {
-						this.texture = (Texture)Resources.Load(baseName + frameCounter.ToString(""), typeof(Texture));
-					}
-				}
+			//load the current frame
+			if (baseName != "") {
+				this.texture = (Texture)Resources.Load(baseName + frameCounter.ToString(""), typeof(Texture));
+			}
+		}
 
         //Stop this coroutine
         StopCoroutine("Play");

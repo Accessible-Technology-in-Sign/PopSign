@@ -95,11 +95,11 @@ NSMutableArray* m_skuMap;
 - (void)dealloc
 {
     [[SKPaymentQueue defaultQueue] removeTransactionObserver:self];
-    [m_skuMap release];
-    [m_skus release];
+//    [m_skuMap release];
+//    [m_skus release];
     m_skus = nil;
     m_skuMap = nil;
-    [super dealloc];
+//    [super dealloc];
 }
 
 
@@ -107,7 +107,7 @@ NSMutableArray* m_skuMap;
 
 - (void)requestSKUs:(NSSet*)skus
 {
-    m_skus = [skus retain];
+//    m_skus = [skus retain];
     SKProductsRequest *request = [[SKProductsRequest alloc] initWithProductIdentifiers:skus];
 	request.delegate = self;
 	[request start];

@@ -1,0 +1,22 @@
+{
+	"bluefileName":"raisin",
+	"blueframeNumber":61,
+	"bluefolderName":"MacarthurBates/AllWords/FoodAndDrink/raisin",
+	"blueImageName":"WordIcons/raisin",
+	"greenfileName":"food",
+	"greenframeNumber":27,
+	"greenfolderName":"MacarthurBates/AllWords/FoodAndDrink/food",
+	"greenImageName":"WordIcons/food",
+	"redfileName":"pancake",
+	"redframeNumber":86,
+	"redfolderName":"MacarthurBates/AllWords/FoodAndDrink/pancake",
+	"redImageName":"WordIcons/pancake",
+	"violetfileName":"cheese",
+	"violetframeNumber":86,
+	"violetfolderName":"MacarthurBates/AllWords/FoodAndDrink/cheese",
+	"violetImageName":"WordIcons/cheese",
+	"yellowfileName":"orange",
+	"yellowframeNumber":76,
+	"yellowfolderName":"MacarthurBates/AllWords/FoodAndDrink/orange",
+	"yellowImageName":"WordIcons/orange"
+}

@@ -4,7 +4,7 @@ PopSign is a bubble shooter style game that teaches basic American Sign Language
 
 ## Requirements
 
-This game can be built and run using the latest release of [Unity 2017](https://unity3d.com/get-unity/download/archive). Newer versions of Unity may not be compatible with PopSign.  
+This game can be built and run on Android/iOS devices using the latest version of [Unity 2021 LTS](https://unity3d.com/get-unity/download/archive). Newer versions of Unity may not be compatible with PopSign.  
 
 ## Source Code File Structure
 

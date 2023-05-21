@@ -281,24 +281,41 @@ public class LevelEditor : EditorWindow
             star1 = s;
             SaveLevel();
         }
-        if (star1 < 0)
-            star1 = 10;
+        if (star1 < 0) {
+            foreach (Mission mission in LevelData.requestMissions)
+            {
+                star1 = (mission.amount / 2);
+            }
+        }
+
+
         s = EditorGUILayout.IntField("", star2, new GUILayoutOption[] { GUILayout.Width(100) });
         if (s != star2)
         {
             star2 = s;
             SaveLevel();
         }
-        if (star2 < star1)
-            star2 = star1 + 10;
+
+        if (star2 < star1) {
+            foreach (Mission mission in LevelData.requestMissions)
+            {
+                star2 = ((mission.amount / 2) + (mission.amount / 4)); ;
+            }
+        }
+            
+
         s = EditorGUILayout.IntField("", star3, new GUILayoutOption[] { GUILayout.Width(100) });
         if (s != star3)
         {
             star3 = s;
             SaveLevel();
         }
-        if (star3 < star2)
-            star3 = star2 + 10;
+        if (star3 < star2) {
+            foreach (Mission mission in LevelData.requestMissions)
+            {
+                star3 = mission.amount;
+            }
+        }
         GUILayout.EndHorizontal();
         GUILayout.EndVertical();
         GUILayout.EndHorizontal();
@@ -364,12 +381,12 @@ public class LevelEditor : EditorWindow
             {
                 if (GUILayout.Button(ballTex[i - 1], new GUILayoutOption[] { GUILayout.Width(50), GUILayout.Height(50) }))
                 {
-                    if ((BallColor)i != BallColor.chicken)
+                    if ((BallColor)i != BallColor.star)
                         brush = (BallColor)i;
                     else
                     {
-                        target = Target.Chicken;
-                        levelSquares[5 * maxCols + 5] = BallColor.chicken;
+                        target = Target.Star;
+                        levelSquares[5 * maxCols + 5] = BallColor.star;
                         SaveLevel();
                     }
                 }
@@ -440,7 +457,7 @@ public class LevelEditor : EditorWindow
                     {
                         imageButton = ballTex[5];
                     }
-                    else if (levelSquares[row * maxCols + col] == BallColor.chicken)
+                    else if (levelSquares[row * maxCols + col] == BallColor.star)
                     {
                         imageButton = ballTex[6];
                     }
@@ -470,14 +487,14 @@ public class LevelEditor : EditorWindow
 
     void SetType(int col, int row)
     {
-        bool chickenExist = false;
+        bool starExist = false;
         levelSquares[row * maxCols + col] = brush;
         foreach (BallColor item in levelSquares)
         {
-            if (item == BallColor.chicken)
-                chickenExist = true;
+            if (item == BallColor.star)
+                starExist = true;
         }
-        if (chickenExist) target = Target.Chicken;
+        if (starExist) target = Target.Star;
         else target = Target.Top;
         SaveLevel();
         // GetSquare(col, row).type = (int) squareType;

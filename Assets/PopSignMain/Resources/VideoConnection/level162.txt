@@ -1,0 +1,22 @@
+{
+	"bluefileName":"stick",
+	"blueframeNumber":40,
+	"bluefolderName":"MacarthurBates/AllWords/OutsideThings/stick",
+	"blueImageName":"WordIcons/stick",
+	"greenfileName":"flag",
+	"greenframeNumber":82,
+	"greenfolderName":"MacarthurBates/AllWords/OutsideThings/flag",
+	"greenImageName":"WordIcons/flag",
+	"redfileName":"hose",
+	"redframeNumber":64,
+	"redfolderName":"MacarthurBates/AllWords/OutsideThings/hose",
+	"redImageName":"WordIcons/hose",
+	"violetfileName":"swing",
+	"violetframeNumber":75,
+	"violetfolderName":"MacarthurBates/AllWords/OutsideThings/swing",
+	"violetImageName":"WordIcons/swing",
+	"yellowfileName":"street,road",
+	"yellowframeNumber":54,
+	"yellowfolderName":"MacarthurBates/AllWords/OutsideThings/street,road",
+	"yellowImageName":"WordIcons/street,road"
+}

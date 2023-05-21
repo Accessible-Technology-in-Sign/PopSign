@@ -1,0 +1,22 @@
+{
+	"bluefileName":"beads,necklace",
+	"blueframeNumber":108,
+	"bluefolderName":"MacarthurBates/AllWords/Clothing/beads,necklace",
+	"blueImageName":"WordIcons/beads,necklace",
+	"greenfileName":"shoe",
+	"greenframeNumber":70,
+	"greenfolderName":"MacarthurBates/AllWords/Clothing/shoe",
+	"greenImageName":"WordIcons/shoe",
+	"redfileName":"zipper",
+	"redframeNumber":94,
+	"redfolderName":"MacarthurBates/AllWords/Clothing/zipper",
+	"redImageName":"WordIcons/zipper",
+	"violetfileName":"scarf",
+	"violetframeNumber":68,
+	"violetfolderName":"MacarthurBates/AllWords/Clothing/scarf",
+	"violetImageName":"WordIcons/scarf",
+	"yellowfileName":"snowsuit",
+	"yellowframeNumber":56,
+	"yellowfolderName":"MacarthurBates/AllWords/Clothing/snowsuit",
+	"yellowImageName":"WordIcons/snowsuit"
+}

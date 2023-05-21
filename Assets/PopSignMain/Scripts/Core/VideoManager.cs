@@ -52,9 +52,33 @@ public class VideoManager {
 	//POPSign Read Json file(The connection between colors and videos)
 	void ReadJsonFromTXT()
 	{
-    int currentLevel = PlayerPrefs.GetInt("OpenLevel");
+		int currentLevel = PlayerPrefs.GetInt("OpenLevel");
 
-		TextAsset textReader = Resources.Load("VideoConnection/" + "level" + currentLevel ) as TextAsset;
+		//For Random Levels (BK)
+		int randomizeLevels = PlayerPrefs.GetInt("RandomizeLevel", 0);
+
+
+		//This seems to fetc
+
+		//For Random Levels (BK)
+		TextAsset textReader;
+		if(randomizeLevels == 0)
+        {
+			//Original code
+			textReader = Resources.Load("VideoConnection/" + "level" + currentLevel) as TextAsset;
+		}
+        else
+        {
+			string path = Application.persistentDataPath + "/level" + currentLevel + ".txt";
+			string levelText;
+			using(StreamReader reader = new StreamReader(path))
+            {
+				levelText = reader.ReadToEnd();
+            }
+
+			textReader = new TextAsset(levelText);
+		}
+		
 		JsonData jd = JsonMapper.ToObject(textReader.text);
 
 		foreach(BallColor color in Enum.GetValues(typeof(BallColor)))
@@ -164,5 +188,96 @@ public class VideoManager {
 		setReviewWord(reviewWord);
 		shouldChangeVideo = true;
 	}
+
+    public static void loadCustomizedData()
+    {
+        if (sharedVideoManager == null)
+        {
+            resetVideoManager();
+        }
+
+        sharedVideoManager.videoList.Clear();
+
+        //start prepare fake json file
+        string fakeJsonTxt = "{\n";
+        CustomizeLevelManager clm = CustomizeLevelManager.Instance;
+        if (clm == null)
+        {
+            return;
+        }
+
+        HashSet<string> selectedWords = clm.selectedWord;
+        int numOfWords = selectedWords.Count;
+        if (numOfWords < 3 || numOfWords > 5)
+        {
+            return;
+        }
+
+        string allWords = (Resources.Load("words") as TextAsset).text;
+        for (int i = 0; i < numOfWords; i++)
+        {
+            string aWord = selectedWords.ToArray<string>()[i];
+            string color = "";
+            switch(i)
+            {
+                case 0:
+                    color = "blue";
+                    break;
+                case 1:
+                    color = "green";
+                    break;
+                case 2:
+                    color = "red";
+                    break;
+                case 3:
+                    color = "violet";
+                    break;
+                case 4:
+                    color = "yellow";
+                    break;
+            }
+
+            string fileName = "\"" + color + "fileName\":\"" + aWord + "\",\n";
+            string frameNumber = "\"" + color + "frameNumber\":";
+            string folderName = "\"" + color + "folderName\":\"MacarthurBates/";
+            string imageName = "\"" + color + "ImageName\":\"WordIcons/" + aWord + "\"" + (i + 1 == numOfWords? "\n}": ",\n");
+
+            int searchStartIndex = allWords.IndexOf(aWord) + aWord.Length;
+            string keySubstring = allWords.Substring(searchStartIndex);
+            int targetStartIndex = keySubstring.IndexOf("\"folderName\":\"") + "\"folderName\":\"".Length + " \"folderName\": \"".Length;
+            int targetEndIndex = keySubstring.IndexOf("\",", targetStartIndex);
+            folderName = folderName + keySubstring.Substring(targetStartIndex, targetEndIndex - targetStartIndex) + "/" + aWord + "\",\n";
+
+            searchStartIndex = targetEndIndex;
+            keySubstring = keySubstring.Substring(searchStartIndex);
+            targetStartIndex = keySubstring.IndexOf("\"frameNumber\":") + "\"frameNumber\":\"".Length;
+            targetEndIndex = keySubstring.IndexOf("},", targetStartIndex);
+            frameNumber = frameNumber + keySubstring.Substring(targetStartIndex, targetEndIndex - targetStartIndex - 5) + ",\n";
+
+            fakeJsonTxt = fakeJsonTxt + fileName + frameNumber + folderName + imageName;
+        }
+        //end prepare fake json file
+
+        JsonData jd = JsonMapper.ToObject(fakeJsonTxt);
+
+        foreach (BallColor color in Enum.GetValues(typeof(BallColor)))
+        {
+            if (color == BallColor.random)
+            {
+                break;
+            }
+            string fileName = jd[color + "fileName"] + "";
+            sharedVideoManager.folderName = jd[color + "folderName"] + "";
+            string frameNumber = jd[color + "frameNumber"] + "";
+            string imageName = jd[color + "ImageName"] + "";
+            if (fileName != "" && sharedVideoManager.folderName != "" && frameNumber != "" && imageName != "")
+            {
+                sharedVideoManager.videoList.Add(new Video(int.Parse(frameNumber), fileName, sharedVideoManager.folderName, imageName, color));
+            }
+        }
+        sharedVideoManager.curtVideo = (Video)sharedVideoManager.videoList[0];
+        sharedVideoManager.curtVideoIndex = 0;
+
+    }
 
 }

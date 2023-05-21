@@ -324,7 +324,7 @@ penguin
 rooster
 frog
 sheep
-chicken
+star
 tiger
 cow
 bird

@@ -1,0 +1,22 @@
+{
+	"bluefileName":"with",
+	"blueframeNumber":45,
+	"bluefolderName":"MacarthurBates/AllWords/PrepositionsAndPronouns/with",
+	"blueImageName":"WordIcons/with",
+	"greenfileName":"away",
+	"greenframeNumber":81,
+	"greenfolderName":"MacarthurBates/AllWords/PrepositionsAndPronouns/away",
+	"greenImageName":"WordIcons/away",
+	"redfileName":"there",
+	"redframeNumber":43,
+	"redfolderName":"MacarthurBates/AllWords/PrepositionsAndPronouns/there",
+	"redImageName":"WordIcons/there",
+	"violetfileName":"on",
+	"violetframeNumber":21,
+	"violetfolderName":"MacarthurBates/AllWords/PrepositionsAndPronouns/on",
+	"violetImageName":"WordIcons/on",
+	"yellowfileName":"for",
+	"yellowframeNumber":57,
+	"yellowfolderName":"MacarthurBates/AllWords/PrepositionsAndPronouns/for",
+	"yellowImageName":"WordIcons/for"
+}

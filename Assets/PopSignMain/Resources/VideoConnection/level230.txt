@@ -1,0 +1,22 @@
+{
+	"bluefileName":"church",
+	"blueframeNumber":55,
+	"bluefolderName":"MacarthurBates/AllWords/PlacesToGo/church",
+	"blueImageName":"WordIcons/church",
+	"greenfileName":"party",
+	"greenframeNumber":69,
+	"greenfolderName":"MacarthurBates/AllWords/PlacesToGo/party",
+	"greenImageName":"WordIcons/party",
+	"redfileName":"camp",
+	"redframeNumber":65,
+	"redfolderName":"MacarthurBates/AllWords/PlacesToGo/camp",
+	"redImageName":"WordIcons/camp",
+	"violetfileName":"country",
+	"violetframeNumber":62,
+	"violetfolderName":"MacarthurBates/AllWords/PlacesToGo/country",
+	"violetImageName":"WordIcons/country",
+	"yellowfileName":"that",
+	"yellowframeNumber":41,
+	"yellowfolderName":"MacarthurBates/AllWords/PlacesToGo/that",
+	"yellowImageName":"WordIcons/that"
+}

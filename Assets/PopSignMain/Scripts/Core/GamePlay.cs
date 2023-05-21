@@ -14,7 +14,7 @@ public enum GameState
     BlockedGame,
     Tutorial,
     PreTutorial,
-    WaitForChicken
+    WaitForStar
 }
 
 
@@ -70,6 +70,7 @@ public class GamePlay : MonoBehaviour {
 	void Start ()
   {
       Instance = this;
+    //   PlayerPrefs.SetInt("MaxLevel", 1); currently causes level 2 to get locked and level 3 to not be unlocked
 	}
 
   // Update is called once per frame
@@ -118,20 +119,22 @@ public class GamePlay : MonoBehaviour {
           PlayerPrefs.SetInt( string.Format( "Level.{0:000}.StarsCount", mainscript.Instance.currentLevel ), mainscript.Instance.stars );
           PlayerPrefs.Save();
       }
+      /*
       if( PlayerPrefs.GetInt( string.Format( "Level.{0:000}.Score", mainscript.Instance.currentLevel ), 0) < mainscript.Score )
       {
           PlayerPrefs.SetInt( string.Format( "Level.{0:000}.Score", mainscript.Instance.currentLevel ), mainscript.Score );
           // PlayerPrefs.SetInt( "Score" + mainscript.Instance.currentLevel, mainscript.Score );
           PlayerPrefs.Save();
       }
+      */
       GameObject.Find( "Canvas" ).transform.Find( "LevelCleared" ).gameObject.SetActive( false );
       GameObject.Find( "Canvas" ).transform.Find( "MenuComplete" ).gameObject.SetActive( true );
       if(mainscript.Instance.stars < 3)
-        GameObject.Find( "MenuComplete" ).transform.Find( "Image/LevelCompleteStars/CompleteStar3" ).gameObject.SetActive( false );
+        GameObject.Find( "MenuComplete" ).transform.Find( "Image/LevelCompleteStars/CompleteStar3" ).gameObject.SetActive( true );
       if(mainscript.Instance.stars < 2)
-        GameObject.Find( "MenuComplete" ).transform.Find( "Image/LevelCompleteStars/CompleteStar2" ).gameObject.SetActive( false );
+        GameObject.Find( "MenuComplete" ).transform.Find( "Image/LevelCompleteStars/CompleteStar2" ).gameObject.SetActive( true );
       if(mainscript.Instance.stars < 1)
-        GameObject.Find( "MenuComplete" ).transform.Find( "Image/LevelCompleteStars/CompleteStar1" ).gameObject.SetActive( false );
+        GameObject.Find( "MenuComplete" ).transform.Find( "Image/LevelCompleteStars/CompleteStar1" ).gameObject.SetActive( true );
     }
 
     void ShowTypeExplanation()

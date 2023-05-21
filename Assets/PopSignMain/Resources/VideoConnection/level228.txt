@@ -1,0 +1,22 @@
+{
+	"bluefileName":"beach",
+	"blueframeNumber":96,
+	"bluefolderName":"MacarthurBates/AllWords/PlacesToGo/beach",
+	"blueImageName":"WordIcons/beach",
+	"greenfileName":"gas station",
+	"greenframeNumber":88,
+	"greenfolderName":"MacarthurBates/AllWords/PlacesToGo/gas station",
+	"greenImageName":"WordIcons/gas station",
+	"redfileName":"your",
+	"redframeNumber":56,
+	"redfolderName":"MacarthurBates/AllWords/PlacesToGo/your",
+	"redImageName":"WordIcons/your",
+	"violetfileName":"playground",
+	"violetframeNumber":82,
+	"violetfolderName":"MacarthurBates/AllWords/PlacesToGo/playground",
+	"violetImageName":"WordIcons/playground",
+	"yellowfileName":"zoo",
+	"yellowframeNumber":55,
+	"yellowfolderName":"MacarthurBates/AllWords/PlacesToGo/zoo",
+	"yellowImageName":"WordIcons/zoo"
+}

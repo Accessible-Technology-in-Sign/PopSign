@@ -1,0 +1,22 @@
+{
+	"bluefileName":"hamburger",
+	"blueframeNumber":61,
+	"bluefolderName":"MacarthurBates/AllWords/FoodAndDrink/hamburger",
+	"blueImageName":"WordIcons/hamburger",
+	"greenfileName":"cake",
+	"greenframeNumber":63,
+	"greenfolderName":"MacarthurBates/AllWords/FoodAndDrink/cake",
+	"greenImageName":"WordIcons/cake",
+	"redfileName":"pickle",
+	"redframeNumber":93,
+	"redfolderName":"MacarthurBates/AllWords/FoodAndDrink/pickle",
+	"redImageName":"WordIcons/pickle",
+	"violetfileName":"vanilla",
+	"violetframeNumber":83,
+	"violetfolderName":"MacarthurBates/AllWords/FoodAndDrink/vanilla",
+	"violetImageName":"WordIcons/vanilla",
+	"yellowfileName":"coffee",
+	"yellowframeNumber":90,
+	"yellowfolderName":"MacarthurBates/AllWords/FoodAndDrink/coffee",
+	"yellowImageName":"WordIcons/coffee"
+}

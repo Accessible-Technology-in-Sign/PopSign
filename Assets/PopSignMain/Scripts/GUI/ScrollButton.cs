@@ -9,6 +9,7 @@ public class ScrollButton : MonoBehaviour {
 	public Text ButtonText;
 	public ScrollView ScrollView;
 	public GameObject checkmark;
+    public GameObject CheckBox;
 
 	public void Start()
 	{
@@ -28,13 +29,23 @@ public class ScrollButton : MonoBehaviour {
 
 	public void ToggleSelection()
 	{
+        if (CustomizeLevelManager.Instance == null)
+        {
+            return;
+        }
+		int size = CustomizeLevelManager.Instance.selectedWord.Count;
+		if (size >= 5 & !selected) {
+			return;
+		}
 		if(selected)
 		{
 			checkmark.SetActive(false);
 		}
 		else
 		{
+
 			checkmark.SetActive(true);
+	
 		}
 		selected = !selected;
 		ScrollView.UpdateSelection(Name, selected);

@@ -1,0 +1,22 @@
+{
+	"bluefileName":"sled",
+	"blueframeNumber":81,
+	"bluefolderName":"MacarthurBates/AllWords/Vehicles/sled",
+	"blueImageName":"WordIcons/sled",
+	"greenfileName":"toilet",
+	"greenframeNumber":47,
+	"greenfolderName":"MacarthurBates/AllWords/Household/toilet",
+	"greenImageName":"WordIcons/toilet",
+	"redfileName":"stairs",
+	"redframeNumber":68,
+	"redfolderName":"MacarthurBates/AllWords/Household/stairs",
+	"redImageName":"WordIcons/stairs",
+	"violetfileName":"kitchen",
+	"violetframeNumber":70,
+	"violetfolderName":"MacarthurBates/AllWords/Household/kitchen",
+	"violetImageName":"WordIcons/kitchen",
+	"yellowfileName":"garage",
+	"yellowframeNumber":63,
+	"yellowfolderName":"MacarthurBates/AllWords/Household/garage",
+	"yellowImageName":"WordIcons/garage"
+}

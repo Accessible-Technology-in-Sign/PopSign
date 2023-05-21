@@ -22,6 +22,9 @@ public List<GameObject> squares = new List<GameObject>();
 int[] map;
 private int maxCols;
 private VideoManager sharedVideoManager;
+string[] colors = {"Orange", "Red", "Yellow", "Rainbow", "Blue", "Green", "Pink", "Violet", "Brown", "Gray"};
+int[] frameInts = {7, 3, 1, 4, 6, 11, 8, 10, 5, 2, 9, 12};
+int[] frameBugInts = {5, 3, 1, 4, 10, 10, 8, 7, 4, 2, 9, 6};
 
 // Use this for initialization
 void Start()
@@ -42,11 +45,12 @@ void Start()
         ob.transform.position -= Vector3.left * -.5f;
         GamePlay.Instance.GameStatus = GameState.PreTutorial;
     }
-    createMesh();
+    createMesh(); 
     LoadMap( LevelData.map );
     Camera.main.GetComponent<mainscript>().connectNearBallsGlobal();
     StartCoroutine( getBallsForMesh() );
-    // ShowBugs();
+
+
 }
 
 public void LoadLevel()
@@ -205,7 +209,7 @@ IEnumerator MoveUpDownCor( bool inGameCheck = false )
         }
         else if( !item.GetComponent<ball>().Destroyed )
         {
-            if( item.position.y > lineY && mainscript.Instance.TopBorder.transform.position.y > 5.5f )
+            if( inGameCheck)//item.position.y > lineY && mainscript.Instance.TopBorder.transform.position.y > 5.5f )
             {
                 table.Add( item.position.y );
             }
@@ -221,27 +225,53 @@ IEnumerator MoveUpDownCor( bool inGameCheck = false )
 
     if( table.Count > 0 )
     {
-        if( up ) AddMesh();
+        if (!inGameCheck) {
+            if( up ) AddMesh();
 
-        float targetY = 0;
-        table.Sort();
-        if( !inGameCheck ) targetY = lineY - table[0] + 2.5f;
-        else targetY = lineY - table[0] + 1.5f;
-        GameObject Meshes = GameObject.Find( "-Meshes" );
-        Vector3 targetPos = Meshes.transform.position + Vector3.up * targetY;
-        float startTime = Time.time;
-        Vector3 startPos = Meshes.transform.position;
-        float speed = 0.5f;
-        float distCovered = 0;
-        while( distCovered < 1 )
-        {
-            speed += Time.deltaTime / 1.5f;
-            distCovered = ( Time.time - startTime ) / speed;
-            Meshes.transform.position = Vector3.Lerp( startPos, targetPos, distCovered );
-            yield return new WaitForEndOfFrame();
-            if( startPos.y > targetPos.y )
+            float targetY = 0;
+            table.Sort();
+            if( !inGameCheck ) targetY = lineY - table[0] + 2.5f;
+            else targetY = lineY - table[0] + 1.5f;
+            GameObject Meshes = GameObject.Find( "-Meshes" );
+            Vector3 targetPos = Meshes.transform.position + Vector3.up * targetY;
+            float startTime = Time.time;
+            Vector3 startPos = Meshes.transform.position;
+            float speed = 0.5f;
+            float distCovered = 0;
+            while( distCovered < 1 )
             {
-                if( mainscript.Instance.TopBorder.transform.position.y <= 5 && inGameCheck ) break;
+                speed += Time.deltaTime / 1.5f;
+                distCovered = ( Time.time - startTime ) / speed;
+                Meshes.transform.position = Vector3.Lerp( startPos, targetPos, distCovered );
+                yield return new WaitForEndOfFrame();
+                if( startPos.y > targetPos.y )
+                {
+                    if( mainscript.Instance.TopBorder.transform.position.y <= 5 && inGameCheck ) break;
+                }
+            }
+        } else {
+            if( up ) AddMesh();
+
+            float targetY = 0;
+            table.Sort();
+            if( !inGameCheck ) targetY = lineY - table[0] + 2.5f;
+            else targetY = lineY - table[0] + 1.5f;
+            GameObject Meshes = GameObject.Find( "-Meshes" );
+            Vector3 targetPos = Meshes.transform.position + Vector3.up * targetY;
+            float startTime = Time.time;
+            Vector3 startPos = Meshes.transform.position;
+            float speed = 0.5f;
+            float distCovered = 0;
+            while( distCovered < 1 )
+            {
+                speed += Time.deltaTime / 1.5f;
+                distCovered = ( Time.time - startTime ) / speed;
+                Meshes.transform.position = Vector3.Lerp( startPos, targetPos, distCovered );
+                yield return new WaitForEndOfFrame();
+                if( startPos.y > targetPos.y && (PlayerPrefs.GetInt("OpenLevel") == 1 || PlayerPrefs.GetInt("OpenLevel") == 2 ))
+                {
+                    if( mainscript.Instance.TopBorder.transform.position.y <= 5) break;
+                }
             }
         }
     }
@@ -264,45 +294,6 @@ private bool BubbleBelowLine()
     throw new System.NotImplementedException();
 }
 
-void ShowBugs()
-{
-    int effset = 1;
-    for( int i = 0; i < 2; i++ )
-    {
-        effset *= -1;
-        CreateBug( new Vector3( 10 * effset, -3, 0 ) );
-
-    }
-
-}
-
-public void CreateBug( Vector3 pos, int value = 1 )
-{
-    // I have no fucking clue why the Spiders GameObject is necessary
-    // but you definitely can't get rid of it -D
-    Transform spiders = GameObject.Find( "Spiders" ).transform;
-    List<Bug> listFreePlaces = new List<Bug>();
-    foreach( Transform item in spiders )
-    {
-        if( item.childCount > 0 ) listFreePlaces.Add( item.GetChild( 0 ).GetComponent<Bug>() );
-    }
-
-    if( listFreePlaces.Count < 6 )
-        Instantiate( bugPrefab, pos, Quaternion.identity );
-    else
-    {
-        listFreePlaces.Clear();
-        foreach( Transform item in spiders )
-        {
-            if( item.childCount > 0 )
-            {
-                if( item.GetChild( 0 ).GetComponent<Bug>().color == 0 ) listFreePlaces.Add( item.GetChild( 0 ).GetComponent<Bug>() );
-            }
-        }
-        if( listFreePlaces.Count > 0 )
-            listFreePlaces[UnityEngine.Random.Range( 0, listFreePlaces.Count )].ChangeColor( 1 );
-    }
-}
 
 IEnumerator getBallsForMesh()
 {
@@ -399,37 +390,12 @@ public GameObject createBall( Vector3 vec, BallColor color = BallColor.random, b
             b.GetComponent<ball>().isTarget = true;
         b.GetComponent<BoxCollider2D>().offset = Vector2.zero;
         b.GetComponent<BoxCollider2D>().size = new Vector2( 0.5f, 0.5f );
-        //Destroy( b.rigidbody2D );
-        //b.rigidbody2D.isKinematic = true;
-        //Destroy( b.GetComponent < BoxCollider2D>() );
-        //b.AddComponent<BoxCollider2D>();
-        //b.GetComponent<BoxCollider2D>().enabled = false;
-        //b.GetComponent<BoxCollider2D>().enabled = true;
-
-        //POPSign add text to the bubbles
-//			GameObject textObject = new GameObject();
-//			textObject.transform.parent = b.transform;
-//			TextMesh nText = textObject.AddComponent<TextMesh>();
-//			if (b.GetComponent<ColorBallScript> ().mainColor != BallColor.chicken) {
-//				string videoName = sharedVideoManager.getVideoByColor (b.GetComponent<ColorBallScript> ().mainColor).fileName;
-//				nText.text = videoName.Substring (0, Mathf.Min(videoName.Length, 3));
-//				//			nText.font = (Font) Resources.Load("Typo_Round_Regular_Demo", typeof(Font));
-//				nText.fontSize = 30;
-//				nText.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-//				nText.anchor = TextAnchor.MiddleCenter;
-//				nText.alignment = TextAlignment.Center;
-//				nText.transform.localPosition = new Vector3 (0f, 0f, 5.0f);
-//				MeshRenderer textMesh = textObject.GetComponent<MeshRenderer>();
-//				textMesh.sortingLayerName = "WordIconsLayer";
-//				textMesh.sortingOrder = 2;
-//			}
-
 
         //POPSign add image to the bubbles
         GameObject imageObject = new GameObject();
         imageObject.transform.parent = b.transform;
         SpriteRenderer ballImage = imageObject.AddComponent<SpriteRenderer> ();
-        if (b.GetComponent<ColorBallScript> ().mainColor != BallColor.chicken) {
+        if (b.GetComponent<ColorBallScript> ().mainColor != BallColor.star) {
             string imageName = sharedVideoManager.getVideoByColor (b.GetComponent<ColorBallScript> ().mainColor).imageName;
             ballImage.sprite = (Sprite)Resources.Load(imageName, typeof(Sprite));
             ballImage.sortingLayerName = "WordIconsLayer";
@@ -442,82 +408,6 @@ public GameObject createBall( Vector3 vec, BallColor color = BallColor.random, b
 
     }
     return b.gameObject;
-}
-
-void CreateEmptyBall( Vector3 vec )
-{
-    GameObject b2 = Instantiate( ballPrefab, transform.position, transform.rotation ) as GameObject;
-    b2.transform.position = new Vector3( vec.x, vec.y, ballPrefab.transform.position.z );
-    // b.transform.Rotate( new Vector3( 0f, 180f, 0f ) );
-    b2.GetComponent<ColorBallScript>().SetColor( 11 );
-    b2.transform.parent = Meshes.transform;
-    b2.tag = "empty";
-    b2.GetComponent<ball>().enabled = false;
-    b2.gameObject.layer = 9;
-    b2.GetComponent<Animation>().Play( "cat_idle" );
-    b2.GetComponent<SpriteRenderer>().sortingOrder = 20;
-    b2.GetComponent<BoxCollider2D>().offset = Vector2.zero;
-    b2.GetComponent<BoxCollider2D>().size = new Vector2( 0.5f, 0.5f );
-}
-
-
-int setColorFrame( string sTag )
-{
-    int frame = 0;
-    //		if(Camera.main.GetComponent<mainscript>().hd){
-    if( sTag == "Orange" ) frame = 7;
-    else if( sTag == "Red" ) frame = 3;
-    else if( sTag == "Yellow" ) frame = 1;
-    else if( sTag == "Rainbow" ) frame = 4;
-    else if( sTag == "Pearl" ) frame = 6;
-    else if( sTag == "Blue" ) frame = 11;
-    else if( sTag == "DarkBlue" ) frame = 8;
-    else if( sTag == "Green" ) frame = 10;
-    else if( sTag == "Pink" ) frame = 5;
-    else if( sTag == "Violet" ) frame = 2;
-    else if( sTag == "Brown" ) frame = 9;
-    else if( sTag == "Gray" ) frame = 12;
-    return frame;
-}
-
-int setColorFrameBug( string sTag )
-{
-    int frame = 0;
-    if( sTag == "Orange" ) frame = 5;
-    else if( sTag == "Red" ) frame = 3;
-    else if( sTag == "Yellow" ) frame = 1;
-    else if( sTag == "Rainbow" ) frame = 4;
-    else if( sTag == "Pearl" ) frame = 10;
-    else if( sTag == "Blue" ) frame = 10;
-    else if( sTag == "DarkBlue" ) frame = 8;
-    else if( sTag == "Green" ) frame = 7;
-    else if( sTag == "Pink" ) frame = 4;
-    else if( sTag == "Violet" ) frame = 2;
-    else if( sTag == "Brown" ) frame = 9;
-    else if( sTag == "Gray" ) frame = 6;
-    return frame;
-}
-
-public string getRandomColorTag()
-{
-    int color = 0;
-    string sTag = "";
-    if( mainscript.stage < 6 )
-        color = UnityEngine.Random.Range( 0, 4 + mainscript.stage - 1 );
-    else
-        color = UnityEngine.Random.Range( 0, 4 + 6 );
-
-    if( color == 0 ) sTag = "Orange";
-    else if( color == 1 ) sTag = "Red";
-    else if( color == 2 ) sTag = "Yellow";
-    else if( color == 3 ) sTag = "Rainbow";
-    else if( color == 4 ) sTag = "Blue";
-    else if( color == 5 ) sTag = "Green";
-    else if( color == 6 ) sTag = "Pink";
-    else if( color == 7 ) sTag = "Violet";
-    else if( color == 8 ) sTag = "Brown";
-    else if( color == 9 ) sTag = "Gray";
-    return sTag;
 }
 
 public void createMesh()

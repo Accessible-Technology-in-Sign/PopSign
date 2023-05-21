@@ -1,0 +1,22 @@
+{
+	"bluefileName":"green",
+	"blueframeNumber":44,
+	"bluefolderName":"MacarthurBates/AllWords/DescriptiveWords/green",
+	"blueImageName":"WordIcons/green",
+	"greenfileName":"fine",
+	"greenframeNumber":62,
+	"greenfolderName":"MacarthurBates/AllWords/DescriptiveWords/fine",
+	"greenImageName":"WordIcons/fine",
+	"redfileName":"big-tall",
+	"redframeNumber":61,
+	"redfolderName":"MacarthurBates/AllWords/DescriptiveWords/big-tall",
+	"redImageName":"WordIcons/big-tall",
+	"violetfileName":"new",
+	"violetframeNumber":51,
+	"violetfolderName":"MacarthurBates/AllWords/DescriptiveWords/new",
+	"violetImageName":"WordIcons/new",
+	"yellowfileName":"asleep",
+	"yellowframeNumber":74,
+	"yellowfolderName":"MacarthurBates/AllWords/DescriptiveWords/asleep",
+	"yellowImageName":"WordIcons/asleep"
+}

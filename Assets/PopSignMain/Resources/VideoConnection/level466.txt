@@ -1,0 +1,22 @@
+{
+	"bluefileName":"bite",
+	"blueframeNumber":72,
+	"bluefolderName":"MacarthurBates/AllWords/ActionWords/bite",
+	"blueImageName":"WordIcons/bite",
+	"greenfileName":"wish",
+	"greenframeNumber":80,
+	"greenfolderName":"MacarthurBates/AllWords/ActionWords/wish",
+	"greenImageName":"WordIcons/wish",
+	"redfileName":"stay",
+	"redframeNumber":68,
+	"redfolderName":"MacarthurBates/AllWords/ActionWords/stay",
+	"redImageName":"WordIcons/stay",
+	"violetfileName":"rip,tear",
+	"violetframeNumber":65,
+	"violetfolderName":"MacarthurBates/AllWords/ActionWords/rip,tear",
+	"violetImageName":"WordIcons/rip,tear",
+	"yellowfileName":"sing",
+	"yellowframeNumber":60,
+	"yellowfolderName":"MacarthurBates/AllWords/ActionWords/sing",
+	"yellowImageName":"WordIcons/sing"
+}

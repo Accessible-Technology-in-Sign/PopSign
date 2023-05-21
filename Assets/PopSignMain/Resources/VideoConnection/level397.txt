@@ -1,0 +1,22 @@
+{
+	"bluefileName":"catch-person",
+	"blueframeNumber":63,
+	"bluefolderName":"MacarthurBates/AllWords/ActionWords/catch-person",
+	"blueImageName":"WordIcons/catch-person",
+	"greenfileName":"hide",
+	"greenframeNumber":68,
+	"greenfolderName":"MacarthurBates/AllWords/ActionWords/hide",
+	"greenImageName":"WordIcons/hide",
+	"redfileName":"cut-scissors",
+	"redframeNumber":51,
+	"redfolderName":"MacarthurBates/AllWords/ActionWords/cut-scissors",
+	"redImageName":"WordIcons/cut-scissors",
+	"violetfileName":"smile",
+	"violetframeNumber":45,
+	"violetfolderName":"MacarthurBates/AllWords/ActionWords/smile",
+	"violetImageName":"WordIcons/smile",
+	"yellowfileName":"wait",
+	"yellowframeNumber":81,
+	"yellowfolderName":"MacarthurBates/AllWords/ActionWords/wait",
+	"yellowImageName":"WordIcons/wait"
+}

@@ -1,0 +1,22 @@
+{
+	"bluefileName":"drop",
+	"blueframeNumber":56,
+	"bluefolderName":"MacarthurBates/AllWords/ActionWords/drop",
+	"blueImageName":"WordIcons/drop",
+	"greenfileName":"cut-body",
+	"greenframeNumber":67,
+	"greenfolderName":"MacarthurBates/AllWords/ActionWords/cut-body",
+	"greenImageName":"WordIcons/cut-body",
+	"redfileName":"hate",
+	"redframeNumber":51,
+	"redfolderName":"MacarthurBates/AllWords/ActionWords/hate",
+	"redImageName":"WordIcons/hate",
+	"violetfileName":"walk",
+	"violetframeNumber":89,
+	"violetfolderName":"MacarthurBates/AllWords/ActionWords/walk",
+	"violetImageName":"WordIcons/walk",
+	"yellowfileName":"read",
+	"yellowframeNumber":61,
+	"yellowfolderName":"MacarthurBates/AllWords/ActionWords/read",
+	"yellowImageName":"WordIcons/read"
+}
