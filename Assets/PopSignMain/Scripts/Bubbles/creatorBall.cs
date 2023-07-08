@@ -349,16 +349,20 @@ public GameObject createBall( Vector3 vec, BallColor color = BallColor.random, b
 
     if( color == BallColor.random )
         color = (BallColor)LevelData.colorsDict[UnityEngine.Random.Range( 0, LevelData.colorsDict.Count )];
-    if( newball && mainscript.colorsDict.Count > 0 )
-    {
-        if( GamePlay.Instance.GameStatus == GameState.Playing )
-        {
-            mainscript.Instance.GetColorsInGame();
-            color = (BallColor)mainscript.colorsDict[UnityEngine.Random.Range( 0, mainscript.colorsDict.Count )];
+    //Used when new sign is pressed
+    if( newball && mainscript.colorsDict.Count > 0 ){
+        int newColor = 0;
+        mainscript.Instance.GetColorsInGame();
+        newColor = UnityEngine.Random.Range( 0, mainscript.colorsDict.Count );
+        color = (BallColor)mainscript.colorsDict[newColor];
+        //Check if the new color is the same as old
+       if(mainscript.colorsDict.Count > 1 && color == mainscript.Instance.oldBallColor){
+            if(newColor == 0){
+                color = (BallColor)mainscript.colorsDict[newColor+1];
+            }else{
+                color = (BallColor)mainscript.colorsDict[newColor-1];
+            }
         }
-        else
-            color = (BallColor)LevelData.colorsDict[UnityEngine.Random.Range( 0, LevelData.colorsDict.Count )];
-
     }
 
     b = Instantiate( ballPrefab, transform.position, transform.rotation ) as GameObject;
