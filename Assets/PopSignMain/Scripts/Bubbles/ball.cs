@@ -357,8 +357,6 @@ public class ball : MonoBehaviour
         // (currently they will sometimes display unevenly in the line)
         if (LevelData.mode == ModeGame.Vertical && isTarget)
             Instantiate(Resources.Load("Prefabs/TargetStar"), gameObject.transform.position, Quaternion.identity);
-        else if (LevelData.mode == ModeGame.Animals && isTarget)
-            StartCoroutine(FlyToTarget());
 
         setTarget = false;
         transform.SetParent(null);
@@ -687,7 +685,7 @@ public class ball : MonoBehaviour
 
         else if (other.gameObject.name == "TopBorder" && setTarget)
         {
-            if (LevelData.mode == ModeGame.Vertical || LevelData.mode == ModeGame.Animals)
+            if (LevelData.mode == ModeGame.Vertical)
             {
                 if (!findMesh)
                 {
@@ -870,10 +868,7 @@ public class ball : MonoBehaviour
             mainscript.Instance.TargetCounter++;
             Instantiate(Resources.Load("Prefabs/TargetStar"), gameObject.transform.position, Quaternion.identity);
         }
-        else if (LevelData.mode == ModeGame.Animals && isTarget)
-        {
-            // Instantiate( Resources.Load( "Prefabs/TargetStar" ), gameObject.transform.position, Quaternion.identity );
-        }
+        
         Destroy(gameObject, 1);
     }
 

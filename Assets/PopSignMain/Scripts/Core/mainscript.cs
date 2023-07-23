@@ -303,8 +303,6 @@ void Update ()
         //    GamePlay.Instance.GameStatus = GameState.Win;
         //else if( LevelData.mode == ModeGame.Rounded && TargetCounter >= 1 && GamePlay.Instance.GameStatus == GameState.WaitForStar )
         //    GamePlay.Instance.GameStatus = GameState.Win;
-        //else if( LevelData.mode == ModeGame.Animals && TargetCounter >= TotalTargets && GamePlay.Instance.GameStatus == GameState.Playing )
-        //    GamePlay.Instance.GameStatus = GameState.Win;
         //else if( LevelData.LimitAmount <= 0 && GamePlay.Instance.GameStatus == GameState.Playing && newBall == null )
         //    GamePlay.Instance.GameStatus = GameState.GameOver;
 
@@ -355,13 +353,6 @@ void Update ()
             mainscript.score = 0;
         }
         else if (LevelData.mode == ModeGame.Rounded && TargetCounter >= 1 && GamePlay.Instance.GameStatus == GameState.WaitForStar)
-        {
-            GamePlay.Instance.GameStatus = GameState.Win;
-            score = 0;
-            _ComboCount = 0;
-            mainscript.score = 0;
-        }
-        else if (LevelData.mode == ModeGame.Animals && TargetCounter >= TotalTargets && GamePlay.Instance.GameStatus == GameState.Playing)
         {
             GamePlay.Instance.GameStatus = GameState.Win;
             score = 0;
@@ -538,8 +529,6 @@ public IEnumerator clearDisconnectedBalls()
     droppingDown = false;
 
     if(LevelData.mode == ModeGame.Vertical)
-        creatorBall.Instance.MoveLevelDown();
-    else if( LevelData.mode == ModeGame.Animals )
         creatorBall.Instance.MoveLevelDown();
     else if( LevelData.mode == ModeGame.Rounded )
         CheckBallsBorderCross();

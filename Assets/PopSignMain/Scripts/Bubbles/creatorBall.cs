@@ -34,7 +34,7 @@ void Start()
     boxPrefab.transform.localScale = new Vector3( 0.67f, 0.58f, 1 );
     Meshes = GameObject.Find( "-Ball" );
     LoadLevel();
-    if( LevelData.mode == ModeGame.Vertical || LevelData.mode == ModeGame.Animals )
+    if( LevelData.mode == ModeGame.Vertical )
         MoveLevelUp();
     else
     {
