@@ -14,9 +14,9 @@ public class AnimationManager : MonoBehaviour
 
     void OnEnable()
     {
-        if( PlayOnEnable )
+        if (PlayOnEnable)
         {
-            SoundBase.Instance.GetComponent<AudioSource>().PlayOneShot( SoundBase.Instance.swish[0] );
+            SoundBase.Instance.GetComponent<AudioSource>().PlayOneShot(SoundBase.Instance.swish[0]);
         }
     }
 
@@ -27,101 +27,81 @@ public class AnimationManager : MonoBehaviour
 
     public void OnFinished()
     {
-        if( name == "MenuComplete" )
-        {
-            StartCoroutine( MenuComplete() );
-        }
-        else if( name == "PracticeScreen" )
-        {
-            InitScript.Instance.currentTarget = LevelData.GetTarget(PlayerPrefs.GetInt( "OpenLevel" ));
-        }
-    }
-
-    IEnumerator MenuComplete()
-    {
-        for( int i = 1; i <= mainscript.Instance.stars; i++ )
-        {
-            //  SoundBase.Instance.audio.PlayOneShot( SoundBase.Instance.scoringStar );
-            if ( transform.Find( "Image" ).Find( "Star" + i ).gameObject != null){
-            transform.Find( "Image" ).Find( "Star" + i ).gameObject.SetActive( true );
-            yield return new WaitForSeconds( 0.5f );
-            SoundBase.Instance.GetComponent<AudioSource>().PlayOneShot( SoundBase.Instance.hit );
-            }
-        }
+        
     }
 
     public void PlaySoundButton()
     {
-        SoundBase.Instance.GetComponent<AudioSource>().PlayOneShot( SoundBase.Instance.click );
+        SoundBase.Instance.GetComponent<AudioSource>().PlayOneShot(SoundBase.Instance.click);
     }
 
     public IEnumerator Close()
     {
-        yield return new WaitForSeconds( 0.5f );
+        yield return new WaitForSeconds(0.5f);
     }
 
     public void CloseMenu()
     {
-        SoundBase.Instance.GetComponent<AudioSource>().PlayOneShot( SoundBase.Instance.click );
-        if( gameObject.name == "MenuComplete" || gameObject.name == "MenuGameOver" )
+        SoundBase.Instance.GetComponent<AudioSource>().PlayOneShot(SoundBase.Instance.click);
+        if (gameObject.name == "MenuComplete" || gameObject.name == "MenuGameOver")
         {
-			      LogPlayTime ();
-            SceneManager.LoadScene( "map" );
+            LogPlayTime();
+            SceneManager.LoadScene("map");
         }
-        else if ( gameObject.name == "MenuInGamePause")
+        else if (gameObject.name == "MenuInGamePause")
         {
-          GamePlay.Instance.GameStatus = GameState.Playing;
+            GamePlay.Instance.GameStatus = GameState.Playing;
         }
-        if( SceneManager.GetActiveScene().name == "game" )
+        if (SceneManager.GetActiveScene().name == "game")
         {
-            if( GamePlay.Instance.GameStatus == GameState.Pause )
+            if (GamePlay.Instance.GameStatus == GameState.Pause)
             {
                 GamePlay.Instance.GameStatus = GameState.WaitAfterClose;
             }
         }
-        SoundBase.Instance.GetComponent<AudioSource>().PlayOneShot( SoundBase.Instance.swish[1] );
-        gameObject.SetActive( false );
-  }
+        SoundBase.Instance.GetComponent<AudioSource>().PlayOneShot(SoundBase.Instance.swish[1]);
+        gameObject.SetActive(false);
+    }
 
-	private void LogPlayTime()
-	{
-		string playDates;
-		string theDate = System.DateTime.Now.ToString ("yyyyMMdd");
-		float timePlayed = Time.time;
-
-		if (PlayerPrefs.HasKey (theDate))
+    private void LogPlayTime()
     {
-			float timeAlreadyPlayed = PlayerPrefs.GetFloat (theDate);
-			timePlayed += timeAlreadyPlayed;
-		}
+        string playDates;
+        string theDate = System.DateTime.Now.ToString("yyyyMMdd");
+        float timePlayed = Time.time;
 
-		PlayerPrefs.SetFloat (theDate, timePlayed);
+        if (PlayerPrefs.HasKey(theDate))
+        {
+            float timeAlreadyPlayed = PlayerPrefs.GetFloat(theDate);
+            timePlayed += timeAlreadyPlayed;
+        }
 
-		if (PlayerPrefs.HasKey ("PlayDates"))
-    {
-			playDates = PlayerPrefs.GetString ("PlayDates");
+        PlayerPrefs.SetFloat(theDate, timePlayed);
 
-			if(!playDates.Contains(theDate))
-				playDates += "," + theDate;
-		}
-    else
-    {
-			playDates = theDate;
-		}
+        if (PlayerPrefs.HasKey("PlayDates"))
+        {
+            playDates = PlayerPrefs.GetString("PlayDates");
 
-		  PlayerPrefs.SetString("PlayDates", playDates);
-	  }
+            if (!playDates.Contains(theDate))
+                playDates += "," + theDate;
+        }
+        else
+        {
+            playDates = theDate;
+        }
+
+        PlayerPrefs.SetString("PlayDates", playDates);
+    }
 
     public void Play()
     {
         Debug.Log(gameObject.name);
-        SoundBase.Instance.GetComponent<AudioSource>().PlayOneShot( SoundBase.Instance.click );
-        if( gameObject.name == "MenuGameOver" )
+        SoundBase.Instance.GetComponent<AudioSource>().PlayOneShot(SoundBase.Instance.click);
+        if (gameObject.name == "MenuGameOver")
         {
-			      LogPlayTime ();
+            LogPlayTime();
             CustomizeLevelManager.switchOff();
-            SceneManager.LoadScene( "map" );
-            VideoManager.resetVideoManager ();
+            SceneManager.LoadScene("map");
+            VideoManager.resetVideoManager();
 
             if (mainscript.Instance.stars > 0)
             {
@@ -140,7 +120,7 @@ public class AnimationManager : MonoBehaviour
                 PlayerPrefs.Save();
             }
         }
-        else if( gameObject.name == "PracticeScreen" || gameObject.name == "MenuInGamePause" || gameObject.name == "Settings" )
+        else if (gameObject.name == "PracticeScreen" || gameObject.name == "MenuInGamePause" || gameObject.name == "Settings")
         {
             if (gameObject.name == "MenuInGamePause" && CustomizeLevelManager.Instance.tryingToCustomize)
             {
@@ -152,10 +132,10 @@ public class AnimationManager : MonoBehaviour
                 SceneManager.LoadScene("game");
                 VideoManager.resetVideoManager();
             }
-            
+
 
         }
-        else if( gameObject.name == "NextLevel")
+        else if (gameObject.name == "NextLevel")
         {
             if (CustomizeLevelManager.Instance.tryingToCustomize)
             {
@@ -170,16 +150,19 @@ public class AnimationManager : MonoBehaviour
                 int randomizeLevels = PlayerPrefs.GetInt("RandomizeLevel", 0); //Added for randomized levels
 
                 //Added or statement to check if randomizedLevels = 1 to see if practice should be shown before every level
-                if (PlayerPrefs.GetInt("OpenLevel") % PRACTICE_LEVEL_INTERVAL == 0 || randomizeLevels == 1) {
+                if (PlayerPrefs.GetInt("OpenLevel") % PRACTICE_LEVEL_INTERVAL == 0 || randomizeLevels == 1)
+                {
                     VideoManager.resetVideoManager(); //Added to fix bug where words from previous level were shown in practice video rather than current level
                     SceneManager.LoadScene("practice");
-                } else {
-                    SceneManager.LoadScene("game");
-                    VideoManager.resetVideoManager ();
                 }
-            }        
+                else
+                {
+                    SceneManager.LoadScene("game");
+                    VideoManager.resetVideoManager();
+                }
+            }
         }
-        else if( gameObject.name == "TryAgain")
+        else if (gameObject.name == "TryAgain")
         {
             if (CustomizeLevelManager.Instance.tryingToCustomize)
             {
@@ -192,16 +175,16 @@ public class AnimationManager : MonoBehaviour
                 SceneManager.LoadScene("game");
                 VideoManager.resetVideoManager();
             }
-            
+
         }
-        else if( gameObject.name == "PlayMain" )
+        else if (gameObject.name == "PlayMain")
         {
             CustomizeLevelManager.switchOff();
-            SceneManager.LoadScene( "map" );
+            SceneManager.LoadScene("map");
         }
     }
 
-    public void ShowSettings ()
+    public void ShowSettings()
     {
         SceneManager.LoadScene("settings");
     }
@@ -213,23 +196,23 @@ public class AnimationManager : MonoBehaviour
 
     public void Next()
     {
-        SoundBase.Instance.GetComponent<AudioSource>().PlayOneShot( SoundBase.Instance.click );
+        SoundBase.Instance.GetComponent<AudioSource>().PlayOneShot(SoundBase.Instance.click);
         CloseMenu();
     }
 
     void ShowGameOver()
     {
-        SoundBase.Instance.GetComponent<AudioSource>().PlayOneShot( SoundBase.Instance.gameOver );
-        GameObject.Find( "Canvas" ).transform.Find( "MenuGameOver" ).gameObject.SetActive( true );
-        gameObject.SetActive( false );
+        SoundBase.Instance.GetComponent<AudioSource>().PlayOneShot(SoundBase.Instance.gameOver);
+        GameObject.Find("Canvas").transform.Find("MenuGameOver").gameObject.SetActive(true);
+        gameObject.SetActive(false);
     }
 
     public void ShowWordList()
     {
-        if(PlayerPrefs.GetInt("ReviewModalShown", 0) == 0)
+        if (PlayerPrefs.GetInt("ReviewModalShown", 0) == 0)
         {
             PlayerPrefs.SetInt("ReviewModalShown", 1);
-            GameObject.Find( "Canvas" ).transform.Find( "ReviewModal" ).gameObject.SetActive( true );
+            GameObject.Find("Canvas").transform.Find("ReviewModal").gameObject.SetActive(true);
         }
         else
         {
@@ -256,17 +239,17 @@ public class AnimationManager : MonoBehaviour
         SceneManager.LoadScene("map");
     }
 
-    public void PauseGame( GameObject menuSettings )
+    public void PauseGame(GameObject menuSettings)
     {
-        SoundBase.Instance.GetComponent<AudioSource>().PlayOneShot( SoundBase.Instance.click );
-        if( !menuSettings.activeSelf ) menuSettings.SetActive( true );
-        else menuSettings.SetActive( false );
+        SoundBase.Instance.GetComponent<AudioSource>().PlayOneShot(SoundBase.Instance.click);
+        if (!menuSettings.activeSelf) menuSettings.SetActive(true);
+        else menuSettings.SetActive(false);
         GamePlay.Instance.GameStatus = GameState.BlockedGame;
     }
 
     public void CloseCongrats()
     {
-        GameObject.Find( "Canvas" ).transform.Find( "CongratsModal" ).gameObject.SetActive( false );
+        GameObject.Find("Canvas").transform.Find("CongratsModal").gameObject.SetActive(false);
     }
 
     public void LoadMenu()
@@ -280,8 +263,8 @@ public class AnimationManager : MonoBehaviour
         {
             CustomizeLevelManager.switchOff();
         }
-        if( SceneManager.GetActiveScene().name == "game" )
-            SceneManager.LoadScene( "map" );
+        if (SceneManager.GetActiveScene().name == "game")
+            SceneManager.LoadScene("map");
         else
             Application.Quit();
     }
