@@ -227,21 +227,19 @@ IEnumerator MoveUpDownCor( bool inGameCheck = false )
     {
         if (!inGameCheck) {
             if( up ) AddMesh();
-
-            float targetY = 0;
             table.Sort();
-            if( !inGameCheck ) targetY = lineY - table[0] + 2.5f;
-            else targetY = lineY - table[0] + 1.5f;
+            
+            float targetY = lineY - table[0] + 1.5f;
             GameObject Meshes = GameObject.Find( "-Meshes" );
             Vector3 targetPos = Meshes.transform.position + Vector3.up * targetY;
             float startTime = Time.time;
             Vector3 startPos = Meshes.transform.position;
-            float speed = 0.5f;
+           
             float distCovered = 0;
             while( distCovered < 1 )
             {
-                speed += Time.deltaTime / 1.5f;
-                distCovered = ( Time.time - startTime ) / speed;
+                
+                distCovered = ( Time.time - startTime );
                 Meshes.transform.position = Vector3.Lerp( startPos, targetPos, distCovered );
                 yield return new WaitForEndOfFrame();
                 if( startPos.y > targetPos.y )
@@ -251,21 +249,18 @@ IEnumerator MoveUpDownCor( bool inGameCheck = false )
             }
         } else {
             if( up ) AddMesh();
-
-            float targetY = 0;
             table.Sort();
-            if( !inGameCheck ) targetY = lineY - table[0] + 2.5f;
-            else targetY = lineY - table[0] + 1.5f;
+            
+            float targetY = lineY - table[0] + 1.5f;
             GameObject Meshes = GameObject.Find( "-Meshes" );
             Vector3 targetPos = Meshes.transform.position + Vector3.up * targetY;
             float startTime = Time.time;
             Vector3 startPos = Meshes.transform.position;
-            float speed = 0.5f;
+            
             float distCovered = 0;
             while( distCovered < 1 )
             {
-                speed += Time.deltaTime / 1.5f;
-                distCovered = ( Time.time - startTime ) / speed;
+                distCovered = (Time.time - startTime);
                 Meshes.transform.position = Vector3.Lerp( startPos, targetPos, distCovered );
                 yield return new WaitForEndOfFrame();
                 if( startPos.y > targetPos.y && (PlayerPrefs.GetInt("OpenLevel") == 1 || PlayerPrefs.GetInt("OpenLevel") == 2 ))
