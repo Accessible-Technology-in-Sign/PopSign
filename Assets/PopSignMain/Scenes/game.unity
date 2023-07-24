@@ -1927,7 +1927,6 @@ GameObject:
   m_Component:
   - component: {fileID: 259292328}
   - component: {fileID: 259292330}
-  - component: {fileID: 259292329}
   m_Layer: 14
   m_Name: borderForRoundedLevels
   m_TagString: Untagged
@@ -1950,18 +1949,6 @@ Transform:
   m_Father: {fileID: 729910742}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &259292329
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 259292327}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b63ac9a9e6d3041449e68322a3d6fec7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &259292330
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2721,7 +2708,8 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11469810, guid: a8a8c085200639a4faf330f7659ef8bd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a8a8c085200639a4faf330f7659ef8bd, type: 3}
 --- !u!1 &412941298
 GameObject:
@@ -4633,7 +4621,6 @@ MonoBehaviour:
   ArcadedropDownTime: 0
   hd: 0
   Fade: {fileID: 0}
-  highScore: 0
   pops: {fileID: 0}
   click: {fileID: 0}
   levelBells: {fileID: 0}
@@ -4777,9 +4764,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   step1: {fileID: 512636229}
-  hand1: {fileID: 1032721475}
   step2: {fileID: 756125149}
-  hand2: {fileID: 820406613}
 --- !u!1 &744044597
 GameObject:
   m_ObjectHideFlags: 0
@@ -5038,7 +5023,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d49b7c1bcd2e07499844da127be038d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
   m_ForceModuleActive: 0
 --- !u!114 &769092879
 MonoBehaviour:
@@ -5052,7 +5036,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -11482,7 +11465,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1976780667}
   - component: {fileID: 1976780668}
-  - component: {fileID: 1976780669}
   m_Layer: 0
   m_Name: GameOverBorder
   m_TagString: Untagged
@@ -11531,18 +11513,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 10, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1976780669
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1976780666}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b63ac9a9e6d3041449e68322a3d6fec7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1986329172
 GameObject:
   m_ObjectHideFlags: 0
