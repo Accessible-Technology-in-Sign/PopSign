@@ -62,7 +62,6 @@ public float gameOverBorder;
 public float ArcadedropDownTime;
 public bool hd;
 public GameObject Fade;
-public int highScore;
 public AudioClip pops;
 public AudioClip click;
 public AudioClip levelBells;

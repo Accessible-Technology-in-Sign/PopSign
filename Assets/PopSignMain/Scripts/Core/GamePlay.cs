@@ -5,7 +5,6 @@ using InitScriptName;
 public enum GameState
 {
     Playing,
-    Highscore,
     GameOver,
     Pause,
     Win,
