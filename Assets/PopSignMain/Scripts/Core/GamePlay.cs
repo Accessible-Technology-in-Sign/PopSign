@@ -104,7 +104,6 @@ public class GamePlay : MonoBehaviour {
           PlayerPrefs.Save();
       }
 
-      SoundBase.Instance.GetComponent<AudioSource>().PlayOneShot( SoundBase.Instance.winSound );
       yield return new WaitForSeconds( 1f );
 
       if( LevelData.mode == ModeGame.Vertical ) {

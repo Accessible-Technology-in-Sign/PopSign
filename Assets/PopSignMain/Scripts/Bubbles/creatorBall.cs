@@ -22,9 +22,6 @@ public List<GameObject> squares = new List<GameObject>();
 int[] map;
 private int maxCols;
 private VideoManager sharedVideoManager;
-string[] colors = {"Orange", "Red", "Yellow", "Rainbow", "Blue", "Green", "Pink", "Violet", "Brown", "Gray"};
-int[] frameInts = {7, 3, 1, 4, 6, 11, 8, 10, 5, 2, 9, 12};
-int[] frameBugInts = {5, 3, 1, 4, 10, 10, 8, 7, 4, 2, 9, 6};
 
 // Use this for initialization
 void Start()
@@ -283,12 +280,6 @@ public void MoveLevelDown()
 {
     StartCoroutine( MoveUpDownCor( true ) );
 }
-
-private bool BubbleBelowLine()
-{
-    throw new System.NotImplementedException();
-}
-
 
 IEnumerator getBallsForMesh()
 {
