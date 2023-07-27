@@ -52,13 +52,6 @@ public class AnimationManager : MonoBehaviour
         {
             GamePlay.Instance.GameStatus = GameState.Playing;
         }
-        if (SceneManager.GetActiveScene().name == "game")
-        {
-            if (GamePlay.Instance.GameStatus == GameState.Pause)
-            {
-                GamePlay.Instance.GameStatus = GameState.WaitAfterClose;
-            }
-        }
         SoundBase.Instance.GetComponent<AudioSource>().PlayOneShot(SoundBase.Instance.swish[1]);
         gameObject.SetActive(false);
     }

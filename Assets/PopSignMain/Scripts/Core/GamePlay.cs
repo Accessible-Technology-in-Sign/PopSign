@@ -6,9 +6,7 @@ public enum GameState
 {
     Playing,
     GameOver,
-    Pause,
     Win,
-    WaitForPopup,
     WaitAfterClose,
     BlockedGame,
     Tutorial,
