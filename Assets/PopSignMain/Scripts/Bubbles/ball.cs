@@ -5,7 +5,7 @@ public class ball : MonoBehaviour
 {
     public static int score = 0;
     public bool isTarget;
-    public Vector3 target;
+    public Vector2 target;
     Vector2 worldPos;
     
     public bool setTarget;
@@ -13,7 +13,7 @@ public class ball : MonoBehaviour
     public GameObject mesh;
     
     public bool findMesh;
-    Vector3 dropTarget;
+    Vector2 dropTarget;
     public bool newBall;
     bool stoppedBall;
     private bool destroyed;
@@ -27,7 +27,7 @@ public class ball : MonoBehaviour
     float leftBorder;
     float rightBorder;
     bool isPaused;
-    Vector3 meshPos;
+    Vector2 meshPos;
     public bool falling;
     private bool fireBall;
     private static int fireworks;
@@ -59,7 +59,7 @@ public class ball : MonoBehaviour
     // Use this for initialization
     void Start() 
     {
-        meshPos = new Vector3(-1000, -1000, -10);
+        meshPos = new Vector2(-1000, -1000);
         dropTarget = transform.position;
         Meshes = GameObject.Find("-Ball");
         launched = false;
@@ -124,7 +124,7 @@ public class ball : MonoBehaviour
                     GamePlay.Instance.GameStatus == GameState.WaitForStar))
             {
                 //Get the position of the click
-                Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 worldPos = pos;
                 //If the y position of the click is within 4 units of the bottom of the original lowest row of balls and you have control over the ball
                 if (worldPos.y > -4f && worldPos.y < 4f && !mainscript.StopControl)
@@ -140,8 +140,8 @@ public class ball : MonoBehaviour
 
                     SpriteRenderer ballImage = imageObject.AddComponent<SpriteRenderer>();
                     // Consider the image size
-                    ballImage.transform.localScale = new Vector3(0.2f, 0.2f, 0.0f);
-                    ballImage.transform.localPosition = new Vector3(0f, 0f, 5.0f);
+                    ballImage.transform.localScale = new Vector2(0.2f, 0.2f);
+                    ballImage.transform.localPosition = new Vector2(0f, 0f);
                     string imageName = this.sharedVideoManager.getVideoByColor(ball.GetComponent<ColorBallScript>().mainColor).imageName;
                     ballImage.sprite = (Sprite)Resources.Load(imageName, typeof(Sprite));
                     ballImage.sortingLayerName = "WordIconsLayer";
@@ -171,7 +171,7 @@ public class ball : MonoBehaviour
             }
         }
         //If the ball has not hit the target location and is still moving
-        if (transform.position != target && setTarget && !stoppedBall && !isPaused && Camera.main.GetComponent<mainscript>().dropDownTime < Time.time)
+        if ((Vector2)transform.position != target && setTarget && !stoppedBall && !isPaused && Camera.main.GetComponent<mainscript>().dropDownTime < Time.time)
         {
             float totalVelocity = Vector3.Magnitude(GetComponent<Rigidbody2D>().velocity);
             if (totalVelocity > 20)
@@ -215,7 +215,7 @@ public class ball : MonoBehaviour
         }
     }
 
-    //bool ClickOnGUI(Vector3 mousePos) // the problem
+    //bool ClickOnGUI(Vector2 mousePos) // the problem
     //{
     //    UnityEngine.EventSystems.EventSystem ct = UnityEngine.EventSystems.EventSystem.current;
 
@@ -259,7 +259,7 @@ public class ball : MonoBehaviour
 
     public void checkNextNearestColor(ArrayList b)
     {
-        Vector3 distEtalon = transform.localScale;
+        Vector2 distEtalon = transform.localScale;
         int layerMask = 1 << LayerMask.NameToLayer("Ball");
         Collider2D[] meshes = Physics2D.OverlapCircleAll(transform.position, 1.0f, layerMask);
         foreach (Collider2D obj1 in meshes)
@@ -267,7 +267,7 @@ public class ball : MonoBehaviour
             if (obj1.gameObject.tag == tag)
             {
                 GameObject obj = obj1.gameObject;
-                float distanceToBall = Vector3.Distance(transform.position, obj.transform.position);
+                float distanceToBall = Vector2.Distance(transform.position, obj.transform.position);
                 if (distanceToBall <= 1.0f)
                 {
                     if (!b.Contains(obj))
@@ -287,14 +287,14 @@ public class ball : MonoBehaviour
         ArrayList ballsToClear = new ArrayList();
         // add flying ball to list of balls to clear
         ballsToClear.Add(gameObject);
-        Vector3 distEtalon = transform.localScale;
+        Vector2 distEtalon = transform.localScale;
         // find balls with the same color tag
         GameObject[] meshes = GameObject.FindGameObjectsWithTag(tag);
 
         // detect the same color balls
         foreach (GameObject obj in meshes)
         {
-            float distanceToBall = Vector3.Distance(transform.position, obj.transform.position);
+            float distanceToBall = Vector2.Distance(transform.position, obj.transform.position);
             if (distanceToBall <= 0.9f && distanceToBall > 0)
             {
                 bool notIn = true;
@@ -380,7 +380,7 @@ public class ball : MonoBehaviour
 
     IEnumerator FlyToTarget()
     {
-        Vector3 targetPos = new Vector3(2.3f, 6, 0);
+        Vector2 targetPos = new Vector2(2.3f, 6);
         if (mainscript.Instance.TargetCounter1 < mainscript.Instance.TotalTargets)
             mainscript.Instance.TargetCounter1++;
 
@@ -388,13 +388,13 @@ public class ball : MonoBehaviour
         AnimationCurve curveY = new AnimationCurve(new Keyframe(0, transform.position.y), new Keyframe(0.5f, targetPos.y));
         curveY.AddKey(0.2f, transform.position.y - 1);
         float startTime = Time.time;
-        Vector3 startPos = transform.position;
+        Vector2 startPos = transform.position;
         float distCovered = 0;
         while (distCovered < 0.6f)
         {
             distCovered = (Time.time - startTime);
-            transform.position = new Vector3(curveX.Evaluate(distCovered), curveY.Evaluate(distCovered), 0);
-            transform.Rotate(Vector3.back * 10);
+            transform.position = new Vector2(curveX.Evaluate(distCovered), curveY.Evaluate(distCovered));
+            // transform.Rotate(Vector3.back * 10);
             yield return new WaitForEndOfFrame();
         }
         Destroy(gameObject);
@@ -420,7 +420,7 @@ public class ball : MonoBehaviour
             {
                 if (obj.gameObject.layer == 9) // ball layer
                 {
-                    float distanceToBall = Vector3.Distance(transform.position, obj.transform.position);
+                    float distanceToBall = Vector2.Distance(transform.position, obj.transform.position);
                     if (distanceToBall <= 1.0f && distanceToBall > 0)
                     {
                         if (!b.Contains(obj.gameObject))
@@ -459,7 +459,7 @@ public class ball : MonoBehaviour
         while (findMesh)
         {
             // get all the fixed balls whose positions overlap with the center point of the flying ball
-            Vector3 centerPoint = transform.position;
+            Vector2 centerPoint = transform.position;
             Collider2D[] fixedBalls1 = Physics2D.OverlapCircleAll(centerPoint, 0.1f, meshLayerMask);
 
             foreach (Collider2D obj1 in fixedBalls1)
@@ -547,7 +547,7 @@ public class ball : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
     }
 
-    public void PlayHitAnim(Vector3 newBallPos, Hashtable animTable)
+    public void PlayHitAnim(Vector2 newBallPos, Hashtable animTable)
     {
 
         int layerMask = 1 << LayerMask.NameToLayer("Ball");
@@ -562,7 +562,7 @@ public class ball : MonoBehaviour
             PlayHitAnimCorStart(fixedBalls[0].gameObject.transform.position, 0, animTable);
     }
 
-    public void PlayHitAnimCorStart(Vector3 newBallPos, float force, Hashtable animTable)
+    public void PlayHitAnimCorStart(Vector2 newBallPos, float force, Hashtable animTable)
     {
         if (!animStarted)
         {
@@ -571,26 +571,26 @@ public class ball : MonoBehaviour
         }
     }
 
-    public IEnumerator PlayHitAnimCor(Vector3 newBallPos, float force, Hashtable animTable)
+    public IEnumerator PlayHitAnimCor(Vector2 newBallPos, float force, Hashtable animTable)
     {
         animStarted = true;
         animTable.Add(gameObject, gameObject);
         if (tag == "star") yield break;
         yield return new WaitForFixedUpdate();
-        float dist = Vector3.Distance(transform.position, newBallPos);
+        float dist = Vector2.Distance(transform.position, newBallPos);
         force = 1 / dist + force;
-        newBallPos = transform.position - newBallPos;
+        newBallPos = (Vector2)transform.position - newBallPos;
         if (transform.parent == null)
         {
             animStarted = false;
             yield break;
         }
-        newBallPos = Quaternion.AngleAxis(transform.parent.parent.rotation.eulerAngles.z, Vector3.back) * newBallPos;
+        // newBallPos = Quaternion.AngleAxis(transform.parent.parent.rotation.eulerAngles.z, Vector2.back) * newBallPos;
         newBallPos = newBallPos.normalized;
-        newBallPos = transform.localPosition + (newBallPos * force / 10);
+        newBallPos = (Vector2)transform.localPosition + (newBallPos * force / 10);
 
         float startTime = Time.time;
-        Vector3 startPos = transform.localPosition;
+        Vector2 startPos = transform.localPosition;
         float speed = force * 5;
         float distCovered = 0;
         while (distCovered < 1 && !float.IsNaN(newBallPos.x))
@@ -601,10 +601,10 @@ public class ball : MonoBehaviour
             {
                 yield break;
             }
-            transform.localPosition = Vector3.Lerp(startPos, newBallPos, distCovered);
+            transform.localPosition = Vector2.Lerp(startPos, newBallPos, distCovered);
             yield return new WaitForEndOfFrame();
         }
-        Vector3 lastPos = transform.localPosition;
+        Vector2 lastPos = transform.localPosition;
         startTime = Time.time;
         distCovered = 0;
         while (distCovered < 1 && !float.IsNaN(newBallPos.x))
@@ -615,7 +615,7 @@ public class ball : MonoBehaviour
             {
                 yield break;
             }
-            transform.localPosition = Vector3.Lerp(lastPos, startPos, distCovered);
+            transform.localPosition = Vector2.Lerp(lastPos, startPos, distCovered);
             yield return new WaitForEndOfFrame();
         }
         transform.localPosition = startPos;
@@ -689,7 +689,7 @@ public class ball : MonoBehaviour
             {
                 if (!findMesh)
                 {
-                    transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+                    transform.position = new Vector2(transform.position.x, transform.position.y);
                     StopBall();
 
                     if (fireBall)
@@ -843,8 +843,8 @@ public class ball : MonoBehaviour
 
         float startTime = Time.time;
         float endTime = Time.time + 0.1f;
-        Vector3 tempPosition = transform.localScale;
-        Vector3 targetPrepare = transform.localScale * 1.2f;
+        Vector2 tempPosition = transform.localScale;
+        Vector2 targetPrepare = transform.localScale * 1.2f;
 
         GetComponent<CircleCollider2D>().enabled = false;
         GetComponent<BoxCollider2D>().enabled = false;
@@ -852,13 +852,13 @@ public class ball : MonoBehaviour
         while (!isPaused && endTime > Time.time)
         {
             //transform.position += targetPrepare * Time.deltaTime;
-            transform.localScale = Vector3.Lerp(tempPosition, targetPrepare, (Time.time - startTime) * 10);
+            transform.localScale = Vector2.Lerp(tempPosition, targetPrepare, (Time.time - startTime) * 10);
             //	transform.position = targetPrepare ;
             yield return new WaitForEndOfFrame();
         }
         //   yield return new WaitForSeconds(0.01f );
         GameObject prefab = Resources.Load("Particles/BubbleExplosion") as GameObject;
-        GameObject explosion = (GameObject)Instantiate(prefab, gameObject.transform.position + Vector3.back * 20f, Quaternion.identity);
+        GameObject explosion = (GameObject)Instantiate(prefab, gameObject.transform.position, Quaternion.identity);
         if (mesh != null)
             explosion.transform.parent = mesh.transform;
         //  if( !isPaused )
@@ -881,7 +881,7 @@ public class ball : MonoBehaviour
             if (obj1.gameObject.tag == "cloud")
             {
                 GameObject obj = obj1.gameObject;
-                float distanceToBall = Vector3.Distance(transform.position, obj.transform.position);
+                float distanceToBall = Vector2.Distance(transform.position, obj.transform.position);
                 if (distanceToBall <= 1f)
                 {
                     obj.GetComponent<ColorBallScript>().ChangeRandomColor();

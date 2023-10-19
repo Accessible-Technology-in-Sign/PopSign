@@ -80,7 +80,7 @@ public GameObject GameOverBorderObject;
 public GameObject TopBorder;
 public Transform Balls;
 public Hashtable animTable = new Hashtable();
-public static Vector3 lastBall;
+public static Vector2 lastBall;
 public static int doubleScore=1;
 public int TotalTargets;
 public int countOfPreparedToDestroy;
@@ -432,10 +432,10 @@ IEnumerator getBallsForMesh()
 }
 
 
-public GameObject createCannonBall(Vector3 vector3)
+public GameObject createCannonBall(Vector2 vector2)
 {
     GameObject gm = GameObject.Find ("Creator");
-    GameObject nextBall = gm.GetComponent<creatorBall>().createBall(vector3, BallColor.random, true);
+    GameObject nextBall = gm.GetComponent<creatorBall>().createBall(vector2, BallColor.random, true);
     return nextBall;
 }
 
@@ -605,19 +605,19 @@ IEnumerator CheckFreeStarCor()
 
         GameObject star = GameObject.FindGameObjectWithTag( "star" );
         star.GetComponent<SpriteRenderer>().sortingLayerName = "UI layer";
-        Vector3 targetPos = new Vector3( 2.3f, 6, 0 );
+        Vector2 targetPos = new Vector2( 2.3f, 6);
         mainscript.Instance.TargetCounter++;
         AnimationCurve curveX = new AnimationCurve( new Keyframe( 0, star.transform.position.x ), new Keyframe( 0.5f, targetPos.x ) );
         AnimationCurve curveY = new AnimationCurve( new Keyframe( 0, star.transform.position.y ), new Keyframe( 0.5f, targetPos.y ) );
         curveY.AddKey( 0.2f, star.transform.position.y - 1 );
         float startTime = Time.time;
-        Vector3 startPos = star.transform.position;
+        Vector2 startPos = star.transform.position;
         float distCovered = 0;
         while( distCovered < 0.6f )
         {
             distCovered = ( Time.time - startTime );
-            star.transform.position = new Vector3( curveX.Evaluate( distCovered ), curveY.Evaluate( distCovered ), 0 );
-            star.transform.Rotate( Vector3.back * 10 );
+            star.transform.position = new Vector2( curveX.Evaluate( distCovered ), curveY.Evaluate( distCovered ));
+            // star.transform.Rotate( Vector2.back * 10 );
             yield return new WaitForEndOfFrame();
         }
             Destroy(star);
