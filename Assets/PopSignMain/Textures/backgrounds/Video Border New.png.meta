@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 9efa35421314b40738c3748c78aa031d
+=======
+guid: b3bc9853305fa4d77b3727776bab3865
+>>>>>>> origin/sashank_ui_changes
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

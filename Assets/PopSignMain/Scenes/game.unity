@@ -10544,8 +10544,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   helpText: {fileID: 2008326566}
-  normalImage: {fileID: 21300000, guid: 0c80371a7cb08405c9664981afc70c7c, type: 3}
-  selectedImage: {fileID: 21300000, guid: efad3a1c165954e6a88cc97faa5f92b7, type: 3}
+  normalImage: {fileID: 21300000, guid: ea45b4bef127a47918b1ee7bcd4b8297, type: 3}
+  selectedImage: {fileID: 21300000, guid: ea45b4bef127a47918b1ee7bcd4b8297, type: 3}
 --- !u!1 &1878206036
 GameObject:
   m_ObjectHideFlags: 0
