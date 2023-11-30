@@ -324,8 +324,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 2cac203ef6e5043fbaac39b508b3e0c2, type: 3}
-    m_FontSize: 35
+    m_Font: {fileID: 12800000, guid: 77f48c393ff474cc8ba260508813d4b7, type: 3}
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -644,12 +644,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 2cac203ef6e5043fbaac39b508b3e0c2, type: 3}
-    m_FontSize: 50
+    m_Font: {fileID: 12800000, guid: 77f48c393ff474cc8ba260508813d4b7, type: 3}
+    m_FontSize: 75
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 70
+    m_MaxSize: 300
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -1208,7 +1208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelPrefab: {fileID: 134982, guid: 050a1740ffa3c8e40a66a13d7cd41780, type: 3}
-  startPosition: {x: -229, y: 308, z: 0}
+  startPosition: {x: -229, y: 308}
   offset: {x: 155, y: 148}
   countInRow: 4
   countInColumn: 4
@@ -1813,7 +1813,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 2cac203ef6e5043fbaac39b508b3e0c2, type: 3}
+    m_Font: {fileID: 12800000, guid: 77f48c393ff474cc8ba260508813d4b7, type: 3}
     m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 1
