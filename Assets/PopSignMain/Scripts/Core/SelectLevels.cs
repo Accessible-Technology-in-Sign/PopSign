@@ -6,7 +6,7 @@ public class SelectLevels : MonoBehaviour
 {
     int latestFile;
     public GameObject levelPrefab;
-    public Vector3 startPosition;
+    public Vector2 startPosition;
     public Vector2 offset;
     public int countInRow = 4;
     public int countInColumn = 4;
@@ -43,8 +43,8 @@ public class SelectLevels : MonoBehaviour
             GameObject level = Instantiate(levelPrefab) as GameObject;
             level.GetComponent<Level>().number = l+1;
             level.transform.SetParent(transform);
-            level.transform.localPosition = startPosition + Vector3.right * (posCOunter % countInRow) * offset.x + Vector3.down * (posCOunter / countInColumn) * offset.y;
-            level.transform.localScale = Vector3.one;
+            level.transform.localPosition = startPosition + Vector2.right * (posCOunter % countInRow) * offset.x + Vector2.down * (posCOunter / countInColumn) * offset.y;
+            level.transform.localScale = Vector2.one;
             if (posCOunter + 1 >= countInRow * countInColumn) break;
             posCOunter++;
         }

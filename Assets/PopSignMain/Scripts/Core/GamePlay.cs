@@ -5,11 +5,8 @@ using InitScriptName;
 public enum GameState
 {
     Playing,
-    Highscore,
     GameOver,
-    Pause,
     Win,
-    WaitForPopup,
     WaitAfterClose,
     BlockedGame,
     Tutorial,
@@ -105,7 +102,6 @@ public class GamePlay : MonoBehaviour {
           PlayerPrefs.Save();
       }
 
-      SoundBase.Instance.GetComponent<AudioSource>().PlayOneShot( SoundBase.Instance.winSound );
       yield return new WaitForSeconds( 1f );
 
       if( LevelData.mode == ModeGame.Vertical ) {

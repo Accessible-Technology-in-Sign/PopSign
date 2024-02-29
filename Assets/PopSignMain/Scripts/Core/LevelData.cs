@@ -11,7 +11,6 @@ public enum ModeGame
 {
     Vertical=0,
     Rounded,
-    Animals,
 }
 public class LevelData
 {

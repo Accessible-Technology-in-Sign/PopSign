@@ -15,7 +15,7 @@ public class DrawLine : MonoBehaviour
 		new Color(1.0F , 1.0F, 1.0F, 1.0F), new Color(1.0F , 1.0F, 1.0F, 1.0F), new Color(1.0F , 1.0F, 1.0F, 1.0F)};
     GameObject[] pointers = new GameObject[15];
     GameObject[] pointers2 = new GameObject[3];
-    Vector3 lastMousePos;
+    Vector2 lastMousePos;
     private bool startAnim;
 
     // Use this for initialization
@@ -25,8 +25,8 @@ public class DrawLine : MonoBehaviour
         GeneratePoints();
         GeneratePositionsPoints();
         HidePoints();
-        waypoints[0] = transform.position;
-        waypoints[1] = transform.position+Vector3.up*5;
+        waypoints[0] = (Vector2)transform.position;
+        waypoints[1] = (Vector2)transform.position+Vector2.up*5;
     }
 
     //Method meant for hiding game objects currently on screen 
@@ -134,11 +134,11 @@ public class DrawLine : MonoBehaviour
 
         if (draw)
         {
-            Vector3 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - Vector3.back * 10;
+            Vector2 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - Vector3.back * 10;
             if( !mainscript.StopControl )
             {
 
-                dir.z = 0;
+                // dir.z = 0;
                 if (lastMousePos == dir)
                 {
 					          //POPSign set startAnim to false. statAnim set to true will animate the line

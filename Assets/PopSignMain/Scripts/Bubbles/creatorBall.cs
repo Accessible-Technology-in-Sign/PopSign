@@ -22,19 +22,16 @@ public List<GameObject> squares = new List<GameObject>();
 int[] map;
 private int maxCols;
 private VideoManager sharedVideoManager;
-string[] colors = {"Orange", "Red", "Yellow", "Rainbow", "Blue", "Green", "Pink", "Violet", "Brown", "Gray"};
-int[] frameInts = {7, 3, 1, 4, 6, 11, 8, 10, 5, 2, 9, 12};
-int[] frameBugInts = {5, 3, 1, 4, 10, 10, 8, 7, 4, 2, 9, 6};
 
 // Use this for initialization
 void Start()
 {
     Instance = this;
     sharedVideoManager = VideoManager.getVideoManager();
-    boxPrefab.transform.localScale = new Vector3( 0.67f, 0.58f, 1 );
+    boxPrefab.transform.localScale = new Vector2( 0.67f, 0.58f);
     Meshes = GameObject.Find( "-Ball" );
     LoadLevel();
-    if( LevelData.mode == ModeGame.Vertical || LevelData.mode == ModeGame.Animals )
+    if( LevelData.mode == ModeGame.Vertical )
         MoveLevelUp();
     else
     {
@@ -227,22 +224,20 @@ IEnumerator MoveUpDownCor( bool inGameCheck = false )
     {
         if (!inGameCheck) {
             if( up ) AddMesh();
-
-            float targetY = 0;
             table.Sort();
-            if( !inGameCheck ) targetY = lineY - table[0] + 2.5f;
-            else targetY = lineY - table[0] + 1.5f;
+            
+            float targetY = lineY - table[0] + 1.5f;
             GameObject Meshes = GameObject.Find( "-Meshes" );
-            Vector3 targetPos = Meshes.transform.position + Vector3.up * targetY;
+            Vector2 targetPos = (Vector2)Meshes.transform.position + Vector2.up * targetY;
             float startTime = Time.time;
-            Vector3 startPos = Meshes.transform.position;
-            float speed = 0.5f;
+            Vector2 startPos = Meshes.transform.position;
+           
             float distCovered = 0;
             while( distCovered < 1 )
             {
-                speed += Time.deltaTime / 1.5f;
-                distCovered = ( Time.time - startTime ) / speed;
-                Meshes.transform.position = Vector3.Lerp( startPos, targetPos, distCovered );
+                
+                distCovered = ( Time.time - startTime );
+                Meshes.transform.position = Vector2.Lerp( startPos, targetPos, distCovered );
                 yield return new WaitForEndOfFrame();
                 if( startPos.y > targetPos.y )
                 {
@@ -251,22 +246,19 @@ IEnumerator MoveUpDownCor( bool inGameCheck = false )
             }
         } else {
             if( up ) AddMesh();
-
-            float targetY = 0;
             table.Sort();
-            if( !inGameCheck ) targetY = lineY - table[0] + 2.5f;
-            else targetY = lineY - table[0] + 1.5f;
+            
+            float targetY = lineY - table[0] + 1.5f;
             GameObject Meshes = GameObject.Find( "-Meshes" );
-            Vector3 targetPos = Meshes.transform.position + Vector3.up * targetY;
+            Vector2 targetPos = (Vector2)Meshes.transform.position + Vector2.up * targetY;
             float startTime = Time.time;
-            Vector3 startPos = Meshes.transform.position;
-            float speed = 0.5f;
+            Vector2 startPos = Meshes.transform.position;
+            
             float distCovered = 0;
             while( distCovered < 1 )
             {
-                speed += Time.deltaTime / 1.5f;
-                distCovered = ( Time.time - startTime ) / speed;
-                Meshes.transform.position = Vector3.Lerp( startPos, targetPos, distCovered );
+                distCovered = (Time.time - startTime);
+                Meshes.transform.position = Vector2.Lerp( startPos, targetPos, distCovered );
                 yield return new WaitForEndOfFrame();
                 if( startPos.y > targetPos.y && (PlayerPrefs.GetInt("OpenLevel") == 1 || PlayerPrefs.GetInt("OpenLevel") == 2 ))
                 {
@@ -288,12 +280,6 @@ public void MoveLevelDown()
 {
     StartCoroutine( MoveUpDownCor( true ) );
 }
-
-private bool BubbleBelowLine()
-{
-    throw new System.NotImplementedException();
-}
-
 
 IEnumerator getBallsForMesh()
 {
@@ -332,12 +318,12 @@ public void createRow( int j )
     for( int i = 0; i < columns; i++ )
     {
         if( j % 2 == 0 ) offset = 0; else offset = offsetStep;
-        Vector3 v = new Vector3( transform.position.x + i * boxPrefab.transform.localScale.x + offset, transform.position.y - j * boxPrefab.transform.localScale.y, transform.position.z );
+        Vector2 v = new Vector2( transform.position.x + i * boxPrefab.transform.localScale.x + offset, transform.position.y - j * boxPrefab.transform.localScale.y);
         createBall( v );
     }
 }
 
-public GameObject createBall( Vector3 vec, BallColor color = BallColor.random, bool newball = false, int row = 1 )
+public GameObject createBall( Vector2 vec, BallColor color = BallColor.random, bool newball = false, int row = 1 )
 {
     GameObject b = null;
     List<BallColor> colors = new List<BallColor>();
@@ -362,7 +348,7 @@ public GameObject createBall( Vector3 vec, BallColor color = BallColor.random, b
     }
 
     b = Instantiate( ballPrefab, transform.position, transform.rotation ) as GameObject;
-    b.transform.position = new Vector3( vec.x, vec.y, ballPrefab.transform.position.z );
+    b.transform.position = new Vector2( vec.x, vec.y);
     // b.transform.Rotate( new Vector3( 0f, 180f, 0f ) );
     b.GetComponent<ColorBallScript>().SetColor( color );
     b.transform.parent = Meshes.transform;
@@ -402,8 +388,8 @@ public GameObject createBall( Vector3 vec, BallColor color = BallColor.random, b
             ballImage.sortingOrder = 2;
 
             // Consider the image size
-            ballImage.transform.localScale = new Vector3(0.2f, 0.2f, 0.0f);
-            ballImage.transform.localPosition = new Vector3(0f, 0f, 5.0f);
+            ballImage.transform.localScale = new Vector2(0.2f, 0.2f);
+            ballImage.transform.localPosition = new Vector2(0f, 0f);
         }
 
     }
@@ -422,7 +408,7 @@ public void createMesh()
         {
             if( j % 2 == 0 ) offset = 0; else offset = offsetStep;
             GameObject b = Instantiate( boxPrefab, transform.position, transform.rotation ) as GameObject;
-            Vector3 v = new Vector3( transform.position.x + i * b.transform.localScale.x + offset, transform.position.y - j * b.transform.localScale.y, transform.position.z );
+            Vector2 v = new Vector2( transform.position.x + i * b.transform.localScale.x + offset, transform.position.y - j * b.transform.localScale.y);
             b.transform.parent = Meshes.transform;
             b.transform.localPosition = v;
             GameObject[] fixedBalls = GameObject.FindGameObjectsWithTag( "Mesh" );
@@ -445,7 +431,7 @@ public void AddMesh()
     {
         if( j % 2 == 0 ) offset = 0; else offset = offsetStep;
         GameObject b = Instantiate( boxPrefab, transform.position, transform.rotation ) as GameObject;
-        Vector3 v = new Vector3( transform.position.x + i * b.transform.localScale.x + offset, transform.position.y - j * b.transform.localScale.y, transform.position.z );
+        Vector2 v = new Vector2(transform.position.x + i * b.transform.localScale.x + offset, transform.position.y - j * b.transform.localScale.y);
         b.transform.parent = Meshes.transform;
         b.transform.position = v;
         GameObject[] fixedBalls = GameObject.FindGameObjectsWithTag( "Mesh" );

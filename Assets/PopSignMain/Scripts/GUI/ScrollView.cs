@@ -62,12 +62,12 @@ public class ScrollView : MonoBehaviour {
 
                             if (CustomizeLevelManager.Instance.tryingToCustomize)
                             {
-                                sb.ButtonText.transform.localPosition = new Vector3(77, 0, 0);
+                                sb.ButtonText.transform.localPosition = new Vector2(77, 0);
                                 sb.CheckBox.SetActive(true);
                             }
                             go.transform.SetParent(ButtonTemplate.transform.parent);
-							go.transform.localScale = new Vector3(1, 1, 1);
-							go.transform.localPosition = new Vector3(250, yPos, 0);
+							go.transform.localScale = new Vector2(1, 1);
+							go.transform.localPosition = new Vector2(250, yPos);
 							yPos -= 100;
 						}
 				}

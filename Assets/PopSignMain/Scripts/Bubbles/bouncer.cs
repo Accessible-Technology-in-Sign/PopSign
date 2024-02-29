@@ -3,8 +3,8 @@ using System.Collections;
 
 public class bouncer : MonoBehaviour
 {
-    Vector3 tempPosition;
-    Vector3 targetPrepare;
+    Vector2 tempPosition;
+    Vector2 targetPrepare;
     bool isPaused;
     public bool startBounce;
     float startTime;
@@ -24,10 +24,10 @@ public class bouncer : MonoBehaviour
     IEnumerator bonceCoroutine()
     {
 
-        while (Vector3.Distance(transform.position, targetPrepare) > 1 && !isPaused && !GetComponent<ball>().setTarget)
+        while (Vector2.Distance(transform.position, targetPrepare) > 1 && !isPaused && !GetComponent<ball>().setTarget)
         {
             //transform.position  += targetPrepare * Time.deltaTime;
-            transform.position = Vector3.Lerp(tempPosition, targetPrepare, (Time.time - startTime) * 2f);
+            transform.position = Vector2.Lerp(tempPosition, targetPrepare, (Time.time - startTime) * 2f);
             //	transform.position  = targetPrepare ;
             yield return new WaitForSeconds(1f / 30f);
         }
@@ -61,38 +61,38 @@ public class bouncer : MonoBehaviour
         Grid.waitForAnim = false;
     }
 
-    public void bounceToCatapult(Vector3 vector3)
+    public void bounceToCatapult(Vector2 vector2)
     {
-        vector3 = new Vector3(vector3.x, vector3.y, gameObject.transform.position.z);
+        vector2 = new Vector2(vector2.x, vector2.y);
         tempPosition = transform.position;
-        targetPrepare = vector3;
+        targetPrepare = vector2;
         startBounce = true;
         startTime = Time.time;
-        iTween.MoveTo(gameObject, iTween.Hash("position", vector3, "time", 0.3, "easetype", iTween.EaseType.linear, "onComplete", "newBall"));
+        iTween.MoveTo(gameObject, iTween.Hash("position", vector2, "time", 0.3, "easetype", iTween.EaseType.linear, "onComplete", "newBall"));
         //		StartCoroutine(bonceToCatapultCoroutine());
         //transform.position = vector3;
         Grid.waitForAnim = false;
 
     }
 
-    public void bounceTo(Vector3 vector3)
+    public void bounceTo(Vector2 vector2)
     {
-        vector3 = new Vector3(vector3.x, vector3.y, gameObject.transform.position.z);
+        vector2 = new Vector2(vector2.x, vector2.y);
         tempPosition = transform.position;
-        targetPrepare = vector3;
+        targetPrepare = vector2;
         startBounce = true;
         startTime = Time.time;
         if( GamePlay.Instance.GameStatus == GameState.Playing )
-            iTween.MoveTo(gameObject, iTween.Hash("position", vector3, "time", 0.3, "easetype", iTween.EaseType.linear));
+            iTween.MoveTo(gameObject, iTween.Hash("position", vector2, "time", 0.3, "easetype", iTween.EaseType.linear));
         else if( GamePlay.Instance.GameStatus == GameState.Win )
-            iTween.MoveTo(gameObject, iTween.Hash("position", vector3, "time", 0.00001, "easetype", iTween.EaseType.linear));
+            iTween.MoveTo(gameObject, iTween.Hash("position", vector2, "time", 0.00001, "easetype", iTween.EaseType.linear));
         //StartCoroutine(bonceCoroutine());
         //transform.position = vector3;
     }
 
     public void dropDown()
     {
-        Vector3 v;
+        Vector2 v;
 
         //		GameObject[] meshes = GameObject.FindGameObjectsWithTag("Mesh");
         //		foreach(GameObject obj in meshes) {
@@ -100,16 +100,16 @@ public class bouncer : MonoBehaviour
         Collider2D[] fixedBalls = Physics2D.OverlapCircleAll(transform.position, 0.5f, layerMask);
         foreach (Collider2D obj in fixedBalls)
         {
-            float distTemp = Vector3.Distance(new Vector3(transform.position.x - offset, transform.position.y, transform.position.z), obj.transform.position);
+            float distTemp = Vector2.Distance(new Vector2(transform.position.x - offset, transform.position.y), obj.transform.position);
             if (distTemp <= 0.9f && obj.transform.position.y + 0.1f < transform.position.y)
             {
                 if (obj.GetComponent<Grid>().offset > 0)
                 {
-                    v = new Vector3(transform.position.x + obj.GetComponent<Grid>().offset, obj.transform.position.y, transform.position.z);
+                    v = new Vector2(transform.position.x + obj.GetComponent<Grid>().offset, obj.transform.position.y);
                 }
                 else
                 {
-                    v = new Vector3(obj.transform.position.x, obj.transform.position.y, transform.position.z);
+                    v = new Vector2(obj.transform.position.x, obj.transform.position.y);
                 }
                 bounceTo(v);
                 //	transform.position = v;
@@ -133,7 +133,7 @@ public class bouncer : MonoBehaviour
         {
             if (obj.gameObject.layer == 9 && obj != gameObject)
             {
-                float distTemp = Vector3.Distance(transform.position, obj.transform.position);
+                float distTemp = Vector2.Distance(transform.position, obj.transform.position);
                 if (distTemp <= 0.8f && distTemp > 0)
                 {
                     if (!b.Contains(obj.gameObject))
@@ -177,7 +177,7 @@ public class bouncer : MonoBehaviour
 
     public void checkNextNearestColor(ArrayList b)
     {
-        Vector3 distEtalon = transform.localScale;
+        Vector2 distEtalon = transform.localScale;
         int layerMask = 1 << LayerMask.NameToLayer("Ball");
         Collider2D[] meshes = Physics2D.OverlapCircleAll(transform.position, 1f, layerMask);
         foreach (Collider2D obj1 in meshes)
@@ -185,7 +185,7 @@ public class bouncer : MonoBehaviour
             if (obj1.gameObject.tag == tag)
             {
                 GameObject obj = obj1.gameObject;
-                float distTemp = Vector3.Distance(transform.position, obj.transform.position);
+                float distTemp = Vector2.Distance(transform.position, obj.transform.position);
                 if (distTemp <= 1f)
                 {
                     if (!b.Contains(obj))
