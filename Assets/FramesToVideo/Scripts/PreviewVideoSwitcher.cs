@@ -48,7 +48,7 @@ public class PreviewVideoSwitcher : MonoBehaviour
 	void Start ()
 	{
 		//set the initial frame as the first texture. Load it from the first image on the folder
-//		Debug.Log(sharedVideoManager.curtVideo.imageName);
+		// Debug.Log(sharedVideoManager.curtVideo.imageName);
 		changePracticeScreenVideo ();
 		if (baseName != "") {
 			texture = (Texture)Resources.Load(baseName + "", typeof(Texture));
@@ -62,7 +62,7 @@ public class PreviewVideoSwitcher : MonoBehaviour
 				string textImageName = this.sharedVideoManager.curtVideo.imageName;
 				helpTextImage.sprite = (Sprite)Resources.Load (textImageName, typeof(Sprite));
 				// Consider the image size
-				helpTextImage.transform.localScale = new Vector3 (0.5f, 0.5f, 0.0f);
+				helpTextImage.transform.localScale = new Vector3 (0.9f, 0.9f, 0.0f);
 				helpTextImage.transform.localPosition = new Vector3 (0f, 0f, 0f);
 
 				//set background color the same as the ball
@@ -105,8 +105,9 @@ public class PreviewVideoSwitcher : MonoBehaviour
 					}
 
 					string textImageName = this.sharedVideoManager.curtVideo.imageName;
+					Debug.Log(textImageName);
 					helpTextImage.sprite = (Sprite)Resources.Load (textImageName, typeof(Sprite));
-					helpTextImage.transform.localScale = new Vector3 (0.5f, 0.5f, 0.0f);
+					helpTextImage.transform.localScale = new Vector3 (1.1f, 1.1f, 0.0f);
 					helpTextImage.transform.localPosition = new Vector3 (0f, 0f, 0f);
 
 					SpriteRenderer helpTextBG = helpTextObject.GetComponent<SpriteRenderer> ();
@@ -167,10 +168,10 @@ public class PreviewVideoSwitcher : MonoBehaviour
 #elif UNITY_IOS
 		videoPlayer.url = Application.dataPath + "/Raw/" + folderName + ".mp4";
 #endif
-		Debug.Log(videoPlayer.url);
+		// Debug.Log(videoPlayer.url);
 		videoPlayer.Prepare();
 		videoPlayer.Play();
-		Debug.Log(videoPlayer.isPlaying);
+		// Debug.Log(videoPlayer.isPlaying);
 	}
 
 	//A method to play the animation just once

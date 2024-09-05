@@ -66,6 +66,7 @@ public class VideoManager {
         {
 			//Original code
 			textReader = Resources.Load("VideoConnection/" + "level" + currentLevel) as TextAsset;
+			Debug.Log("VideoConnection/" + "level" + currentLevel);
 		}
         else
         {
@@ -77,6 +78,7 @@ public class VideoManager {
             }
 
 			textReader = new TextAsset(levelText);
+			Debug.Log(path);
 		}
 		
 		JsonData jd = JsonMapper.ToObject(textReader.text);

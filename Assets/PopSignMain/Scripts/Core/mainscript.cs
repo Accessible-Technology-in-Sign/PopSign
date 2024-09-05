@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using InitScriptName;
+using TMPro;
 
 
 [RequireComponent(typeof(AudioSource))]
@@ -103,6 +104,8 @@ private int BallLayer = 9;
 
 private int _ComboCount;
 
+private VideoManager sharedVideoManager;
+
 //this variable is set in response to the whiff variable in ball; it's true when the flying ball didn't hit at least 2 balls of its color
 public bool BallWhiffed;
 public int ComboCount
@@ -155,7 +158,63 @@ void Awake()
     mainscript.StopControl = false;
     animTable.Clear();
     creatorBall = GameObject.Find("Creator").GetComponent<creatorBall>();
+
     StartCoroutine(CheckColors());
+
+    //setting magnified bubbles on top for visibility
+    List<string> bubbleTypes = new List<string>
+        {"blue", "green", "red", "violet", "yellow"};
+
+    this.sharedVideoManager = VideoManager.getVideoManager();
+    foreach (string bub in bubbleTypes) 
+        {
+            GameObject b = GameObject.Find(bub);
+
+            // Create a new GameObject to hold the text
+            GameObject textObject = new GameObject("TextObject");
+            textObject.transform.parent = b.transform;
+
+            // Add a TextMeshPro component
+            TextMeshPro textMeshPro = textObject.AddComponent<TextMeshPro>();
+
+            // Set the text value
+            string textContent = this.sharedVideoManager.getVideoByColor(b.GetComponent<ColorBallScript> ().mainColor).imageName; // Replace with your desired text
+            textContent = textContent.Substring(10);
+            textMeshPro.text = textContent;
+
+            // Customize the text appearance
+            textMeshPro.fontSize = 3;
+            textMeshPro.color = Color.white; // Set the text color
+            textMeshPro.alignment = TextAlignmentOptions.Center;
+            MeshRenderer meshRenderer = textMeshPro.GetComponent<MeshRenderer>();
+            meshRenderer.sortingLayerName = "VideoLayer";
+            meshRenderer.sortingOrder = 5;
+
+            // Position the text object as needed
+            textObject.transform.localPosition = Vector3.zero;
+
+        }
+
+        // this {} was under foreach when we were using pictures to place words on the ball examples. We have now swithced to using text to keep the size consistent
+        // {   
+        //     GameObject b = GameObject.Find( bub);
+        //     Debug.Log(b);
+        //     GameObject imageObject2 = new GameObject();
+        //     imageObject2.transform.parent = b.transform;
+        //     SpriteRenderer ballImage2 = imageObject2.AddComponent<SpriteRenderer> ();
+        //     string imageName2 = this.sharedVideoManager.getVideoByColor(b.GetComponent<ColorBallScript> ().mainColor).imageName;
+        //     Debug.Log(imageName2);
+        //     ballImage2.sprite = (Sprite)Resources.Load(imageName2, typeof(Sprite));
+        //     ballImage2.sortingLayerName = "VideoLayer";
+        //     ballImage2.sortingOrder = 5;
+
+        //     // Consider the image size
+        //     ballImage2.transform.localScale = new Vector2(50f, 50f);
+        //     ballImage2.transform.localPosition = new Vector2(0f, 0f);
+
+
+        // } 
+        
 }
 
 IEnumerator CheckColors ()

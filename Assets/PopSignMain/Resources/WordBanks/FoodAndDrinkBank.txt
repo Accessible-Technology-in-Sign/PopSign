@@ -21,7 +21,7 @@ cheese
 orange
 apple
 lollipop
-french fries
+French Fries
 applesauce
 salad
 ice

@@ -126,8 +126,8 @@ public class ball : MonoBehaviour
                 //Get the position of the click
                 Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 worldPos = pos;
-                //If the y position of the click is within 4 units of the bottom of the original lowest row of balls and you have control over the ball
-                if (worldPos.y > -4f && worldPos.y < 4f && !mainscript.StopControl)
+                //If the y position of the click is within 6 units of the bottom of the original lowest row of balls and you have control over the ball
+                if (worldPos.y > -6f && worldPos.y < 2.5f && !mainscript.StopControl)
                 {
 
                     //Once ball is launched, set color of ball to the color of its word.
@@ -732,7 +732,7 @@ public class ball : MonoBehaviour
     void triggerEnter()
     {
         // If user clicks too close to the bottom of the screen, do not launch ball.
-        if (transform.position.y < bottomBorder && target.y < -4f)
+        if (transform.position.y < bottomBorder && target.y < -6f)
         {
             growUp();
             StopBall(false);
