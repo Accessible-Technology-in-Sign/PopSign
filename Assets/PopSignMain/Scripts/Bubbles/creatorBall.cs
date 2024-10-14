@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System;
-
+using TMPro;
 
 public class creatorBall : MonoBehaviour
 {
@@ -379,19 +379,55 @@ public GameObject createBall( Vector2 vec, BallColor color = BallColor.random, b
         b.GetComponent<BoxCollider2D>().size = new Vector2( 0.5f, 0.5f );
 
         //POPSign add image to the bubbles
-        GameObject imageObject = new GameObject();
-        imageObject.transform.parent = b.transform;
-        SpriteRenderer ballImage = imageObject.AddComponent<SpriteRenderer> ();
-        if (b.GetComponent<ColorBallScript> ().mainColor != BallColor.star) {
-            string imageName = sharedVideoManager.getVideoByColor (b.GetComponent<ColorBallScript> ().mainColor).imageName;
-            ballImage.sprite = (Sprite)Resources.Load(imageName, typeof(Sprite));
-            ballImage.sortingLayerName = "WordIconsLayer";
-            ballImage.sortingOrder = 2;
+        {
+            // GameObject b = GameObject.Find(bub);
+            GameObject imageObject = new GameObject();
+            imageObject.transform.parent = b.transform;
 
-            // Consider the image size
-            ballImage.transform.localScale = new Vector2(0.2f, 0.2f);
-            ballImage.transform.localPosition = new Vector2(0f, 0f);
+            // Create a new GameObject to hold the text
+            GameObject textObject = new GameObject("TextObject");
+            textObject.transform.parent = b.transform;
+
+            // Add a TextMeshPro component
+            TextMeshPro textMeshPro = textObject.AddComponent<TextMeshPro>();
+
+            // Set the text value
+            string textContent = this.sharedVideoManager.getVideoByColor(b.GetComponent<ColorBallScript> ().mainColor).imageName; // Replace with your desired text
+            textContent = textContent.Substring(10);
+            textMeshPro.text = textContent;
+
+            // Customize the text appearance
+            textMeshPro.fontSize = 1.4f;
+            textMeshPro.color = Color.white; // Set the text color
+            textMeshPro.alignment = TextAlignmentOptions.Center;
+            // Set the font to Arial (you need to have an Arial font asset)
+            TMP_FontAsset calibriFont = Resources.Load<TMP_FontAsset>("Fonts & Materials/Calibri"); // Adjust the path to where Calibri font is located
+            textMeshPro.font = calibriFont;
+            MeshRenderer meshRenderer = textMeshPro.GetComponent<MeshRenderer>();
+            meshRenderer.sortingLayerName = "WordIconsLayer";
+            meshRenderer.sortingOrder = 2;
+
+            // Position the text object as needed
+            textObject.transform.localPosition = Vector3.zero;
+
         }
+
+
+
+        // old code under if statement: puts an image on each of the bubbles
+        // {GameObject imageObject = new GameObject();
+        // imageObject.transform.parent = b.transform;
+        // SpriteRenderer ballImage = imageObject.AddComponent<SpriteRenderer> ();
+        // if (b.GetComponent<ColorBallScript> ().mainColor != BallColor.star) {
+        //     string imageName = sharedVideoManager.getVideoByColor (b.GetComponent<ColorBallScript> ().mainColor).imageName;
+        //     ballImage.sprite = (Sprite)Resources.Load(imageName, typeof(Sprite));
+        //     ballImage.sortingLayerName = "WordIconsLayer";
+        //     ballImage.sortingOrder = 2;
+
+        //     // Consider the image size
+        //     ballImage.transform.localScale = new Vector2(0.2f, 0.2f);
+        //     ballImage.transform.localPosition = new Vector2(0f, 0f);
+        // }
 
     }
     return b.gameObject;

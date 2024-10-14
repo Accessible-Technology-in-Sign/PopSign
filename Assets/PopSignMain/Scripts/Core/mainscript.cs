@@ -186,6 +186,9 @@ void Awake()
             textMeshPro.fontSize = 3;
             textMeshPro.color = Color.white; // Set the text color
             textMeshPro.alignment = TextAlignmentOptions.Center;
+            // Set the font to Arial (you need to have an Arial font asset)
+            TMP_FontAsset calibriFont = Resources.Load<TMP_FontAsset>("Fonts & Materials/Calibri SDF"); // Adjust the path to where Calibri font is located
+            textMeshPro.font = calibriFont;
             MeshRenderer meshRenderer = textMeshPro.GetComponent<MeshRenderer>();
             meshRenderer.sortingLayerName = "VideoLayer";
             meshRenderer.sortingOrder = 5;
