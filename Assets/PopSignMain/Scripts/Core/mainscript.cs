@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using InitScriptName;
+using TMPro;
 
 
 [RequireComponent(typeof(AudioSource))]
@@ -62,7 +63,6 @@ public float gameOverBorder;
 public float ArcadedropDownTime;
 public bool hd;
 public GameObject Fade;
-public int highScore;
 public AudioClip pops;
 public AudioClip click;
 public AudioClip levelBells;
@@ -81,7 +81,7 @@ public GameObject GameOverBorderObject;
 public GameObject TopBorder;
 public Transform Balls;
 public Hashtable animTable = new Hashtable();
-public static Vector3 lastBall;
+public static Vector2 lastBall;
 public static int doubleScore=1;
 public int TotalTargets;
 public int countOfPreparedToDestroy;
@@ -103,6 +103,8 @@ private int MustPopCount = 11;
 private int BallLayer = 9;
 
 private int _ComboCount;
+
+private VideoManager sharedVideoManager;
 
 //this variable is set in response to the whiff variable in ball; it's true when the flying ball didn't hit at least 2 balls of its color
 public bool BallWhiffed;
@@ -156,7 +158,66 @@ void Awake()
     mainscript.StopControl = false;
     animTable.Clear();
     creatorBall = GameObject.Find("Creator").GetComponent<creatorBall>();
+
     StartCoroutine(CheckColors());
+
+    //setting magnified bubbles on top for visibility
+    List<string> bubbleTypes = new List<string>
+        {"blue", "green", "red", "violet", "yellow"};
+
+    this.sharedVideoManager = VideoManager.getVideoManager();
+    foreach (string bub in bubbleTypes) 
+        {
+            GameObject b = GameObject.Find(bub);
+
+            // Create a new GameObject to hold the text
+            GameObject textObject = new GameObject("TextObject");
+            textObject.transform.parent = b.transform;
+
+            // Add a TextMeshPro component
+            TextMeshPro textMeshPro = textObject.AddComponent<TextMeshPro>();
+
+            // Set the text value
+            string textContent = this.sharedVideoManager.getVideoByColor(b.GetComponent<ColorBallScript> ().mainColor).imageName; // Replace with your desired text
+            textContent = textContent.Substring(10);
+            textMeshPro.text = textContent;
+
+            // Customize the text appearance
+            textMeshPro.fontSize = 3;
+            textMeshPro.color = Color.white; // Set the text color
+            textMeshPro.alignment = TextAlignmentOptions.Center;
+            // Set the font to Arial (you need to have an Arial font asset)
+            TMP_FontAsset calibriFont = Resources.Load<TMP_FontAsset>("Fonts & Materials/Calibri SDF"); // Adjust the path to where Calibri font is located
+            textMeshPro.font = calibriFont;
+            MeshRenderer meshRenderer = textMeshPro.GetComponent<MeshRenderer>();
+            meshRenderer.sortingLayerName = "VideoLayer";
+            meshRenderer.sortingOrder = 5;
+
+            // Position the text object as needed
+            textObject.transform.localPosition = Vector3.zero;
+
+        }
+
+        // this {} was under foreach when we were using pictures to place words on the ball examples. We have now swithced to using text to keep the size consistent
+        // {   
+        //     GameObject b = GameObject.Find( bub);
+        //     Debug.Log(b);
+        //     GameObject imageObject2 = new GameObject();
+        //     imageObject2.transform.parent = b.transform;
+        //     SpriteRenderer ballImage2 = imageObject2.AddComponent<SpriteRenderer> ();
+        //     string imageName2 = this.sharedVideoManager.getVideoByColor(b.GetComponent<ColorBallScript> ().mainColor).imageName;
+        //     Debug.Log(imageName2);
+        //     ballImage2.sprite = (Sprite)Resources.Load(imageName2, typeof(Sprite));
+        //     ballImage2.sortingLayerName = "VideoLayer";
+        //     ballImage2.sortingOrder = 5;
+
+        //     // Consider the image size
+        //     ballImage2.transform.localScale = new Vector2(50f, 50f);
+        //     ballImage2.transform.localPosition = new Vector2(0f, 0f);
+
+
+        // } 
+        
 }
 
 IEnumerator CheckColors ()
@@ -303,8 +364,6 @@ void Update ()
         //    GamePlay.Instance.GameStatus = GameState.Win;
         //else if( LevelData.mode == ModeGame.Rounded && TargetCounter >= 1 && GamePlay.Instance.GameStatus == GameState.WaitForStar )
         //    GamePlay.Instance.GameStatus = GameState.Win;
-        //else if( LevelData.mode == ModeGame.Animals && TargetCounter >= TotalTargets && GamePlay.Instance.GameStatus == GameState.Playing )
-        //    GamePlay.Instance.GameStatus = GameState.Win;
         //else if( LevelData.LimitAmount <= 0 && GamePlay.Instance.GameStatus == GameState.Playing && newBall == null )
         //    GamePlay.Instance.GameStatus = GameState.GameOver;
 
@@ -355,13 +414,6 @@ void Update ()
             mainscript.score = 0;
         }
         else if (LevelData.mode == ModeGame.Rounded && TargetCounter >= 1 && GamePlay.Instance.GameStatus == GameState.WaitForStar)
-        {
-            GamePlay.Instance.GameStatus = GameState.Win;
-            score = 0;
-            _ComboCount = 0;
-            mainscript.score = 0;
-        }
-        else if (LevelData.mode == ModeGame.Animals && TargetCounter >= TotalTargets && GamePlay.Instance.GameStatus == GameState.Playing)
         {
             GamePlay.Instance.GameStatus = GameState.Win;
             score = 0;
@@ -442,10 +494,10 @@ IEnumerator getBallsForMesh()
 }
 
 
-public GameObject createCannonBall(Vector3 vector3)
+public GameObject createCannonBall(Vector2 vector2)
 {
     GameObject gm = GameObject.Find ("Creator");
-    GameObject nextBall = gm.GetComponent<creatorBall>().createBall(vector3, BallColor.random, true);
+    GameObject nextBall = gm.GetComponent<creatorBall>().createBall(vector2, BallColor.random, true);
     return nextBall;
 }
 
@@ -539,8 +591,6 @@ public IEnumerator clearDisconnectedBalls()
 
     if(LevelData.mode == ModeGame.Vertical)
         creatorBall.Instance.MoveLevelDown();
-    else if( LevelData.mode == ModeGame.Animals )
-        creatorBall.Instance.MoveLevelDown();
     else if( LevelData.mode == ModeGame.Rounded )
         CheckBallsBorderCross();
 
@@ -617,19 +667,19 @@ IEnumerator CheckFreeStarCor()
 
         GameObject star = GameObject.FindGameObjectWithTag( "star" );
         star.GetComponent<SpriteRenderer>().sortingLayerName = "UI layer";
-        Vector3 targetPos = new Vector3( 2.3f, 6, 0 );
+        Vector2 targetPos = new Vector2( 2.3f, 6);
         mainscript.Instance.TargetCounter++;
         AnimationCurve curveX = new AnimationCurve( new Keyframe( 0, star.transform.position.x ), new Keyframe( 0.5f, targetPos.x ) );
         AnimationCurve curveY = new AnimationCurve( new Keyframe( 0, star.transform.position.y ), new Keyframe( 0.5f, targetPos.y ) );
         curveY.AddKey( 0.2f, star.transform.position.y - 1 );
         float startTime = Time.time;
-        Vector3 startPos = star.transform.position;
+        Vector2 startPos = star.transform.position;
         float distCovered = 0;
         while( distCovered < 0.6f )
         {
             distCovered = ( Time.time - startTime );
-            star.transform.position = new Vector3( curveX.Evaluate( distCovered ), curveY.Evaluate( distCovered ), 0 );
-            star.transform.Rotate( Vector3.back * 10 );
+            star.transform.position = new Vector2( curveX.Evaluate( distCovered ), curveY.Evaluate( distCovered ));
+            // star.transform.Rotate( Vector2.back * 10 );
             yield return new WaitForEndOfFrame();
         }
             Destroy(star);

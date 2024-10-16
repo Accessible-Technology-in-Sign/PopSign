@@ -7,6 +7,7 @@ public class AnswerButton : MonoBehaviour {
   public GameObject helpText;
   public Sprite normalImage;
   public Sprite selectedImage;
+  // public Image imageComponent;
   bool active = false;
 
 	public void ButtonClick()
